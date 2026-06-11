@@ -4,7 +4,7 @@
 **ORCID:** [0009-0000-7053-9325](https://orcid.org/0009-0000-7053-9325)
 **Contact:** odunewutolu2@gmail.com
 **Preprint:** *ChemRxiv DOI — assigned at posting*
-**Archived code release:** *Zenodo DOI — assigned at posting*
+**Archived code release:** [10.5281/zenodo.20643485](https://doi.org/10.5281/zenodo.20643485)
 
 ---
 

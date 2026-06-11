@@ -261,7 +261,7 @@ This section reproduces the technical detail needed to re-implement the pipeline
 
 ## Methods Availability
 
-All scripts used in this study — including the five experiment drivers, the figure-rendering scripts, the cross-provider model-benchmark harness, and the mirrored pipeline source code (`code/lead_optimizer/`) — are available at https://github.com/Nimieeee/lead-optimizer-paper. The repository carries a `manifest.json` for every experiment recording the git SHA, RDKit version, Python version, platform, SMIRKS library SHA-256, and input-file SHA-256, so that any figure or table can be re-derived to the byte.
+All scripts used in this study — including the five experiment drivers, the figure-rendering scripts, the cross-provider model-benchmark harness, and the mirrored pipeline source code (`code/lead_optimizer/`) — are available at https://github.com/Nimieeee/lead-optimizer-paper. The exact commit used to produce every figure and table in this manuscript is archived on Zenodo at https://doi.org/10.5281/zenodo.20643485 (release `v1.0-chemrxiv`); that Zenodo DOI is the canonical citation for the artefact. The repository carries a `manifest.json` for every experiment recording the git SHA, RDKit version, Python version, platform, SMIRKS library SHA-256, and input-file SHA-256, so that any figure or table can be re-derived to the byte.
 
 ## Use of Artificial Intelligence Tools
 

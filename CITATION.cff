@@ -9,6 +9,7 @@ authors:
     affiliation: "Aisynth Labs (independent research)"
     orcid: "https://orcid.org/0009-0000-7053-9325"
 license: MIT
+doi: "10.5281/zenodo.20643485"
 repository-code: "https://github.com/Nimieeee/lead-optimizer-paper"
 keywords:
   - cheminformatics
