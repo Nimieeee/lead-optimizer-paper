@@ -1,7 +1,14 @@
-# Benchside Lead-Optimization Workbench — Reproducibility
+# A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth
 
-This directory contains everything needed to reproduce the figures and tables
-in the paper:
+**Author:** Toluwanimi Odunewu (Aisynth Labs, independent research)
+**Contact:** odunewutolu2@gmail.com
+**Preprint:** *ChemRxiv DOI — assigned at posting*
+**Archived code release:** *Zenodo DOI — assigned at posting*
+
+---
+
+This repository accompanies the paper. It contains everything needed to
+reproduce the figures and tables in the manuscript:
 
 ```
 paper/
