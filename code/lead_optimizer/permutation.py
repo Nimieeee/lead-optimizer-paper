@@ -23,7 +23,7 @@ def _get_dead_cache(task_id: Optional[str]) -> Set[str]:
 def clear_dead_smirks_cache(task_id: Optional[str] = None):
     """Clear the dead SMIRKS cache for a given task. Call this before each new optimization run.
 
-    Without a task_id, only the default bucket is cleared — never wipe other concurrent tasks.
+    Without a task_id, only the default bucket is cleared, never wipe other concurrent tasks.
     """
     key = task_id or _DEFAULT_TASK_KEY
     if key in _DEAD_SMIRKS_BY_TASK:
@@ -69,7 +69,7 @@ def generate_combinatorial_library(
                 dead_smirks.add(smirks)
                 dead_cache.add(smirks)
                 name = strat.get("name", "unknown")
-                logger.warning(f"SMIRKS pre-check: '{name}' (site {site_idx}) produced 0 valid products — skipping")
+                logger.warning(f"SMIRKS pre-check: '{name}' (site {site_idx}) produced 0 valid products, skipping")
 
     if dead_smirks:
         logger.info(f"SMIRKS pre-check: {len(dead_smirks)} dead transformations skipped out of {sum(len(v) for v in strategies_by_site.values())} total")
@@ -124,7 +124,7 @@ def generate_combinatorial_library(
 
         # Apply SMIRKS sequentially for this combination. When a SMIRKS
         # produces multiple products (multi-instance), prefer the one that
-        # preserves the lead's ring topology — this captures the user's
+        # preserves the lead's ring topology, this captures the user's
         # intent of "modify the decoration, not the scaffold" without
         # the exponential branching cost of fully exploring every product.
         valid = True
@@ -161,7 +161,7 @@ def generate_combinatorial_library(
         seen_smiles.add(canonical)
 
         # Pharmacophore check (hard: restricted SMARTS preserved; soft: ring
-        # topology matches lead — allows methyl→ethyl on scaffold, rejects
+        # topology matches lead, allows methyl→ethyl on scaffold, rejects
         # ring-system destruction).
         if not enforce_pharmacophore(canonical, restricted_smarts_parts, lead_smiles=lead_smiles):
             continue
@@ -191,7 +191,7 @@ def generate_combinatorial_library(
             "smiles": canonical,
             "modifications": modifications,
             "smirks_applied": smirks_used,
-            "sa_score": sa_score,          # legacy Ertl — kept in record for audit
+            "sa_score": sa_score,          # legacy Ertl, kept in record for audit
             "syba_score": syba,            # primary synth metric (signed; +=easier)
             "synth_prediction": synth.get("prediction"),
             "synth_interpretation": synth.get("interpretation"),

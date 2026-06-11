@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Experiment 2 — Scaffold preservation + structural-alert audit
+Experiment 2, Scaffold preservation + structural-alert audit
 
 For each lead in seed_leads.csv:
   1. Apply the full SMIRKS library to generate analogs

@@ -28,7 +28,7 @@ async def run_optimization_agent(
     Select bioisosteric replacement strategies from the curated SMIRKS library using direct Groq API.
     """
     # Build context descriptions. Each restricted group may contact multiple
-    # residues via multiple interaction types — list them all so the optimizer
+    # residues via multiple interaction types, list them all so the optimizer
     # LLM has the full pharmacophore picture, not just the first contact.
     def _format_restricted(g) -> str:
         residues = g.residues or ([g.residue] if g.residue else [])
@@ -59,16 +59,16 @@ async def run_optimization_agent(
     # Build SMIRKS library summary (with token budget management)
     smirks_summaries = []
     
-    # 1. Specific matches for target groups — always include these
+    # 1. Specific matches for target groups, always include these
     for group in vision_output.target_groups:
         available = get_smirks_for_group(group.group_name)
         if available:
             summary = f"\n[Specific SMIRKS for {group.group_name}]:\n"
             for entry in available:
-                summary += f"  {entry.id}: {entry.name} — {entry.description}\n"
+                summary += f"  {entry.id}: {entry.name}, {entry.description}\n"
             smirks_summaries.append(summary)
     
-    # 2. General Optimization Library — SMART TRUNCATION to fit token budget
+    # 2. General Optimization Library, SMART TRUNCATION to fit token budget
     # Groq Llama 4 Scout limit: ~30,000 input tokens. We budget ~15,000 for SMIRKS.
     # Strategy: include only categories relevant to liabilities + a curated subset
     MAX_SMIRKS_CHARS = 50000  # ~12,500 tokens at 4 chars/token
@@ -101,7 +101,7 @@ async def run_optimization_agent(
     # Sort: relevant first, then by count
     sorted_categories = sorted(all_categories, key=lambda c: (-category_relevance.get(c, 0), c))
     
-    summary = f"\n[General Optimization SMIRKS ({len(all_categories)} categories, {len(SMIRKS_LIBRARY)} total entries — showing relevant categories first)]:\n"
+    summary = f"\n[General Optimization SMIRKS ({len(all_categories)} categories, {len(SMIRKS_LIBRARY)} total entries, showing relevant categories first)]:\n"
     
     # Add entries category by category until budget is reached
     current_length = len(summary)
@@ -120,7 +120,7 @@ async def run_optimization_agent(
         current_length += len(cat_header)
         
         for entry_id, entry in cat_entries:
-            line = f"  {entry_id}: {entry.name} — {entry.description}\n"
+            line = f"  {entry_id}: {entry.name}, {entry.description}\n"
             if current_length + len(line) > MAX_SMIRKS_CHARS:
                 summary += "  ... (remaining entries omitted) ..."
                 break

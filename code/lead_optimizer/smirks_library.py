@@ -1,5 +1,5 @@
 """
-smirks_library.py — Curated, pre-validated bioisosteric SMIRKS reactions.
+smirks_library.py, Curated, pre-validated bioisosteric SMIRKS reactions.
 
 The Optimization Agent selects from this library instead of generating SMIRKS from scratch.
 This ensures 100% valid chemistry and high performance.
@@ -396,7 +396,7 @@ SMIRKS_LIBRARY: Dict[str, SmirksEntry] = {
         name="Benzylic alcohol to aldehyde (oxidation)",
         smirks="[c:1][CH2:2][OX2H]>>[c:1][CH:2]=O",
         description="Direct oxidation of benzylic alcohol to aldehyde. "
-                    "The aldehyde is an electrophile — use with caution.",
+                    "The aldehyde is an electrophile, use with caution.",
         expected_impact="Electrophilicity, carbonyl, metabolic pathway",
         complexity_delta=0.7,
         tags=["electrophile", "carbonyl", "metabolic_intermediate"],
@@ -5985,7 +5985,7 @@ def get_smirks_for_group(group_name: str) -> List[SmirksEntry]:
         "ester": ["ester_modifications", "metabolic_stability", "polarity_adjustments"],
         "lactone": ["ester_modifications", "carbonyl_modifications"],
         "carbamate": ["ester_modifications", "amide_bond_replacements"],
-        # ── Phase 1b (2026-06-09) — wire the editable-site SMARTS additions ──
+        # ── Phase 1b (2026-06-09), wire the editable-site SMARTS additions ──
         "aromatic_h": ["aromatic_substitutions", "halogen_substitutions", "metabolic_stability"],
         "hydroxymethyl": ["benzylic_modifications", "o_substitutions", "polarity_adjustments"],
         "gem_dimethyl": ["steric_shielding", "metabolic_stability"],

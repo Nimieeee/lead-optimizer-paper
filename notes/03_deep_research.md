@@ -1,4 +1,4 @@
-# Deep Research Pipeline — Factual Inventory
+# Deep Research Pipeline, Factual Inventory
 
 Source of truth: `backend/app/services/deep_research.py` (3,527
 lines), `backend/app/services/research_tasks.py` (786 lines), plus
@@ -37,7 +37,7 @@ back to `mimo-v2.5`. JSON mode, `max_tokens=8192`,
 ≥2 international, ≥1 cross-institutional), 3-5 keywords each, target
 ~30-50 citations. Output is markdown-fence-stripped, then
 `json.loads()`. On `JSONDecodeError` it sets `state.error_message`
-and aborts — no retry, no model swap.
+and aborts, no retry, no model swap.
 
 **1.2 Researcher** (`_node_researcher`, lines 949-1161). Generates
 3 search queries per step via a sub-LLM call (JSON mode, lines
@@ -68,16 +68,16 @@ pipeline by volume. Two tier-0 → tier-2 fallbacks operate in series.
   of action", "comparative analysis") triggers a `fast`-mode
   secondary call (line 1568), then keyword-keyed hardcoded
   templates (line 1525), then a final generic fallback (line 1588).
-- **Tier 0 — map-reduce** (lines 1665-1773). Parallel
+- **Tier 0, map-reduce** (lines 1665-1773). Parallel
   `asyncio.gather(return_exceptions=True)` per section
   (`max_tokens=4000`, temp 0.7); a synthesizer pass
   (`max_tokens=20000`, temp 0.5) stitches them with an executive
   summary and conclusion. `< 2000` chars triggers Tier 1.
-- **Tier 1 — monolithic elite** (lines 1781-1842).
+- **Tier 1, monolithic elite** (lines 1781-1842).
   `max_tokens=24576`, mode `deep_research_elite` → OpenCode Go
   `deepseek-v4-pro` (`multi_provider.py:256`). Heartbeat task every
   30s emits a `Writing` progress callback so the UI doesn't freeze.
-- **Tier 2 — Groq Lite** (lines 1846-1905). Top-15 citations,
+- **Tier 2, Groq Lite** (lines 1846-1905). Top-15 citations,
   `max_tokens=12288`, mode `deep_research_single_pass` → OpenCode Go
   `mimo-v2.5`.
 
@@ -100,14 +100,14 @@ with missing author/year metadata to prevent the historical
 
 Confirmed active in `deep_research.py`:
 
-1. **PubMed E-utilities** — `search_pubmed` (lines 284-429). Manual
+1. **PubMed E-utilities**, `search_pubmed` (lines 284-429). Manual
    `esearch` + `efetch` XML parse for title/abstract/DOI/PMCID/
    authors/journal/year. Retry chain `[5s, 15s, 30s]` with timeout
    escalation 15s→25s.
-2. **Serper (Google Scholar)** — `search_web` (lines 431-451) via
+2. **Serper (Google Scholar)**, `search_web` (lines 431-451) via
    `app.services.serper.SerperService`. No PMC enrichment, no
    full-text fetch.
-3. **PMC full text** — `PMCFullTextService` (lazy property at lines
+3. **PMC full text**, `PMCFullTextService` (lazy property at lines
    249-255) for PubMed results carrying a PMCID.
 
 Referenced elsewhere in the repo but **not invoked from the
@@ -138,12 +138,12 @@ are swallowed (`deep_research.py:449-451`).
 ## 3. Citation handling
 
 Construction is a single locus at lines 1250-1275: dedupe by
-case-insensitive title only — DOI/PMID dedupe is **not** applied
+case-insensitive title only, DOI/PMID dedupe is **not** applied
 inside deep research even though `_extract_doi` exists (line 273).
 Each finding stashes a `_pubmed_data: Dict` (line 184); reviewer
 copies that into a `Citation` dataclass.
 
-**Rule 34 (live-state mutation in checkpoints) — VERIFIED CLEAN.**
+**Rule 34 (live-state mutation in checkpoints), VERIFIED CLEAN.**
 `save_checkpoint` (lines 564-598) defines a local `_scrub` helper
 operating on `asdict(state)` (a deep copy). The historical bug
 pattern `for f in state.findings: f._pubmed_data = {}` is no longer
@@ -157,7 +157,7 @@ fresh objects, leaving `state.citations` untouched. Inline comment
 documents the "fix it, regress after checkpoint reload" cycle this
 prevents.
 
-Author-name normalization across sources is minimal — Semantic
+Author-name normalization across sources is minimal, Semantic
 Scholar's `Last, F.` form would collide with PubMed's `Last, FM`
 form if they were merged, but they aren't on this path.
 
@@ -191,7 +191,7 @@ What IS present:
   objects whose authors string contains a matching surname AND
   matching year, with `difflib.SequenceMatcher` ≥ 0.85 fuzzy
   threshold. This drops *hallucinated citations* from the reference
-  list — if the model wrote `(Smith, 2024)` and no real Smith-2024
+  list, if the model wrote `(Smith, 2024)` and no real Smith-2024
   exists in `state.citations`, that citation falls out.
 - **Metadata floor** (lines 2142-2157). Drops references whose
   authors OR year is empty/`"unknown"` to prevent "Unknown. (n.d.)"
@@ -202,10 +202,10 @@ asks "does this claim appear in this source?" There is no NLI, no
 semantic similarity check, no QA-over-context check. A model can
 correctly cite paper #14 but attribute a fact paper #14 never made;
 the pipeline cannot detect this. Mapping the task's criteria:
-**(a) source-text presence** — only as PMC retrieval gate, not for
-claim checking; **(b) similarity threshold** — only for author
+**(a) source-text presence**, only as PMC retrieval gate, not for
+claim checking; **(b) similarity threshold**, only for author
 dedup, not for claim-source alignment; **(c) explicit "no evidence"
-labelling** — only as a prompt request to the LLM, with no
+labelling**, only as a prompt request to the LLM, with no
 programmatic enforcement.
 
 ---
@@ -235,21 +235,21 @@ volume/issue/pages, DOI/PMID/URL fallback chain.
 researcher sub-LLM 8192, critic 8192, writer Tier 0 sections 4000,
 Tier 0 synthesizer 20000, Tier 1 monolithic **24576**, Tier 2
 fallback 12288, clarifying questions 2000. CLAUDE.md claims the
-writer gets 8K — the codebase actually passes 24,576. CLAUDE.md is
+writer gets 8K, the codebase actually passes 24,576. CLAUDE.md is
 stale on this point.
 
 ---
 
 ## 6. Streaming (SSE)
 
-`progress_callback(step_name, details)` — `step_name` ∈
+`progress_callback(step_name, details)`, `step_name` ∈
 `{Planning, Researching, Reviewing, Writing, Resuming}`. `details`
 may be a raw string or a JSON string carrying
 `sub_type ∈ {plan_complete, step_start, step_complete}`. The Living
 Document `phases` array is assembled in `research_tasks.py:330-436`
 with `status ∈ {pending, active, completed, failed}`.
 
-**Rule 15 / "step phases stuck spinning" fix — VERIFIED IN CODE.**
+**Rule 15 / "step phases stuck spinning" fix, VERIFIED IN CODE.**
 `process_step` (`deep_research.py:974-1126`) wraps the search body
 in `try/except/finally`. The `finally` block (lines 1101-1118)
 ALWAYS emits `step_complete` with `status` set to `completed` or
@@ -277,7 +277,7 @@ to a 15-second connection heartbeat (line 1134).
 `generate_research_pdf` at `research_tasks.py:651`. Implementation
 at `deep_research.py:2840+` uses `xhtml2pdf.pisa`.
 
-**Rule 33 / `clean_unicode_for_pdf(None)` crash — VERIFIED FIXED.**
+**Rule 33 / `clean_unicode_for_pdf(None)` crash, VERIFIED FIXED.**
 Lines 2897-2907:
 
 ```python
@@ -292,7 +292,7 @@ Plus an empty-content guard at line 2865 that raises
 `ValueError("report_content is empty")` before rendering. Inline
 comment 2898-2903 documents the historical crash.
 
-Retry-once pattern at `research_tasks.py:649-664` — generate the
+Retry-once pattern at `research_tasks.py:649-664`, generate the
 PDF up to 2× before the fallback branch. The fallback path at
 `research_tasks.py:735-743` calls
 `email_service.send_research_completed_email(..., pdf_failed=True)`,
@@ -322,7 +322,7 @@ outside this repo.
 **None found.** No harness fetches each claim's cited source and
 verifies the claim. The closest artefact is
 `_verify_citation_density` at `deep_research.py:753-776` which
-counts unique citations and citations per paragraph — a *density*
+counts unique citations and citations per paragraph, a *density*
 metric, not *faithfulness*. `grep -rn "faithfulness\|
 citation_faithfulness\|claim_verification" backend/` returns zero.
 The dead-code `EvidenceValidator` scores study-design strength, not
@@ -343,7 +343,7 @@ address from the `users` table) and at line 492 (to call
 signature at `chat.py:1041` accepts a UUID, not a `User` model).
 
 So Rule 31 is moot for this pipeline: passing a raw UUID is correct
-because `add_message` is never invoked by the background worker —
+because `add_message` is never invoked by the background worker ,
 the branch path uses `user_message_id` lookup instead.
 
 ---
@@ -407,15 +407,15 @@ effect on planner/writer prompts.
 - Step-level fault tolerance: `try/except/finally` +
   `asyncio.gather(return_exceptions=True)` guarantees every step
   emits `step_complete`.
-- Live-state mutation in checkpoints (Rule 34) is solidly fixed —
+- Live-state mutation in checkpoints (Rule 34) is solidly fixed ,
   `_scrub` operates on a deep copy; the historical mutation pattern
   is absent.
-- PDF None-safety (Rule 33) — None/non-str guards in
+- PDF None-safety (Rule 33), None/non-str guards in
   `clean_unicode_for_pdf`, empty-body `ValueError`, retry-once,
   honest `pdf_failed=True` fallback email copy.
 - Branch activation (Rule 32) through `create_response_branch` with
   task-id deduplication.
-- Citation hallucination filter — 5-regex extraction + fuzzy author
+- Citation hallucination filter, 5-regex extraction + fuzzy author
   + year match (`SequenceMatcher ≥ 0.85`) drops in-text citations
   the model invented.
 - Pre-grounding hook wires verified PDB/PMID/UniProt/ChEMBL/DOI
@@ -424,7 +424,7 @@ effect on planner/writer prompts.
 ## What's partial
 
 - Reviewer is single-pass and recursion-capped at 2 rounds with 1
-  new query per round — limited gap-fill capacity.
+  new query per round, limited gap-fill capacity.
 - Search fan-out is narrower than the README claims: deep research
   uses **PubMed + Serper Google Scholar** only. Semantic Scholar,
   CrossRef, OpenAlex, arXiv, bioRxiv, medRxiv, DuckDuckGo are
@@ -446,7 +446,7 @@ effect on planner/writer prompts.
 - **Programmatic "no evidence" labelling**: prompts ask for
   "verification needed" but nothing detects unsupported claims or
   inserts `[unverified]` markers.
-- `EvidenceValidator` is **dead code** — defined and tested, never
+- `EvidenceValidator` is **dead code**, defined and tested, never
   imported. Its 142 lines score study-design strength, not claim
   alignment.
 - DuckDuckGo / OpenAlex / arXiv / bioRxiv / medRxiv API search not
@@ -458,7 +458,7 @@ effect on planner/writer prompts.
   writer chain. The 190-test claim in CLAUDE.md covers other
   surfaces; deep research is exercised only at the
   literature-URL-validation layer.
-- Semantic Scholar wiring into deep research — the service exists
+- Semantic Scholar wiring into deep research, the service exists
   and works but `ResearchTools` does not call it.
 
 The pipeline is structurally sound for retrieval + generation with

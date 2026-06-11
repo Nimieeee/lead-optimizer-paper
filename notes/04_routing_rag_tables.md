@@ -1,4 +1,4 @@
-# 04 — Routing, RAG, Table Intelligence (factual inventory)
+# 04, Routing, RAG, Table Intelligence (factual inventory)
 
 Notes compiled from a top-to-bottom read of three subsystems on commit
 `9ef973c` (master). Every claim is anchored by a file:line citation;
@@ -19,7 +19,7 @@ exhausted.
 
 All providers are HTTP clients spoken through `httpx.AsyncClient` with
 shared connection pooling (`multi_provider.py:127-128`). There is one
-single `MultiProviderService` class — each provider is a `ProviderConfig`
+single `MultiProviderService` class, each provider is a `ProviderConfig`
 dataclass row in `self.providers`, not a separate class. The `Provider`
 enum holds the canonical identifiers
 (`multi_provider.py:27-32`).
@@ -28,8 +28,8 @@ enum holds the canonical identifiers
 |---|---|---|---|---|
 | Pollinations | `Provider.POLLINATIONS` | **Active fallback tier** | `POLLINATIONS_API_KEY` set (`multi_provider.py:181-201`) | `https://gen.pollinations.ai/v1` |
 | OpenCode Go (OAI-compat) | `Provider.OPENCODE_GO` | **Active primary** | `OPENCODE_GO_API_KEY` set (`multi_provider.py:233-268`) | `https://opencode.ai/zen/go/v1` |
-| OpenCode Go (Anthropic-compat) | — | **Not wired into multi_provider** (see §7) | n/a | `https://opencode.ai/zen/go/v1/messages` (used only by the Vision Agent, `lead_optimizer/agents/vision_agent.py:43`) |
-| Groq | `Provider.GROQ` | **Active — fast-mode lead** | `GROQ_API_KEY` set (`multi_provider.py:159-178`) | `https://api.groq.com/openai/v1` |
+| OpenCode Go (Anthropic-compat) |, | **Not wired into multi_provider** (see §7) | n/a | `https://opencode.ai/zen/go/v1/messages` (used only by the Vision Agent, `lead_optimizer/agents/vision_agent.py:43`) |
+| Groq | `Provider.GROQ` | **Active, fast-mode lead** | `GROQ_API_KEY` set (`multi_provider.py:159-178`) | `https://api.groq.com/openai/v1` |
 | Mistral | `Provider.MISTRAL` | **Active fallback** | `MISTRAL_API_KEY` set (`multi_provider.py:204-223`) | `https://api.mistral.ai/v1` |
 | NVIDIA NIM | `Provider.NVIDIA` | **Registered, never selected** | `NVIDIA_API_KEY` set (`multi_provider.py:131-153`) | `https://integrate.api.nvidia.com/v1` |
 
@@ -37,12 +37,12 @@ NVIDIA NIM is initialised when the key is present, but the
 `MODE_PRIORITIES` dict (`multi_provider.py:86-101`) does not include
 `Provider.NVIDIA` in any priority list any more. So the provider object
 exists, weight=0.80 (`multi_provider.py:150`), startup print says
-"Primary – 80% weight" — but it can only be reached through the
+"Primary – 80% weight", but it can only be reached through the
 weighted-random "absolute last resort" branch at
 `multi_provider.py:357-370`. **Documentation reality check:** the
 docstring at lines 5-9 still advertises "Best provider for each mode
 (Fast→Groq, Detailed→NVIDIA, Research→NVIDIA)" and "Weighted distribution:
-NVIDIA (80%), Groq (15%), Mistral (5%)". That's stale — the actual code
+NVIDIA (80%), Groq (15%), Mistral (5%)". That's stale, the actual code
 no longer wires NVIDIA into any mode and the weights aren't used for
 distribution, only for the dead-letter fallback.
 
@@ -70,12 +70,12 @@ OpenCode Go (multi_provider.py:252-258)
   fast                          : mimo-v2.5
   detailed / research           : mimo-v2.5-pro
   deep_research                 : mimo-v2.5            (planner/researcher/reviewer JSON)
-  deep_research_elite           : deepseek-v4-pro      (writer — long-form)
+  deep_research_elite           : deepseek-v4-pro      (writer, long-form)
   deep_research_single_pass     : mimo-v2.5
 ```
 
 Pollinations key candidates documented in CLAUDE.md (`gemini-fast`,
-`claude-airforce`) are NOT in the live model dict — they exist only as
+`claude-airforce`) are NOT in the live model dict, they exist only as
 prose warnings, the code only sends `deepseek` and `qwen-large`.
 
 ### 3. MODE_PRIORITIES
@@ -93,7 +93,7 @@ Verbatim from `multi_provider.py:86-101`:
 
 Note the CLAUDE.md rule table claims `deep_research_planner/researcher/
 reviewer` are separate modes routed primarily to Groq `gpt-oss-120b`.
-**In code there is only one `deep_research` key** — the planner /
+**In code there is only one `deep_research` key**, the planner /
 researcher / reviewer nodes call `generate(mode="deep_research")` and
 get whatever model the chosen provider has registered under that mode
 (Groq → `gpt-oss-120b`, OpenCode Go → `mimo-v2.5`). The naming in
@@ -103,7 +103,7 @@ CLAUDE.md is aspirational; the dict is one key.
 
 Confirmed in two places:
 
-- `config.py:97` — `MULTI_PROVIDER_GROQ_CONTEXT_LIMIT_TOKENS = 7500`,
+- `config.py:97`, `MULTI_PROVIDER_GROQ_CONTEXT_LIMIT_TOKENS = 7500`,
   override via env.
 - Applied at `multi_provider.py:512-522` (streaming) and `716-725`
   (non-streaming). For every provider, the dict
@@ -130,7 +130,7 @@ PROVIDER_CONTEXT_WINDOWS = {
 The 1.2 safety multiplier (`multi_provider.py:511, 715`) means a 27k
 char Pollinations payload, a 213k char OpenCode Go payload, and a 26k
 char Mistral payload are the practical ceilings. No tokeniser is
-called — character count is divided by 4 (`multi_provider.py:503-504,
+called, character count is divided by 4 (`multi_provider.py:503-504,
 711-712`), which underestimates non-English text.
 
 ### 6. SSE streaming and `reasoning_content` drop
@@ -149,7 +149,7 @@ if content:
 That's it. The parser reads only `delta.content`. The OpenAI/Groq SSE
 shape also carries `delta.reasoning_content` on heavy-reasoning models
 (MiMo, DeepSeek V4, Kimi K2.6). **This field is never read in
-`multi_provider.py`** — so it is silently dropped at the consumer, which
+`multi_provider.py`**, so it is silently dropped at the consumer, which
 is exactly Rule 30's failure mode: models that emit only
 `reasoning_content` before any `content` chunk appear as empty
 responses to the router. The Vision Agent has its own salvage path that
@@ -183,10 +183,10 @@ with headers `x-api-key` (not `Authorization: Bearer`) and
 salvage logic for `reasoning_content` lives at `vision_agent.py:316-327`
 for Kimi K2.6 (OAI-compat fallback in the same file) and at
 `vision_agent.py:170-220` for MiniMax M3 (Anthropic-compat reasoning
-JSON extraction). None of this is callable from chat — only from the
+JSON extraction). None of this is callable from chat, only from the
 Lead Optimizer worker.
 
-### Section (a) — what's solid / partial / missing
+### Section (a), what's solid / partial / missing
 
 - **Solid:** per-provider context-window filtering with adaptive
   timeouts; permanent 401/403 circuit breaker
@@ -196,13 +196,13 @@ Lead Optimizer worker.
   coercion defense for Pollinations qwen-large
   (`multi_provider.py:851-856`).
 - **Partial:** the `MODE_PRIORITIES` dict has no sub-keys for
-  planner/researcher/reviewer/writer — CLAUDE.md's nuanced routing
+  planner/researcher/reviewer/writer, CLAUDE.md's nuanced routing
   table is only honoured by what the *callers* in `deep_research.py`
   decide to pass as `mode=`. The router treats them all as one mode.
 - **Missing:** no integrated Anthropic-compat streaming path (Vision
   Agent has its own); no token-accurate tokeniser (chars/4 underestimates
   CJK/symbol-heavy payloads); NVIDIA NIM provider object is dead
-  weight — initialised but never reachable through the priority list,
+  weight, initialised but never reachable through the priority list,
   and the startup banner still claims "Primary – 80% weight" which is
   false. Cost mapping at `multi_provider.py:461-467` still includes
   NVIDIA, so a stale revival would log non-zero costs.
@@ -230,7 +230,7 @@ Default provider is `mistral` (`config.py:63`), 1024 dimensions
 There is a `CohereEmbeddingsService` (`cohere_embeddings.py:35-403`)
 with a constructor, embed methods, and a global getter
 (`cohere_embeddings.py:395-402`), but the factory in `embeddings.py`
-never references it. **Cohere embeddings are dead code** — present,
+never references it. **Cohere embeddings are dead code**, present,
 working, callable from a script, but no production code path imports
 them.
 
@@ -242,7 +242,7 @@ line 314 stamps `"mistral-v1"` (or `"hash-v1"` on fallback), not
 `"v1-mistral-embed-1024"`. So conversations loaded through the legacy
 path produce chunks that the `RAGConfig.validate_embedding_version()`
 check at `rag_config.py:73-80` would mark stale. The validator is
-defined but I found no caller in the production query path — the
+defined but I found no caller in the production query path, the
 "fail-loud on mismatch" promise in the rule docstring isn't enforced
 yet.
 
@@ -251,9 +251,9 @@ yet.
 Two competing chunk-size configs coexist:
 
 - `RAGConfig.CHUNK_SIZE = 1500`, `CHUNK_OVERLAP = 300`
-  (`rag_config.py:41-42`) — the registry value.
+  (`rag_config.py:41-42`), the registry value.
 - `settings.LANGCHAIN_CHUNK_SIZE = 1000`, `LANGCHAIN_CHUNK_OVERLAP = 200`
-  (`config.py:74-75`) — the env-var-driven value used by
+  (`config.py:74-75`), the env-var-driven value used by
   `EnhancedTextSplitter` (`text_splitter.py:33-34`) and reported in
   `enhanced_rag.py:1079-1080`.
 
@@ -279,7 +279,7 @@ ai.py:463 and ai.py:891 follow the same pattern).
 
 Triggered at `ai.py:2132-2206`. The path:
 
-1. Look for `/tmp/raw_docs/{conversation_id}.txt` — written by
+1. Look for `/tmp/raw_docs/{conversation_id}.txt`, written by
    `enhanced_rag.py:399-407` on every upload, appended with a
    `===== FILE: {filename} =====` header so multiple uploads share one
    conversation file.
@@ -295,7 +295,7 @@ Triggered at `ai.py:2132-2206`. The path:
    `'reason': 'in_context_full_document'`.
 
 The bypass NEVER truncates the document below the cap. The router's
-context-window filter (§a.5) handles per-provider exclusion — the bug
+context-window filter (§a.5) handles per-provider exclusion, the bug
 fix from 2026-05-30 ("two-tier defense fighting itself") removed the
 old per-mode pre-trim deliberately.
 
@@ -311,7 +311,7 @@ PDFs to `process_pdf_hybrid`, PPTX to `process_pptx_hybrid`, standalone
 images to `process_visual_document`, DOCX/MD/TXT to
 `process_text_document`, and explicitly *re-raises* for CSV / XLSX /
 SDF so the legacy LangChain loader's full data extraction runs
-(`smart_loader.py:92-98`). This is intentional — the VLM-routing
+(`smart_loader.py:92-98`). This is intentional, the VLM-routing
 shortcut would otherwise mangle a 1,000-row CSV through summarisation.
 
 The empty-content guard from the 2026-06-06 audit fires at
@@ -349,7 +349,7 @@ ladder: threshold drops from caller's value to 0.05
 (`enhanced_rag.py:696-699`).
 
 A pre-check at `enhanced_rag.py:610-617` skips embedding generation
-entirely when the conversation has no `document_chunks` rows — saves
+entirely when the conversation has no `document_chunks` rows, saves
 the Mistral round-trip on every "new chat" turn.
 
 ### 7. Citation / source attribution
@@ -362,10 +362,10 @@ Chunk metadata carries `filename`, `page`, `source`, `file_type`,
 string for the LLM (`rag.py:907-936`), filenames are surfaced as a
 `📄 {filename} – N sections` overview block, and per-file `=== {filename}
 ===` separators are inserted into the prompt. Page numbers are stored
-but I did not find them rendered into the prompt — the LLM sees the
+but I did not find them rendered into the prompt, the LLM sees the
 filename but cannot cite a specific page.
 
-### Section (b) — what's solid / partial / missing
+### Section (b), what's solid / partial / missing
 
 - **Solid:** Mistral embeddings (1024d) + Supabase pgvector + RPC
   with user/conversation row-isolation; in-context bypass with a hard
@@ -377,10 +377,10 @@ filename but cannot cite a specific page.
   (1000, not the registry's 1500); `rag.py` stamps a different
   embedding-version literal than the registry; `validate_embedding_version`
   is defined but I found no production caller. Reranking is purely
-  lexical (Jaccard + RRF) — not learning-based.
+  lexical (Jaccard + RRF), not learning-based.
 - **Missing:** Cohere embeddings + Cohere rerank scaffolding exists
   but is unreachable. No page-number surfacing in retrieved context.
-  No batched embedding-version migration path — flipping
+  No batched embedding-version migration path, flipping
   `EMBEDDING_VERSION` would silently invalidate all existing chunks
   with no automatic re-embedding.
 
@@ -399,7 +399,7 @@ audit ID. Lives entirely under
 ```
 table_intelligence/
 ├── __init__.py                          # exports orchestrator + audit + replay
-├── orchestrator.py                       # 213 lines — pipeline driver
+├── orchestrator.py                       # 213 lines, pipeline driver
 ├── schema/
 │   ├── column_registry.py                # canonical drug-discovery columns + fingerprints
 │   ├── detector.py                       # header sniff + value-range sanity
@@ -475,7 +475,7 @@ requirement; adds `skin_reaction < 0.5` hard required; LogP 1-5.
 required (assay-artifact strict); BRENK ≤ 1; hERG < 0.6.
 
 **oncology_v1** (`library.py:321-356`). 8 gates. The strictest binding
-(`docking_score control_strict` — must beat ALL 4 controls; MMGBSA
+(`docking_score control_strict`, must beat ALL 4 controls; MMGBSA
 hard ≤ -50). Lenient hERG < 0.7 and DILI < 0.85 for survival-benefit
 indications; AMES still strict at < 0.4.
 
@@ -496,7 +496,7 @@ Every published GateSet sits in the version archive
 ### 3. Detector confidence floor with binding columns
 
 Schema detector at `schema/detector.py:145-189`. Confidence is computed
-as `min(1.0, drug_hits / 10.0)` over the canonicalised header set —
+as `min(1.0, drug_hits / 10.0)` over the canonicalised header set ,
 i.e. ten drug-discovery columns saturates at 1.0. But there's an
 override: if at least one binding column (docking_score or mmgbsa) is
 canonicalised AND the computed confidence is below 0.7, it is **floored
@@ -523,16 +523,16 @@ Supabase migration `025_table_intelligence_audit.sql:5-36` defines the
 
 RLS is enabled (`migration:51-57`); the policy restricts SELECT and
 INSERT to rows where `user_id = auth.uid()` or `user_id IS NULL` (system
-runs). Three indexes are created — by `(user_id, created_at DESC)`,
+runs). Three indexes are created, by `(user_id, created_at DESC)`,
 by `id`, and by `raw_text_hash` (cache-hit detection on resubmission).
 
 The fire-and-forget writer is `AuditLogger.write_async`
 (`audit/log.py:116-126`) which schedules `asyncio.ensure_future`;
 on no event loop the write is dropped with a debug log (the dossier
 still carries the audit_id, so users can cite it). The replay path
-(`audit/replay.py:37-62`) only does a "snapshot replay" — returns the
+(`audit/replay.py:37-62`) only does a "snapshot replay", returns the
 persisted `dossier_text`. The docstring at `replay.py:8-10` advertises
-a `mode='live'` re-run mode, but **it is not implemented** — the
+a `mode='live'` re-run mode, but **it is not implemented**, the
 function takes no `mode` parameter. Live replay is aspirational.
 
 REST endpoint `/api/v1/table-intelligence/replay/{audit_id}` at
@@ -555,26 +555,26 @@ preconditions all hold (`_matches` helper at line 453).
 
 Registries:
 
-- HERG_LEVERS (5+1 levers, line 104) — amine-pKa lever requires
+- HERG_LEVERS (5+1 levers, line 104), amine-pKa lever requires
   `_has_basic_amine` (SMARTS-driven sp3 amine detector at line 76),
   pyridine→pyrimidine lever requires SMARTS `c1ccncc1`, etc.
-- AMES_LEVERS (8 levers, line 168) — aromatic amine SMARTS
+- AMES_LEVERS (8 levers, line 168), aromatic amine SMARTS
   `[c][NX3;H2,H1]`, nitro `[N+](=O)[O-]`, epoxide
   `[OX2r3]1[CX4r3][CX4r3]1`, azide `[N-]=[N+]=N`, hydroxylamine
   `[NX3]-[OX2H]`, planar-polyaromatic predicate.
-- DILI_LEVERS (6 levers, line 220) — catechol, para-hydroxyphenyl,
+- DILI_LEVERS (6 levers, line 220), catechol, para-hydroxyphenyl,
   Michael acceptor, hydrazine, LogP > 3.5.
-- BBB_LEVERS (5 levers, line 267) — TPSA > 70, HBD > 3, phenol SMARTS,
+- BBB_LEVERS (5 levers, line 267), TPSA > 70, HBD > 3, phenol SMARTS,
   basic-amine-for-LAT1 transporter.
 - TPSA_LEVERS, LOGP_LEVERS, PAINS_LEVERS, DOCKING_LEVERS,
-  MMGBSA_LEVERS, CLINTOX_LEVERS — lines 304-436.
+  MMGBSA_LEVERS, CLINTOX_LEVERS, lines 304-436.
 
 If RDKit is unavailable (`_RDKIT_AVAILABLE = False`) the advisor
 returns only the always-applicable `confidence="low"` fallbacks
 (`structural_sar.py:455-462`). If RDKit is present but NO lever's
 preconditions match, the advisor emits a single honest-fallback line
 naming lipophilicity / planarity as likely non-canonical drivers
-(`structural_sar.py:516-525`) — directly addressing the 2026-06-04 bug
+(`structural_sar.py:516-525`), directly addressing the 2026-06-04 bug
 where the dossier prescribed amine-pKa edits to a nitrogen-free
 isochroman.
 
@@ -591,32 +591,32 @@ across the project as of 2026-06-06).
 
 Most informative tests (load-bearing for the inventory above):
 
-- `test_drug_csv_shortlist_cns_fires_pipeline` (line 71) — happy path
+- `test_drug_csv_shortlist_cns_fires_pipeline` (line 71), happy path
   end-to-end activation.
 - `test_schema_detector_range_check_drops_adversarial_column`
-  (line 177) — proves the value-range guard kills a column labelled
+  (line 177), proves the value-range guard kills a column labelled
   `hERG` with values in [0, 200].
 - `test_uncertainty_margin_promotes_close_pass_to_ambiguous`
-  (line 515) — the ±margin band behaviour.
-- `test_required_gate_with_missing_column_disqualifies` (line 587) —
+  (line 515), the ±margin band behaviour.
+- `test_required_gate_with_missing_column_disqualifies` (line 587) ,
   Phase B safety-gate honest-DQ behaviour.
 - `test_v2_eliminates_compounds_v1_called_ambiguous` (lines 408, 423,
-  duplicated by name) — the 2026-06-04 BBB-tightening regression.
-- `test_pipeline_empty_result_does_not_silently_relax` (line 453) —
+  duplicated by name), the 2026-06-04 BBB-tightening regression.
+- `test_pipeline_empty_result_does_not_silently_relax` (line 453) ,
   the "0 survivors is the truth" guarantee.
 - `test_structural_sar_no_basic_amine_omits_amine_lever` (line 322)
   + `test_structural_sar_no_canonical_lever_emits_honest_fallback`
-  (line 352) — the structural-precondition fix.
+  (line 352), the structural-precondition fix.
 - `test_markdown_table_format_is_parsed_as_drug_csv` (line 783)
   + `test_compound_dossier_format_is_parsed_as_drug_csv` (line 801)
   + `test_combined_markdown_and_dossier_upload_merges_correctly`
-  (line 837) — the multi-format normaliser the production raw_docs/
+  (line 837), the multi-format normaliser the production raw_docs/
   pipeline depends on.
 - `test_orchestrator_emits_audit_id_when_applied` (line 708) +
   `test_audit_entry_serialises_to_db_row` (line 740) +
-  `test_hash_raw_text_is_stable` (line 769) — audit-trail invariants.
+  `test_hash_raw_text_is_stable` (line 769), audit-trail invariants.
 
-### Section (c) — what's solid / partial / missing
+### Section (c), what's solid / partial / missing
 
 - **Solid:** seven versioned, immutable GateSets with explicit
   uncertainty bands; deterministic pipeline activation guarded by
@@ -628,13 +628,13 @@ Most informative tests (load-bearing for the inventory above):
   three indexes; replay-from-snapshot endpoint with belt-and-braces
   ownership check.
 - **Partial:** `replay.py` docstring promises a `mode='live'`
-  re-execution path against the cached raw text — the function only
+  re-execution path against the cached raw text, the function only
   exposes the snapshot path, no `mode` parameter. The orchestrator's
   `SCHEMA_CONFIDENCE_THRESHOLD = 0.5` (`orchestrator.py:66`) is
   superseded in practice by the detector's stricter `≥0.6` rule
-  (`detector.py:51-53`) — the 0.5 constant is misleading dead-letter.
+  (`detector.py:51-53`), the 0.5 constant is misleading dead-letter.
 - **Missing:** no LLM fallback for ambiguous prompts in either intent
-  or indication classifier — `intent/classifier.py:18-21` and
+  or indication classifier, `intent/classifier.py:18-21` and
   `indication/extractor.py:14-16` both list this as "Phase B". As of
   this commit it is still keyword-only. No per-axis sensitivity
   visualisation in the dossier beyond the textual `SensitivityAnalyzer`
@@ -650,15 +650,15 @@ Most informative tests (load-bearing for the inventory above):
   (`library.py` archive + `_REGISTRY`) but only half-applied in RAG
   (`text_splitter.py` still reads `settings.LANGCHAIN_CHUNK_SIZE`, and
   `rag.py` still hardcodes an older embedding-version string).
-- Two failure modes from the rules table — heavy-reasoning models
-  silently dropping content, and provider-window-mismatch 413s — are
+- Two failure modes from the rules table, heavy-reasoning models
+  silently dropping content, and provider-window-mismatch 413s, are
   both addressed for the chat path. The Lead Optimizer Vision Agent
   duplicates the reasoning-content salvage logic because it talks to a
   different endpoint shape; this is justifiable today but is duplicated
   code that will drift.
-- "Dead but initialised" stragglers — NVIDIA NIM provider object;
+- "Dead but initialised" stragglers, NVIDIA NIM provider object;
   Cohere embedding service; `RAGConfig.validate_embedding_version`
-  helper — are all callable from a Python REPL but unreachable from
+  helper, are all callable from a Python REPL but unreachable from
   production code paths. Cleaning these up would be honest;
   documenting them is the minimum.
 

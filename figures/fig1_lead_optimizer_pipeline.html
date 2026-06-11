@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Figure 1 — Lead Optimizer pipeline</title>
+<title>Figure 1, Lead Optimizer pipeline</title>
 <style>
   :root {
     --ink: #1a1d24;
@@ -333,7 +333,7 @@
   }
 
   @page {
-    /* Tabloid landscape (11 x 17") — gives the long vertical pipeline
+    /* Tabloid landscape (11 x 17"), gives the long vertical pipeline
        room without two-page paginations. Final manuscript can downscale
        the image; rendering at this size keeps small-text crisp. */
     size: 11in 17in;
@@ -361,7 +361,7 @@
 
 <div class="figure">
   <h1 class="title">A vision-language agentic pipeline for lead optimization</h1>
-  <p class="subtitle">Twelve deterministic stages map a lead structure and its ligand-interaction diagram to a ranked set of synthetically-accessible analogs. Three substrate categories — upstream open-source primitives, Benchside-implemented logic, and defence-in-depth gates — are visually distinguished. Stage indices match <span style="font-family:var(--mono); font-size:10.5px">backend/app/services/lead_optimizer/orchestrator.py</span>.</p>
+  <p class="subtitle">Twelve deterministic stages map a lead structure and its ligand-interaction diagram to a ranked set of synthetically-accessible analogs. Three substrate categories, upstream open-source primitives, Benchside-implemented logic, and defence-in-depth gates, are visually distinguished. Stage indices match <span style="font-family:var(--mono); font-size:10.5px">backend/app/services/lead_optimizer/orchestrator.py</span>.</p>
 
   <div class="body">
     <!-- LEFT: PIPELINE -->
@@ -376,7 +376,7 @@
           <p class="desc">
             <b>Lead SMILES</b> (required) &nbsp;·&nbsp;
             <b>Ligand-interaction diagram</b> (PNG, optional) &nbsp;·&nbsp;
-            <b>Project context</b> (free-text — therapeutic indication, target class, constraints, e.g.&nbsp;<span style="font-family:var(--mono); font-size:10.5px">"CNS DYRK1A inhibitor, prioritize BBB"</span>) &nbsp;·&nbsp;
+            <b>Project context</b> (free-text, therapeutic indication, target class, constraints, e.g.&nbsp;<span style="font-family:var(--mono); font-size:10.5px">"CNS DYRK1A inhibitor, prioritize BBB"</span>) &nbsp;·&nbsp;
             <b>Visual hints</b> &nbsp;·&nbsp; <b>Analog budget</b>
           </p>
         </div>
@@ -407,7 +407,7 @@
         </div>
       </div>
 
-      <!-- Stage 2b — defence layer -->
+      <!-- Stage 2b, defence layer -->
       <div class="stage" data-tone="defence">
         <div class="num">2′</div>
         <div class="card">
@@ -430,7 +430,7 @@
         </div>
       </div>
 
-      <!-- Stage 4 — ADMET profile of the lead -->
+      <!-- Stage 4, ADMET profile of the lead -->
       <div class="stage" data-tone="substrate">
         <div class="num">4</div>
         <div class="card">
@@ -441,7 +441,7 @@
         </div>
       </div>
 
-      <!-- Stage 5 — Project-context analysis (uses user_context) -->
+      <!-- Stage 5, Project-context analysis (uses user_context) -->
       <div class="stage" data-tone="agent">
         <div class="num">5</div>
         <div class="card">
@@ -453,7 +453,7 @@
         </div>
       </div>
 
-      <!-- Stage 6 — Optimization agent -->
+      <!-- Stage 6, Optimization agent -->
       <div class="stage" data-tone="agent">
         <div class="num">6</div>
         <div class="card">
@@ -508,7 +508,7 @@
         <div class="card">
           <p class="name">Ranking and report</p>
           <p class="tech">Weighted scalar sum × penalty multiplier · WeasyPrint PDF / HTML / CSV</p>
-          <p class="desc">Single-score "Pareto-style penalty rank" — sorted total_score over docking, ADMET, SYBA, and structural axes. Top-K written to PDF/HTML/CSV with per-analog SMILES, modifications, SYBA verdict, ADMET profile, and structure depiction.</p>
+          <p class="desc">Single-score "Pareto-style penalty rank", sorted total_score over docking, ADMET, SYBA, and structural axes. Top-K written to PDF/HTML/CSV with per-analog SMILES, modifications, SYBA verdict, ADMET profile, and structure depiction.</p>
           <span class="badge bench">SYBA-anchored</span>
           <span class="badge bench">multi-format</span>
         </div>
@@ -549,13 +549,13 @@
       <div class="panel">
         <h3>Substrate citations</h3>
         <ul class="citelist">
-          <li><b>RDKit</b> — Landrum et al., 2024.03.</li>
-          <li><b>admet_ai</b> / Chemprop v2 — Swanson et al., 2024.</li>
-          <li><b>SYBA</b> — Voršilák et al., 2020 (AUC&nbsp;&gt;&nbsp;0.81).</li>
-          <li><b>Ertl SAScore</b> — Ertl &amp; Schuffenhauer, 2009.</li>
-          <li><b>PAINS</b> — Baell &amp; Holloway, 2010.</li>
-          <li><b>Brenk</b> — Brenk et al., 2008.</li>
-          <li><b>Bemis–Murcko</b> — Bemis &amp; Murcko, 1996.</li>
+          <li><b>RDKit</b>, Landrum et al., 2024.03.</li>
+          <li><b>admet_ai</b> / Chemprop v2, Swanson et al., 2024.</li>
+          <li><b>SYBA</b>, Voršilák et al., 2020 (AUC&nbsp;&gt;&nbsp;0.81).</li>
+          <li><b>Ertl SAScore</b>, Ertl &amp; Schuffenhauer, 2009.</li>
+          <li><b>PAINS</b>, Baell &amp; Holloway, 2010.</li>
+          <li><b>Brenk</b>, Brenk et al., 2008.</li>
+          <li><b>Bemis–Murcko</b>, Bemis &amp; Murcko, 1996.</li>
         </ul>
       </div>
     </div>
@@ -564,11 +564,11 @@
   <div class="footnotes">
     <p><sup>1</sup> <b>Per-instance labelling.</b> Two phenyl rings on the same molecule would collapse to a single generic SMARTS (<span style="font-family:var(--mono)">c1ccccc1</span>) without disambiguation. The pipeline derives left/right/top/bottom position hints from RDKit-generated 2D coordinates and emits atom-anchored SMARTS via <span style="font-family:var(--mono)">MolFragmentToSmarts</span>, so each instance carries a distinct restricted/editable verdict.</p>
 
-    <p><sup>2</sup> <b>Soft Murcko gate, where it actually lives.</b> The Bemis–Murcko scaffold SMARTS is appended to the restricted-SMARTS set at <em>stage 3</em>. The gate itself is implemented by <span style="font-family:var(--mono); font-size:10.5px">enforce_pharmacophore()</span>, called twice — once at <em>strategy validation</em> (does this SMIRKS, applied to one example, preserve the pharmacophore?) and once for every analog during <em>permutation</em>. Predicates checked: (a) restricted atoms unchanged, (b) ring-system topology preserved, (c) aromaticity preserved. Allows topologically equivalent edits (methyl→ethyl on a scaffold carbon); rejects ring destruction.</p>
+    <p><sup>2</sup> <b>Soft Murcko gate, where it actually lives.</b> The Bemis–Murcko scaffold SMARTS is appended to the restricted-SMARTS set at <em>stage 3</em>. The gate itself is implemented by <span style="font-family:var(--mono); font-size:10.5px">enforce_pharmacophore()</span>, called twice, once at <em>strategy validation</em> (does this SMIRKS, applied to one example, preserve the pharmacophore?) and once for every analog during <em>permutation</em>. Predicates checked: (a) restricted atoms unchanged, (b) ring-system topology preserved, (c) aromaticity preserved. Allows topologically equivalent edits (methyl→ethyl on a scaffold carbon); rejects ring destruction.</p>
 
     <p><sup>3</sup> <b>Chemistry validator coverage.</b> Allowlist tables for H-bond donor, H-bond acceptor, π-stack, hydrophobic, salt bridge, and cation-π. Each entry maps a functional group family to its allowed interaction types. Vision-model output that violates the chemistry tables is dropped before SMARTS construction (stage 3), so a methyl group cannot enter the pipeline as a hydrogen-bond donor.</p>
 
-    <p><sup>4</sup> <b>SMIRKS library scope.</b> 479 curated SMIRKS transformations across 22 categories (aromatic-ring swaps, amine modifications, carbonyl modifications, CNS penetration, nitrogen-heterocycle swaps, polarity adjustments, halogen substitutions, steric shielding, metabolic stability, etc.) in the version inventoried for this paper. All entries carry a <span style="font-family:var(--mono)">validated=True</span> flag, but validation is curator-asserted, not gated by an automated RDKit-reaction-fires-on-target CI test — known limitation, fix planned before the supplementary release.</p>
+    <p><sup>4</sup> <b>SMIRKS library scope.</b> 479 curated SMIRKS transformations across 22 categories (aromatic-ring swaps, amine modifications, carbonyl modifications, CNS penetration, nitrogen-heterocycle swaps, polarity adjustments, halogen substitutions, steric shielding, metabolic stability, etc.) in the version inventoried for this paper. All entries carry a <span style="font-family:var(--mono)">validated=True</span> flag, but validation is curator-asserted, not gated by an automated RDKit-reaction-fires-on-target CI test, known limitation, fix planned before the supplementary release.</p>
 
     <p><sup>5</sup> <b>Ranking metric.</b> The total_score is a weighted scalar sum across docking, ADMET liabilities, SYBA penalty, and structural alerts, multiplied by hard-filter penalties. The output is single-sorted; the field label "Pareto" is API-convention rather than a Pareto front. Honest framing in the paper: <em>weighted scalar penalty rank with SYBA as the synth-accessibility anchor.</em></p>
   </div>

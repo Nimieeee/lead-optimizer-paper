@@ -58,7 +58,7 @@ def _img_data_url(image_b64: str) -> str:
 
 
 def _is_reasoning_model(model: str) -> bool:
-    """OpenAI reasoning models — gpt-5*, o1*, o3*, o4*.
+    """OpenAI reasoning models, gpt-5*, o1*, o3*, o4*.
     These burn output tokens on internal CoT; need bigger budget."""
     m = model.lower()
     return m.startswith("gpt-5") or m.startswith("o1") or m.startswith("o3") or m.startswith("o4")
@@ -85,11 +85,11 @@ async def call_openai(model: str, system: str, user: str, image_b64: Optional[st
         {"role": "user", "content": user_content},
     ]
 
-    # Reasoning models need a much larger output budget — internal CoT chews
+    # Reasoning models need a much larger output budget, internal CoT chews
     # through the cap before producing the visible answer.
     effective_max = max(max_tokens, 16384) if _is_reasoning_model(model) else max_tokens
 
-    # response_format json_object — enforces JSON-only output when the
+    # response_format json_object, enforces JSON-only output when the
     # system prompt asks for JSON. Most OpenAI chat models support it;
     # fall back silently if a model rejects.
     wants_json = "json" in (system or "").lower()
@@ -255,7 +255,7 @@ async def call_opencode(model: str, system: str, user: str, image_b64: Optional[
             choice = (body.get("choices") or [{}])[0]
             msg = choice.get("message") or {}
             text = (msg.get("content") or "").strip()
-            # OpenCode also returns reasoning_content for thinking models — silently dropped here.
+            # OpenCode also returns reasoning_content for thinking models, silently dropped here.
             usage = body.get("usage") or {}
             return ProviderResponse(
                 provider="opencode", model=model, text=text,

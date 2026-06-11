@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Experiment 4 — End-to-end case study.
+Experiment 4, End-to-end case study.
 
 For each lead in data/cases.csv, run the full 12-stage lead-optimization
 pipeline (no LID; all functional groups become TARGET) and capture
@@ -8,7 +8,7 @@ stage-by-stage attrition + top-10 analogs.
 
 Must run on the VPS (or a host with backend deps installed). Driver imports
 backend.app.services.lead_optimizer.orchestrator.run_lead_optimization
-directly — bypasses HTTP entirely, so no auth needed.
+directly, bypasses HTTP entirely, so no auth needed.
 
 Use:
     python3 paper/experiments/exp4_case_study/run_on_vps.py \\
@@ -121,7 +121,7 @@ async def run_case(case: dict) -> dict:
     PROGRESS_EVENTS.clear()
     t0 = time.perf_counter()
 
-    # Optional LID — if data/<lid_filename> exists, load it.
+    # Optional LID, if data/<lid_filename> exists, load it.
     lid_bytes = None
     lid_filename = (case.get("lid_filename") or "").strip()
     if lid_filename:

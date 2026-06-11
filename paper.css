@@ -1,4 +1,4 @@
-/* paper.css — ChemRxiv-style print layout matching the v10 sample.
+/* paper.css, ChemRxiv-style print layout matching the v10 sample.
  * Targets weasyprint (the @page rule + paged-media features).
  * Single-column, justified, Charter / Computer-Modern-ish serif body. */
 
@@ -23,7 +23,7 @@ html, body {
   hyphens: auto;
 }
 
-/* Title (the manuscript's H1) — centered, big, slightly tight leading */
+/* Title (the manuscript's H1), centered, big, slightly tight leading */
 h1 {
   font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
   font-weight: 600;
@@ -41,7 +41,7 @@ h1 {
  *
  * weasyprint doesn't support advanced :has() selectors reliably; we instead
  * use a class manually added to the first few paragraphs. Without that,
- * the default look is still acceptable — see fallback below.
+ * the default look is still acceptable, see fallback below.
  */
 h1 + p,
 h1 + p + p,
@@ -64,7 +64,7 @@ hr {
   margin: 18pt 0;
 }
 
-/* Section heads (## in markdown -> h2 in HTML) — bold serif, the same size as body */
+/* Section heads (## in markdown -> h2 in HTML), bold serif, the same size as body */
 h2 {
   font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
   font-weight: 700;
@@ -100,7 +100,7 @@ p strong:first-child {
   font-weight: 700;
 }
 
-/* Links — soft blue, no underline */
+/* Links, soft blue, no underline */
 a, a:link, a:visited {
   color: #1c4f8a;
   text-decoration: none;
@@ -151,7 +151,7 @@ blockquote {
   color: #444;
 }
 
-/* Tables — clean, journal-style with horizontal rules only */
+/* Tables, clean, journal-style with horizontal rules only */
 table {
   border-collapse: collapse;
   margin: 8pt 0;
@@ -177,7 +177,7 @@ tbody tr:last-child td {
   border-bottom: 0.7pt solid #111;
 }
 
-/* Figures — keep them on the same page as their caption */
+/* Figures, keep them on the same page as their caption */
 figure, p > img {
   page-break-inside: avoid;
   text-align: center;
@@ -200,7 +200,7 @@ p:has(> img) {
   margin-bottom: 12pt;
 }
 
-/* References — slightly tighter so the bibliography fits nicely. */
+/* References, slightly tighter so the bibliography fits nicely. */
 h2 + p,
 h2 + ol,
 h2 + ul {

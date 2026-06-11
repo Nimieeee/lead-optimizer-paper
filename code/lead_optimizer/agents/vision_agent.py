@@ -13,7 +13,7 @@ from ..chemistry_validator import is_valid_interaction, normalize_group_name
 logger = logging.getLogger(__name__)
 
 # Vision model chain (primary → fallback). MiniMax M3 via OpenCode Go's
-# Anthropic-compat endpoint is Tier 1 — user-requested upgrade for stronger
+# Anthropic-compat endpoint is Tier 1, user-requested upgrade for stronger
 # perception on Ligand Interaction Diagrams (multi-residue arrow counting,
 # scaffold vs decoration discrimination). Pixtral Large stays as Tier 2
 # because Mistral API is independent of OpenCode Go (so a key/quota issue
@@ -21,14 +21,14 @@ logger = logging.getLogger(__name__)
 # Tier 3 baseline.
 import os
 # OpenCode Go MiniMax wiring is intentionally DISABLED by default.
-# - M3 is vision-capable but reasoning-only — burns the entire token budget
+# - M3 is vision-capable but reasoning-only, burns the entire token budget
 #   on `thinking` blocks and never emits final JSON, even with prefill.
-# - M2.5 / M2.7 are text-only (confirmed 2026-06-06) — would 4xx on image input.
+# - M2.5 / M2.7 are text-only (confirmed 2026-06-06), would 4xx on image input.
 # Set MINIMAX_VISION_MODEL explicitly to opt back in once a non-reasoning,
 # vision-capable model lands on the Anthropic-compat endpoint.
 MINIMAX_VISION_MODEL = os.getenv("MINIMAX_VISION_MODEL", "")
 # Kimi K2.6 via OpenCode Go's OAI-compat endpoint (2026-06-09 experiment).
-# Set to "" to disable. CLAUDE.md flags Kimi as heavy-reasoning — we handle
+# Set to "" to disable. CLAUDE.md flags Kimi as heavy-reasoning, we handle
 # the case where the model returns `reasoning_content` but empty `content`
 # by extracting JSON from the reasoning trace.
 KIMI_VISION_MODEL = os.getenv("KIMI_VISION_MODEL", "kimi-k2.6")
@@ -37,7 +37,7 @@ GROQ_SCOUT_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 OPENCODE_GO_CHAT_URL = "https://opencode.ai/zen/go/v1/chat/completions"
 
 # OpenCode Go ships an Anthropic-compatible endpoint for MiniMax/Qwen at
-# /v1/messages — payload shape and response structure match Anthropic's,
+# /v1/messages, payload shape and response structure match Anthropic's,
 # not OAI's. Vision support uses {"type": "image", "source": {...}} content
 # blocks, not OAI's image_url. Mistral keeps the OAI-shaped path.
 OPENCODE_GO_MESSAGES_URL = "https://opencode.ai/zen/go/v1/messages"
@@ -45,7 +45,7 @@ MISTRAL_API_URL = "https://api.mistral.ai/v1/chat/completions"
 
 
 def _extract_json_object(text: str) -> Optional[dict]:
-    """Robust JSON extractor — finds the first { and scans for matching }.
+    """Robust JSON extractor, finds the first { and scans for matching }.
 
     MiniMax via Anthropic-compat does NOT honour response_format={"type":
     "json_object"} (the OAI knob); it returns text that may have markdown
@@ -107,7 +107,7 @@ async def _call_minimax_m3(formatted_prompt: str, b64_image: str) -> Optional[di
     Response shape:
       {content: [{type: "text", text: "..."}, ...], stop_reason: ...}
 
-    No response_format JSON mode — we rely on the prompt's "JSON ONLY" rule
+    No response_format JSON mode, we rely on the prompt's "JSON ONLY" rule
     + _extract_json_object() to recover the object even if the model wraps
     it in prose or ``` fences.
     """
@@ -116,7 +116,7 @@ async def _call_minimax_m3(formatted_prompt: str, b64_image: str) -> Optional[di
         logger.debug("VisionAgent.MiniMax: OPENCODE_GO_API_KEY not set; skipping")
         return None
     if not MINIMAX_VISION_MODEL:
-        # Explicitly disabled — see the comment on MINIMAX_VISION_MODEL above.
+        # Explicitly disabled, see the comment on MINIMAX_VISION_MODEL above.
         return None
 
     # Anthropic prefill trick: add a final assistant message containing just
@@ -162,11 +162,11 @@ async def _call_minimax_m3(formatted_prompt: str, b64_image: str) -> Optional[di
         async with httpx.AsyncClient(timeout=90.0) as client:
             resp = await client.post(OPENCODE_GO_MESSAGES_URL, headers=headers, json=payload)
             if resp.status_code != 200:
-                logger.warning(f"VisionAgent.MiniMax: HTTP {resp.status_code} — {resp.text[:300]}")
+                logger.warning(f"VisionAgent.MiniMax: HTTP {resp.status_code}, {resp.text[:300]}")
                 return None
             data = resp.json()
             # MiniMax M3 on OpenCode Go returns content blocks with a `thinking`
-            # field instead of (or alongside) the standard `text` field — the
+            # field instead of (or alongside) the standard `text` field, the
             # model is reasoning-first and its final answer is embedded in the
             # reasoning prose. Our _extract_json_object helper finds the outer
             # { ... } regardless of surrounding prose, so we treat `thinking`
@@ -207,7 +207,7 @@ async def _call_minimax_m3(formatted_prompt: str, b64_image: str) -> Optional[di
                 return None
 
             # Prefill recovery: since we prefilled the assistant turn with `{`,
-            # the model's response continues from inside the JSON object — the
+            # the model's response continues from inside the JSON object, the
             # first `{` is missing from the response text. Prepend it before
             # extraction so _extract_json_object can find the outer braces.
             if not text.lstrip().startswith("{"):
@@ -265,7 +265,7 @@ async def _call_pixtral(formatted_prompt: str, b64_image: str) -> Optional[dict]
         async with httpx.AsyncClient(timeout=60.0) as client:
             resp = await client.post(MISTRAL_API_URL, headers=headers, json=payload)
             if resp.status_code != 200:
-                logger.warning(f"VisionAgent.Pixtral: HTTP {resp.status_code} — {resp.text[:200]}")
+                logger.warning(f"VisionAgent.Pixtral: HTTP {resp.status_code}, {resp.text[:200]}")
                 return None
             content = resp.json()["choices"][0]["message"]["content"]
             return json.loads(content)
@@ -309,7 +309,7 @@ async def _call_kimi_k2(formatted_prompt: str, b64_image: str) -> Optional[dict]
         async with httpx.AsyncClient(timeout=120.0) as client:
             resp = await client.post(OPENCODE_GO_CHAT_URL, headers=headers, json=payload)
             if resp.status_code != 200:
-                logger.warning(f"VisionAgent.Kimi: HTTP {resp.status_code} — {resp.text[:300]}")
+                logger.warning(f"VisionAgent.Kimi: HTTP {resp.status_code}, {resp.text[:300]}")
                 return None
             data = resp.json()
 
@@ -413,12 +413,12 @@ async def run_vision_agent(
     - `visual_hints` provides extra context about the LID (e.g. legend colour codes).
     """
     if not settings.MISTRAL_API_KEY and not settings.GROQ_API_KEY:
-        raise RuntimeError("Neither MISTRAL_API_KEY nor GROQ_API_KEY configured — Vision Agent has no provider")
+        raise RuntimeError("Neither MISTRAL_API_KEY nor GROQ_API_KEY configured, Vision Agent has no provider")
 
     b64_image = base64.b64encode(diagram_bytes).decode("utf-8")
     # Build the detected-groups block. When labeled_instances are available
     # (the per-instance enumeration from pre_scan_molecule), use them as the
-    # unit of classification — gives the Vision Agent stable LID-positional
+    # unit of classification, gives the Vision Agent stable LID-positional
     # anchors for distinguishing multi-instance matches (two phenyl rings,
     # six aromatic_h positions). Falls back to bare names for older callers.
     if labeled_instances:
@@ -430,7 +430,7 @@ async def run_vision_agent(
             hint = inst.get("position_hint", "")
             atoms = inst.get("atom_indices") or []
             if label == base:
-                # Single match — no per-instance label needed
+                # Single match, no per-instance label needed
                 lines.append(f"- {label}  (position: {hint}, atoms: {atoms})")
             else:
                 lines.append(f"- {label}  (chemistry: {base}, position: {hint}, atoms: {atoms})")
@@ -448,7 +448,7 @@ async def run_vision_agent(
 
     async def _emit(percent: int, detail: str):
         """Forward progress to orchestrator if a callback is plumbed in.
-        Best-effort — never crash the agent on a progress emit failure."""
+        Best-effort, never crash the agent on a progress emit failure."""
         if progress_callback is None:
             return
         try:
@@ -457,7 +457,7 @@ async def run_vision_agent(
             logger.debug(f"VisionAgent: progress emit failed: {e}")
 
     # Tier 1: Groq Scout (promoted 2026-06-11 from Tier 3 fallback per
-    # Exp 5 benchmark — Llama 4 Scout 17B-16e tied for top with Jaccard=1.0,
+    # Exp 5 benchmark, Llama 4 Scout 17B-16e tied for top with Jaccard=1.0,
     # 100% JSON validity, 9.5 s mean latency, free quota).
     # See paper/experiments/exp5_model_benchmark/results/stage2_summary.json.
     for attempt in range(max_retries):
@@ -483,7 +483,7 @@ async def run_vision_agent(
             if attempt < max_retries - 1:
                 await asyncio.sleep(1.5)
 
-    # Tier 3: Kimi K2.6 (demoted from Tier 1 — 0% JSON validity in Exp 5;
+    # Tier 3: Kimi K2.6 (demoted from Tier 1, 0% JSON validity in Exp 5;
     # the model refuses strict-JSON instructions, so keep as last-chance).
     if parsed is None and KIMI_VISION_MODEL:
         for attempt in range(max_retries):
@@ -497,7 +497,7 @@ async def run_vision_agent(
             if attempt < max_retries - 1:
                 await asyncio.sleep(1.5)
 
-    # Tier 4: MiniMax M3 (disabled by default — heavy reasoning, env-gated).
+    # Tier 4: MiniMax M3 (disabled by default, heavy reasoning, env-gated).
     if parsed is None and MINIMAX_VISION_MODEL:
         for attempt in range(max_retries):
             await _emit(9, f"Falling back to MiniMax M3 (attempt {attempt + 1}/{max_retries})…")
@@ -510,7 +510,7 @@ async def run_vision_agent(
                 await asyncio.sleep(1.5)
 
     if parsed is None:
-        logger.error("❌ VisionAgent: all providers exhausted (Scout + Pixtral + Kimi + MiniMax) — returning empty output")
+        logger.error("❌ VisionAgent: all providers exhausted (Scout + Pixtral + Kimi + MiniMax), returning empty output")
         return VisionAgentOutput(restricted_groups=[], target_groups=[], overall_confidence=0.0)
 
     await _emit(9, f"Validating chemistry from {used_provider}…")
@@ -520,7 +520,7 @@ async def run_vision_agent(
     scaffold_atoms = parsed.get("scaffold_atoms", []) or []
     # Backwards-compat: if an older Vision Agent prompt still emits
     # structural_core_groups, merge them into target. The chemist's
-    # correction (2026-06-09): there is no third category — scaffold
+    # correction (2026-06-09): there is no third category, scaffold
     # atoms are EDITABLE unless they make a visible protein contact.
     legacy_structural = parsed.get("structural_core_groups", []) or []
     if legacy_structural:
@@ -575,7 +575,7 @@ async def run_vision_agent(
                     if is_valid_interaction(base_name, t)
                 ]
                 if not valid_pairs:
-                    logger.warning(f"VisionAgent: dropping '{label_norm}' — no chemically valid interactions in {itypes}")
+                    logger.warning(f"VisionAgent: dropping '{label_norm}', no chemically valid interactions in {itypes}")
                     continue
                 e["interaction_types"] = [t for _, t in valid_pairs]
                 e["residues"] = [r for r, _ in valid_pairs if r is not None]
@@ -606,7 +606,7 @@ async def run_vision_agent(
         return kept
 
     cleaned_restricted = _filter_restricted(restricted)
-    cleaned_structural = _filter_target(structural_core)  # same shape as target — name validation only
+    cleaned_structural = _filter_target(structural_core)  # same shape as target, name validation only
     cleaned_target = _filter_target(target)
 
     if (
@@ -621,7 +621,7 @@ async def run_vision_agent(
         )
 
     # Pydantic's model_validator on FunctionalGroupInteraction handles both
-    # legacy {residue: str} and new {residues: [...]} shapes — no manual
+    # legacy {residue: str} and new {residues: [...]} shapes, no manual
     # normalisation needed here.
     return VisionAgentOutput(
         restricted_groups=cleaned_restricted,

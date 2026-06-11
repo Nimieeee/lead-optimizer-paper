@@ -1,15 +1,7 @@
-# A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation
+# Benchside Lead-Optimization Workbench, Reproducibility
 
-**Author:** Toluwanimi Odunewu (Aisynth Labs, independent research)
-**ORCID:** [0009-0000-7053-9325](https://orcid.org/0009-0000-7053-9325)
-**Contact:** odunewutolu2@gmail.com
-**Preprint:** *ChemRxiv DOI — assigned at posting*
-**Archived code release:** [10.5281/zenodo.20643485](https://doi.org/10.5281/zenodo.20643485)
-
----
-
-This repository accompanies the paper. It contains everything needed to
-reproduce the figures and tables in the manuscript:
+This directory contains everything needed to reproduce the figures and tables
+in the paper:
 
 ```
 paper/
@@ -53,7 +45,7 @@ Production deploy under `/var/www/benchside-backend/backend/` with its own venv 
 
 ## Reproducing each result
 
-### Figure 2 — MMP recovery (Experiment 1)
+### Figure 2, MMP recovery (Experiment 1)
 
 **Pilot, hand-curated 30 pairs (1 minute):**
 ```bash
@@ -85,7 +77,7 @@ paper/.venv/bin/python paper/experiments/exp1_mmp_recovery/run.py \
     --output paper/experiments/exp1_mmp_recovery/results/chembl_full
 ```
 
-### Figure 3 — Scaffold preservation + structural alerts (Experiment 2)
+### Figure 3, Scaffold preservation + structural alerts (Experiment 2)
 ```bash
 paper/.venv/bin/python paper/experiments/exp2_scaffold_alerts/extract_seeds.py
 paper/.venv/bin/python paper/experiments/exp2_scaffold_alerts/run.py \
@@ -95,10 +87,10 @@ paper/.venv/bin/python paper/figures/fig3_scaffold_alerts.py
 ```
 Runtime: ~1 minute on a modern laptop (7-way multiprocessing).
 
-### Figure 5 — Case study (Experiment 4) — VPS-bound
+### Figure 5, Case study (Experiment 4), VPS-bound
 
 Requires production credentials (Supabase + provider API keys via the VPS
-`.env`) — cannot be reproduced from local source alone.
+`.env`), cannot be reproduced from local source alone.
 
 ```bash
 # Sync driver and inputs to VPS
@@ -120,7 +112,7 @@ rsync -avz -e "ssh -i ~/.ssh/id_deploy_contabo" \
 paper/.venv/bin/python paper/figures/fig5_case_study.py
 ```
 
-### Figure 4 — Vision Agent self-consistency (Experiment 3) — VPS-bound
+### Figure 4, Vision Agent self-consistency (Experiment 3), VPS-bound
 
 Eight independent Vision Agent runs on the same DYRK1A LID. Reports pairwise
 Jaccard similarity of restricted-atom sets, consensus, and validator-drop rates.
@@ -147,7 +139,7 @@ paper/.venv/bin/python paper/figures/fig4_vision_consistency.py
 Every results directory contains a `manifest.json` recording the git SHA, RDKit
 version, Python version, platform, SMIRKS library SHA-256 + entry count, and
 input file SHA-256. Reproducing a figure with a different manifest is not the
-same result — the manifest is what makes a number citable.
+same result, the manifest is what makes a number citable.
 
 ## The claims/evidence map
 

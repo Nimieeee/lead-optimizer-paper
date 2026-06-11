@@ -11,7 +11,7 @@ SUBSTRUCTURE ANALYSIS (RDKit) has detected these functional group instances in t
 
 For EACH labeled instance above, classify it into EXACTLY ONE of TWO categories:
 
-- RESTRICTED: The group makes a VISIBLE protein contact in the LID — a
+- RESTRICTED: The group makes a VISIBLE protein contact in the LID, a
   hydrogen bond (purple/magenta arrow), pi-stack (green line), salt
   bridge (grey dashes), hydrophobic contact (brown/tan hashes), or
   cation-pi. ONLY classify a group as RESTRICTED if you can SEE the
@@ -32,10 +32,10 @@ For EACH labeled instance above, classify it into EXACTLY ONE of TWO categories:
 
   **DEFAULT: when in doubt, classify as TARGET.** A safety net at the
   permutation stage (ring-topology check) prevents catastrophic scaffold
-  destruction, so over-targeting can't break the molecule — it just
+  destruction, so over-targeting can't break the molecule, it just
   surfaces more SAR options for the chemist to evaluate.
 
-MANDATORY RULES (read carefully — each rule fixes a known failure mode;
+MANDATORY RULES (read carefully, each rule fixes a known failure mode;
 rules 5–6 are enforced by a deterministic Python validator that drops
 entries violating them, so violating them only shrinks your output):
 
@@ -46,15 +46,15 @@ entries violating them, so violating them only shrinks your output):
 
 1a. USE THE EXACT LABEL IN YOUR OUTPUT'S `group_name` FIELD.
    If the detected list shows `phenyl_left` and `phenyl_right`, your output
-   group_name fields must be `phenyl_left` and `phenyl_right` — NOT just
+   group_name fields must be `phenyl_left` and `phenyl_right`, NOT just
    `phenyl`. This is what lets the chemist see which specific ring you
    classified and lets the pipeline target the right atoms.
    When only one instance of a group exists, the label is the bare name
-   (e.g. `hydroxyl` with no suffix) — use it as-is.
+   (e.g. `hydroxyl` with no suffix), use it as-is.
 
 2. COUNT EVERY ARROW/LINE. Scan the LID systematically. If a single functional
    group is contacted by MULTIPLE residues (e.g. one hydroxyl that H-bonds with
-   ASN 244 AND with GLU 291), report ALL of them in the `residues` list — not
+   ASN 244 AND with GLU 291), report ALL of them in the `residues` list, not
    just the first one you see. Each contacting residue gets its own entry in
    the `interaction_types` list, ALIGNED BY INDEX with `residues`.
    Example: residues=["ASN 244", "GLU 291"], interaction_types=["h_bond_donor", "h_bond_acceptor"].
@@ -64,24 +64,24 @@ entries violating them, so violating them only shrinks your output):
    GREY DASHES = salt bridges. If a colored line connects the group to a residue
    label, that interaction MUST be reported.
 
-3a. VISIBLE LINE REQUIREMENT — DO NOT INFER CONTACTS.
+3a. VISIBLE LINE REQUIREMENT, DO NOT INFER CONTACTS.
    You may ONLY classify a contact (any interaction_type) when you can SEE a
    colored line drawn in the LID between the group and the labelled residue.
    The following are FORBIDDEN inferences:
-   • "PHE 170 is near the aromatic ring, so phenyl pi-stacks with PHE 170" —
+   • "PHE 170 is near the aromatic ring, so phenyl pi-stacks with PHE 170" ,
      NO. Only call pi-stack if you see a green line (or explicit pi-stack
      symbol) drawn between the ring and PHE/TYR/TRP.
    • "LEU/VAL/ALA residues form a hydrophobic envelope around the molecule,
-     so that methyl group must be hydrophobic-contacting" — NO. Only call
+     so that methyl group must be hydrophobic-contacting", NO. Only call
      hydrophobic if you see brown/tan hashing drawn between the specific
      methyl atom and the residue.
-   • "MET/SER/HIS could donate/accept H-bonds with this oxygen" — NO. Only
+   • "MET/SER/HIS could donate/accept H-bonds with this oxygen", NO. Only
      call h_bond_donor / h_bond_acceptor if you see a purple/magenta arrow.
    When in doubt, leave the group OUT of restricted_groups. The chemist's
    "every visible line in the LID is reported, nothing else" is the policy.
 
 4. THE SCAFFOLD IS EDITABLE. Ring systems, linkers, gem-dimethyls,
-   alpha-methyls — none of them are RESTRICTED unless they make a
+   alpha-methyls, none of them are RESTRICTED unless they make a
    protein contact you can see in the LID. Phenyl rings without a green
    pi-stack line are TARGET. Gem-dimethyls without contact lines are
    TARGET. The chemist explicitly WANTS to test scaffold modifications
@@ -91,7 +91,7 @@ entries violating them, so violating them only shrinks your output):
 
 5. STRICT GROUP-NAME ALLOWLIST. You MUST ONLY use `group_name` values that
    appear VERBATIM in the SUBSTRUCTURE ANALYSIS list above. RDKit is the
-   source of truth for what functional groups exist in this molecule —
+   source of truth for what functional groups exist in this molecule ,
    if a group you think you see in the diagram is not in the detected
    list, it does NOT exist in the molecule, and you must NOT include it
    in either restricted_groups or target_groups. The downstream Python
@@ -99,7 +99,7 @@ entries violating them, so violating them only shrinks your output):
    output empty.
 
 5a. CONSISTENT CLASSIFICATION FOR OVERLAPPING GROUPS. Multiple detected
-   group names may refer to the SAME physical atoms in the molecule —
+   group names may refer to the SAME physical atoms in the molecule ,
    for example, an Ar-CH2-OH is matched by `hydroxyl`, `benzylic_alcohol`,
    and possibly `benzyl`. They are different chemistry views of the SAME
    functional group. You MUST classify all overlapping groups CONSISTENTLY:
@@ -141,9 +141,9 @@ entries violating them, so violating them only shrinks your output):
    - cation_pi: phenyl, pyridine, pyrimidine, indole +
      primary_amine, tertiary_amine, guanidine, amidine.
 
-   methyl is NEVER an h_bond_donor or h_bond_acceptor — its C-H bonds
+   methyl is NEVER an h_bond_donor or h_bond_acceptor, its C-H bonds
    do not participate in hydrogen bonding. methoxy is NEVER an
-   h_bond_donor — the oxygen has no proton.
+   h_bond_donor, the oxygen has no proton.
 
 7. JSON ONLY. NO narrative, NO filler. For each group, return BOTH
    `residues` (list) AND `residue` (string, the first residue) for
@@ -172,15 +172,15 @@ JSON SCHEMA:
     }},
     {{
       "group_name": "phenyl",
-      "position_description": "central biaryl ring — available for ring swap to pyridine/pyrimidine"
+      "position_description": "central biaryl ring, available for ring swap to pyridine/pyrimidine"
     }},
     {{
       "group_name": "aromatic_h",
-      "position_description": "ortho positions on ring 1 — open for halogenation"
+      "position_description": "ortho positions on ring 1, open for halogenation"
     }},
     {{
       "group_name": "gem_dimethyl",
-      "position_description": "quaternary center — open for steric tuning"
+      "position_description": "quaternary center, open for steric tuning"
     }}
   ],
   "overall_confidence": 0.9
@@ -196,7 +196,7 @@ MANDATORY DESIGN PHILOSOPHY:
 2. MULTI-OBJECTIVE BALANCE: You MUST address all critical liabilities provided. Do not solve one problem (e.g. CYP inhibition) by creating another (e.g. ruining BBB permeability or lipophilicity).
 3. TEXTBOOK APPLICATION: Justify every selection using provided 'Medicinal Chemistry Knowledge Base Results' (RAG).
 4. CONTEXTUAL RIGOR: For CNS targets, prioritize BBB/TPSA; for systemic, prioritize Metabolic Stability.
-5. COMPREHENSIVE SELECTION: You have access to 479 validated SMIRKS entries across 22 categories. Select liberally — the downstream pipeline will filter invalid chemistry. Prefer strategies that address MULTIPLE liabilities simultaneously.
+5. COMPREHENSIVE SELECTION: You have access to 479 validated SMIRKS entries across 22 categories. Select liberally, the downstream pipeline will filter invalid chemistry. Prefer strategies that address MULTIPLE liabilities simultaneously.
 6. MANDATORY DIVERISTY: Select at least 8-12 strategies covering MULTIPLE target sites. Do not focus all selections on a single group. A diverse selection increases the chance of finding breakthrough analogs. Be bold.
 
 OUTPUT FORMAT (JSON):

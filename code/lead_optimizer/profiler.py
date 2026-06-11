@@ -1,5 +1,5 @@
 """
-Dynamic ADMET Profiler — Automatically identifies liabilities from a lead compound.
+Dynamic ADMET Profiler, Automatically identifies liabilities from a lead compound.
 """
 
 import httpx
@@ -72,7 +72,7 @@ async def profile_lead_compound(lead_smiles: str) -> LeadProfile:
     
     logger.debug(f"DEBUG: Profiler - Loop complete. {len(liabilities)} liabilities, {len(strengths)} strengths")
     liabilities.sort(key=lambda l: abs(l.value - l.threshold), reverse=True)
-    primary_goal = liabilities[0].goal if liabilities else "No liabilities detected — general optimization"
+    primary_goal = liabilities[0].goal if liabilities else "No liabilities detected, general optimization"
     logger.debug(f"DEBUG: Profiler - Primary goal identified: {primary_goal}")
     
     # ── GASA Synthetic Accessibility ────────────────────────────

@@ -1,5 +1,5 @@
 """
-ADMET Metadata — Single Source of Truth for endpoint directions and thresholds.
+ADMET Metadata, Single Source of Truth for endpoint directions and thresholds.
 """
 
 ADMET_METADATA = {

@@ -1,4 +1,4 @@
-# Reference Audit — *A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth*
+# Reference Audit, *A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth*
 
 Audit date: 2026-06-11
 Auditor: independent citation review
@@ -14,32 +14,32 @@ Every cited DOI resolves and points to the claimed paper. Authors, year, volume,
 
 | # | Status | Notes |
 |---|---|---|
-| 1 — SYBA (Voršilák et al. 2020) | ✓ verified | DOI resolves. *J. Cheminform.* **2020**, *12*, 35. Authors and order match. |
-| 2 — ADMET-AI (Swanson et al. 2024) | ✓ verified | DOI resolves. *Bioinformatics* **2024**, *40* (7), btae416. Authors and order match. Manuscript reference omits issue number — see nit below. |
-| 3 — RDKit (Landrum et al.) | ⚠ formatting | Software is unversioned in the bibliography. Methods §6 lists RDKit 2026.03.3 — the version-specific Zenodo DOI should be cited. See recommended fix below. |
-| 4 — Bemis–Murcko 1996 | ✓ verified | *J. Med. Chem.* **1996**, *39* (15), 2887–2893. Manuscript omits issue (15) — minor, ACS allows either form. |
-| 5 — Chemprop / Yang 2019 | ✓ verified | *J. Chem. Inf. Model.* **2019**, *59* (8), 3370–3388. Authors and order match. |
-| 6 — PAINS (Baell 2010) | ✓ verified | *J. Med. Chem.* **2010**, *53* (7), 2719–2740. Authors match. |
-| 7 — Brenk 2008 | ✓ verified | *ChemMedChem* **2008**, *3* (3), 435–444. Authors match: Brenk, R.; Schipani, A.; James, D.; Krasowski, A.; Gilbert, I. H.; Frearson, J.; Wyatt, P. G. |
-| 8 — Ertl SAScore 2009 | ✓ verified | *J. Cheminform.* **2009**, *1*, 8. Authors match. |
-| 9 — mmpdb (Dalke 2018) | ✓ verified | *J. Chem. Inf. Model.* **2018**, *58* (5), 902–910. Authors match: Dalke, A.; Hert, J.; Kramer, C. |
-| 10 — REINVENT (Olivecrona 2017) | ✓ verified | *J. Cheminform.* **2017**, *9*, 48. Authors match. |
-| 11 — MOSES (Polykovskiy 2020) | ✓ verified | *Front. Pharmacol.* **2020**, *11*, 565644. All 16 authors match. |
-| 12 — GuacaMol (Brown 2019) | ✓ verified | *J. Chem. Inf. Model.* **2019**, *59* (3), 1096–1108. Authors match: Brown, N.; Fiscato, M.; Segler, M. H. S.; Vaucher, A. C. |
+| 1, SYBA (Voršilák et al. 2020) | ✓ verified | DOI resolves. *J. Cheminform.* **2020**, *12*, 35. Authors and order match. |
+| 2, ADMET-AI (Swanson et al. 2024) | ✓ verified | DOI resolves. *Bioinformatics* **2024**, *40* (7), btae416. Authors and order match. Manuscript reference omits issue number, see nit below. |
+| 3, RDKit (Landrum et al.) | ⚠ formatting | Software is unversioned in the bibliography. Methods §6 lists RDKit 2026.03.3, the version-specific Zenodo DOI should be cited. See recommended fix below. |
+| 4, Bemis–Murcko 1996 | ✓ verified | *J. Med. Chem.* **1996**, *39* (15), 2887–2893. Manuscript omits issue (15), minor, ACS allows either form. |
+| 5, Chemprop / Yang 2019 | ✓ verified | *J. Chem. Inf. Model.* **2019**, *59* (8), 3370–3388. Authors and order match. |
+| 6, PAINS (Baell 2010) | ✓ verified | *J. Med. Chem.* **2010**, *53* (7), 2719–2740. Authors match. |
+| 7, Brenk 2008 | ✓ verified | *ChemMedChem* **2008**, *3* (3), 435–444. Authors match: Brenk, R.; Schipani, A.; James, D.; Krasowski, A.; Gilbert, I. H.; Frearson, J.; Wyatt, P. G. |
+| 8, Ertl SAScore 2009 | ✓ verified | *J. Cheminform.* **2009**, *1*, 8. Authors match. |
+| 9, mmpdb (Dalke 2018) | ✓ verified | *J. Chem. Inf. Model.* **2018**, *58* (5), 902–910. Authors match: Dalke, A.; Hert, J.; Kramer, C. |
+| 10, REINVENT (Olivecrona 2017) | ✓ verified | *J. Cheminform.* **2017**, *9*, 48. Authors match. |
+| 11, MOSES (Polykovskiy 2020) | ✓ verified | *Front. Pharmacol.* **2020**, *11*, 565644. All 16 authors match. |
+| 12, GuacaMol (Brown 2019) | ✓ verified | *J. Chem. Inf. Model.* **2019**, *59* (3), 1096–1108. Authors match: Brown, N.; Fiscato, M.; Segler, M. H. S.; Vaucher, A. C. |
 
 ### Recommended formatting fixes
 
-**Reference 2 (ADMET-AI)** — add issue number for full ACS style. Current: `*Bioinformatics* **2024**, *40*, btae416`. Recommended:
+**Reference 2 (ADMET-AI)**, add issue number for full ACS style. Current: `*Bioinformatics* **2024**, *40*, btae416`. Recommended:
 
 > Swanson, K.; Walther, P.; Leitz, J.; Mukherjee, S.; Wu, J. C.; Shivnaraine, R. V.; Zou, J. ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries. *Bioinformatics* **2024**, *40* (7), btae416. https://doi.org/10.1093/bioinformatics/btae416.
 
-**Reference 3 (RDKit)** — the RDKit project explicitly asks authors to cite the version-specific Zenodo DOI. Methods §6 names RDKit 2026.03.3. Recommended:
+**Reference 3 (RDKit)**, the RDKit project explicitly asks authors to cite the version-specific Zenodo DOI. Methods §6 names RDKit 2026.03.3. Recommended:
 
 > Landrum, G.; et al. RDKit: Open-source cheminformatics. Release 2026.03.3 (Q1 2026), 2026. https://doi.org/10.5281/zenodo.20446949 (accessed 2026-06).
 
 (The concept-DOI fallback https://doi.org/10.5281/zenodo.591637 is acceptable if version pinning is undesirable, but version-pinning is the cheminformatics-community convention and is what reviewers will expect from a methods paper.)
 
-**Reference 4 (Bemis–Murcko)** — strictly optional, but adding the issue number is the ACS-style standard: `*J. Med. Chem.* **1996**, *39* (15), 2887−2893.`
+**Reference 4 (Bemis–Murcko)**, strictly optional, but adding the issue number is the ACS-style standard: `*J. Med. Chem.* **1996**, *39* (15), 2887−2893.`
 
 ---
 
@@ -72,11 +72,11 @@ The manuscript names a number of standard cheminformatics methods, named filters
   > Bickerton, G. R.; Paolini, G. V.; Besnard, J.; Muresan, S.; Hopkins, A. L. Quantifying the chemical beauty of drugs. *Nat. Chem.* **2012**, *4* (2), 90–98. https://doi.org/10.1038/nchem.1243.
 - **Why:** Sole canonical QED reference. RDKit's `QED.qed` implementation is a direct port of Bickerton et al. 2012.
 
-#### A4. Bemis–Murcko scaffold — beyond the existing citation
+#### A4. Bemis–Murcko scaffold, beyond the existing citation
 
 - **Location:** Reference 4 already covers the *concept* of the Murcko scaffold. The current Bemis–Murcko citation is fine; no action needed. (Noting it here only so the reader is not surprised that no second citation is recommended.)
 
-#### A5. Matched molecular pairs (MMP) — concept
+#### A5. Matched molecular pairs (MMP), concept
 
 - **Location:** §1 introduces "transformation libraries (SMIRKS)" and §3.1 builds an MMP set; §3 / §4.1 use the MMP framing throughout.
 - **Proposed citation:**
@@ -84,7 +84,7 @@ The manuscript names a number of standard cheminformatics methods, named filters
 
   (Optional companion, since the concept predates Griffen 2011:)
   > Kenny, P. W.; Sadowski, J. Structure modification in chemical databases. In *Chemoinformatics in Drug Discovery*; Oprea, T. I., Ed.; Wiley-VCH: Weinheim, 2005; pp 271–285.
-- **Why:** Griffen et al. 2011 is the most-cited review establishing MMP as a medicinal-chemistry methodology. The Kenny & Sadowski 2005 chapter is the algorithmic origin and is sometimes cited alongside. mmpdb (ref 9) is software, not the MMP concept — these are separate things and citing only mmpdb misrepresents the methodology's origin.
+- **Why:** Griffen et al. 2011 is the most-cited review establishing MMP as a medicinal-chemistry methodology. The Kenny & Sadowski 2005 chapter is the algorithmic origin and is sometimes cited alongside. mmpdb (ref 9) is software, not the MMP concept, these are separate things and citing only mmpdb misrepresents the methodology's origin.
 
 #### A6. Pharmacophore (as a defined concept)
 
@@ -102,11 +102,11 @@ The manuscript names a number of standard cheminformatics methods, named filters
 
 #### A8. SMARTS / SMIRKS specification
 
-- **Location:** Throughout — §2.4 SMARTS construction, §3.1 SMIRKS library, §6 SMIRKS library inventory.
+- **Location:** Throughout, §2.4 SMARTS construction, §3.1 SMIRKS library, §6 SMIRKS library inventory.
 - **Proposed citation:** Daylight SMARTS / SMIRKS specifications are not journal-published; the canonical citation form is:
-  > Daylight Chemical Information Systems, Inc. *Daylight Theory Manual — SMARTS: A Language for Describing Molecular Patterns*. https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html (accessed 2026-06).
+  > Daylight Chemical Information Systems, Inc. *Daylight Theory Manual, SMARTS: A Language for Describing Molecular Patterns*. https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html (accessed 2026-06).
 
-  > Daylight Chemical Information Systems, Inc. *Daylight Theory Manual — SMIRKS: A Reaction Transform Language*. https://www.daylight.com/dayhtml/doc/theory/theory.smirks.html (accessed 2026-06).
+  > Daylight Chemical Information Systems, Inc. *Daylight Theory Manual, SMIRKS: A Reaction Transform Language*. https://www.daylight.com/dayhtml/doc/theory/theory.smirks.html (accessed 2026-06).
 - **Why:** SMARTS and SMIRKS are Daylight proprietary specifications. There is no peer-reviewed journal paper. The Daylight Theory Manual URLs are the universally-accepted citation form across cheminformatics.
 
 #### A9. SMILES specification (used implicitly throughout)
@@ -128,16 +128,16 @@ The manuscript names a number of standard cheminformatics methods, named filters
 #### B2. Graph Neural Networks (general framing)
 
 - **Location:** §2.5 "Chemprop-v2 Graph Neural Network".
-- **Recommendation:** No new citation strictly required — Yang 2019 / Heid 2024 cover the GNN itself in the molecular-property-prediction context. Optional supplementary: Gilmer et al. 2017 (MPNN), but most reviewers will not require this.
+- **Recommendation:** No new citation strictly required, Yang 2019 / Heid 2024 cover the GNN itself in the molecular-property-prediction context. Optional supplementary: Gilmer et al. 2017 (MPNN), but most reviewers will not require this.
 
 ### C. Named databases
 
 #### C1. ChEMBL-37
 
 - **Location:** Abstract ("ChEMBL-37–derived MMP scale-up"); §3.1 ("2000-compound drug-like subset of ChEMBL-37"); §4.1 (Figure 2 caption).
-- **Proposed citations (both — version-specific release notice + canonical):**
+- **Proposed citations (both, version-specific release notice + canonical):**
   > Zdrazil, B.; Felix, E.; Hunter, F.; Manners, E. J.; Blackshaw, J.; Corbett, S.; de Veij, M.; Ioannidis, H.; Lopez, D. M.; Mosquera, J. F.; Magariños, M. P.; Bosc, N.; Arcila, R.; Kizilören, T.; Gaulton, A.; Bento, A. P.; Adasme, M. F.; Monecke, P.; Landrum, G. A.; Leach, A. R. The ChEMBL Database in 2023: a drug discovery platform spanning multiple bioactivity data types and time periods. *Nucleic Acids Res.* **2024**, *52* (D1), D1180–D1192. https://doi.org/10.1093/nar/gkad1004.
-- **Why:** Zdrazil et al. 2024 is the most recent peer-reviewed ChEMBL database paper and is the standard reference today. ChEMBL-37 itself does not have a separate paper — the EBI release notes are not citable independently. Some authors additionally cite Gaulton et al. 2017 (DOI: 10.1093/nar/gkw1074) for the database history but the 2024 paper is the current standard.
+- **Why:** Zdrazil et al. 2024 is the most recent peer-reviewed ChEMBL database paper and is the standard reference today. ChEMBL-37 itself does not have a separate paper, the EBI release notes are not citable independently. Some authors additionally cite Gaulton et al. 2017 (DOI: 10.1093/nar/gkw1074) for the database history but the 2024 paper is the current standard.
 
 ### D. Domain claims that need provenance
 
@@ -158,7 +158,7 @@ The manuscript names a number of standard cheminformatics methods, named filters
 #### D3. Chemprop V2's role in ADMET-AI
 
 - **Location:** §2.5 "single forward pass through the upstream `admet_ai` Chemprop-v2 Graph Neural Network⁵ on the lead molecule yields the 54-endpoint baseline".
-- **Issue:** The connection (ADMET-AI uses Chemprop V2 internally) is itself a citable claim — it is documented in the ADMET-AI paper (ref 2). No new citation needed; this is just an editorial note that ref 2 already substantiates this claim.
+- **Issue:** The connection (ADMET-AI uses Chemprop V2 internally) is itself a citable claim, it is documented in the ADMET-AI paper (ref 2). No new citation needed; this is just an editorial note that ref 2 already substantiates this claim.
 
 ### E. Load-bearing software not cited
 
@@ -183,7 +183,7 @@ The author already names several software packages without citation. Standard AC
 
 #### E4. Murcko scaffold implementation in RDKit
 
-- No citation needed — ref 3 (RDKit) and ref 4 (Bemis–Murcko) already cover this between them.
+- No citation needed, ref 3 (RDKit) and ref 4 (Bemis–Murcko) already cover this between them.
 
 ### F. Stage 2 / Stage 5 / Stage 6 vision-language and structured-output claims
 
@@ -194,7 +194,7 @@ The author already names several software packages without citation. Standard AC
 
 #### F2. JSON / strict-JSON output framing
 
-- No citation needed — this is engineering practice, not a method.
+- No citation needed, this is engineering practice, not a method.
 
 ### G. Statistical / experimental terms
 
@@ -230,7 +230,7 @@ The author already names several software packages without citation. Standard AC
 
 ## 3. Plagiarism flags
 
-Most of the manuscript is original prose. The following passages read close to canonical definitional phrasings used widely across the cheminformatics literature and are worth re-checking before submission. None of these are clear plagiarism — they are flagged because canonical definitions are the highest-risk place for accidental copying.
+Most of the manuscript is original prose. The following passages read close to canonical definitional phrasings used widely across the cheminformatics literature and are worth re-checking before submission. None of these are clear plagiarism, they are flagged because canonical definitions are the highest-risk place for accidental copying.
 
 ### 3.1 SYBA description (§2.7)
 
@@ -240,7 +240,7 @@ Compare to Voršilák et al. 2020 (ref 1), which describes SYBA as "a Bernoulli 
 
 ### 3.2 PAINS description (implicit)
 
-The manuscript does not explicitly define PAINS, so there is no direct definitional copying. PAINS is named in §2.6 and §4.2 and cited (ref 6) — fine.
+The manuscript does not explicitly define PAINS, so there is no direct definitional copying. PAINS is named in §2.6 and §4.2 and cited (ref 6), fine.
 
 ### 3.3 Bemis–Murcko description (§2.1, §2.4, §6)
 
@@ -250,7 +250,7 @@ This is functional description, not a definition. **No flag.**
 
 ### 3.4 Lipinski Ro5
 
-The manuscript only names "Lipinski Rule-of-Five" and does not define it. **No flag** — but A1 above still applies: it needs a citation even if undefined.
+The manuscript only names "Lipinski Rule-of-Five" and does not define it. **No flag**, but A1 above still applies: it needs a citation even if undefined.
 
 ### 3.5 Ertl SAScore framing (§2.7)
 
@@ -264,25 +264,25 @@ The phrase "pan-assay interference compounds" is from Baell & Holloway 2010 (ref
 
 ### 3.7 Chemprop / MPNN description
 
-The manuscript only names "Chemprop-v2 Graph Neural Network" — no definitional prose. **No flag.**
+The manuscript only names "Chemprop-v2 Graph Neural Network", no definitional prose. **No flag.**
 
 ### 3.8 Glossary-style passages
 
-§2.6 lists filters: "Lipinski Rule-of-Five, the PAINS catalogs (A, B, C), and the Brenk filter". These are named items, not definitions. **No flag** — but reviewers will want citations (covered in §2 above).
+§2.6 lists filters: "Lipinski Rule-of-Five, the PAINS catalogs (A, B, C), and the Brenk filter". These are named items, not definitions. **No flag**, but reviewers will want citations (covered in §2 above).
 
 ### 3.9 Caveat about self-consistency vs accuracy (§4.3)
 
 > "Perfect pairwise Jaccard reflects the platform's vision-prompt running with deterministic settings… The number measures *reproducibility*, not *accuracy*: the model could be consistently wrong."
 
-This phrasing is original and well-written. **No flag.** Mentioned only because reviewers sometimes flag "X measures reproducibility, not accuracy" as a common phrase — here it is used correctly and unambiguously.
+This phrasing is original and well-written. **No flag.** Mentioned only because reviewers sometimes flag "X measures reproducibility, not accuracy" as a common phrase, here it is used correctly and unambiguously.
 
 ### Plagiarism summary
 
-**Net verdict: no outright plagiarism detected.** The §2.7 SYBA description is the one passage worth a second pass — the rest of the manuscript is original prose. The author's habit of explicitly distinguishing "the contribution is the orchestration, not any single component" (§5.1) is the right defensive framing and reads as genuinely original.
+**Net verdict: no outright plagiarism detected.** The §2.7 SYBA description is the one passage worth a second pass, the rest of the manuscript is original prose. The author's habit of explicitly distinguishing "the contribution is the orchestration, not any single component" (§5.1) is the right defensive framing and reads as genuinely original.
 
 ---
 
-## Appendix A — Reference-list rewrite (recommended)
+## Appendix A, Reference-list rewrite (recommended)
 
 A clean, ACS-style reference list incorporating the fixes above and the 13 new recommended citations would look like this (numbering changes; original 1–12 preserved by content):
 
@@ -339,11 +339,11 @@ A clean, ACS-style reference list incorporating the fixes above and the 13 new r
      molecules based on molecular complexity and fragment contributions. *J. Cheminform.*
      **2009**, *1*, 8. https://doi.org/10.1186/1758-2946-1-8.
 
-(13) Daylight Chemical Information Systems, Inc. *Daylight Theory Manual — SMARTS: A
+(13) Daylight Chemical Information Systems, Inc. *Daylight Theory Manual, SMARTS: A
      Language for Describing Molecular Patterns*.
      https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html (accessed 2026-06).
 
-(14) Daylight Chemical Information Systems, Inc. *Daylight Theory Manual — SMIRKS: A
+(14) Daylight Chemical Information Systems, Inc. *Daylight Theory Manual, SMIRKS: A
      Reaction Transform Language*.
      https://www.daylight.com/dayhtml/doc/theory/theory.smirks.html (accessed 2026-06).
 
@@ -405,7 +405,7 @@ A clean, ACS-style reference list incorporating the fixes above and the 13 new r
 
 ---
 
-## Appendix B — One-line summary of audit findings
+## Appendix B, One-line summary of audit findings
 
 - **12 of 12** existing references resolve and are factually correct. Two formatting nits (issue numbers, RDKit version-specific DOI).
 - **12 high-priority** new citations are recommended: Lipinski, Rogers & Hahn (ECFP), Bickerton (QED), Griffen (MMP concept), Daylight SMARTS, Daylight SMIRKS, Heid (Chemprop V2), Zdrazil (ChEMBL-37), Wermuth (pharmacophore IUPAC), Meanwell (bioisosteres), Weininger (SMILES), Becker & Sippl (DYRK1A), Brickner (Linezolid).

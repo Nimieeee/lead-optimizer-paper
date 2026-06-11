@@ -52,13 +52,13 @@ async def main():
     print("=" * 60)
     print("Env keys present:")
     for k, v in env_status().items():
-        print(f"  {k:25s} {'YES' if v else '— missing —'}")
+        print(f"  {k:25s} {'YES' if v else ', missing ,'}")
     print()
 
     results = []
     for provider, model in PROBES:
         print(f"  probing {provider:9s} / {model:40s} ...", end="", flush=True)
-        # 2048 tokens — leaves room for reasoning-model internal CoT before the answer
+        # 2048 tokens, leaves room for reasoning-model internal CoT before the answer
         r = await call(provider, model, TINY_SYSTEM, TINY_USER, max_tokens=2048, timeout=60)
         if r.ok():
             print(f" OK [{r.runtime_s:.2f}s] {r.text[:80]!r}")

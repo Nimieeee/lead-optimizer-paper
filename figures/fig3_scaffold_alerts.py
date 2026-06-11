@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 3 — Scaffold preservation + structural-alert audit (Exp 2).
+Figure 3, Scaffold preservation + structural-alert audit (Exp 2).
 
 Three panels:
   (a) Stacked bar comparing seed baseline, ablation (gate off), and default (gate on)
@@ -26,7 +26,7 @@ from _style import PAPER_COLORS, PAPER_PALETTE, apply_paper_style, save
 RESULTS_DIR = HERE.parent / "experiments/exp2_scaffold_alerts/results/drugpool_129"
 OUT_DIR = HERE / "out"
 
-# Seed baseline numbers — recomputed by run_seed_baseline.py
+# Seed baseline numbers, recomputed by run_seed_baseline.py
 # (or hard-coded here as constants matching the verified compute)
 SEED_BASELINE = {"pains_pct": 5.0, "brenk_pct": 26.1, "clean_pct": 70.6}
 
@@ -159,7 +159,7 @@ def main():
     panel_c_property_shifts(ax_c, per_analog)
 
     fig.suptitle(
-        "Figure 3 — Scaffold preservation and structural-alert audit, $n=129$ marketed-drug seeds",
+        "Figure 3, Scaffold preservation and structural-alert audit, $n=129$ marketed-drug seeds",
         x=0.06, y=0.985, ha="left", fontsize=12.5, weight="bold",
     )
     fig.text(

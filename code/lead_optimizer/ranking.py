@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 # Base weights for non-ADMET objectives (always applied)
 # Total: 0.65 for ADMET + 0.35 for these = 1.00
 BASE_WEIGHTS = {
-    "scaffold_preservation": 0.15,     # Murcko match — hard-stops aromatic-to-aliphatic blowups
+    "scaffold_preservation": 0.15,     # Murcko match, hard-stops aromatic-to-aliphatic blowups
     "pharmacophore_similarity": 0.05,  # Tanimoto Morgan fingerprint (topology, not scaffold)
     "gasa_accessibility": 0.05,        # Synthesis difficulty
     "diversity_bonus": 0.05,
@@ -44,7 +44,7 @@ def _get_synth_difficulty(analog_admet: Dict) -> float:
     return float(gasa.get("hard_probability", 0.0))
 
 
-# Back-compat alias — old call sites referenced `_get_gasa_hard_prob`. Returns
+# Back-compat alias, old call sites referenced `_get_gasa_hard_prob`. Returns
 # the same difficulty signal; both names point at the same SYBA-first logic.
 _get_gasa_hard_prob = _get_synth_difficulty
 
@@ -59,7 +59,7 @@ def _murcko_scaffold_match(lead_smiles: str, analog_smiles: str) -> float:
         0.0 = scaffold computation failed for either side
     """
     if not lead_smiles or not analog_smiles:
-        return 0.5  # Unknown — neutral
+        return 0.5  # Unknown, neutral
     try:
         from rdkit import Chem, DataStructs
         from rdkit.Chem import AllChem
@@ -83,7 +83,7 @@ def _murcko_scaffold_match(lead_smiles: str, analog_smiles: str) -> float:
         if lead_scaffold_smi == analog_scaffold_smi:
             return 1.0
 
-        # Different scaffolds — compute Morgan Tanimoto over the scaffold mols
+        # Different scaffolds, compute Morgan Tanimoto over the scaffold mols
         # so we still credit "phenyl swap" (partial preservation) vs "phenyl→cyclohexyl"
         # (full aromaticity loss, much lower Tanimoto).
         try:
@@ -117,7 +117,7 @@ def _flag_implausible_admet(analog_admet: Dict, lead_admet: Dict) -> bool:
         except (TypeError, ValueError):
             continue
         if lead_v <= 0.05:
-            continue  # Lead already near floor — improvement % is meaningless
+            continue  # Lead already near floor, improvement % is meaningless
         improvement = (lead_v - analog_v) / lead_v
         if improvement > 0.80:
             huge_improvements += 1
@@ -171,7 +171,7 @@ def calculate_pareto_score(
             if harder_by > 0.10:
                 gasa_penalty = max(0.3, 1.0 - (harder_by - 0.10) * 1.4)
         else:
-            # No lead reference — use absolute threshold
+            # No lead reference, use absolute threshold
             gasa_penalty = max(0.3, 1.0 - (gasa_hard_prob - 0.5) * 1.4)
     
     # ── ADMET Improvement Score (context-weighted) ──────────────

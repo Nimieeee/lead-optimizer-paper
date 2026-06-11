@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Experiment 1 — MMP recovery rate
+Experiment 1, MMP recovery rate
 
 For each matched molecular pair (A, B) where B is a documented improving
 analog of A, apply the platform's 479-entry SMIRKS library to A and ask

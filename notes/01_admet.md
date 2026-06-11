@@ -1,4 +1,4 @@
-# ADMET Engine — Factual Inventory
+# ADMET Engine, Factual Inventory
 
 Source-of-truth audit for the Benchside ADMET prediction subsystem, written
 against the actual code at `/Users/mac/Desktop/phhh` (commit-time snapshot
@@ -30,7 +30,7 @@ microservice itself does no training and adds no models.
 The microservice imposes a hard cap of 25 SMILES per call
 (`backend/admet_engine.py:97-98`) and self-reports `endpoints: 104` in every
 response. **That 104 figure is hard-coded as a pydantic default**
-(`PredictResponse.endpoints: int = 104` at line 66) — the engine does not
+(`PredictResponse.endpoints: int = 104` at line 66), the engine does not
 count the columns it actually returned. Treat 104 as the claimed number of
 columns in the upstream ADMET-AI tabular output, not a verified property of
 each response.
@@ -39,15 +39,15 @@ each response.
 implements a **two-tier** fallback chain:
 
 1. **Local engine** (`http://localhost:7861/predict` with
-   `include_percentiles=True`) — `admet_service.py:308-338`. Tagged
+   `include_percentiles=True`), `admet_service.py:308-338`. Tagged
    `_engine: "admet-ai (Chemprop v2)"`.
 2. **RDKit fallback** (`_predict_rdkit_fallback`,
-   `admet_service.py:347-435`) — only 14 deterministic descriptors
+   `admet_service.py:347-435`), only 14 deterministic descriptors
    (MolWt, logP/Crippen, HBD, HBA, TPSA, rotatable bonds, ring count, heavy
    atoms, QED, stereo centers, num_aromatic_rings, fraction_sp3,
    num_spiro_atoms, num_bridgehead_atoms) plus the Lipinski violation
    counter. `PAINS_alert` and `BRENK_alert` are returned as **hard-coded 0**
-   in this branch (`admet_service.py:417-419`) — there is no toxicophore
+   in this branch (`admet_service.py:417-419`), there is no toxicophore
    SMARTS library in the fallback path. The fallback is documented as such
    and explicitly disclosed in the response (`error: "ADMET-AI engine
    unavailable"`).
@@ -58,22 +58,22 @@ place an ADMETlab endpoint is hit is the `wash_molecule()` helper
 `https://admetmesh.scbdd.com/api/wash` purely for SMILES canonicalisation
 and falls back to RDKit canonicalisation. The module docstring still
 mentions ADMETlab (`admet_service.py:7-8` says "RDKit physicochemical
-fallback" — accurate; older comments referencing ADMETlab as a fallback for
+fallback", accurate; older comments referencing ADMETlab as a fallback for
 predictions are no longer wired up). The CLAUDE.md claim of a
-"local → ADMETlab 3.0 API → RDKit" chain is **partially obsolete** — only
+"local → ADMETlab 3.0 API → RDKit" chain is **partially obsolete**, only
 local and RDKit are actually wired in `predict_admet`. The "ADMETlab (API)"
 engine label at `admet_service.py:332` is a defensive branch that fires
-when the local engine returns the ADMETlab-shaped `data: [...]` envelope —
+when the local engine returns the ADMETlab-shaped `data: [...]` envelope ,
 this is for test-mock compatibility, not real ADMETlab traffic.
 
-### Per-endpoint confidence — what it is and isn't
+### Per-endpoint confidence, what it is and isn't
 
 `_build_confidence_map()` (`admet_service.py:67-83`) reads
 `{endpoint}_drugbank_approved_percentile` keys from the upstream prediction
 and labels each endpoint `high` (percentile 20-80), `medium` (5-20 or
 80-95), or `low` (≤5 or ≥95). The implementation is **explicitly honest**
 in its own docstring (line 18): "*honest as a training-data-proximity
-confidence proxy — not full Bayesian uncertainty*". This is a position-in-
+confidence proxy, not full Bayesian uncertainty*". This is a position-in-
 distribution heuristic, not predictive uncertainty. The deeper per-model
 stdev path (Chemprop v2's 5-model internal ensemble) is **not wired in**
 either the microservice or the main API. The microservice calls
@@ -83,7 +83,7 @@ either the microservice or the main API. The microservice calls
 
 There is a duplicate, **stale** copy of the service at
 `backend/app/admet_service.py` (and a sibling `admet_processor.py`). No
-import path uses it — every consumer including
+import path uses it, every consumer including
 `backend/app/core/container.py:91` and
 `backend/app/api/v1/endpoints/admet.py:33` imports from
 `app.services.admet_service`. The stale copy mentions "46 endpoints" in its
@@ -117,8 +117,8 @@ the keys deterministically gives **54 endpoints surfaced**, distributed:
 | Distribution | 3 | `BBB_Martins` (benefit), `PPBR_AZ` (neutral), `VDss_Lombardo` (neutral) |
 | Metabolism | 8 | `CYP1A2/2C9/2C19/2D6/3A4_Veith` inhibition (5 × risk), `CYP2C9/2D6/3A4_Substrate_CarbonMangels` (3 × risk) |
 | Excretion | 3 | `Clearance_Hepatocyte_AZ`, `Clearance_Microsome_AZ`, `Half_Life_Obach` (3 × neutral) |
-| Toxicity | 18 | `AMES`, `Carcinogens_Lagunin`, `ClinTox`, `DILI`, `hERG`, `Skin_Reaction` (6 × risk) + 12 Tox21 panel (`NR-AR`, `NR-AR-LBD`, `NR-AhR`, `NR-Aromatase`, `NR-ER`, `NR-ER-LBD`, `NR-PPAR-gamma`, `SR-ARE`, `SR-ATAD5`, `SR-HSE`, `SR-MMP`, `SR-p53` — all risk) |
-| **Total displayed** | **54** | — |
+| Toxicity | 18 | `AMES`, `Carcinogens_Lagunin`, `ClinTox`, `DILI`, `hERG`, `Skin_Reaction` (6 × risk) + 12 Tox21 panel (`NR-AR`, `NR-AR-LBD`, `NR-AhR`, `NR-Aromatase`, `NR-ER`, `NR-ER-LBD`, `NR-PPAR-gamma`, `SR-ARE`, `SR-ATAD5`, `SR-HSE`, `SR-MMP`, `SR-p53`, all risk) |
+| **Total displayed** | **54** |, |
 
 **The microservice claims 104 endpoints; the UI exposes 54.** The remaining
 ~50 columns from `admet_ai.ADMETModel.predict()` are either DrugBank
@@ -134,7 +134,7 @@ the UI**; they live in the Toxicity group. The `_generate_ai_interpretation`
 function at `admet_service.py:754-762` looks for `Tox21_*` prefixed keys,
 **but the property_groups list uses `NR-*` / `SR-*` plain prefixes** (no
 `Tox21_` prefix). This means the AI interpretation's Tox21 alerts branch
-**never fires for live ADMET-AI output** — it would only trigger if the
+**never fires for live ADMET-AI output**, it would only trigger if the
 microservice were to emit `Tox21_NR-AR`-style keys, which it does not.
 **Latent bug**, flagged for the paper or for a fix patch.
 
@@ -168,12 +168,12 @@ CYP / ADME ML predictions in the fallback path).
 | Tox21 panel (12 keys) | ADMET-AI only | risk | probability [0,1] |
 
 CLAUDE.md claims (the rules table) that `Ototoxicity`, `Nephrotoxicity`,
-`Neurotoxicity`, `Hematotoxicity` are "ADMETlab 3.0-only" — this is
+`Neurotoxicity`, `Hematotoxicity` are "ADMETlab 3.0-only", this is
 **accurate in spirit**: a grep across `backend/` shows no code that
 predicts or even mentions these endpoints (only one stray reference in
 `lead_optimizer/ingest_medchem.py:36` as a keyword for literature
 classification). The disclaimer "do not fabricate values" is already
-respected — nothing returns these keys.
+respected, nothing returns these keys.
 
 ---
 
@@ -216,14 +216,14 @@ continue to work.
 ### What about GASA (the graph neural net)?
 
 `backend/app/services/gasa.py` is the original GASA training script
-(Yu et al. 2022, J. Chem. Inf. Model.) — a DGL-based graph attention
+(Yu et al. 2022, J. Chem. Inf. Model.), a DGL-based graph attention
 classifier. It is **a script, not a wired service**. It defines
 `def parse()`/`def GASA()` requiring CLI args and is not imported anywhere
 in the running service.
 
 `backend/app/services/gasa_service.py` is the Python wrapper. It tries to
 import `dgl` (line 53-58) and falls through to the simple service if DGL is
-missing. **`dgl` is not installed in the runtime venv** — the wrapper's
+missing. **`dgl` is not installed in the runtime venv**, the wrapper's
 own docstring (line 41-46) says "DGL (Deep Graph Library) is required for
 the GASA GNN model but is NOT installed on this VPS. Without DGL, the ML
 model cannot run."
@@ -235,7 +235,7 @@ file (~1.5 MB, `file` reports it as `data`). The accompanying
 `gasa.json` contains the architecture config (`{"num_heads": 6,
 "hidden_dim1": 128, "hidden_dim2": 64, "hidden_dim3": 32}`) which matches
 the loader at `gasa_service.py:83-90`. So **the checkpoint is real and
-loadable** — but only if `dgl` is installed. In production it is dead
+loadable**, but only if `dgl` is installed. In production it is dead
 weight because DGL isn't there, and the platform uses SYBA + SAScore via
 `synth_accessibility_service`.
 
@@ -261,17 +261,17 @@ without a corresponding ranking-pipeline rewrite.
 
 ## 4. Exports (PDF / DOCX / CSV)
 
-### PDF — `xhtml2pdf` (pisa)
+### PDF, `xhtml2pdf` (pisa)
 
 Implementation: `admet_service.py:1033-1282`. Uses `xhtml2pdf.pisa` to
 render a hand-built HTML template (no Jinja). Layout:
 
 - Header table with `Benchside.png` logo (base64-embedded; falls through
-  three filesystem paths including the macOS dev path `/Users/mac/...` —
+  three filesystem paths including the macOS dev path `/Users/mac/...` ,
   fine for dev but a red flag in production hardening).
 - Engine banner showing `_engine_version` + `_engine` + confidence-method
   label.
-- "Medicinal Chemistry Insights" — `ai_interpretation` rendered inside
+- "Medicinal Chemistry Insights", `ai_interpretation` rendered inside
   `<div class="insight-box">` after `_convert_unicode_to_html` substitutes
   Unicode sub/superscripts (`₀-₉`, `⁰-⁹`, `⁺`, `⁻`) for `<sub>/<sup>`
   tags (because xhtml2pdf renders those badly).
@@ -287,7 +287,7 @@ interpolate `{gasa_html}` (it's bound but unused) and instead inlines a
 second call. Result is functionally correct (the section appears once) but
 the variable is dead. Minor; flagged.
 
-### DOCX — `python-docx`
+### DOCX, `python-docx`
 
 Implementation: `admet_service.py:1284-1425`. Standard `Document()` layout
 matching the PDF: header logo, engine banner, AI insights paragraph,
@@ -299,11 +299,11 @@ bugs.
 
 Two paths:
 
-1. `format_csv_export()` (`admet_processor.py:160-192`) — single-molecule
+1. `format_csv_export()` (`admet_processor.py:160-192`), single-molecule
    vertical CSV: header `Property,Value,Percentile`. Excludes the metadata
    keys (`_engine`, `_source`, `error`, `svg_raw`) and skips percentile
    sibling columns to avoid duplication.
-2. `format_batch_csv()` (`admet_processor.py:697-741`) — wide CSV: one row
+2. `format_batch_csv()` (`admet_processor.py:697-741`), wide CSV: one row
    per molecule, columns are the union of property keys across the batch.
    Failed molecules get `"FAILED"` in the Engine column with empty
    values. Header uses the `header_labels` map for human-readable column
@@ -334,10 +334,10 @@ test classes (length: 706 lines).
   `generate_report`, `export_as_csv`.
 - `TestADMETEndpoint` (2 tests): smoke tests confirming `/analyze` and
   `/svg` routes exist on the FastAPI app (`assert response.status_code in
-  [200, 401, 422, 400]` — passing on auth-required 401 counts as
+  [200, 401, 422, 400]`, passing on auth-required 401 counts as
   "registered").
 - `TestServiceContainerIntegration` (2 tests): `assert ... or True`
-  patterns — always pass; effectively dead.
+  patterns, always pass; effectively dead.
 - `TestADMETLocalEngine` (3 tests): `_check_local_engine`,
   `_predict_local`, `_predict_rdkit_fallback`. All HTTP mocked.
 - `TestADMETProcessorFlatFormat` (3 tests): flat-shape `summarize_findings`,
@@ -356,9 +356,9 @@ test classes (length: 706 lines).
   that exercises the upstream Chemprop v2 model on a real molecule.
 - **No tests for SYBA / SAScore / synth_accessibility_service.**
   `gasa_service.py` and `synth_accessibility_service.py` are uncovered
-  here (they may have separate suites — verified: a `grep` shows no
+  here (they may have separate suites, verified: a `grep` shows no
   `test_synth*` or `test_gasa*` file in `tests/regression`).
-- **No tests for PDF / DOCX export** — the report-generation paths
+- **No tests for PDF / DOCX export**, the report-generation paths
   (`generate_pdf`, `generate_docx`, ~390 lines combined) are entirely
   uncovered.
 - **No tests for the DrugBank-percentile → confidence mapping**
@@ -373,7 +373,7 @@ test classes (length: 706 lines).
 
 ---
 
-## 6. Validation gaps — TDC benchmarking
+## 6. Validation gaps, TDC benchmarking
 
 **None found in the repo.** I searched for `tdc.benchmark`, `admet_group`,
 `admet_benchmark`, `tdc_benchmark`, `TDC` (case-insensitive in code, not
@@ -385,7 +385,7 @@ only matches are:
   published claim; **not a Benchside-run benchmark**.
 - One unrelated grep hit for "benchmark" in `multi_provider.py` re LLM TTFT
   benchmarks.
-- `download_benchmark_reports.py` under `scripts/` — unrelated, it's about
+- `download_benchmark_reports.py` under `scripts/`, unrelated, it's about
   literature reports.
 
 There is no `evaluate.py`, no held-out set, no comparison vs. ADMETlab 3.0
@@ -398,7 +398,7 @@ re-run was performed."**
 
 ---
 
-## 7. Tox21 panel + DrugBank percentile — real or hardcoded?
+## 7. Tox21 panel + DrugBank percentile, real or hardcoded?
 
 **Tox21:** The 12 panel members are real predictions emitted by the
 ADMET-AI Chemprop v2 ensemble (the upstream package ships pre-trained
@@ -411,7 +411,7 @@ hardcoded values.
 not in Benchside. The microservice passes `include_percentiles=True` and
 extracts whatever `{endpoint}_drugbank_approved_percentile` columns
 ADMET-AI emits. **Benchside does not compute the percentile reference
-distribution itself** — it consumes the upstream's bundled DrugBank-
+distribution itself**, it consumes the upstream's bundled DrugBank-
 approved-drugs reference set (which ADMET-AI ships internally; this is
 how the published ADMET-AI app surfaces "percentile vs. approved drugs"
 columns). The Benchside confidence-label mapping (`high` 20-80, `medium`
@@ -449,7 +449,7 @@ Three frontend files drive the experience:
   Each entry is `{name, smiles, year?, class}`. Used by
   `getRandomDrugs(4)` to populate the "Try one of these" cards. The list
   is FDA-approved drugs + common investigational compounds. The CLAUDE.md
-  claim of "500+ drug suggestions" is **overstated** — actual count is
+  claim of "500+ drug suggestions" is **overstated**, actual count is
   130. The file's own header docstring also says "500+" but `grep -c "{
   name"` returns 130. The "SMILES only, no peptides" discipline is
   documented (line 11) and several entries have valid SMILES strings (I
@@ -464,9 +464,9 @@ include the engine banner and the confidence legend.
 
 ---
 
-## 9. Rules 6, 25, 28 — verification
+## 9. Rules 6, 25, 28, verification
 
-### Rule 6 — ADMET directional scoring
+### Rule 6, ADMET directional scoring
 
 **Implemented.** `ADMETProcessor.get_interpretation()`
 (`admet_processor.py:502-618`) partitions endpoints into `RISK_ENDPOINTS`
@@ -478,15 +478,15 @@ the correct direction for hERG, Skin_Reaction, HIA, Pgp, MW, QED, AMES
 (low and high), Bioavailability. **Rule 6 is real, tested, and lives in
 exactly the single file CLAUDE.md says it does.**
 
-### Rule 25 — PDF URL validation before display
+### Rule 25, PDF URL validation before display
 
-Not applicable to ADMET — Rule 25 is about Semantic Scholar PDF URLs in
+Not applicable to ADMET, Rule 25 is about Semantic Scholar PDF URLs in
 the literature/RAG path, not ADMET. ADMET service does not validate any
 external PDFs. (Note: the PDF generated **by** ADMET via xhtml2pdf is a
-separate concern — it's a server-rendered output, not a fetched external
+separate concern, it's a server-rendered output, not a fetched external
 PDF.)
 
-### Rule 28 — ADMET engine specifics
+### Rule 28, ADMET engine specifics
 
 CLAUDE.md says: "`admet-engine` lives at `/home/ubuntu/admet_research/`
 with venv `venv_admet`. Verify `venv_admet/bin/activate` exists before
@@ -506,12 +506,12 @@ file. Flag: VPS-side, unverifiable here.
 
 - **Two-process architecture:** main API + `admet-engine` microservice on
   port 7861, both code-resident and consistent.
-- **ADMET-AI / Chemprop v2 integration via thin FastAPI wrapper** —
+- **ADMET-AI / Chemprop v2 integration via thin FastAPI wrapper** ,
   faithful pass-through, no shadow predictions.
 - **RDKit fallback path** for the 14 deterministic physicochemical /
   drug-likeness descriptors, with honest disclosure when the ML engine is
   down.
-- **Rule 6 directional scoring** — implemented exactly where claimed,
+- **Rule 6 directional scoring**, implemented exactly where claimed,
   with 9 locked-in unit tests.
 - **SYBA primary + Ertl SAScore fallback** synth-accessibility scoring,
   with a real confidence ladder driven by SYBA/SAScore agreement.
@@ -526,21 +526,21 @@ file. Flag: VPS-side, unverifiable here.
 
 - **104 endpoints microservice vs. 54 surfaced UI endpoints.** The 50-
   endpoint gap is mostly `_drugbank_approved_percentile` siblings, but
-  `LD50_Zhu` is computed and confidence-mapped yet never displayed —
+  `LD50_Zhu` is computed and confidence-mapped yet never displayed ,
   inconsistency, not a critical bug.
 - **CLAUDE.md "ADMETlab 3.0 API fallback" claim** is only true for the
   `wash_molecule()` helper; the `predict_admet()` chain does **not** call
   ADMETlab. Doc-vs-code drift; should be fixed in the rules table.
 - **drugPool.ts claims "500+" but holds 130 entries.** Docstring + header
   comment both overstate. Cosmetic but worth correcting.
-- **Tox21 prefix mismatch in the AI-interpretation branch** — the code
+- **Tox21 prefix mismatch in the AI-interpretation branch**, the code
   looks for `Tox21_*` keys that ADMET-AI doesn't emit (it emits `NR-*` /
   `SR-*` directly). The AI interpretation's "Tox21 pathway alerts" branch
   is therefore dead code with current upstream output. Latent bug.
 - **GASA GNN (`gasa_model/gasa.pth`) is a real checkpoint but inert in
   production** because `dgl` is not installed. The DGL-based service
-  silently falls through to SYBA+SAScore. Not a bug — Rule 36 makes SYBA
-  the canonical metric — but the dead checkpoint inflates the repo and
+  silently falls through to SYBA+SAScore. Not a bug, Rule 36 makes SYBA
+  the canonical metric, but the dead checkpoint inflates the repo and
   should either be removed or accompanied by a `DGL_OPTIONAL.md`
   explaining the situation.
 - **Repository hygiene:** stale duplicate `backend/app/admet_service.py`
@@ -568,14 +568,14 @@ file. Flag: VPS-side, unverifiable here.
   convention, not optimised).
 - **No ototoxicity / nephrotoxicity / neurotoxicity / hematotoxicity
   predictions** anywhere in code. The CLAUDE.md rules table correctly
-  lists these as "ADMETlab 3.0-only — do not fabricate"; the code
+  lists these as "ADMETlab 3.0-only, do not fabricate"; the code
   respects that and does not output them. Flag only because the rules
-  table does mention them — they appear nowhere in the real engine.
+  table does mention them, they appear nowhere in the real engine.
 - **No PAINS/BRENK detection in RDKit fallback path.** When the ML engine
-  is down, structural alerts are hard-coded to 0 — a reasonable
+  is down, structural alerts are hard-coded to 0, a reasonable
   schema-preservation choice, but the user should know the fallback is
   silent on substructure alerts.
-- **No VPS-side state I can verify from the local repo** — Rule 28's
+- **No VPS-side state I can verify from the local repo**, Rule 28's
   `/home/ubuntu/admet_research/venv_admet` claim and the PM2 launch
   command are runbook documentation only.
 
@@ -586,10 +586,10 @@ file. Flag: VPS-side, unverifiable here.
 - `/Users/mac/Desktop/phhh/backend/app/services/admet_service.py` (1625 lines)
 - `/Users/mac/Desktop/phhh/backend/app/services/postprocessing/admet_processor.py` (745 lines)
 - `/Users/mac/Desktop/phhh/backend/app/api/v1/endpoints/admet.py` (418 lines)
-- `/Users/mac/Desktop/phhh/backend/admet_engine.py` (172 lines — microservice)
-- `/Users/mac/Desktop/phhh/backend/app/services/synth_accessibility_service.py` (268 lines — SYBA + SAScore)
-- `/Users/mac/Desktop/phhh/backend/app/services/gasa_service.py` (195 lines — DGL/GASA wrapper, currently inert)
-- `/Users/mac/Desktop/phhh/backend/app/services/simple_gasa_service.py` (31 lines — alias shim)
+- `/Users/mac/Desktop/phhh/backend/admet_engine.py` (172 lines, microservice)
+- `/Users/mac/Desktop/phhh/backend/app/services/synth_accessibility_service.py` (268 lines, SYBA + SAScore)
+- `/Users/mac/Desktop/phhh/backend/app/services/gasa_service.py` (195 lines, DGL/GASA wrapper, currently inert)
+- `/Users/mac/Desktop/phhh/backend/app/services/simple_gasa_service.py` (31 lines, alias shim)
 - `/Users/mac/Desktop/phhh/backend/app/services/gasa_model/gasa.pth` + `gasa.json` (1.5 MB checkpoint, unused in production)
 - `/Users/mac/Desktop/phhh/backend/tests/regression/test_admet_service.py` (706 lines, 39 tests)
 - `/Users/mac/Desktop/phhh/frontend/src/components/lab/LabDashboard.tsx` (851 lines)

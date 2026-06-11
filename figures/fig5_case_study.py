@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 4 — End-to-end case study (Experiment 4).
+Figure 4, End-to-end case study (Experiment 4).
 
 Two panels:
   (a) Stage-by-stage attrition funnel for each case (DYRK1A + Linezolid).
@@ -102,7 +102,7 @@ def panel_b_top10(ax, data):
 
     ax.set_xlabel("SA score (Ertl, lower = easier)")
     ax.set_ylabel("Total-score (sorted weighted scalar; higher = better rank)")
-    ax.set_title("(b)  Top-10 per case — total-score vs synthetic accessibility", loc="left")
+    ax.set_title("(b)  Top-10 per case, total-score vs synthetic accessibility", loc="left")
     ax.legend(loc="lower left", frameon=False)
     ax.grid(True, alpha=0.25)
 
@@ -119,10 +119,10 @@ def main():
     panel_b_top10(ax_b, data)
 
     fig.suptitle(
-        "Figure 4 — End-to-end case study: pipeline attrition + top-K analog metrics",
+        "Figure 4, End-to-end case study: pipeline attrition + top-K analog metrics",
         x=0.06, y=0.985, ha="left", fontsize=12.5, weight="bold",
     )
-    runtimes = "; ".join(f"{c['case_id']}: {c.get('runtime_s', '—')}s" for c in data["cases"])
+    runtimes = "; ".join(f"{c['case_id']}: {c.get('runtime_s', ',')}s" for c in data["cases"])
     fig.text(
         0.06, 0.94,
         f"Two leads, no-LID path (every functional group classified as TARGET). Wall-clock per case: {runtimes}.",

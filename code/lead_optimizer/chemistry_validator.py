@@ -4,14 +4,14 @@ Chemistry-validity tables for Vision Agent output.
 Every (group_name, interaction_type) tuple emitted by the Vision Agent
 is checked against these tables before the output reaches the user-review
 UI or downstream stages. Tuples that are physically impossible are
-dropped — `methyl` can never be an h_bond_donor, `methoxy` can never be
+dropped, `methyl` can never be an h_bond_donor, `methoxy` can never be
 a donor (the oxygen has no proton), etc.
 
 This is a structural guard: even a perfect vision model occasionally
 hallucinates interaction types under JSON mode, and the user-facing
 review panel should never display a chemically impossible classification.
 
-Mirrors the Vision Agent prompt's Rule 6 — keep the two in sync.
+Mirrors the Vision Agent prompt's Rule 6, keep the two in sync.
 """
 from typing import Set
 
@@ -21,7 +21,7 @@ H_BOND_DONORS: Set[str] = {
     "hydroxyl",
     "primary_amine",
     "secondary_amine",
-    # Tertiary amine has no N-H — kept here only for amines like piperidine
+    # Tertiary amine has no N-H, kept here only for amines like piperidine
     # where the secondary NH of the ring counts; downstream check by name.
     "amide",
     "urea",

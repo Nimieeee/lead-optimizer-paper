@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 5 — Vision Agent self-consistency (Experiment 3).
+Figure 5, Vision Agent self-consistency (Experiment 3).
 
 Two panels:
   (a) Pairwise Jaccard heatmap across N runs (8×8 matrix on the fixed LID).
@@ -120,7 +120,7 @@ def main():
     panel_b_per_run(ax_b, runs)
 
     fig.suptitle(
-        "Figure 5 — Vision Agent self-consistency on a fixed LID, N=8 runs",
+        "Figure 5, Vision Agent self-consistency on a fixed LID, N=8 runs",
         x=0.06, y=0.985, ha="left", fontsize=12.5, weight="bold",
     )
     fig.text(

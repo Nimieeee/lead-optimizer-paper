@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Experiment 3 — Vision Agent self-consistency on a fixed LID.
+Experiment 3, Vision Agent self-consistency on a fixed LID.
 
 Question: Given one fixed LID image, how reproducible are the
 Vision Agent's restricted vs target classifications across N runs?

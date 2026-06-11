@@ -3,13 +3,13 @@
 Cross-provider, cross-model benchmark for Lead Optimizer stages 2, 5, 6.
 
 Stages:
-  stage2_vision        — Vision Agent on a fixed LID, N=8 reps per model.
+  stage2_vision       , Vision Agent on a fixed LID, N=8 reps per model.
                          14 vision models. Metrics: self-consistency Jaccard,
                          JSON validity, mean restricted-group count, runtime.
-  stage5_context       — Project-context analysis on 4 contexts, 3 reps.
+  stage5_context      , Project-context analysis on 4 contexts, 3 reps.
                          11 text models. Metrics: JSON validity,
                          endpoint-priority rubric score, runtime.
-  stage6_optimization  — Optimization-agent SAR strategy proposal on 4 leads, 3 reps.
+  stage6_optimization , Optimization-agent SAR strategy proposal on 4 leads, 3 reps.
                          11 text models. Metrics: JSON validity, strategy count,
                          strategy-maps-to-real-SMIRKS-category rate, runtime.
 
@@ -107,7 +107,7 @@ def extract_json(text: str) -> Optional[dict]:
 
 
 # ──────────────────────────────────────────────────────────────
-# Stage 2 — vision benchmark
+# Stage 2, vision benchmark
 
 
 def jaccard(a: set, b: set) -> float:
@@ -202,7 +202,7 @@ async def run_stage2(models: list, output_dir: Path, lid_path: Path, smiles: str
 
 
 # ──────────────────────────────────────────────────────────────
-# Stage 5 — project-context analysis benchmark
+# Stage 5, project-context analysis benchmark
 
 
 def score_context_priorities(parsed: dict, expected: dict) -> dict:
@@ -324,7 +324,7 @@ async def run_stage5(models: list, output_dir: Path, contexts_path: Path, n_reps
 
 
 # ──────────────────────────────────────────────────────────────
-# Stage 6 — optimization-agent benchmark
+# Stage 6, optimization-agent benchmark
 
 
 def score_optimization_output(parsed: dict, detected_groups: list, smirks_categories: set) -> dict:
@@ -383,7 +383,7 @@ async def run_stage6(models: list, output_dir: Path, leads_path: Path, n_reps: i
                 f"Lead SMILES: {lead['smiles']}\n"
                 f"Lead name: {lead['name']}\n"
                 f"Target class: {lead['target_class']}\n\n"
-                f"Detected functional groups (TARGET sites — these are editable):\n"
+                f"Detected functional groups (TARGET sites, these are editable):\n"
                 + "\n".join(f"- {g}" for g in detected) + "\n\n"
                 f"Project context: optimize for {lead['target_class']} indication.\n\n"
                 f"Propose 8-12 ranked SAR strategies, each mapped to a SMIRKS-library category. "

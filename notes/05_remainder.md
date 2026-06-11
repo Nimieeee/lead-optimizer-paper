@@ -1,4 +1,4 @@
-# Benchside Platform Inventory — Remainder
+# Benchside Platform Inventory, Remainder
 
 Covers: DDI analyzer, docking/Schrödinger/MCP, image generation, frontend
 architecture, test totals, evaluation harnesses, bundled datasets, deploy
@@ -15,17 +15,17 @@ absent, this note says so explicitly.
 **Backend service** lives at `backend/app/services/ddi_service.py` (707 lines,
 `DDIService` class starting line 19).
 
-**Data source — primary:** NLM RxNorm + RxNav REST APIs
+**Data source, primary:** NLM RxNorm + RxNav REST APIs
 (`RXNAV_BASE = "https://rxnav.nlm.nih.gov/REST"`, line 31). Drug names are
 resolved to RxCUI identifiers via `/rxcui.json?name=...&search=1` fuzzy
 search (`resolve_drug`, line 59), with a hardcoded fallback dictionary
-covering 11 common drugs — aspirin, warfarin, simvastatin, ketoconazole,
+covering 11 common drugs, aspirin, warfarin, simvastatin, ketoconazole,
 methotrexate, tetracycline, ibuprofen, acetaminophen, naproxen, insulin,
 calcium (lines 76-87). The actual interaction lookup hits
 `/interaction/interaction.json` with `sources=ONCHigh DrugBank`
 (line 187-191).
 
-**Data source — fallback (where the real work happens):** the NLM
+**Data source, fallback (where the real work happens):** the NLM
 interaction endpoints are largely discontinued, which the file itself
 acknowledges in a comment at line 185
 (`Note: Interaction endpoints are largely discontinued, so this often falls
@@ -57,12 +57,12 @@ source. `_estimate_evidence()` (line 465) heuristically returns
 pairwise checks (loops the same `check_interaction` two at a time, no
 parallelism). `generate_polypharmacy_summary()` (line 568) sends the
 list of pairwise interactions back to the LLM for a holistic clinical
-narrative — `overall_risk`, `cumulative_mechanisms`,
+narrative, `overall_risk`, `cumulative_mechanisms`,
 `management_strategy`, `therapeutic_alternatives`,
 `monitoring_recommendations`, `timeline`.
 
 **Endpoints:** registered on the chat router, not a dedicated DDI router
-— `backend/app/api/v1/endpoints/chat.py:748` (`POST /api/v1/chat/ddi/check`)
+, `backend/app/api/v1/endpoints/chat.py:748` (`POST /api/v1/chat/ddi/check`)
 and `backend/app/api/v1/endpoints/chat.py:788`
 (`POST /api/v1/chat/ddi/polypharmacy`). There is **no** standalone
 `endpoints/ddi.py` file.
@@ -77,7 +77,7 @@ secondary inline result component lives at
 `frontend/src/components/chat/DDIResult.tsx` (rendered in the chat
 stream when DDI is invoked through chat).
 
-**Tests:** `backend/tests/test_ddi_service.py` — 24 test definitions. Not
+**Tests:** `backend/tests/test_ddi_service.py`, 24 test definitions. Not
 in `tests/regression/` (so excluded from the canonical regression
 sweep).
 
@@ -102,7 +102,7 @@ Concrete evidence:
   (a planning doc, not code), `data/medchem_knowledge/` (textbook
   extractions), and the stored upload artifacts. The column registry
   (`backend/app/services/table_intelligence/schema/column_registry.py:34-39`)
-  defines aliases — `docking_score`, `mmgbsa`, `glide_emodel` — purely
+  defines aliases, `docking_score`, `mmgbsa`, `glide_emodel`, purely
   for **parsing** what users upload, not for **computing** anything.
 - `grep -ri "mmgbsa"` finds only narration/threshold code in
   `table_intelligence/gates/library.py`,
@@ -117,12 +117,12 @@ What actually exists for binding scores: TableIntelligence reads
 docking_score / MMGBSA columns from uploaded CSV/SDF and applies
 deterministic gates (e.g. the CNS gate set at
 `backend/app/services/table_intelligence/gates/library.py` requires
-MMGBSA to beat 3 of 4 reference compounds — but the reference values
+MMGBSA to beat 3 of 4 reference compounds, but the reference values
 were uploaded, not computed in-platform). The platform is, in this
 domain, a **reasoning layer over user-supplied docking output**, not a
 docking pipeline.
 
-The Lead Optimizer does no docking either — it operates on RDKit-
+The Lead Optimizer does no docking either, it operates on RDKit-
 computed properties and SYBA synthetic accessibility
 (`backend/app/services/sas_service.py`, `gasa_service.py`,
 `gasa_model/`), permutes via SMIRKS, and ranks. No binding-affinity
@@ -135,7 +135,7 @@ prediction is in scope.
 **Single backend file:** `backend/app/services/image_gen.py` (155 lines).
 `ImageGenerationService` (line 27).
 
-**Provider:** Pollinations.ai only — `POLLINATIONS_BASE_URL =
+**Provider:** Pollinations.ai only, `POLLINATIONS_BASE_URL =
 "https://gen.pollinations.ai/image"` (line 24). Default model
 `qwen-image` (line 47 default arg). The function URL-encodes the prompt
 and GETs `https://gen.pollinations.ai/image/{prompt}?model=...&width=512&height=512&nologo=true&safe=true&seed=...`
@@ -144,7 +144,7 @@ and GETs `https://gen.pollinations.ai/image/{prompt}?model=...&width=512&height=
 **No multi-provider fallback chain for image generation.** This is a
 single-provider pipeline. If Pollinations fails, the user gets an error
 dict `{"status": "error", "error": str(e)}` (line 114-120). No FLUX
-direct API, no DALL-E, no Stable Diffusion, no Midjourney code path —
+direct API, no DALL-E, no Stable Diffusion, no Midjourney code path ,
 the platform calls `qwen-image` through Pollinations and that's it.
 
 There is an exploratory test script `backend/tests/test_image_models.py`
@@ -159,11 +159,11 @@ returned. No base64 inline path is used in production
 (line 110: `"image_base64": None`).
 
 **Prompt engineering / Rule 14 enforcement:** the service has hardcoded
-style-keyword routing for medical content (lines 58-79) — diagram
+style-keyword routing for medical content (lines 58-79), diagram
 prompts get "medical textbook diagram, anatomically correct
 cross-section, ..." appended; pathology prompts get a separate template;
 both add a negative-prompt clause. The Rule-14 "diagrams should route
-to Mermaid not images" is enforced upstream in `ai.py`, not here —
+to Mermaid not images" is enforced upstream in `ai.py`, not here ,
 `backend/app/services/ai.py:238` describes the image-gen tool to the
 LLM as "Use this ONLY when the user EXPLICITLY asks you to 'generate
 an image' ... Do NOT use this for diagrams". The text-to-Mermaid path
@@ -181,44 +181,44 @@ line 560 with `analyze_image()` / `analyze_image_bytes()`.
 ## 4. Frontend architecture
 
 **Framework:** Next.js 14.0.4, React 18.2.0, TypeScript, Tailwind
-(`frontend/package.json:13-21`). Next config is `output: 'export'` —
+(`frontend/package.json:13-21`). Next config is `output: 'export'` ,
 the FE is a fully static export, not SSR
 (`frontend/next.config.js:3`). State via React Context API
 (`useChat` ↔ `ChatContext`, `SidebarContext`).
 
 **Route structure:**
-- `frontend/src/app/(hub)/` — route group sharing one layout
+- `frontend/src/app/(hub)/`, route group sharing one layout
   (`layout.tsx`). Subroutes: `lab/`, `studio/`, `literature/`, `ddi/`,
   `memories/`. Created 2026-05-29 to fix sidebar remount flicker
   (CLAUDE.md fix entry).
-- `frontend/src/app/chat/` — standalone (not in hub group). 824 lines
-  in `page.tsx` — main chat surface.
-- `frontend/src/app/` — auth pages (`login`, `register`,
+- `frontend/src/app/chat/`, standalone (not in hub group). 824 lines
+  in `page.tsx`, main chat surface.
+- `frontend/src/app/`, auth pages (`login`, `register`,
   `forgot-password`, `reset-password`, `verify`), marketing
   (`about`, `pricing`, `faq`, `support`, `terms`, `privacy`, `docs`),
   `admin/`, `profile/`, `changelog/`, `models/`, `lab-report/`.
 
 **Contexts** (`frontend/src/contexts/`):
-- `ChatContext.tsx` (22 lines) — thin wrapper around `useChat()` hook.
-- `SidebarContext.tsx` (15 lines) — `sidebarOpen` bool only.
+- `ChatContext.tsx` (22 lines), thin wrapper around `useChat()` hook.
+- `SidebarContext.tsx` (15 lines), `sidebarOpen` bool only.
 
 **Components inventory** (`frontend/src/components/`, 55 `.tsx` files
 total):
-- `chat/` — `ChatMessage`, `ChatInput`, `ChatSidebar`, `BranchMenu`,
+- `chat/`, `ChatMessage`, `ChatInput`, `ChatSidebar`, `BranchMenu`,
   `CitationPanel`, `ClarifyingQuestionsModal`, `DDIResult`,
   `DeepResearchCard`, `DeepResearchModal`, `DeepResearchUI`,
   `HandoffButton`, `LongPressMenu`, `MarkdownRenderer`,
   `MermaidRenderer`, `MobileNav`, `PubMedResults`, `RagAdvisoryCard`,
   `StreamdownWrapper`, `StreamingLogo`.
-- `lab/` — `LabDashboard`, `ADMETPropertyCard`,
+- `lab/`, `LabDashboard`, `ADMETPropertyCard`,
   `ADMETParameterLegend`, `MoleculePreview` (the ADMET surface).
-- `lead/` — `SetupWizard`, `PipelineMonitor`, `ResultsDashboard`,
+- `lead/`, `SetupWizard`, `PipelineMonitor`, `ResultsDashboard`,
   `AnalogCard`, `CampaignHistory`, `LeadProfileBar` (the Lead
   Optimizer / "Studio" surface).
-- `ddi/` — `DDIDashboard` only.
-- `literature/` — `LiteratureDashboard` only.
-- `lab-report/` — `LabReportUI` only.
-- `landing/`, `auth/`, `admin/`, `docs/`, `shared/`, `ui/` — chrome.
+- `ddi/`, `DDIDashboard` only.
+- `literature/`, `LiteratureDashboard` only.
+- `lab-report/`, `LabReportUI` only.
+- `landing/`, `auth/`, `admin/`, `docs/`, `shared/`, `ui/`, chrome.
 
 **Surface ↔ hub-route mapping:**
 | Hub surface | Route | Top component |
@@ -233,7 +233,7 @@ total):
 **Hooks** (`frontend/src/hooks/`):
 - `useChat.ts` (445), `useChatState.ts` (327), `useChatStreaming.ts`
   (1144), `useStreamingState.ts`, `useConversationStore.ts`,
-  `useSWRChat.ts`, `use-batched-stream.ts` — chat.
+  `useSWRChat.ts`, `use-batched-stream.ts`, chat.
 - `useDDI.ts` (146), `useLeadOptimizer.ts` (663), `usePubMed.ts`
   (170), `useProjects.ts`, `use-feature-flag.ts`, `use-translation.ts`.
 
@@ -249,7 +249,7 @@ reader/parser that feeds it.
 - `frontend/src/tests/useChatState.test.tsx`
 - `frontend/src/hooks/__tests__/editMessage.test.tsx`
 
-That's the entire frontend test surface — two component/hook tests
+That's the entire frontend test surface, two component/hook tests
 using vitest + `@testing-library/react`
 (`package.json:32-40`, `vitest ^4.0.18`). No Playwright, no Cypress,
 no integration sweep. **The frontend is effectively untested.**
@@ -284,7 +284,7 @@ Distribution (top of the long tail):
 
 Categorisation by physical directory:
 
-- `tests/regression/` — 14 files (the canonical "MUST pass before
+- `tests/regression/`, 14 files (the canonical "MUST pass before
   deploy" suite per CLAUDE.md). Files: `test_admet_service`,
   `test_all_services`, `test_chat_stream_422`, `test_cors_headers`,
   `test_export_processor`, `test_lead_optimizer`, `test_literature`,
@@ -292,9 +292,9 @@ Categorisation by physical directory:
   `test_router_services`, `test_service_integration`,
   `test_table_intelligence`. Roughly **~280 tests** in regression
   alone by my counts.
-- `tests/unit/` — 1 file (27 tests).
-- `tests/integration/` — 1 file (15 tests).
-- `tests/` (root) — 32 files, mix of unit + integration + ad-hoc.
+- `tests/unit/`, 1 file (27 tests).
+- `tests/integration/`, 1 file (15 tests).
+- `tests/` (root), 32 files, mix of unit + integration + ad-hoc.
 
 **Honest note on the CLAUDE.md "190 → 307 → 293" numbers:** CLAUDE.md
 quotes "190 tests, ~11s on VPS" in the stack section but the recent-fix
@@ -319,7 +319,7 @@ What does NOT exist:
 - `grep -ril "from tdc\|import tdc\|tdcommons"` over `backend/` returns
   **zero hits.** No Therapeutics Data Commons integration. The
   ADMET-AI microservice in production may itself have been trained on
-  TDC data — but this repo does not contain code that evaluates
+  TDC data, but this repo does not contain code that evaluates
   Benchside outputs against TDC held-out splits.
 - No `moleculenet`, no `chembl_webresource` imports.
 - No `evaluation/`, `eval/`, `benchmarks/`, `metrics/` directories
@@ -333,16 +333,16 @@ What does NOT exist:
 
 What DOES exist (a much weaker form of "benchmark"):
 - `backend/scripts/benchmark_writer_providers.py` and
-  `benchmark_writer_enhanced.py` — these compare **deep-research writer
+  `benchmark_writer_enhanced.py`, these compare **deep-research writer
   output across LLM providers** (Mistral, Pollinations gpt-5-mini,
   Gemini Fast, Claude Airforce, OpenAI). They measure
   `response_time_seconds`, `output_length_chars`, `word_count`,
-  `sections_found`, `references_count` — i.e. **latency and surface
+  `sections_found`, `references_count`, i.e. **latency and surface
   metrics**, not factuality, accuracy, or correctness against a gold
   set. Results saved as JSON to
   `backend/scripts/benchmark_reports/enhanced_benchmark_20260319_062321.json`
   (one timestamped run, 2026-03-19).
-- `backend/scripts/latency_test.py` — manual latency measurements
+- `backend/scripts/latency_test.py`, manual latency measurements
   (OpenFDA fetch, Mistral embedding gen, ...). Not a benchmark suite.
 
 **Implication for a paper:** any quantitative ML claims (ADMET accuracy,
@@ -355,34 +355,34 @@ hand-labelled set.
 
 ## 7. Datasets included in repo
 
-**`frontend/src/constants/drugPool.ts`** — 182 lines, **129 drug
+**`frontend/src/constants/drugPool.ts`**, 182 lines, **129 drug
 entries** (confirmed by `grep -cE "^\s*\{\s*name:\s*'"`). TypeScript
 `DrugSuggestion` shape: `{ name, smiles, year?, class }`. Used by
 `LabDashboard.tsx` for the "random suggestions" pill row. Grouped by
 therapeutic class in source comments (NSAIDs, Cardiovascular, Statins,
 ACE inhibitors, Anticoagulants, JAK inhibitors, CGRP antagonists, etc.,
-spanning 1827 morphine → 2024 rimegepant). NOT a benchmark set — UI
+spanning 1827 morphine → 2024 rimegepant). NOT a benchmark set, UI
 suggestion list only. CLAUDE.md's "500+ drug suggestions" claim is off
 by ~4×; the actual file has 129.
 
-**`backend/data/medchem_knowledge/`** — RAG-ingested medicinal chemistry
+**`backend/data/medchem_knowledge/`**, RAG-ingested medicinal chemistry
 extractions:
 - `brown_ch6-10_extraction.txt`, `wilson_ch3-28_extraction.txt`
   (textbook extractions).
 - `admet_strategies.md`, `bioisosteres.md`, `structural_alerts.md`.
 - `glaxo_structural_alerts.csv`, `extracted_transformations_2026-04-24.md`
-  (SMIRKS feedstock for the Lead Optimizer permutation engine — the
+  (SMIRKS feedstock for the Lead Optimizer permutation engine, the
   "344 → 479 entries" referenced in CLAUDE.md's 2026-04-24 row).
 
-**`backend/data/reports/`** — stored user upload artifacts
+**`backend/data/reports/`**, stored user upload artifacts
 (`report_*.sdf`, `report_*.html`, `report_*.pdf`). NOT curated ground
 truth.
 
-**`backend/test_files/`** — sample uploads for development (`admet.xlsx`,
+**`backend/test_files/`**, sample uploads for development (`admet.xlsx`,
 `top_20_mmgbsa.sdf`, `Acute Toxicity.pptx`,
 `Artemisinin for Cancer research.txt`, `tolu-result.docx`, etc.). Ad-hoc.
 
-**`backend/migrations/`** — 31 SQL migration files
+**`backend/migrations/`**, 31 SQL migration files
 (`000_fix_function_conflicts.sql` … `025_table_intelligence_audit.sql`).
 Schema only; no seed data beyond `002_create_admin_user.sql`.
 
@@ -394,7 +394,7 @@ Schema only; no seed data beyond `002_create_admin_user.sql`.
 `backend/ecosystem.config.js`):
 
 - **Frontend:** Vercel auto-deploy from `master` branch on push.
-  `next.config.js` uses `output: 'export'` — static export.
+  `next.config.js` uses `output: 'export'`, static export.
   Production domain: `benchside.app` (per `README.md`).
 - **Backend:** Contabo VPS `ubuntu@173.212.213.228` (4 vCPU / 8 GB
   RAM per CLAUDE.md). Path `/var/www/benchside-backend/backend/`.
@@ -415,11 +415,11 @@ Schema only; no seed data beyond `002_create_admin_user.sql`.
    with `sleep 10` between retries, then a final hit to
    `https://173-212-213-228.sslip.io/health`.
 
-**`backend/ecosystem.config.js`** — single PM2 app spec. Inlines SMTP
-credentials in `env` block (lines 9-11) — **this is a real secret leaked
+**`backend/ecosystem.config.js`**, single PM2 app spec. Inlines SMTP
+credentials in `env` block (lines 9-11), **this is a real secret leaked
 into a committed file**, worth flagging.
 
-**`setup-dcv-fixed.sh`** (159 lines) — AWS DCV / GUI session setup
+**`setup-dcv-fixed.sh`** (159 lines), AWS DCV / GUI session setup
 helper, unrelated to the API deploy path. Likely for the developer's
 remote workstation.
 
@@ -428,12 +428,12 @@ remote workstation.
   `verify-new-server.sh`, `check-new-server.sh`,
   `monitor-backend-health.sh`, `kill-zombie-processes.sh`,
   `continuous-monitor.py`, `monitor-research-live.py`,
-  `watch-research-realtime.py` — operational tooling.
+  `watch-research-realtime.py`, operational tooling.
 
 **ServiceContainer:** `backend/app/core/container.py` (301 lines). The
 container holds **39 registered service slots** (counted by
 `grep -cE "self\._services\["`). CLAUDE.md's "24 services registered"
-is stale by ~15 — more services have been added since that prose was
+is stale by ~15, more services have been added since that prose was
 written (skill_service, ddi_service, export_processor, admet_processor,
 prompt_processor, router_service, local_queue, etc.).
 
@@ -441,31 +441,31 @@ prompt_processor, router_service, local_queue, etc.).
 
 ## 9. Documentation in repo
 
-**`README.md`** (repo root) — frontend-focused. Production URL,
+**`README.md`** (repo root), frontend-focused. Production URL,
 Vercel deploy, dev setup, env vars, repo structure. Public-facing
 project README.
 
-**`CLAUDE.md`** — the canonical agent-memory artifact (described in
+**`CLAUDE.md`**, the canonical agent-memory artifact (described in
 detail in the system context above). Living source of truth for
 stack, deploy, rules, recent fixes.
 
-**`gemini.md`** — parallel agent-memory artifact for Gemini. Largely
+**`gemini.md`**, parallel agent-memory artifact for Gemini. Largely
 duplicates CLAUDE.md content, somewhat stale (says "24 services
 registered" still).
 
-**`.kiro/context/`** — the live working-memory directory:
-- `ACTIVE.md` — current production status / in-flight work.
-- `deploy.md` — deployment runbook (commands extracted out of CLAUDE.md).
-- `INDEX.md` — meta-doc explaining the directory's discipline (only
+**`.kiro/context/`**, the live working-memory directory:
+- `ACTIVE.md`, current production status / in-flight work.
+- `deploy.md`, deployment runbook (commands extracted out of CLAUDE.md).
+- `INDEX.md`, meta-doc explaining the directory's discipline (only
   docs future work needs to consult live here).
 
-**`backend/docs/`** — 8 planning markdowns: `lead_optimizer_plan.md`,
+**`backend/docs/`**, 8 planning markdowns: `lead_optimizer_plan.md`,
 `plan_a_rdkit_engine.md`, `plan_b_medchem_rag.md`, `plan_c_agents.md`,
 `plan_d_orchestrator.md`, `plan_e_opensource.md`, `plan_f_deployment.md`,
 `plan_g_frontend.md`. These are the original Lead Optimizer build
 plans; some are partly stale post-implementation.
 
-**`docs/`** (repo root) — 27 markdowns covering historical
+**`docs/`** (repo root), 27 markdowns covering historical
 investigation logs, architecture snapshots
 (`deep_research_architecture.md`, `lead_optimizer_architecture.md`),
 implementation plans (`implementation_plan_admet.md`,
@@ -473,12 +473,12 @@ implementation plans (`implementation_plan_admet.md`,
 (`r2-image-storage.md`, `pdf-generation-integration-plan.md`,
 `gasa_integration_plan.md`), and post-mortems
 (`deep-research-debugging-results.md`, `lessons-learned-2026-03-25.md`).
-A large chunk is no longer current — these are historic, not
+A large chunk is no longer current, these are historic, not
 authoritative.
 
 **Top-level scattered `*_FIX*.md` / `*_PLAN*.md` files** (e.g.
 `413_FIX_PROVIDER_FALLBACK.md`, `COMPREHENSIVE_FIX_PLAN.md`,
-`DECOUPLING_SUMMARY.md`, `DEEP_RESEARCH_FIX_SUMMARY.md`) — historic
+`DECOUPLING_SUMMARY.md`, `DEEP_RESEARCH_FIX_SUMMARY.md`), historic
 sprint artifacts left in the working tree. Per CLAUDE.md discipline,
 these should have been pruned once the rules they document landed in
 the Rules table. They are **not authoritative**; if they conflict with
@@ -489,35 +489,35 @@ CLAUDE.md, CLAUDE.md wins.
 ## What's solid / What's partial / What's missing
 
 **Solid (production-grade, well-tested, clearly defined):**
-- DDI plumbing — RxNav resolution + LLM fallback + polypharmacy
-  pairwise expansion — has 24 backend tests and a fully-wired FE
+- DDI plumbing, RxNav resolution + LLM fallback + polypharmacy
+  pairwise expansion, has 24 backend tests and a fully-wired FE
   surface.
-- Image generation — single-provider but production-deployed with R2
+- Image generation, single-provider but production-deployed with R2
   storage and prompt-engineering routing.
-- ServiceContainer DI pattern — 39 services, lazy-loaded, used uniformly
+- ServiceContainer DI pattern, 39 services, lazy-loaded, used uniformly
   by endpoints.
-- Regression test suite categorisation — 14 files in `tests/regression/`
+- Regression test suite categorisation, 14 files in `tests/regression/`
   is a clean, identifiable canonical sweep.
-- TokenStreamer — actually is pure-logic-no-React-deps as advertised
+- TokenStreamer, actually is pure-logic-no-React-deps as advertised
   (135 lines, framework-free).
-- Deploy pipeline — single `deploy.sh`, PM2-driven, health-checked.
+- Deploy pipeline, single `deploy.sh`, PM2-driven, health-checked.
   Reproducible.
 
 **Partial (works, but has rough edges or unverifiable claims):**
-- DDI severity scoring — for the common case where RxNav has no data,
+- DDI severity scoring, for the common case where RxNav has no data,
   severity is **LLM-generated**, not from a curated KB. Acceptable for
   a clinical assistant; not citable for a research paper.
-- Test totals — 748 total `def test_` across the whole tree but only
+- Test totals, 748 total `def test_` across the whole tree but only
   the `regression/` subset (~280) runs in CI. CLAUDE.md numbers
   (190, 293, 307) are historic snapshots and don't reconcile precisely.
 - DocumentLoader → TableIntelligence pipeline handles uploaded docking
   output, but the platform has no docking computation itself.
-- Frontend test coverage — exactly two test files. Functional, but
+- Frontend test coverage, exactly two test files. Functional, but
   near-zero coverage.
-- drugPool — 129 entries vs. the "500+" claim in CLAUDE.md. UI works
+- drugPool, 129 entries vs. the "500+" claim in CLAUDE.md. UI works
   fine; the headline number is wrong.
 
-**Missing (explicitly absent — important to be clear about):**
+**Missing (explicitly absent, important to be clear about):**
 - **No docking engine.** No AutoDock Vina, no Glide, no Schrödinger
   SDK, no GNINA, no Smina. The platform reasons over docking output
   uploaded by the user.
@@ -530,9 +530,9 @@ CLAUDE.md, CLAUDE.md wins.
 - **No NAPLEX / USMLE evaluation set.**
 - **No held-out gold-standard datasets** in the repo.
 - **No frontend e2e harness** (no Playwright, no Cypress).
-- **No DDI evidence citations** (no PMID/DOI link-out — `evidence_level`
+- **No DDI evidence citations** (no PMID/DOI link-out, `evidence_level`
   is free-text LLM output).
-- **Single secret leaked in version control** —
+- **Single secret leaked in version control** ,
   `backend/ecosystem.config.js:9-11` inlines SMTP credentials.
 
 For a paper, the binding/safety/SAR pipeline should be framed as

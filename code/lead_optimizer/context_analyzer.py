@@ -1,5 +1,5 @@
 """
-context_analyzer.py — LLM-driven ADMET priority weighting.
+context_analyzer.py, LLM-driven ADMET priority weighting.
 """
 
 import json
@@ -117,7 +117,7 @@ EXAMPLES OF REASONING:
   tpsa weight=0.9 ("TPSA must be <90 for CNS penetration"), hERG weight=0.8 ("Elderly patients 
   on polypharmacy, cardiac safety critical")
 - Oral oncology drug: HIA_Hou weight=1.0, CYP3A4_Veith weight=0.9 ("Oncology patients on 
-  multiple CYP3A4 substrates"), AMES weight=0.3 ("Lower priority for oncology — therapeutic 
+  multiple CYP3A4 substrates"), AMES weight=0.3 ("Lower priority for oncology, therapeutic 
   window accepts some genotoxicity risk")
 - Topical dermatology: BBB_Martins weight=0.0 ("Topical, no systemic exposure needed"), 
   HIA_Hou weight=0.1 ("Not orally administered")

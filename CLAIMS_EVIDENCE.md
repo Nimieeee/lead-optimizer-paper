@@ -2,7 +2,7 @@
 
 Every quantitative claim in `manuscript.md` is listed here with the exact
 artefact (script, figure, table cell, or `summary.json` field) that supports
-it. This document is the authoritative reproducibility index — when the
+it. This document is the authoritative reproducibility index, when the
 manuscript is updated, this file must be updated in the same commit.
 
 A claim either points to (a) a results JSON field, (b) a figure rendered by a
@@ -24,7 +24,7 @@ claim and is cross-referenced to the methods section.
 | "Pareto-style penalty rank" is a sorted weighted scalar sum, not a real Pareto front | `backend/app/services/lead_optimizer/ranking.py:276-291` (declared explicitly in §5.2) |
 | Upstream `admet_ai` (Chemprop v2) is the ADMET backbone | `backend/admet_engine.py` (`from admet_ai import ADMETModel`) |
 
-## §4.1 — MMP recovery pilot (Figure 2)
+## §4.1, MMP recovery pilot (Figure 2)
 
 | Claim | Value | Evidence |
 |---|---|---|
@@ -36,7 +36,7 @@ claim and is cross-referenced to the methods section.
 | Median per-pair runtime | 0.19 s | `summary.json:median_runtime_s` |
 | Mean unique analogs per pair | 74.5 | `summary.json:mean_unique_per_pair` |
 | Mean best Tanimoto | 0.734 | `summary.json:mean_best_tanimoto` |
-| Figure 2 rendered | — | `paper/figures/fig2_mmp_recovery.py` → `figures/out/fig2_mmp_recovery_pilot.{pdf,png}` |
+| Figure 2 rendered |, | `paper/figures/fig2_mmp_recovery.py` → `figures/out/fig2_mmp_recovery_pilot.{pdf,png}` |
 
 **Unbiased ChEMBL-37 scale-up:**
 | ChEMBL drug-like subset filtered (1.84 M → 2000 compounds for mmpdb) | 2000 | `paper/experiments/exp1_mmp_recovery/data/chembl/subset_2k.smi` |
@@ -45,10 +45,10 @@ claim and is cross-referenced to the methods section.
 | Exact recovery of B (ChEMBL) | **310/2000 = 15.5 %** | `paper/experiments/exp1_mmp_recovery/results/chembl_2k/summary.json:any_recovery_rate` |
 | Mean unique analogs per pair (ChEMBL) | 150.8 | `summary.json:mean_unique_per_pair` |
 | Mean best Tanimoto (ChEMBL) | 0.755 | `summary.json:mean_best_tanimoto` |
-| Top SMIRKS by recovery count (ChEMBL): META025 (119), RING_117 (42), OSUB_002 (37), AROM016 (34) | — | `summary.json:smirks_recovery_counts` |
+| Top SMIRKS by recovery count (ChEMBL): META025 (119), RING_117 (42), OSUB_002 (37), AROM016 (34) |, | `summary.json:smirks_recovery_counts` |
 | Runtime, 2000 pairs, 7 workers | 422 s = ~7 min | `summary.json:total_runtime_s` |
 
-## §4.2 — Scaffold preservation + structural alerts (Figure 3)
+## §4.2, Scaffold preservation + structural alerts (Figure 3)
 
 | Claim | Value | Evidence |
 |---|---|---|
@@ -69,9 +69,9 @@ claim and is cross-referenced to the methods section.
 | Lipinski Ro5 pass, default | 96.08 % | `summary.json:conditions.default_murcko_gate_on.pct_lipinski_pass` |
 | Mean ΔHA, default | +1.68 | `summary.json:conditions.default_murcko_gate_on.mean_heavy_atom_delta` |
 | Mean ΔLogP, default | +0.06 | `summary.json:conditions.default_murcko_gate_on.mean_logp_delta` |
-| Figure 3 rendered | — | `paper/figures/fig3_scaffold_alerts.py` → `figures/out/fig3_scaffold_alerts.{pdf,png}` |
+| Figure 3 rendered |, | `paper/figures/fig3_scaffold_alerts.py` → `figures/out/fig3_scaffold_alerts.{pdf,png}` |
 
-## §4.3 — Vision Agent self-consistency (Figure 4)
+## §4.3, Vision Agent self-consistency (Figure 4)
 
 | Claim | Value | Evidence |
 |---|---|---|
@@ -85,10 +85,10 @@ claim and is cross-referenced to the methods section.
 | Mean runtime/run | 5.06 s | `summary.json:runtime_stat.mean` |
 | Runtime std dev | 0.56 s | `summary.json:runtime_stat.std` |
 | Runtime range | [4.38 s, 6.28 s] | `summary.json:runtime_stat.min`, `runtime_stat.max` |
-| Figure 4 rendered | — | `paper/figures/fig4_vision_consistency.py` → `figures/out/fig4_vision_consistency.{pdf,png}` |
+| Figure 4 rendered |, | `paper/figures/fig4_vision_consistency.py` → `figures/out/fig4_vision_consistency.{pdf,png}` |
 | Caveat: temperature-zero perception | methodological | manuscript §4.3, §5.2 |
 
-## §4.4 — End-to-end case study (Figure 5)
+## §4.4, End-to-end case study (Figure 5)
 
 | Claim | Value | Evidence |
 |---|---|---|
@@ -113,9 +113,9 @@ claim and is cross-referenced to the methods section.
 | CASE_002 runtime | 55.4 s | `cases[1].runtime_s` |
 | CASE_002 rank-1 total-score | 0.594 | `cases[1].top_analogs_top10[0].pareto_score` |
 | CASE_002 rank-1 SA | 2.97 | `cases[1].top_analogs_top10[0].sa_score` |
-| Figure 5 rendered | — | `paper/figures/fig5_case_study.py` → `figures/out/fig5_case_study.{pdf,png}` |
+| Figure 5 rendered |, | `paper/figures/fig5_case_study.py` → `figures/out/fig5_case_study.{pdf,png}` |
 
-**Phase B — Vision-aware DYRK1A re-run (with LID, new Stage-2 Tier-1 Groq Scout):**
+**Phase B, Vision-aware DYRK1A re-run (with LID, new Stage-2 Tier-1 Groq Scout):**
 | Phase B CASE_001 strategies | 50 (vs 20 no-LID) | `paper/experiments/exp4_case_study/results_phaseB/CASE_001.json:pipeline_attrition.total_strategies_proposed` |
 | Phase B CASE_001 analogs generated | 51 (vs 149 no-LID) | `cases[0].pipeline_attrition.total_analogs_generated` |
 | Phase B CASE_001 after diversity | 25 (vs 58 no-LID) | `cases[0].pipeline_attrition.diversity_clusters_after_ranking` |
@@ -125,7 +125,7 @@ claim and is cross-referenced to the methods section.
 | Phase B CASE_001 wall-clock | 186.1 s (vs 139.7 s no-LID; +33 % for vision call) | `cases[0].runtime_s` |
 | Phase B CASE_002 unchanged (no LID provided) | 71 → 24 → 22 (matches Phase A) | `results_phaseB/CASE_002.json` |
 
-## §4.5 — Cross-provider model benchmark (Figure 6)
+## §4.5, Cross-provider model benchmark (Figure 6)
 
 | Claim | Value | Evidence |
 |---|---|---|
@@ -133,15 +133,15 @@ claim and is cross-referenced to the methods section.
 | Vision: 14 models × 8 reps on fixed DYRK1A LID | 14 × 8 = 112 calls | `paper/experiments/exp5_model_benchmark/results/stage2_summary.json` |
 | Context: 11 models × 4 prompts × 3 reps | 132 calls | `paper/experiments/exp5_model_benchmark/results/stage5_summary.json` |
 | Optimization: 11 models × 4 leads × 3 reps | 132 calls | `paper/experiments/exp5_model_benchmark/results/stage6_summary.json` |
-| Stage 2 winner Llama 4 Scout: Jaccard 1.0, 100% JSON, 9.5 s | — | `stage2_summary.json` entry for `groq/meta-llama/llama-4-scout-17b-16e-instruct` |
-| Stage 2 #2 gpt-5.4: Jaccard 0.804, 100% JSON, 9.0 s | — | `stage2_summary.json` entry for `openai/gpt-5.4` |
-| Stage 5 winner gpt-5.4: rubric 0.524, 100% JSON | — | `stage5_summary.json` entry for `openai/gpt-5.4` |
-| Stage 6 winner gpt-5.4: rubric 0.333, 100% JSON | — | `stage6_summary.json` entry for `openai/gpt-5.4` |
-| Production code prompt verbatim used at each stage | — | Stage 2 → `prompts.py:VISION_AGENT_SYSTEM_PROMPT`; Stage 5 → `context_analyzer.py:CONTEXT_ANALYZER_PROMPT`; Stage 6 → `prompts.py:OPTIMIZATION_AGENT_SYSTEM_PROMPT` |
-| Structured-output flags enable cross-provider reliability | — | `paper/experiments/exp5_model_benchmark/providers.py` (response_format / response_mime_type passes when system prompt asks for JSON) |
-| Figure 6 rendered | — | `paper/figures/fig6_model_benchmark.py` → `figures/out/fig6_model_benchmark.{pdf,png}` |
+| Stage 2 winner Llama 4 Scout: Jaccard 1.0, 100% JSON, 9.5 s |, | `stage2_summary.json` entry for `groq/meta-llama/llama-4-scout-17b-16e-instruct` |
+| Stage 2 #2 gpt-5.4: Jaccard 0.804, 100% JSON, 9.0 s |, | `stage2_summary.json` entry for `openai/gpt-5.4` |
+| Stage 5 winner gpt-5.4: rubric 0.524, 100% JSON |, | `stage5_summary.json` entry for `openai/gpt-5.4` |
+| Stage 6 winner gpt-5.4: rubric 0.333, 100% JSON |, | `stage6_summary.json` entry for `openai/gpt-5.4` |
+| Production code prompt verbatim used at each stage |, | Stage 2 → `prompts.py:VISION_AGENT_SYSTEM_PROMPT`; Stage 5 → `context_analyzer.py:CONTEXT_ANALYZER_PROMPT`; Stage 6 → `prompts.py:OPTIMIZATION_AGENT_SYSTEM_PROMPT` |
+| Structured-output flags enable cross-provider reliability |, | `paper/experiments/exp5_model_benchmark/providers.py` (response_format / response_mime_type passes when system prompt asks for JSON) |
+| Figure 6 rendered |, | `paper/figures/fig6_model_benchmark.py` → `figures/out/fig6_model_benchmark.{pdf,png}` |
 
-## §5 — Discussion qualifiers
+## §5, Discussion qualifiers
 
 | Claim | Evidence |
 |---|---|

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Figure 6 — Cross-provider model benchmark across stages 2, 5, 6.
+Figure 6, Cross-provider model benchmark across stages 2, 5, 6.
 
 Three-panel bar chart, one panel per stage:
-  (a) Stage 2 vision — JSON validity × self-consistency Jaccard, ranked
-  (b) Stage 5 context — rubric score, ranked
-  (c) Stage 6 optimization — total rubric score, ranked
+  (a) Stage 2 vision, JSON validity × self-consistency Jaccard, ranked
+  (b) Stage 5 context, rubric score, ranked
+  (c) Stage 6 optimization, total rubric score, ranked
 
 Each bar coloured by provider. Models with JSON-validity < 0.5 are dimmed
 (unreliable on this task) to surface the result without hiding it.
@@ -107,14 +107,14 @@ def main():
     ax_c = fig.add_subplot(gs[0, 2])
 
     panel_stage(ax_a, stage2, "mean_jaccard_self",
-                "(a)  Stage 2 — Vision Agent  ·  self-consistency Jaccard")
+                "(a)  Stage 2, Vision Agent  ·  self-consistency Jaccard")
     panel_stage(ax_b, stage5, "mean_rubric_score",
-                "(b)  Stage 5 — Project context  ·  endpoint-priority rubric")
+                "(b)  Stage 5, Project context  ·  endpoint-priority rubric")
     panel_stage(ax_c, stage6, "mean_total_score",
-                "(c)  Stage 6 — Optimization agent  ·  SAR-strategy rubric")
+                "(c)  Stage 6, Optimization agent  ·  SAR-strategy rubric")
 
     fig.suptitle(
-        "Figure 6 — Cross-provider model evaluation across three Lead-Optimizer agent stages",
+        "Figure 6, Cross-provider model evaluation across three Lead-Optimizer agent stages",
         x=0.06, y=0.985, ha="left", fontsize=12.5, weight="bold",
     )
     fig.text(

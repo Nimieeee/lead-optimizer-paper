@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Figure 2 — MMP recovery on the curated pilot and the unbiased ChEMBL scale-up.
+Figure 2, MMP recovery on the curated pilot and the unbiased ChEMBL scale-up.
 
 Three panels:
-  (a) Per-pair recovery on the curated pilot (30 pairs) — best-Tanimoto bars,
+  (a) Per-pair recovery on the curated pilot (30 pairs), best-Tanimoto bars,
       colour-coded by hit / miss-with-analogs / zero-analog gap.
-  (b) Pilot vs ChEMBL exact-recovery comparison — bar chart with rate + Tanimoto.
-  (c) ChEMBL best-Tanimoto histogram across 2000 unbiased pairs — surfaces that
+  (b) Pilot vs ChEMBL exact-recovery comparison, bar chart with rate + Tanimoto.
+  (c) ChEMBL best-Tanimoto histogram across 2000 unbiased pairs, surfaces that
       the engine produces close alternatives in most misses (median Tanimoto 0.75).
 """
 
@@ -54,7 +54,7 @@ def load():
 
 
 def panel_a(ax, pilot_summary, chembl_summary):
-    """Recall@K curves — pilot and ChEMBL on the same axes."""
+    """Recall@K curves, pilot and ChEMBL on the same axes."""
     ks = sorted(int(k) for k in pilot_summary["recall_at_k"])
     p_rec = [pilot_summary["recall_at_k"][str(k)] * 100 for k in ks]
     ax.plot(ks, p_rec, "-o", color=PAPER_COLORS["accent"], lw=1.5, ms=5,
@@ -106,7 +106,7 @@ def panel_c_chembl_tanimoto(ax, chembl_rows, chembl_summary):
 
     ax.set_xlabel("Best Tanimoto to target $B$")
     ax.set_ylabel("Count of ChEMBL pairs")
-    ax.set_title("(c)  ChEMBL pairs — best-Tanimoto distribution", loc="left")
+    ax.set_title("(c)  ChEMBL pairs, best-Tanimoto distribution", loc="left")
     ax.set_xlim(0, 1.02)
     ax.legend(loc="upper left", fontsize=8.5, frameon=False)
     ax.grid(True, axis="y", alpha=0.25)
@@ -132,7 +132,7 @@ def panel_b(ax, rows):
     ax.set_yticklabels(labels, fontsize=7.5)
     ax.set_xlabel("Best Tanimoto to target $B$ in generated analog set")
     ax.set_xlim(0, 1.05)
-    ax.set_title("(b)  Per-pair recovery — pilot MMP set", loc="left")
+    ax.set_title("(b)  Per-pair recovery, pilot MMP set", loc="left")
     ax.invert_yaxis()
     ax.axvline(1.0, color=PAPER_COLORS["ink_faint"], lw=0.5, ls=":")
     ax.grid(True, axis="x", alpha=0.3)
@@ -162,10 +162,10 @@ def main():
     panel_c_chembl_tanimoto(ax_c, chembl_rows, chembl_summary)
 
     fig.suptitle(
-        "Figure 2 — MMP recovery on curated and unbiased evaluation sets",
+        "Figure 2, MMP recovery on curated and unbiased evaluation sets",
         x=0.06, y=0.985, ha="left", fontsize=12.5, weight="bold",
     )
-    chembl_n = chembl_summary["n_pairs"] if chembl_summary else "—"
+    chembl_n = chembl_summary["n_pairs"] if chembl_summary else ","
     fig.text(
         0.06, 0.945,
         f"Pilot: 30 literature-documented single-edit pairs (upper bound on the library's native domain). "

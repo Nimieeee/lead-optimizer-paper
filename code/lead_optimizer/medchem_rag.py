@@ -1,5 +1,5 @@
 """
-MedChem RAG retrieval tool — callable by the Optimization Agent.
+MedChem RAG retrieval tool, callable by the Optimization Agent.
 """
 
 import logging

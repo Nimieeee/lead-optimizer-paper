@@ -53,7 +53,7 @@ def validate_strategies(
     """
     Validate LLM-proposed strategies before letting them into the analog library.
 
-    Four gates (the last two are new — previously the validator only checked
+    Four gates (the last two are new, previously the validator only checked
     library-membership and site-bounds, which let the LLM propose strategies
     that silently failed at permutation time → fallback dominated the output):
 
@@ -79,7 +79,7 @@ def validate_strategies(
             continue
 
         # Execute the SMIRKS on the lead. If it produces zero valid products,
-        # it'll fail the same way in permutation anyway — reject up-front so
+        # it'll fail the same way in permutation anyway, reject up-front so
         # downstream rationale strings don't accidentally surface dead SMIRKS.
         try:
             products = execute_smirks_substitution(lead_smiles, s.smirks)
@@ -91,7 +91,7 @@ def validate_strategies(
             rejected["no_product"] += 1
             continue
 
-        # Pharmacophore preservation — the LLM should not propose strategies
+        # Pharmacophore preservation, the LLM should not propose strategies
         # that obliterate the restricted (binding-essential) groups identified
         # by the Vision Agent. We only enforce this when restricted groups exist
         # (no-LID flow has none, in which case any product is acceptable).
@@ -101,7 +101,7 @@ def validate_strategies(
                     rejected["pharmacophore"] += 1
                     continue
             except Exception as enforce_err:
-                # Don't reject on enforcement crash — be permissive but log
+                # Don't reject on enforcement crash, be permissive but log
                 logger.debug(f"validate_strategies: enforce_pharmacophore raised for {s.smirks_id}: {enforce_err}")
 
         key = (s.site_index, s.smirks_id)
@@ -158,7 +158,7 @@ def _fallback_strategies(smarts_mapping: SmartsMapping, seen: set, max_total: in
 
         # group_name may be a per-instance label like "phenyl_left",
         # "aromatic_h_1", or "gem_dimethyl_central". The SMIRKS library is
-        # keyed by BASE name (which may itself contain underscores —
+        # keyed by BASE name (which may itself contain underscores ,
         # `aromatic_h`, `gem_dimethyl`, `primary_amine`). Strip the
         # position-hint suffix progressively from the right until we hit
         # a known base name.
@@ -172,7 +172,7 @@ def _fallback_strategies(smarts_mapping: SmartsMapping, seen: set, max_total: in
                     matching = trial
                     logger.debug(f"SMIRKS lookup: '{group_name}' empty, base resolved to '{candidate}' ({len(matching)} entries)")
                     break
-        # Cap to 5 per site (was 10) — fallback should fill gaps, not dominate
+        # Cap to 5 per site (was 10), fallback should fill gaps, not dominate
         for i, entry in enumerate(matching):
             if i >= 5:
                 break
@@ -229,7 +229,7 @@ async def run_lead_optimization(
     vision_output: Optional[VisionAgentOutput] = None,
 ) -> OptimizationResult:
     """
-    Main pipeline — plain async Python.
+    Main pipeline, plain async Python.
     If vision_output is provided, skips Stage 1 (Vision) and Stage 2 (Review).
     This is used when resuming a task after user review.
     """
@@ -273,7 +273,7 @@ async def run_lead_optimization(
                 await handle_vision_review(task_id, vision_output)
                 return None # Indicate pause
         else:
-            # No LID provided — all groups are modifiable
+            # No LID provided, all groups are modifiable
             logger.info("DEBUG: No LID provided. Skipping Vision Agent. All functional groups will be modifiable.")
             if progress_callback:
                 await progress_callback("vision", 5, "No LID provided. All functional groups modifiable.")
@@ -295,14 +295,14 @@ async def run_lead_optimization(
             )
             
             if progress_callback:
-                await progress_callback("vision_review", 10, "No LID — all groups modifiable. Proceeding to ADMET profiling.")
+                await progress_callback("vision_review", 10, "No LID, all groups modifiable. Proceeding to ADMET profiling.")
     else:
         logger.info("DEBUG: Resuming pipeline with pre-computed vision output. Skipping Stage 1 & 2.")
         if progress_callback:
             await progress_callback("vision_review", 10, "Resuming with reviewed pharmacophore")
     
     logger.info("DEBUG: Stage 3: Entering SMARTS Builder...")
-    # Stage 3: SMARTS Builder — receives Murcko scaffold so scaffold-embedded
+    # Stage 3: SMARTS Builder, receives Murcko scaffold so scaffold-embedded
     # decorations (e.g. methyl-on-scaffold) get auto-restricted, and the scaffold
     # SMARTS is appended to restricted_smarts as a pharmacophore anchor that
     # enforce_pharmacophore rejects any analog from breaking.
@@ -323,7 +323,7 @@ async def run_lead_optimization(
     logger.debug(f"DEBUG: Lead Profiling complete. MW={lead_profile.admet_data.get('molecular_weight')}")
 
     # Extract lead GASA hard probability for downstream use.
-    # MUST happen here (right after lead profiling) — Stage 10.5 (GASA per-analog) reads this
+    # MUST happen here (right after lead profiling), Stage 10.5 (GASA per-analog) reads this
     # variable, and previously it was defined later (after Stage 11), causing a NameError
     # that silently disabled per-analog GASA scoring and produced NaN SA Score deltas in
     # the report.
@@ -337,13 +337,13 @@ async def run_lead_optimization(
     # lead_profile.admet_data["GASA"] so the frontend's per-analog vs
     # lead comparison table can read the lead's SA score the same way
     # it reads each analog's. Previously only `lead_sa_score` (scalar)
-    # was kept and passed to the PDF generator — the UI showed NaN
+    # was kept and passed to the PDF generator, the UI showed NaN
     # because LeadProfile.admet_data["GASA"] had no sa_score field.
     # Compute lead synth-accessibility via the unified service. SYBA is
     # the primary classifier (signed: + easier, − harder); SAScore is
     # kept in the record for the audit trail but is NOT the displayed
     # metric. The report generator + frontend both render SYBA.
-    lead_sa_score = None          # Ertl SAScore — kept for compatibility
+    lead_sa_score = None          # Ertl SAScore, kept for compatibility
     lead_syba_score = None        # SYBA primary
     try:
         from app.services.simple_gasa_service import simple_gasa_predictor
@@ -414,7 +414,7 @@ async def run_lead_optimization(
     if progress_callback:
         await progress_callback("optimization", 30, f"Selected {len(validated)} strategies. Expanding coverage...")
     
-    # Fallback ceiling — lowered from 50/100 to 20/40 so curated LLM strategies
+    # Fallback ceiling, lowered from 50/100 to 20/40 so curated LLM strategies
     # dominate the analog mix. Per-site cap is enforced inside _fallback_strategies (5).
     fallback_limit = 20 if has_lid else 40
     fallback = _fallback_strategies(smarts_mapping, seen_keys, max_total=fallback_limit)
@@ -438,7 +438,7 @@ async def run_lead_optimization(
             f"{'s' if _pre_sites != 1 else ''}…"
         )
     
-    # Always cap to 100K — LID constrains sites but secondary targets can still inflate combinations
+    # Always cap to 100K, LID constrains sites but secondary targets can still inflate combinations
     max_analogs = 100000
     restricted_parts = [p for p in smarts_mapping.restricted_smarts.split('.') if p]
     
@@ -457,7 +457,7 @@ async def run_lead_optimization(
         )
         
         for group in sorted_restricted[:unlock_count]:
-            # Display all contacting residues, not just the first one — multi-residue
+            # Display all contacting residues, not just the first one, multi-residue
             # groups must show every interaction they make.
             residue_label = ", ".join(group.residues) if group.residues else (group.residue or "unknown")
             secondary_targets.append({
@@ -603,7 +603,7 @@ async def run_lead_optimization(
         else:
             tanimoto_scores.append(0.0)
     
-    # lead_gasa_hard was extracted right after lead profiling — used by both Stage 10.5
+    # lead_gasa_hard was extracted right after lead profiling, used by both Stage 10.5
     # (per-analog GASA, line ~398) and here for ranking.
     # lead_smiles is now passed so rank_analogs can compute Murcko scaffold preservation
     # and hard-stop drastic scaffold blowups (aromatic → aliphatic kinase-inhibitor scaffolds).

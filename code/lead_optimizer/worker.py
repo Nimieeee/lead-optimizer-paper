@@ -82,7 +82,7 @@ async def lead_optimizer_worker():
     # Per-user round-robin state: tracks the timestamp at which each
     # user_id last had a task picked. Users whose last pick was longer
     # ago (or who have never had one this process lifetime) go first.
-    # This is in-memory only — if the worker restarts the state resets
+    # This is in-memory only, if the worker restarts the state resets
     # and tie-breaks fall back to FIFO, which is acceptable.
     import time as _time
     last_picked_at: dict = {}
@@ -90,7 +90,7 @@ async def lead_optimizer_worker():
     while True:
         try:
             # Fetch ALL pending/running tasks (typical queue depth is
-            # tens at most — Supabase returns this fast). We then pick
+            # tens at most, Supabase returns this fast). We then pick
             # in-process for fair scheduling.
             result = db.table("optimization_tasks") \
                 .select("*") \
@@ -110,7 +110,7 @@ async def lead_optimizer_worker():
             # users, FIFO within each user. A power user submitting 10
             # back-to-back tasks no longer monopolises the queue.
             #
-            # Skip tasks awaiting user review when picking the candidate —
+            # Skip tasks awaiting user review when picking the candidate ,
             # those don't advance and would starve other users.
             candidates_by_user: dict = {}
             for row in result.data:
@@ -182,7 +182,7 @@ async def lead_optimizer_worker():
                 )
 
                 if result_data is None:
-                    # Pipeline paused for review — status already updated by orchestrator
+                    # Pipeline paused for review, status already updated by orchestrator
                     logger.info(f"Task {task_id}: paused for vision review")
                     continue
 
@@ -203,7 +203,7 @@ async def lead_optimizer_worker():
                 logger.info(f"✅ Task {task_id} completed successfully")
 
                 # Email notification.
-                # The user table is `users` in this Supabase schema, not `profiles` —
+                # The user table is `users` in this Supabase schema, not `profiles` ,
                 # research_tasks.py confirmed the working pattern. Previous lookup raised
                 # PGRST205 "Could not find the table 'public.profiles'" and silently swallowed
                 # every lead-optimizer completion email.

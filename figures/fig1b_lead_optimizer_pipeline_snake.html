@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Figure 1 — Lead Optimizer pipeline (snake layout)</title>
+<title>Figure 1, Lead Optimizer pipeline (snake layout)</title>
 <style>
   :root {
     --ink: #1a1d24;
@@ -134,7 +134,7 @@
     min-width: 26px;
     height: 26px;
     padding: 0 7px;
-    border-radius: 13px;          /* pill — expands cleanly for "7-8", "9-10", "2'" */
+    border-radius: 13px;          /* pill, expands cleanly for "7-8", "9-10", "2'" */
     background: var(--paper);
     border: 1.4px solid var(--ink);
     display: inline-flex; align-items: center; justify-content: center;
@@ -315,7 +315,7 @@
     <div class="desc">
       <b>Lead SMILES</b> (required) &nbsp;·&nbsp;
       <b>Ligand-interaction diagram</b> PNG (optional) &nbsp;·&nbsp;
-      <b>Project context</b> free-text — therapeutic indication, target class, axis priorities, e.g.&nbsp;<span class="mono">"CNS DYRK1A inhibitor, prioritize BBB"</span> &nbsp;·&nbsp;
+      <b>Project context</b> free-text, therapeutic indication, target class, axis priorities, e.g.&nbsp;<span class="mono">"CNS DYRK1A inhibitor, prioritize BBB"</span> &nbsp;·&nbsp;
       <b>Visual hints</b> &nbsp;·&nbsp; <b>Analog budget</b>
     </div>
   </div>
@@ -466,15 +466,15 @@
   <div class="footnotes">
     <p><sup>1</sup> <b>Per-instance labelling.</b> Two phenyls in the same molecule would collapse to a single generic SMARTS (<span style="font-family:var(--mono)">c1ccccc1</span>) without disambiguation. The pipeline derives left/right/top/bottom hints from RDKit 2D coords and emits atom-anchored SMARTS via <span style="font-family:var(--mono)">MolFragmentToSmarts</span>, so each instance carries a distinct restricted/editable verdict.</p>
 
-    <p><sup>2</sup> <b>Soft Murcko gate.</b> The Bemis–Murcko scaffold SMARTS is appended to the restricted set at stage&nbsp;3. The gate itself is implemented by <span style="font-family:var(--mono)">enforce_pharmacophore()</span>, called twice — at strategy validation (one example per SMIRKS) and during permutation (every candidate analog). Predicates: restricted atoms unchanged, ring count preserved, aromaticity preserved.</p>
+    <p><sup>2</sup> <b>Soft Murcko gate.</b> The Bemis–Murcko scaffold SMARTS is appended to the restricted set at stage&nbsp;3. The gate itself is implemented by <span style="font-family:var(--mono)">enforce_pharmacophore()</span>, called twice, at strategy validation (one example per SMIRKS) and during permutation (every candidate analog). Predicates: restricted atoms unchanged, ring count preserved, aromaticity preserved.</p>
 
     <p><sup>3</sup> <b>Chemistry validator coverage.</b> Six allowlist tables (H-bond donor / acceptor / π-stack / hydrophobic / salt-bridge / cation-π) map each functional-group family to its allowed interactions. Vision output that violates the chemistry tables is dropped before stage&nbsp;3.</p>
 
-    <p><sup>4</sup> <b>SMIRKS library scope.</b> 479 curated SMIRKS transformations across 22 categories (aromatic-ring swaps, amine modifications, carbonyl modifications, CNS penetration, nitrogen-heterocycle swaps, polarity adjustments, halogen substitutions, etc.). All entries carry <span style="font-family:var(--mono)">validated=True</span>, but validation is curator-asserted and not yet gated by an automated CI test — known limitation.</p>
+    <p><sup>4</sup> <b>SMIRKS library scope.</b> 479 curated SMIRKS transformations across 22 categories (aromatic-ring swaps, amine modifications, carbonyl modifications, CNS penetration, nitrogen-heterocycle swaps, polarity adjustments, halogen substitutions, etc.). All entries carry <span style="font-family:var(--mono)">validated=True</span>, but validation is curator-asserted and not yet gated by an automated CI test, known limitation.</p>
 
     <p><sup>5</sup> <b>Ranking metric.</b> The total_score is a weighted scalar sum across docking, ADMET liabilities, SYBA penalty, and structural alerts, multiplied by hard-filter penalties. Output is single-sorted; the field label "Pareto" is API-convention, not a real Pareto front. Honest framing: <em>weighted scalar penalty rank with SYBA as the synth-accessibility anchor.</em></p>
 
-    <p><sup>6</sup> <b>Project context.</b> A free-text input — for example <span style="font-family:var(--mono)">"CNS kinase, prioritize BBB"</span> or <span style="font-family:var(--mono)">"oral gram-positive antibacterial"</span>. Stage&nbsp;5's language model parses this into a typed <span style="font-family:var(--mono)">ContextAnalysis</span> record and writes its weights into the ranker and the ADMET-screen thresholds. Without context, the pipeline falls back to a generic balanced default.</p>
+    <p><sup>6</sup> <b>Project context.</b> A free-text input, for example <span style="font-family:var(--mono)">"CNS kinase, prioritize BBB"</span> or <span style="font-family:var(--mono)">"oral gram-positive antibacterial"</span>. Stage&nbsp;5's language model parses this into a typed <span style="font-family:var(--mono)">ContextAnalysis</span> record and writes its weights into the ranker and the ADMET-screen thresholds. Without context, the pipeline falls back to a generic balanced default.</p>
   </div>
 
   <!-- OUTPUTS BAR removed: outputs now appears as the last grid cell to keep the snake compact. -->

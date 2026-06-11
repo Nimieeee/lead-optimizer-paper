@@ -25,8 +25,8 @@ class FunctionalGroupInteraction(BaseModel):
     hydroxyls cannot disambiguate which hydroxyl is restricted vs editable.
     """
     group_name: str = Field(..., description="e.g., 'amidine', 'carboxylic_acid', 'phenyl'")
-    residue: Optional[str] = Field(default=None, description="Legacy single-residue field — equals residues[0] when residues is non-empty.")
-    residues: List[str] = Field(default_factory=list, description="All contacting residues — e.g. ['ASN 244', 'GLU 291']")
+    residue: Optional[str] = Field(default=None, description="Legacy single-residue field, equals residues[0] when residues is non-empty.")
+    residues: List[str] = Field(default_factory=list, description="All contacting residues, e.g. ['ASN 244', 'GLU 291']")
     interaction_type: InteractionType = Field(default=InteractionType.HYDROPHOBIC)
     interaction_types: List[InteractionType] = Field(default_factory=list, description="All interaction types for this group, aligned with residues")
     confidence: float = Field(ge=0.0, le=1.0)
@@ -54,18 +54,18 @@ class ExposedGroup(BaseModel):
 class VisionAgentOutput(BaseModel):
     """What the Vision Agent returns (group names, NOT raw SMARTS).
 
-    Three orthogonal categories — a group belongs to EXACTLY one:
+    Three orthogonal categories, a group belongs to EXACTLY one:
       - restricted_groups: makes a visible protein contact in the LID
       - structural_core_groups: defines chemotype but no protein contact
       - target_groups: editable optimization site (default if unclear)
 
     Keeping STRUCTURAL_CORE separate from RESTRICTED was the architectural
-    fix for "single place optimizable except pharmacophore core" — the
+    fix for "single place optimizable except pharmacophore core", the
     Vision Agent was conflating "binding-essential" with "structurally
     embedded" and dumping both into RESTRICTED, leaving ≤2 editable sites.
 
     `scaffold_atoms` are atom indices the vision agent flagged as part of
-    the structural core — modifying them would change the scaffold identity.
+    the structural core, modifying them would change the scaffold identity.
     These are MERGED with RDKit's deterministic Bemis-Murcko atoms; either
     source can flag an atom.
     """

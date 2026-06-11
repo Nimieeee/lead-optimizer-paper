@@ -77,7 +77,7 @@ FUNCTIONAL_GROUP_SMARTS = {
     "dihydrobenzofuran": "c1ccc2c(c1)CO2",
     "chromene": "c1ccc2c(c1)OCO2",
 
-    # Audit gap fixes (2026-06-06) — medchem groups missing from coverage:
+    # Audit gap fixes (2026-06-06), medchem groups missing from coverage:
     # Nitro: RDKit canonicalises -NO2 as [N+](=O)[O-]; pattern matches both forms
     "nitro": "[$([NX3](=O)=O),$([N+](=O)[O-])]",
     "primary_nitro": "[CX4][$([NX3](=O)=O),$([N+](=O)[O-])]",
@@ -91,7 +91,7 @@ FUNCTIONAL_GROUP_SMARTS = {
     "alkyne": "[CX2]#[CX2]",
     "alkene": "[CX3]=[CX3]",
     "vinyl": "[CH2]=[CH]",
-    "aziridine": "C1CN1",  # 3-membered N ring (same SMARTS as azetidine — RDKit will match both, downstream uses the wider definition)
+    "aziridine": "C1CN1",  # 3-membered N ring (same SMARTS as azetidine, RDKit will match both, downstream uses the wider definition)
     "tert_butyl": "C(C)(C)C",
     "trifluoromethylsulfone": "[S](=O)(=O)C(F)(F)F",
     "aryl_sulfonamide": "c[SX4](=O)(=O)[NX3]",
@@ -124,16 +124,16 @@ FUNCTIONAL_GROUP_SMARTS = {
     # sites to the auto-classify path so the Optimization Agent + fallback
     # pulls in the matching SMIRKS (AROM_001-006 for aromatic_h, etc.).
     #
-    # aromatic_h: any aromatic carbon with exactly one implicit H — the
+    # aromatic_h: any aromatic carbon with exactly one implicit H, the
     # classic medchem substitution vector. Matches 6+ positions on
     # typical biaryl scaffolds.
     "aromatic_h": "[cH]",
     # hydroxymethyl: -CH2-OH on a NON-aromatic anchor only. The benzylic
-    # case is handled by `benzylic_alcohol` — making this overlap-free
+    # case is handled by `benzylic_alcohol`, making this overlap-free
     # prevents the Vision Agent from triple-classifying a single Ar-CH2-OH
     # as hydroxyl + benzylic_alcohol + hydroxymethyl (verified 2026-06-09).
     "hydroxymethyl": "[CX4H2;!$([CX4H2]c);!$([CX4H2]a)][OX2H1]",
-    # alpha_methyl: a methyl on a tetrahedral carbon (not in a ring) —
+    # alpha_methyl: a methyl on a tetrahedral carbon (not in a ring) ,
     # exposes the geometric per-methyl decoration sites that gem_dimethyl
     # collapses into one site.
     "alpha_methyl": "[CH3][CX4]",
@@ -157,7 +157,7 @@ def compute_murcko_scaffold(mol: Chem.Mol) -> Tuple[Set[int], str]:
 
     Why this matters: SMIRKS-based permutation will happily destroy ring atoms if
     a transformation matches. Adding the scaffold pattern to restricted_smarts
-    causes enforce_pharmacophore to reject analogs that lost a scaffold atom —
+    causes enforce_pharmacophore to reject analogs that lost a scaffold atom ,
     catches the "scaffold methyl misclassified as decoration" failure mode.
     """
     if mol is None:
@@ -188,7 +188,7 @@ def _position_hint_from_2d(mol, atom_indices: Tuple[int, ...]) -> str:
 
     This gives the Vision Agent a stable anchor for disambiguating multiple
     matches of the same SMARTS (two phenyl rings, three methyls, etc.) that
-    correlates with what a chemist sees in the LID — without forcing the
+    correlates with what a chemist sees in the LID, without forcing the
     model to guess atom indices it can't see.
     """
     try:
@@ -240,7 +240,7 @@ def _label_instances(
     if len(matches) == 1:
         return [(name, matches[0], _position_hint_from_2d(mol, matches[0]))]
 
-    # Multiple matches — compute position hints and dedup by appending index
+    # Multiple matches, compute position hints and dedup by appending index
     hints = [_position_hint_from_2d(mol, m) for m in matches]
     seen: Dict[str, int] = {}
     labels = []
@@ -263,19 +263,19 @@ def pre_scan_molecule(lead_smiles: str) -> dict:
     group gets a unique label ("phenyl_left", "phenyl_right") so the Vision
     Agent can classify each instance separately. This solves the bug where
     a molecule with two phenyl rings had ONE classified as restricted (pi-
-    stack) and the OTHER as target — but the underlying SMARTS matched both,
+    stack) and the OTHER as target, but the underlying SMARTS matched both,
     so both got frozen.
 
     Returns:
       all: list of unique group names (each appears once even if multi-match)
-      labeled: list of (label, name, atom_indices, position_hint) — the
+      labeled: list of (label, name, atom_indices, position_hint), the
                authoritative per-instance enumeration. Use these as the
                unit of classification.
       core_rings: subset of `all` that are scaffold-forming heterocycles
       peripheral: subset of `all` NOT in CORE_SCAFFOLD_GROUPS
       scaffold_atoms: set of RDKit atom indices in the Bemis-Murcko scaffold
       scaffold_smarts: SMARTS of the Murcko scaffold
-      groups_with_indices: legacy [(name, atom_indices)] — preserved for
+      groups_with_indices: legacy [(name, atom_indices)], preserved for
                           backwards-compat with older callers
     """
     mol = Chem.MolFromSmiles(lead_smiles)
@@ -343,7 +343,7 @@ def _resolve_label(label_or_name: str, labeled_instances: List[Dict]) -> Tuple[s
         # Unambiguous
         return matches_for_name[0].get("name", norm), list(matches_for_name[0].get("atom_indices") or [])
     if len(matches_for_name) > 1:
-        # Ambiguous — multiple instances under the same bare name
+        # Ambiguous, multiple instances under the same bare name
         return matches_for_name[0].get("name", norm), None
     # Unknown
     return norm, None
@@ -396,7 +396,7 @@ def build_smarts_from_groups(
       the Vision Agent's STRUCTURAL_CORE category own that call.
     - SOFT Murcko scaffold gate: scaffold_smarts is NOT appended to
       restricted_smarts. Instead, enforce_pharmacophore checks ring-topology
-      preservation (count + aromaticity) rather than exact SMARTS match —
+      preservation (count + aromaticity) rather than exact SMARTS match ,
       this allows methyl→ethyl on a scaffold carbon while still rejecting
       ring-system destruction.
     """
@@ -423,7 +423,7 @@ def build_smarts_from_groups(
     # Layer 4 safety default: when the model puts the same base name in BOTH
     # restricted and target (e.g. "phenyl" both ways without distinguishing
     # instances via labels), trust the chemist's "everything else is editable"
-    # policy — drop the restricted entry and route to target. The
+    # policy, drop the restricted entry and route to target. The
     # ring-topology safety net in enforce_pharmacophore catches catastrophic
     # cases.
     target_base_names: Set[str] = set()
@@ -445,7 +445,7 @@ def build_smarts_from_groups(
             logger.warning(f"⚠️ Skipping unknown restricted group: {norm_base}")
             continue
         if detected_set and norm_base not in detected_set:
-            logger.warning(f"⚠️ Vision Agent hallucinated '{norm_base}' — not found in molecule by RDKit. Skipping.")
+            logger.warning(f"⚠️ Vision Agent hallucinated '{norm_base}', not found in molecule by RDKit. Skipping.")
             continue
         # Layer 4 SAFETY DEFAULT: same base name in both lists with no
         # per-instance distinction → route to TARGET.
@@ -458,7 +458,7 @@ def build_smarts_from_groups(
         )
         if ambiguous_dual_classification:
             logger.warning(
-                f"⚠️ '{norm_base}' classified as BOTH restricted and target without per-instance labels — "
+                f"⚠️ '{norm_base}' classified as BOTH restricted and target without per-instance labels, "
                 f"safety default: routing to TARGET (chemist policy: 'everything else editable'). "
                 f"If the contact is real, override in the human-review panel."
             )
@@ -476,7 +476,7 @@ def build_smarts_from_groups(
 
         # Per-instance SMARTS when labels gave us specific atom indices.
         # Falls back to the generic SMARTS when the label was ambiguous or
-        # absent — preserving backward compatibility with callers that
+        # absent, preserving backward compatibility with callers that
         # don't yet pass labeled_instances.
         if atom_indices:
             instance_smarts = _atom_set_smarts(mol, atom_indices)
@@ -557,7 +557,7 @@ def build_smarts_from_groups(
     # "auto-restrict anything whose atoms are in the Murcko scaffold" rule
     # was over-aggressive and froze legitimate SAR vectors (alpha-methyl,
     # ring-decorating gem-dimethyl). The Vision Agent's STRUCTURAL_CORE
-    # category now owns that call — if the model didn't flag a group as
+    # category now owns that call, if the model didn't flag a group as
     # structural_core, we trust it's editable.
     if detected_groups:
         logger.debug(f"DEBUG: SMARTS Builder - Auto-classifying {len(detected_groups)} unclaimed groups...")
@@ -573,7 +573,7 @@ def build_smarts_from_groups(
 
             if name in CORE_SCAFFOLD_GROUPS:
                 # Named heterocycles defining the scaffold (pyridine, indole, etc.)
-                # stay restricted even if vision agent missed them — these are
+                # stay restricted even if vision agent missed them, these are
                 # unambiguously chemotype-defining.
                 if smarts not in restricted_parts:
                     logger.debug(f"DEBUG:   AUTO-RESTRICTED (core ring): {name}")
@@ -693,7 +693,7 @@ def _ring_topology_profile(mol: Chem.Mol) -> Tuple[int, int, int]:
     """Cheap topology fingerprint used by the soft scaffold gate.
 
     Returns (total_rings, aromatic_rings, fused_atoms). Two molecules with
-    the same triple have isomorphic ring systems at the topology level —
+    the same triple have isomorphic ring systems at the topology level ,
     they may differ in decoration but the chemotype identity is preserved.
     """
     if mol is None:
@@ -722,11 +722,11 @@ def enforce_pharmacophore(
     """Verify the analog preserves restricted pharmacophore + scaffold topology.
 
     Two checks:
-      1. EVERY restricted SMARTS must still match the analog (hard contract —
+      1. EVERY restricted SMARTS must still match the analog (hard contract ,
          these are binding-essential groups that SMIRKS must not destroy).
       2. If `lead_smiles` is provided, the analog's ring topology profile
          (total rings, aromatic rings, fused atoms) must match the lead's.
-         This is the SOFT scaffold gate — it allows methyl→ethyl on a
+         This is the SOFT scaffold gate, it allows methyl→ethyl on a
          scaffold carbon (same ring topology) but rejects ring-system
          destruction (different topology).
 

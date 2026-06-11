@@ -18,7 +18,7 @@ import base64
 from io import BytesIO
 
 # -------------------------------------------------------------------
-# Synthetic-accessibility display helpers — unified on SYBA primary.
+# Synthetic-accessibility display helpers, unified on SYBA primary.
 #
 # Background: the platform exposed three synth-accessibility metrics
 # (Ertl SAScore on a 1–10 scale, GASA hard_probability as a percentage,
@@ -26,7 +26,7 @@ from io import BytesIO
 # couldn't tell which to trust, and the metrics sometimes pointed in
 # opposite directions for sp3-rich analogs of planar aromatic leads.
 #
-# Resolution: standardize on SYBA across the whole platform — both
+# Resolution: standardize on SYBA across the whole platform, both
 # the lead optimizer report AND the ADMET engine display. SYBA is
 # signed (positive = Easy, negative = Hard); it was already chosen
 # as the primary classifier in synth_accessibility_service.py.
@@ -36,7 +36,7 @@ from io import BytesIO
 def _syba_label(syba_score: Optional[float]) -> str:
     """Return 'Easy' / 'Borderline' / 'Hard' for a signed SYBA score."""
     if syba_score is None:
-        return "—"
+        return ","
     if syba_score > 5:
         return "Easy"
     if syba_score < -5:
@@ -47,7 +47,7 @@ def _syba_label(syba_score: Optional[float]) -> str:
 def _syba_render(syba_score: Optional[float]) -> str:
     """Plain-text inline rendering used in tables: 'Synth: +12.3 (Easy)'."""
     if syba_score is None:
-        return "—"
+        return ","
     sign = "+" if syba_score >= 0 else ""
     return f"Synth: {sign}{syba_score:.1f} ({_syba_label(syba_score)})"
 
@@ -79,7 +79,7 @@ def _syba_block(syba_score: Optional[float], sa_score: Optional[float] = None) -
     )
 
 
-def _syba_short(gasa: Dict, fallback: str = "—") -> str:
+def _syba_short(gasa: Dict, fallback: str = ",") -> str:
     """One-cell rendering for the comparative table / trading card."""
     if not isinstance(gasa, dict):
         return fallback
@@ -87,7 +87,7 @@ def _syba_short(gasa: Dict, fallback: str = "—") -> str:
     if syba is not None:
         sign = "+" if syba >= 0 else ""
         return f"{sign}{syba:.1f} ({_syba_label(syba)})"
-    # Fallback when SYBA unavailable — show Ertl SAScore clearly labelled.
+    # Fallback when SYBA unavailable, show Ertl SAScore clearly labelled.
     sa = gasa.get("sa_score")
     if sa is not None:
         return f"{sa:.1f}/10 (Ertl fallback)"
@@ -313,7 +313,7 @@ async def generate_report(
     secondary_targets: List[Dict] = None,  # type: ignore
     search_space_size: int = 0,
     methodology_notes: str = "",
-    lead_sa_score: Optional[float] = None,   # legacy Ertl SAScore — kept for compat, not displayed
+    lead_sa_score: Optional[float] = None,   # legacy Ertl SAScore, kept for compat, not displayed
     lead_syba_score: Optional[float] = None  # primary synth metric (signed: + easier, − harder)
 ) -> Dict[str, str]:
     """
@@ -354,7 +354,7 @@ async def generate_report(
     else:
         narrative = strategy_narrative
     
-    # 4. Create HTML — landscape A4 with elite typography + brand palette.
+    # 4. Create HTML, landscape A4 with elite typography + brand palette.
     # ~28 cm horizontal width fits side-by-side structure + property panel
     # without cramping. Page numbers + section headers via @page rules.
     from datetime import datetime as _dt
@@ -381,9 +381,9 @@ async def generate_report(
     /* ── Cover page ──────────────────────────────────────────────────── */
     /* WeasyPrint compatibility notes (2026-06-09):
        - `100vh` is a viewport unit; print has no viewport. Use cm.
-       - `clip-path: polygon(...)` not supported — replaced with a
+       - `clip-path: polygon(...)` not supported, replaced with a
          simpler skewed border via a CSS gradient mask.
-       - `backdrop-filter: blur(...)` not supported — drop the effect;
+       - `backdrop-filter: blur(...)` not supported, drop the effect;
          the white background already provides separation.
        - `display: flex` works in WeasyPrint 60+ for basic stacking;
          keep flex for column layouts but avoid `justify-content`
@@ -403,7 +403,7 @@ async def generate_report(
             linear-gradient(125deg, transparent 0%, transparent 70%, rgba(215,113,42,0.92) 70%, rgba(194,84,32,0.92) 100%) top right / 60% 6cm no-repeat,
             linear-gradient(135deg, #fff8f1 0%, #ffffff 50%, #fff5e8 100%);
     }
-    /* .cover-band — REMOVED. Its visual is now a background layer on .cover.
+    /* .cover-band, REMOVED. Its visual is now a background layer on .cover.
        Keep an empty rule for backwards-compat if the HTML still has the div. */
     .cover-band { display: none; }
     .cover-brand {
@@ -444,7 +444,7 @@ async def generate_report(
         background: rgba(255, 255, 255, 0.95);
         border-radius: 14px;
         border: 1px solid #f1d6b3;
-        /* backdrop-filter removed — WeasyPrint doesn't support it; the
+        /* backdrop-filter removed, WeasyPrint doesn't support it; the
            opaque white background provides the separation. */
     }
     .cover-lead-img {
@@ -597,13 +597,13 @@ async def generate_report(
         padding: 0.6cm;
         /* WeasyPrint debug fix (2026-06-10): page-break-inside: avoid on
            .analog-card was THE assert-not-page-empty trigger. Verified by
-           bisect against report_38412455.html — removing this one rule
+           bisect against report_38412455.html, removing this one rule
            makes WeasyPrint succeed (869KB styled PDF) while keeping every
            other style intact. Reason: a card with min-height: 9cm +
            page-break-inside: avoid + embedded base64 image enters a
            "won't-fit → push to new page → empty page" loop when the
            previous card consumed most of the current page. The trade-off
-           is that some cards may split across a page boundary — acceptable
+           is that some cards may split across a page boundary, acceptable
            given the alternative is xhtml2pdf's broken layout. */
         position: relative;
         min-height: 9cm;
@@ -822,7 +822,7 @@ async def generate_report(
                 <h3>Secondary Targets (Unlocked Restricted Groups)</h3>
                 <p>The following restricted groups were unlocked for conservative modification due to weak binding interactions:</p>
                 <ul>
-                    {''.join([f'<li><strong>{t["group_name"]}</strong> — {t["reason"]}</li>' for t in secondary_targets])}
+                    {''.join([f'<li><strong>{t["group_name"]}</strong>, {t["reason"]}</li>' for t in secondary_targets])}
                 </ul>
                 ''' if secondary_targets else ''}
 
@@ -864,7 +864,7 @@ async def generate_report(
     # Two cards per landscape page, structure on left, properties on right.
     html_content += """
         <div class="page-section">
-            <h2>Top 10 Candidates — Trading Cards</h2>
+            <h2>Top 10 Candidates, Trading Cards</h2>
             <p style="color: #64748b; margin-bottom: 0.4cm;">
                 Elite analogs ranked by Pareto score. Each card shows the structural
                 modification, ADMET deltas versus the lead, and a synthetic-accessibility
@@ -889,7 +889,7 @@ async def generate_report(
 
         admet = a.get("admet_results", {})
         # Audit 2026-06-09: was reading "gasa_score" (an int aliased at the
-        # top level), not "GASA" (the dict). That made every analog show "—"
+        # top level), not "GASA" (the dict). That made every analog show ","
         # for synth. Now reads the GASA dict, with the top-level syba_score
         # as a fallback for analogs persisted before the field rename.
         gasa = admet.get("GASA") or admet.get("gasa_score") or {}
@@ -897,9 +897,9 @@ async def generate_report(
             gasa = {}
         if not gasa.get("syba_score") and a.get("syba_score") is not None:
             gasa = {**gasa, "syba_score": a.get("syba_score"), "sa_score": a.get("sa_score")}
-        sa_display = _syba_short(gasa, fallback="—")
+        sa_display = _syba_short(gasa, fallback=",")
 
-        mods_html = "; ".join(a.get('modifications', [])) or "—"
+        mods_html = "; ".join(a.get('modifications', [])) or ","
         smiles_short = a['smiles'] if len(a['smiles']) <= 90 else a['smiles'][:87] + "..."
 
         html_content += f"""
@@ -924,7 +924,7 @@ async def generate_report(
         </div>
     """
 
-    # ─────────────────── COMPARATIVE TABLE — ranks 1-50 ───────────────────
+    # ─────────────────── COMPARATIVE TABLE, ranks 1-50 ───────────────────
     html_content += """
         <div class="page-section">
             <h2>Comparative Candidate Table</h2>
@@ -962,7 +962,7 @@ async def generate_report(
 
         admet = a.get("admet_results", {})
         # Audit 2026-06-09: was reading "gasa_score" (an int aliased at the
-        # top level), not "GASA" (the dict). That made every analog show "—"
+        # top level), not "GASA" (the dict). That made every analog show ","
         # for synth. Now reads the GASA dict, with the top-level syba_score
         # as a fallback for analogs persisted before the field rename.
         gasa = admet.get("GASA") or admet.get("gasa_score") or {}
@@ -970,7 +970,7 @@ async def generate_report(
             gasa = {}
         if not gasa.get("syba_score") and a.get("syba_score") is not None:
             gasa = {**gasa, "syba_score": a.get("syba_score"), "sa_score": a.get("sa_score")}
-        sa_display = _syba_short(gasa, fallback="—")
+        sa_display = _syba_short(gasa, fallback=",")
 
         html_content += f"""
                 <tr>
@@ -991,11 +991,11 @@ async def generate_report(
         </div>
     """
     
-    # ─────────────────── APPENDIX — Ranks 51+ ───────────────────
+    # ─────────────────── APPENDIX, Ranks 51+ ───────────────────
     if len(top_analogs) > 50:
         html_content += f"""
         <div class="page-section">
-            <h2>Appendix — Additional Candidates (Rank 51–{len(top_analogs)})</h2>
+            <h2>Appendix, Additional Candidates (Rank 51–{len(top_analogs)})</h2>
             <p style="color: #64748b; margin-bottom: 0.4cm;">
                 Summary table of additional analogs ranked beyond the top 50.
                 Full structural data is available in the attached SDF library.
@@ -1041,7 +1041,7 @@ async def generate_report(
                 (<em>Bioisosteres in Medicinal Chemistry</em>) and Wilson &amp; Gisvold.</p>
 
                 <p><strong>Synthetic Accessibility:</strong> Reported as the SYBA classifier score
-                (Vor&scaron;il&aacute;k et al., <em>J. Cheminform.</em> 2020, 12:35) — a naive Bayes classifier
+                (Vor&scaron;il&aacute;k et al., <em>J. Cheminform.</em> 2020, 12:35), a naive Bayes classifier
                 over ECFP4 fragments, AUC &gt; 0.81, where the signed score is positive for synthesizable molecules
                 and negative for hard-to-make molecules. SYBA outperforms the legacy Ertl SAScore (AUC ~0.79)
                 on standard benchmarks. Ertl SAScore is still computed internally as a cross-check and persisted
