@@ -1,0 +1,122 @@
+{
+  "provider": "opencode",
+  "model": "qwen3.7-max",
+  "n_reps": 8,
+  "n_ok": 0,
+  "n_json_valid": 0,
+  "json_validity_rate": 0.0,
+  "mean_jaccard_self": null,
+  "mean_restricted": 0.0,
+  "mean_target": 0.0,
+  "mean_runtime_s": 0.82,
+  "total_usage_in": 0,
+  "total_usage_out": 0,
+  "errors": [
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+    "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}"
+  ],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 1.15,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 1,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.66,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 2,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.65,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 3,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.88,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 4,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.67,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 5,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.95,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 6,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.89,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 7,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.71,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    }
+  ]
+}

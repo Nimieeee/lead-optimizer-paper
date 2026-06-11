@@ -1,0 +1,271 @@
+{
+  "provider": "openai",
+  "model": "gpt-4.1",
+  "n_leads": 4,
+  "n_reps": 3,
+  "mean_total_score": 0.333,
+  "json_validity_rate": 0.917,
+  "mean_runtime_s": 37.78,
+  "total_usage_in": 7230,
+  "total_usage_out": 23685,
+  "per_lead": [
+    {
+      "lead_id": "LEAD_001",
+      "name": "Compound 25014 (DYRK1A)",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 2,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 34.04,
+          "usage_in": 604,
+          "usage_out": 2194,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 28.06,
+          "usage_in": 604,
+          "usage_out": 1909,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": false,
+          "runtime_s": 34.27,
+          "usage_in": 604,
+          "usage_out": 2149,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_002",
+      "name": "Linezolid",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 22.88,
+          "usage_in": 618,
+          "usage_out": 1848,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 22.0,
+          "usage_in": 618,
+          "usage_out": 2027,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 11,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 49.54,
+          "usage_in": 618,
+          "usage_out": 1945,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_003",
+      "name": "Ibuprofen",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 57.27,
+          "usage_in": 606,
+          "usage_out": 1857,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 51.18,
+          "usage_in": 606,
+          "usage_out": 1888,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 66.57,
+          "usage_in": 606,
+          "usage_out": 1966,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_004",
+      "name": "Aspirin",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 24.87,
+          "usage_in": 582,
+          "usage_out": 1777,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 34.65,
+          "usage_in": 582,
+          "usage_out": 2073,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 28.02,
+          "usage_in": 582,
+          "usage_out": 2052,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    }
+  ]
+}

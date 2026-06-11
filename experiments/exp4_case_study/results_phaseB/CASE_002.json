@@ -1,0 +1,282 @@
+{
+  "case_id": "CASE_002",
+  "name": "Linezolid (oxazolidinone)",
+  "lead_smiles": "CC(=O)NC[C@H]1CN(c2ccc(N3CCOCC3)c(F)c2)C(=O)O1",
+  "runtime_s": 46.31,
+  "lead_profile": {
+    "smiles": "CC(=O)NC[C@H]1CN(c2ccc(N3CCOCC3)c(F)c2)C(=O)O1",
+    "sa_score": null,
+    "syba_score": null
+  },
+  "pipeline_attrition": {
+    "total_strategies_proposed": 20,
+    "total_analogs_generated": 71,
+    "total_passed_prefilter": 24,
+    "total_passed_admet": 24,
+    "diversity_clusters_after_ranking": 22
+  },
+  "top_analogs_top10": [
+    {
+      "smiles": "CC(=O)NC[C@H]1CN(c2nc(F)c(N3CCOCC3)c(F)n2)C(=O)O1",
+      "modifications": [
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl",
+        "Aromatic ortho-fluoro shielding: Auto-selected Aromatic ortho-fluoro shielding for methyl"
+      ],
+      "pareto_rank": 1,
+      "pareto_score": 0.5904,
+      "sa_score": 3.511,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 357.31700000000006,
+        "logP": 0.05269999999999908,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.7608624297622626
+      }
+    },
+    {
+      "smiles": "CC(=O)NC[C@H]1CN(c2ncc(N3CCOCC3)c(F)n2)C(=O)O1",
+      "modifications": [
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl"
+      ],
+      "pareto_rank": 2,
+      "pareto_score": 0.5892,
+      "sa_score": 3.306,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 339.327,
+        "logP": -0.0864000000000007,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.7660456331544261
+      }
+    },
+    {
+      "smiles": "CC(=O)NC[C@H]1CN(c2nc(C)c(N3CCOCC3)c(F)n2)C(=O)O1",
+      "modifications": [
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl",
+        "Aromatic ortho-methyl shielding: Auto-selected Aromatic ortho-methyl shielding for methyl"
+      ],
+      "pareto_rank": 3,
+      "pareto_score": 0.5785,
+      "sa_score": 3.383,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 353.35400000000004,
+        "logP": 0.22201999999999944,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.7736574528221707
+      }
+    },
+    {
+      "smiles": "CNC(=O)C[C@H]1CN(c2nc(F)c(N3CCOCC3)c(F)n2)C(=O)O1",
+      "modifications": [
+        "Amide to reversed amide: Auto-selected Amide to reversed amide for amide",
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl",
+        "Aromatic ortho-fluoro shielding: Auto-selected Aromatic ortho-fluoro shielding for methyl"
+      ],
+      "pareto_rank": 4,
+      "pareto_score": 0.5752,
+      "sa_score": 3.61,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 357.31700000000006,
+        "logP": 0.05269999999999908,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.7608624297622626
+      }
+    },
+    {
+      "smiles": "CC(=O)NC[C@H]1CN(c2cc(F)c(N3CCOCC3)cc2F)C(=O)O1",
+      "modifications": [
+        "Aromatic ortho-fluoro shielding: Auto-selected Aromatic ortho-fluoro shielding for methyl"
+      ],
+      "pareto_rank": 5,
+      "pareto_score": 0.5748,
+      "sa_score": 2.965,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 355.34100000000007,
+        "logP": 1.2626999999999997,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.8806218691670182
+      }
+    },
+    {
+      "smiles": "CNC(=O)C[C@H]1CN(c2ncc(N3CCOCC3)c(F)n2)C(=O)O1",
+      "modifications": [
+        "Amide to reversed amide: Auto-selected Amide to reversed amide for amide",
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl"
+      ],
+      "pareto_rank": 6,
+      "pareto_score": 0.5698,
+      "sa_score": 3.408,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 339.327,
+        "logP": -0.0864000000000007,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.7660456331544261
+      }
+    },
+    {
+      "smiles": "CC(=O)NC[C@H]1CN(c2nnc(N3CCOCC3)c(F)c2C)C(=O)O1",
+      "modifications": [
+        "Phenyl to pyridazine (1,2-diazine): Auto-selected Phenyl to pyridazine (1,2-diazine) for phenyl",
+        "Aromatic ortho-methyl shielding: Auto-selected Aromatic ortho-methyl shielding for methyl"
+      ],
+      "pareto_rank": 7,
+      "pareto_score": 0.5665,
+      "sa_score": 3.333,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 353.35400000000004,
+        "logP": 0.22201999999999944,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.827033924288201
+      }
+    },
+    {
+      "smiles": "CNC(=O)C[C@H]1CN(c2nc(C)c(N3CCOCC3)c(F)n2)C(=O)O1",
+      "modifications": [
+        "Amide to reversed amide: Auto-selected Amide to reversed amide for amide",
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl",
+        "Aromatic ortho-methyl shielding: Auto-selected Aromatic ortho-methyl shielding for methyl"
+      ],
+      "pareto_rank": 8,
+      "pareto_score": 0.5545,
+      "sa_score": 3.481,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 353.35400000000004,
+        "logP": 0.22201999999999944,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.7736574528221707
+      }
+    },
+    {
+      "smiles": "CNC(=O)C[C@H]1CN(c2nnc(N3CCOCC3)c(F)c2C)C(=O)O1",
+      "modifications": [
+        "Amide to reversed amide: Auto-selected Amide to reversed amide for amide",
+        "Phenyl to pyridazine (1,2-diazine): Auto-selected Phenyl to pyridazine (1,2-diazine) for phenyl",
+        "Aromatic ortho-methyl shielding: Auto-selected Aromatic ortho-methyl shielding for methyl"
+      ],
+      "pareto_rank": 9,
+      "pareto_score": 0.5449,
+      "sa_score": 3.432,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 353.35400000000004,
+        "logP": 0.22201999999999944,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.827033924288201
+      }
+    },
+    {
+      "smiles": "CNC(=O)C[C@H]1CN(c2cc(F)c(N3CCOCC3)nn2)C(=O)O1",
+      "modifications": [
+        "Amide to reversed amide: Auto-selected Amide to reversed amide for amide",
+        "Phenyl to pyridazine (1,2-diazine): Auto-selected Phenyl to pyridazine (1,2-diazine) for phenyl"
+      ],
+      "pareto_rank": 10,
+      "pareto_score": 0.5377,
+      "sa_score": 3.311,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 339.32700000000006,
+        "logP": -0.08639999999999981,
+        "hydrogen_bond_acceptors": 7,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.8188969470409387
+      }
+    }
+  ],
+  "used_lid": false,
+  "search_space_size": 71,
+  "iterations_used": 1,
+  "errors": [],
+  "methodology_notes_excerpt": "No LID provided. All detected functional groups treated as modifiable targets. Expanded Search Space: 71 combinations tested (cap: 15,000).",
+  "report_pdf_path": "/var/www/benchside-backend/backend/data/reports/report_30961479.pdf",
+  "sdf_path": "/var/www/benchside-backend/backend/data/reports/report_30961479.sdf",
+  "progress_events_count": 15,
+  "progress_events_excerpt": [
+    {
+      "stage": "vision",
+      "pct": 5,
+      "message": "No LID provided. All functional groups modifiable.",
+      "t": 5360920.825339974
+    },
+    {
+      "stage": "vision_review",
+      "pct": 10,
+      "message": "No LID \u2014 all groups modifiable. Proceeding to ADMET profiling.",
+      "t": 5360920.825429809
+    },
+    {
+      "stage": "admet_profile",
+      "pct": 15,
+      "message": "Profiling lead compound",
+      "t": 5360920.826425602
+    },
+    {
+      "stage": "context_analysis",
+      "pct": 20,
+      "message": "Analyzing project context for ADMET priorities",
+      "t": 5360921.140276646
+    },
+    {
+      "stage": "optimization",
+      "pct": 25,
+      "message": "Evaluating bioisosteric replacement strategies",
+      "t": 5360924.331771391
+    },
+    "...",
+    {
+      "stage": "admet_screen",
+      "pct": 70,
+      "message": "ADMET screening 24 analogs",
+      "t": 5360930.170619273
+    },
+    {
+      "stage": "admet_screen",
+      "pct": 75,
+      "message": "Assessing synthetic accessibility for 24 analogs",
+      "t": 5360931.137803145
+    },
+    {
+      "stage": "ranking",
+      "pct": 85,
+      "message": "Context-aware diversity analysis and ranking",
+      "t": 5360931.419080141
+    },
+    {
+      "stage": "report",
+      "pct": 95,
+      "message": "Generating PhD-grade report and files",
+      "t": 5360931.456546856
+    },
+    {
+      "stage": "done",
+      "pct": 100,
+      "message": "Complete",
+      "t": 5360967.123030828
+    }
+  ]
+}

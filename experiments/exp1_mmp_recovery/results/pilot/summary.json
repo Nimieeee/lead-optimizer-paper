@@ -1,0 +1,40 @@
+{
+  "n_pairs": 30,
+  "n_B_recovered_exact": 16,
+  "any_recovery_rate": 0.5333333333333333,
+  "recall_at_k": {
+    "1": 0.5333333333333333,
+    "5": 0.5333333333333333,
+    "10": 0.5333333333333333,
+    "50": 0.5333333333333333,
+    "100": 0.5333333333333333,
+    "500": 0.5333333333333333
+  },
+  "mean_analogs_per_pair": 118.03333333333333,
+  "mean_unique_per_pair": 74.5,
+  "mean_best_tanimoto": 0.7337170855746707,
+  "median_runtime_s": 0.7543120409827679,
+  "smirks_recovery_counts": {
+    "META025": 3,
+    "ACID_002": 2,
+    "SLFA_003": 2,
+    "AMINE_001": 2,
+    "STER018": 2,
+    "CNS_008": 2,
+    "PHEN006": 2,
+    "AROM017": 1,
+    "RING_110": 1,
+    "NHEX003": 1,
+    "HALO_002": 1,
+    "OSUB_005": 1,
+    "FLUO004": 1,
+    "BENZ_005": 1,
+    "SLFA012": 1,
+    "HALO009": 1,
+    "SLFA_001": 1,
+    "CNS_013": 1,
+    "CARB_003": 1,
+    "CARB_009": 1
+  },
+  "total_runtime_s": 5.81
+}

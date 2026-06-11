@@ -1,0 +1,122 @@
+{
+  "provider": "opencode",
+  "model": "glm-5.1",
+  "n_reps": 8,
+  "n_ok": 0,
+  "n_json_valid": 0,
+  "json_validity_rate": 0.0,
+  "mean_jaccard_self": null,
+  "mean_restricted": 0.0,
+  "mean_target": 0.0,
+  "mean_runtime_s": 0.89,
+  "total_usage_in": 0,
+  "total_usage_out": 0,
+  "errors": [
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+    "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}"
+  ],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.79,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 1,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.97,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 2,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.83,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 3,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.8,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 4,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.81,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 5,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 1.03,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 6,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 0.79,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 7,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 1.09,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    }
+  ]
+}

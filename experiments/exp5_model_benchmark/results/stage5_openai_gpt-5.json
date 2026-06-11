@@ -1,0 +1,322 @@
+{
+  "provider": "openai",
+  "model": "gpt-5",
+  "n_contexts": 4,
+  "n_reps": 3,
+  "mean_rubric_score": 0.513,
+  "json_validity_rate": 1.0,
+  "mean_runtime_s": 51.72,
+  "total_usage_in": 9291,
+  "total_usage_out": 45603,
+  "per_context": [
+    {
+      "context_id": "CTX_001",
+      "context_label": "CNS kinase, prioritize BBB",
+      "n_reps": 3,
+      "rubric_mean": 0.792,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 31.51,
+          "usage_in": 783,
+          "usage_out": 3446,
+          "rubric": {
+            "valid": true,
+            "score": 3.5,
+            "max_score": 4.0,
+            "normalized": 0.875,
+            "n_priorities_returned": 11,
+            "details": {
+              "BBB_Martins": "found in top-5",
+              "tpsa": "found in top-5",
+              "logP": "found in top-5",
+              "hardstop_hERG": "flagged",
+              "hardstop_Skin_Reaction": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 43.5,
+          "usage_in": 783,
+          "usage_out": 4743,
+          "rubric": {
+            "valid": true,
+            "score": 3.5,
+            "max_score": 4.0,
+            "normalized": 0.875,
+            "n_priorities_returned": 11,
+            "details": {
+              "BBB_Martins": "found in top-5",
+              "tpsa": "found in top-5",
+              "logP": "found in top-5",
+              "hardstop_hERG": "flagged",
+              "hardstop_Skin_Reaction": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 47.78,
+          "usage_in": 783,
+          "usage_out": 4240,
+          "rubric": {
+            "valid": true,
+            "score": 2.5,
+            "max_score": 4.0,
+            "normalized": 0.625,
+            "n_priorities_returned": 11,
+            "details": {
+              "BBB_Martins": "found in top-5",
+              "tpsa": "found in top-5",
+              "logP": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_Skin_Reaction": "missing"
+            }
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_002",
+      "context_label": "Oral gram-positive antibacterial",
+      "n_reps": 3,
+      "rubric_mean": 0.371,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 37.08,
+          "usage_in": 773,
+          "usage_out": 3819,
+          "rubric": {
+            "valid": true,
+            "score": 2.5,
+            "max_score": 4.5,
+            "normalized": 0.556,
+            "n_priorities_returned": 11,
+            "details": {
+              "Bioavailability_Ma": "MISSING",
+              "HIA_Hou": "found in top-5",
+              "Half_Life_Obach": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_DILI": "flagged",
+              "hardstop_AMES": "flagged"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 43.88,
+          "usage_in": 773,
+          "usage_out": 3093,
+          "rubric": {
+            "valid": true,
+            "score": 2.5,
+            "max_score": 4.5,
+            "normalized": 0.556,
+            "n_priorities_returned": 11,
+            "details": {
+              "Bioavailability_Ma": "MISSING",
+              "HIA_Hou": "found in top-5",
+              "Half_Life_Obach": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_DILI": "flagged",
+              "hardstop_AMES": "flagged"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 52.7,
+          "usage_in": 773,
+          "usage_out": 4384,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 4.5,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "Bioavailability_Ma": "MISSING",
+              "HIA_Hou": "MISSING",
+              "Half_Life_Obach": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_DILI": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_003",
+      "context_label": "Topical anti-inflammatory",
+      "n_reps": 3,
+      "rubric_mean": 0.556,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 111.83,
+          "usage_in": 777,
+          "usage_out": 4439,
+          "rubric": {
+            "valid": true,
+            "score": 2.0,
+            "max_score": 3.0,
+            "normalized": 0.667,
+            "n_priorities_returned": 11,
+            "details": {
+              "logP": "found in top-5",
+              "Skin_Reaction": "MISSING",
+              "hardstop_Skin_Reaction": "flagged",
+              "hardstop_Carcinogens_Lagunin": "flagged"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 43.45,
+          "usage_in": 777,
+          "usage_out": 3999,
+          "rubric": {
+            "valid": true,
+            "score": 1.0,
+            "max_score": 3.0,
+            "normalized": 0.333,
+            "n_priorities_returned": 11,
+            "details": {
+              "logP": "found in top-5",
+              "Skin_Reaction": "MISSING",
+              "hardstop_Skin_Reaction": "missing",
+              "hardstop_Carcinogens_Lagunin": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 101.33,
+          "usage_in": 777,
+          "usage_out": 3575,
+          "rubric": {
+            "valid": true,
+            "score": 2.0,
+            "max_score": 3.0,
+            "normalized": 0.667,
+            "n_priorities_returned": 11,
+            "details": {
+              "logP": "found in top-5",
+              "Skin_Reaction": "MISSING",
+              "hardstop_Skin_Reaction": "flagged",
+              "hardstop_Carcinogens_Lagunin": "flagged"
+            }
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_004",
+      "context_label": "Oncology kinase, accept moderate CYP",
+      "n_reps": 3,
+      "rubric_mean": 0.333,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 38.09,
+          "usage_in": 764,
+          "usage_out": 3639,
+          "rubric": {
+            "valid": true,
+            "score": 1.0,
+            "max_score": 3.0,
+            "normalized": 0.333,
+            "n_priorities_returned": 11,
+            "details": {
+              "QED": "MISSING",
+              "Bioavailability_Ma": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_AMES": "flagged"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 35.43,
+          "usage_in": 764,
+          "usage_out": 3065,
+          "rubric": {
+            "valid": true,
+            "score": 1.0,
+            "max_score": 3.0,
+            "normalized": 0.333,
+            "n_priorities_returned": 11,
+            "details": {
+              "QED": "MISSING",
+              "Bioavailability_Ma": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_AMES": "flagged"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 34.04,
+          "usage_in": 764,
+          "usage_out": 3161,
+          "rubric": {
+            "valid": true,
+            "score": 1.0,
+            "max_score": 3.0,
+            "normalized": 0.333,
+            "n_priorities_returned": 11,
+            "details": {
+              "QED": "MISSING",
+              "Bioavailability_Ma": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_AMES": "flagged"
+            }
+          },
+          "error": null
+        }
+      ]
+    }
+  ]
+}

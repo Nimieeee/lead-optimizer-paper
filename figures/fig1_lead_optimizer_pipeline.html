@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Figure 1 — Lead Optimizer pipeline</title>
+<style>
+  :root {
+    --ink: #1a1d24;
+    --ink-soft: #4a525e;
+    --ink-faint: #8a93a3;
+    --paper: #fdfcf9;
+    --rule: #d9d4c8;
+    --rule-soft: #ece8de;
+    --accent: #2e5266;
+    --accent-soft: #c9d6dd;
+    --substrate: #8a6b3f;
+    --substrate-soft: #ead9bf;
+    --defence: #6b4c8a;
+    --defence-soft: #d9cee5;
+    --critical: #a13f2f;
+    --critical-soft: #e6d0cc;
+    --serif: ui-serif, "Iowan Old Style", "Charter", Cambria, Georgia, serif;
+    --sans:  ui-sans-serif, -apple-system, "Inter", "Helvetica Neue", Arial, sans-serif;
+    --mono:  ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+  }
+  .figure {
+    width: 1280px;
+    margin: 40px auto;
+    background: var(--paper);
+    padding: 56px 64px 48px;
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+  .figure::before {
+    content: "Figure 1";
+    position: absolute; top: 18px; left: 32px;
+    font-family: var(--serif);
+    font-style: italic; font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+  .figure::after {
+    content: "Benchside lead-optimization workbench, code-grounded as of 2026-06";
+    position: absolute; bottom: 18px; right: 32px;
+    font-family: var(--serif);
+    font-style: italic; font-size: 10px;
+    color: var(--ink-faint);
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    margin: 0 0 6px 0;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    max-width: 950px;
+  }
+
+  /* Two-column body: pipeline on left, legend + io annotations on right */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* Pipeline column */
+  .pipeline {
+    position: relative;
+    padding: 0;
+  }
+
+  /* Vertical timeline spine */
+  .spine {
+    position: absolute;
+    left: 60px; top: 16px; bottom: 16px;
+    width: 1px;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      var(--rule) 4%,
+      var(--rule) 96%,
+      transparent 100%);
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    align-items: start;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .stage:last-child { margin-bottom: 0; }
+
+  .stage .num {
+    grid-column: 1;
+    width: 38px; height: 38px;
+    margin-left: 41px;     /* aligns over the spine */
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    z-index: 2;
+    position: relative;
+  }
+
+  .stage[data-tone="substrate"] .num { border-color: var(--substrate); color: var(--substrate); }
+  .stage[data-tone="defence"]   .num { border-color: var(--defence);   color: var(--defence); }
+  .stage[data-tone="agent"]     .num { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .stage .card {
+    grid-column: 2;
+    padding: 12px 16px 13px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    background: var(--paper);
+    border-radius: 2px;
+  }
+  .stage[data-tone="substrate"] .card { border-left-color: var(--substrate); background: linear-gradient(90deg, var(--substrate-soft) 0%, transparent 28%); }
+  .stage[data-tone="defence"]   .card { border-left-color: var(--defence);   background: linear-gradient(90deg, var(--defence-soft) 0%, transparent 28%); }
+  .stage[data-tone="agent"]     .card { border-left-color: var(--ink);       background: linear-gradient(90deg, #ececea 0%, transparent 28%); }
+
+  .stage .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    margin: 0 0 2px;
+  }
+  .stage .tech {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .stage .desc {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .stage .desc b {
+    font-weight: 600; color: var(--ink);
+  }
+  .stage .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    padding: 1px 6px;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    border-radius: 2px;
+    margin-right: 4px;
+    margin-top: 6px;
+    background: var(--paper);
+    letter-spacing: 0.02em;
+  }
+  .stage .badge.upstream { border-color: var(--substrate); color: var(--substrate); }
+  .stage .badge.bench    { border-color: var(--ink-soft);  color: var(--ink-soft); background: var(--paper); }
+  .stage .badge.gate     { border-color: var(--defence);   color: var(--defence); }
+  .stage .badge.critical { border-color: var(--critical);  color: var(--critical); background: var(--critical-soft); }
+
+  /* Input header */
+  .io {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    align-items: stretch;
+    margin-bottom: 12px;
+  }
+  .io .icon {
+    grid-column: 1;
+    width: 38px; height: 38px;
+    margin-left: 41px;
+    border: 1.5px dashed var(--ink-soft);
+    border-radius: 4px;
+    background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 13px; color: var(--ink-soft);
+    z-index: 2;
+    position: relative;
+  }
+  .io .card {
+    grid-column: 2;
+    padding: 10px 14px 11px;
+    border: 1px dashed var(--rule);
+    border-left: 3px solid var(--ink-soft);
+    background: transparent;
+  }
+  .io .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+  .io .desc {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin: 1px 0 0;
+  }
+
+  /* Right-hand annotations column */
+  .side {
+    padding-top: 4px;
+  }
+  .panel {
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    padding: 14px 16px 16px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+  .panel h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 8px 0;
+  }
+  .legend-row {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 9px;
+    align-items: start;
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+  .legend-row:last-child { margin-bottom: 0; }
+  .swatch {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    margin-top: 1px;
+  }
+  .swatch.agent     { background: var(--ink); }
+  .swatch.substrate { background: var(--paper); border: 1.5px solid var(--substrate); }
+  .swatch.defence   { background: var(--paper); border: 1.5px solid var(--defence); }
+  .swatch.bench     { background: var(--paper); border: 1.5px solid var(--ink); }
+  .legend-row .lbl {
+    color: var(--ink);
+  }
+  .legend-row .desc {
+    color: var(--ink-faint);
+    font-size: 10.5px;
+    margin-top: 1px;
+  }
+
+  .citelist {
+    list-style: none;
+    padding: 0; margin: 0;
+    font-size: 11px;
+  }
+  .citelist li {
+    margin-bottom: 6px;
+    padding-left: 14px;
+    position: relative;
+    color: var(--ink-soft);
+  }
+  .citelist li:last-child { margin-bottom: 0; }
+  .citelist li::before {
+    content: "›";
+    position: absolute; left: 0; top: -1px;
+    color: var(--ink-faint);
+    font-family: var(--serif);
+    font-weight: 600;
+  }
+  .citelist b { font-weight: 600; color: var(--ink); }
+  .citelist em { font-style: italic; font-family: var(--serif); }
+
+  .callout {
+    border: 1px solid var(--defence);
+    background: var(--defence-soft);
+    padding: 10px 14px;
+    border-radius: 2px;
+    font-size: 11px;
+    color: #3d2c52;
+    margin-bottom: 12px;
+  }
+  .callout h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 12px;
+    margin: 0 0 4px;
+    color: #3d2c52;
+  }
+
+  .footnotes {
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--serif);
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    columns: 2;
+    column-gap: 32px;
+  }
+  .footnotes p { margin: 0 0 8px; break-inside: avoid; }
+  .footnotes b { font-family: var(--sans); font-weight: 600; color: var(--ink); }
+  .footnotes sup { font-family: var(--sans); font-weight: 600; color: var(--accent); }
+
+  /* tiny vertical connector under each input dashed circle */
+  .io::after {
+    content: "";
+    position: absolute;
+    left: 60px;
+    top: 38px;
+    bottom: -12px;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  @page {
+    /* Tabloid landscape (11 x 17") — gives the long vertical pipeline
+       room without two-page paginations. Final manuscript can downscale
+       the image; rendering at this size keeps small-text crisp. */
+    size: 11in 17in;
+    margin: 0;
+  }
+  @media print {
+    html, body { background: white; margin: 0; padding: 0; }
+    .figure {
+      border: none;
+      margin: 0 auto;
+      padding: 28px 36px;
+      width: 11in;
+      max-width: 11in;
+      box-sizing: border-box;
+      page-break-inside: auto;
+    }
+    .figure::before, .figure::after {
+      color: #555;
+    }
+    .stage, .io, .panel { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="figure">
+  <h1 class="title">A vision-language agentic pipeline for lead optimization</h1>
+  <p class="subtitle">Twelve deterministic stages map a lead structure and its ligand-interaction diagram to a ranked set of synthetically-accessible analogs. Three substrate categories — upstream open-source primitives, Benchside-implemented logic, and defence-in-depth gates — are visually distinguished. Stage indices match <span style="font-family:var(--mono); font-size:10.5px">backend/app/services/lead_optimizer/orchestrator.py</span>.</p>
+
+  <div class="body">
+    <!-- LEFT: PIPELINE -->
+    <div class="pipeline">
+      <div class="spine"></div>
+
+      <!-- Inputs -->
+      <div class="io" style="position:relative;">
+        <div class="icon">in</div>
+        <div class="card">
+          <p class="name">Inputs</p>
+          <p class="desc">
+            <b>Lead SMILES</b> (required) &nbsp;·&nbsp;
+            <b>Ligand-interaction diagram</b> (PNG, optional) &nbsp;·&nbsp;
+            <b>Project context</b> (free-text — therapeutic indication, target class, constraints, e.g.&nbsp;<span style="font-family:var(--mono); font-size:10.5px">"CNS DYRK1A inhibitor, prioritize BBB"</span>) &nbsp;·&nbsp;
+            <b>Visual hints</b> &nbsp;·&nbsp; <b>Analog budget</b>
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="stage" data-tone="substrate">
+        <div class="num">1</div>
+        <div class="card">
+          <p class="name">Pre-scan</p>
+          <p class="tech">RDKit · MurckoScaffold · 90+ SMARTS substructure library</p>
+          <p class="desc">Computes Bemis–Murcko scaffold, detects functional groups, assigns 2D coordinates and per-instance position hints (<span style="font-family:var(--mono); font-size:10.5px">phenyl_left</span> vs <span style="font-family:var(--mono); font-size:10.5px">phenyl_right</span>).</p>
+          <span class="badge upstream">RDKit 2024.03</span>
+          <span class="badge bench">SMARTS lib</span>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage" data-tone="agent">
+        <div class="num">2</div>
+        <div class="card">
+          <p class="name">Vision Agent</p>
+          <p class="tech">Vision-language classification · structured JSON output</p>
+          <p class="desc">Classifies functional groups in the LID image into <b>RESTRICTED</b> (binding-contact) and <b>TARGET</b> (editable), with per-group residue and interaction-type lists. Outputs a strict-schema record that downstream stages validate before use.</p>
+          <span class="badge bench">two-category</span>
+          <span class="badge bench">per-instance</span>
+          <span class="badge bench">multi-residue</span>
+        </div>
+      </div>
+
+      <!-- Stage 2b — defence layer -->
+      <div class="stage" data-tone="defence">
+        <div class="num">2′</div>
+        <div class="card">
+          <p class="name">Chemistry validator</p>
+          <p class="tech">Allowlist tables: H-bond donor / acceptor / π-stack / hydrophobic</p>
+          <p class="desc"><b>Defence-in-depth.</b> Drops physically impossible classifications (e.g. methyl as H-bond donor, methoxy as donor). Drops groups absent from RDKit's detected set. Runs before any downstream stage trusts the vision call.</p>
+          <span class="badge gate">drop-on-fail</span>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage" data-tone="bench">
+        <div class="num">3</div>
+        <div class="card">
+          <p class="name">SMARTS builder (per-instance + scaffold anchor)</p>
+          <p class="tech">MolFragmentToSmarts (atom-anchored) · Murcko scaffold appended to restricted-SMARTS set</p>
+          <p class="desc">Constructs atom-specific SMARTS per labelled instance. The Bemis–Murcko scaffold SMARTS is appended to the restricted set, so any analog that breaks a scaffold atom is rejected later by the pharmacophore gate (stage 7). The actual <b>soft Murcko gate</b> fires on each candidate analog at validation and permutation time.</p>
+          <span class="badge bench">atom-anchored</span>
+          <span class="badge bench">scaffold-locked</span>
+        </div>
+      </div>
+
+      <!-- Stage 4 — ADMET profile of the lead -->
+      <div class="stage" data-tone="substrate">
+        <div class="num">4</div>
+        <div class="card">
+          <p class="name">Lead ADMET profile</p>
+          <p class="tech">admet_ai (Chemprop v2 GNN) · 54-endpoint prediction batch</p>
+          <p class="desc">Single forward pass through the upstream ADMET predictor on the lead molecule. Output drives the optimization agent's liability-prioritisation prompt and the per-endpoint thresholds used in the screen at stage 10.</p>
+          <span class="badge upstream">admet_ai 1.x</span>
+        </div>
+      </div>
+
+      <!-- Stage 5 — Project-context analysis (uses user_context) -->
+      <div class="stage" data-tone="agent">
+        <div class="num">5</div>
+        <div class="card">
+          <p class="name">Project-context analysis</p>
+          <p class="tech">Structured-output language model · indication-aware ADMET weighting</p>
+          <p class="desc"><b>Reads the user's project-context text</b> (e.g.&nbsp;<span style="font-family:var(--mono); font-size:10.5px">"CNS kinase, BBB-priority"</span>) and emits a typed <span style="font-family:var(--mono); font-size:10.5px">ContextAnalysis</span> record: per-endpoint priority weights, hard-stop thresholds (e.g. hERG&nbsp;&gt;&nbsp;0.5 hard-rejects), and a primary-optimization goal. This is where the indication shapes the rest of the pipeline.</p>
+          <span class="badge bench">user-context driven</span>
+          <span class="badge bench">indication-aware</span>
+        </div>
+      </div>
+
+      <!-- Stage 6 — Optimization agent -->
+      <div class="stage" data-tone="agent">
+        <div class="num">6</div>
+        <div class="card">
+          <p class="name">Optimization agent</p>
+          <p class="tech">Structured-output language model · ranked SAR strategies (JSON-strict)</p>
+          <p class="desc">Given the ADMET profile, project-context priorities, and labelled TARGET sites, proposes a ranked list of SAR strategies (lower LogP, halogen-to-cyano, ring isostere, etc.) mapped to SMIRKS-library categories. Strategies are emitted under a strict JSON schema.</p>
+          <span class="badge bench">structured proposals</span>
+        </div>
+      </div>
+
+      <!-- Stage 7-8 -->
+      <div class="stage" data-tone="defence">
+        <div class="num">7–8</div>
+        <div class="card">
+          <p class="name">Strategy validation + permutation (soft Murcko gate fires here)</p>
+          <p class="tech">479-entry SMIRKS library · RDKit reaction enumeration · enforce_pharmacophore (called twice)</p>
+          <p class="desc">Each proposed strategy is validated by enumerating one product and checking pharmacophore preservation (call #1). The permutation engine then expands the validated strategies across labelled TARGET sites; for every analog, <b>enforce_pharmacophore</b> rejects products that broke a RESTRICTED atom or the appended Murcko scaffold (call #2). Site × strategy × per-strategy cap bounds the combinatorial explosion.</p>
+          <span class="badge bench">SMIRKS-driven</span>
+          <span class="badge gate">pharmacophore-locked</span>
+          <span class="badge gate">ring-topology</span>
+        </div>
+      </div>
+
+      <!-- Stage 9-10 -->
+      <div class="stage" data-tone="defence">
+        <div class="num">9–10</div>
+        <div class="card">
+          <p class="name">Pre-filter + ADMET screen</p>
+          <p class="tech">Lipinski · PAINS · Brenk · admet_ai re-prediction</p>
+          <p class="desc">Hard structural filters drop invalid valencies, PAINS, Brenk alerts, and ADMET-failing analogs (directional scoring: hERG / Skin / CYP risk vs HIA / BBB benefit).</p>
+          <span class="badge gate">PAINS</span>
+          <span class="badge gate">Brenk</span>
+          <span class="badge gate">directional</span>
+        </div>
+      </div>
+
+      <!-- Stage 11 -->
+      <div class="stage" data-tone="substrate">
+        <div class="num">11</div>
+        <div class="card">
+          <p class="name">Synth-accessibility</p>
+          <p class="tech">SYBA (Voršilák 2020, Bayesian) · Ertl SAScore (1–10) fallback</p>
+          <p class="desc">SYBA signed score (~−50 easy to ~+50 hard) is the platform-ratified synth-accessibility metric. Sigmoid-centered penalty feeds into ranking.</p>
+          <span class="badge upstream">SYBA</span>
+          <span class="badge upstream">SAScore</span>
+        </div>
+      </div>
+
+      <!-- Stage 12 -->
+      <div class="stage" data-tone="bench">
+        <div class="num">12</div>
+        <div class="card">
+          <p class="name">Ranking and report</p>
+          <p class="tech">Weighted scalar sum × penalty multiplier · WeasyPrint PDF / HTML / CSV</p>
+          <p class="desc">Single-score "Pareto-style penalty rank" — sorted total_score over docking, ADMET, SYBA, and structural axes. Top-K written to PDF/HTML/CSV with per-analog SMILES, modifications, SYBA verdict, ADMET profile, and structure depiction.</p>
+          <span class="badge bench">SYBA-anchored</span>
+          <span class="badge bench">multi-format</span>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="io" style="position:relative;">
+        <div class="icon">out</div>
+        <div class="card">
+          <p class="name">Outputs</p>
+          <p class="desc">Ranked analog list &nbsp;·&nbsp; per-analog ADMET + SYBA dossier &nbsp;·&nbsp; PDF / HTML / CSV reports &nbsp;·&nbsp; email delivery</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: COMPACT LEGEND + SUBSTRATE KEY -->
+    <div class="side">
+      <div class="panel" style="padding-top:12px;">
+        <h3>Stage colour</h3>
+        <div class="legend-row" style="margin-bottom:4px;">
+          <div class="swatch agent"></div>
+          <div class="lbl">Agent (language model)</div>
+        </div>
+        <div class="legend-row" style="margin-bottom:4px;">
+          <div class="swatch substrate"></div>
+          <div class="lbl">Open-source substrate</div>
+        </div>
+        <div class="legend-row" style="margin-bottom:4px;">
+          <div class="swatch defence"></div>
+          <div class="lbl">Defence-in-depth gate</div>
+        </div>
+        <div class="legend-row" style="margin-bottom:0;">
+          <div class="swatch bench"></div>
+          <div class="lbl">Pipeline logic</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Substrate citations</h3>
+        <ul class="citelist">
+          <li><b>RDKit</b> — Landrum et al., 2024.03.</li>
+          <li><b>admet_ai</b> / Chemprop v2 — Swanson et al., 2024.</li>
+          <li><b>SYBA</b> — Voršilák et al., 2020 (AUC&nbsp;&gt;&nbsp;0.81).</li>
+          <li><b>Ertl SAScore</b> — Ertl &amp; Schuffenhauer, 2009.</li>
+          <li><b>PAINS</b> — Baell &amp; Holloway, 2010.</li>
+          <li><b>Brenk</b> — Brenk et al., 2008.</li>
+          <li><b>Bemis–Murcko</b> — Bemis &amp; Murcko, 1996.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnotes">
+    <p><sup>1</sup> <b>Per-instance labelling.</b> Two phenyl rings on the same molecule would collapse to a single generic SMARTS (<span style="font-family:var(--mono)">c1ccccc1</span>) without disambiguation. The pipeline derives left/right/top/bottom position hints from RDKit-generated 2D coordinates and emits atom-anchored SMARTS via <span style="font-family:var(--mono)">MolFragmentToSmarts</span>, so each instance carries a distinct restricted/editable verdict.</p>
+
+    <p><sup>2</sup> <b>Soft Murcko gate, where it actually lives.</b> The Bemis–Murcko scaffold SMARTS is appended to the restricted-SMARTS set at <em>stage 3</em>. The gate itself is implemented by <span style="font-family:var(--mono); font-size:10.5px">enforce_pharmacophore()</span>, called twice — once at <em>strategy validation</em> (does this SMIRKS, applied to one example, preserve the pharmacophore?) and once for every analog during <em>permutation</em>. Predicates checked: (a) restricted atoms unchanged, (b) ring-system topology preserved, (c) aromaticity preserved. Allows topologically equivalent edits (methyl→ethyl on a scaffold carbon); rejects ring destruction.</p>
+
+    <p><sup>3</sup> <b>Chemistry validator coverage.</b> Allowlist tables for H-bond donor, H-bond acceptor, π-stack, hydrophobic, salt bridge, and cation-π. Each entry maps a functional group family to its allowed interaction types. Vision-model output that violates the chemistry tables is dropped before SMARTS construction (stage 3), so a methyl group cannot enter the pipeline as a hydrogen-bond donor.</p>
+
+    <p><sup>4</sup> <b>SMIRKS library scope.</b> 479 curated SMIRKS transformations across 22 categories (aromatic-ring swaps, amine modifications, carbonyl modifications, CNS penetration, nitrogen-heterocycle swaps, polarity adjustments, halogen substitutions, steric shielding, metabolic stability, etc.) in the version inventoried for this paper. All entries carry a <span style="font-family:var(--mono)">validated=True</span> flag, but validation is curator-asserted, not gated by an automated RDKit-reaction-fires-on-target CI test — known limitation, fix planned before the supplementary release.</p>
+
+    <p><sup>5</sup> <b>Ranking metric.</b> The total_score is a weighted scalar sum across docking, ADMET liabilities, SYBA penalty, and structural alerts, multiplied by hard-filter penalties. The output is single-sorted; the field label "Pareto" is API-convention rather than a Pareto front. Honest framing in the paper: <em>weighted scalar penalty rank with SYBA as the synth-accessibility anchor.</em></p>
+  </div>
+</div>
+
+</body>
+</html>

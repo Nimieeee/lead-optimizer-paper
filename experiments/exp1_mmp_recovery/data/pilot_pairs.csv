@@ -1,0 +1,31 @@
+pair_id,smiles_A,smiles_B,source,transformation,notes
+MMP_001,O=C(O)Cc1ccc(N)cc1,c1ccc(Cc2nnn[nH]2)cc1N,literature,COOH->tetrazole,ACID_001 target. Classic bioisostere (Brown ch4).
+MMP_002,CC(C)Cc1ccc(C(C)C(=O)O)cc1,CC(C)Cc1ccc(C(C)C(=O)NS(=O)(=O)C)cc1,literature,COOH->acylsulfonamide,Ibuprofen scaffold. ACID_002 target.
+MMP_003,Cc1ccc(N)cc1,Cc1ccc(NC)cc1,literature,NH2->NHMe,N-methylation. AMINE category target.
+MMP_004,c1ccc(O)cc1,c1ccc(F)cc1,literature,OH->F,Phenol to fluorobenzene bioisostere.
+MMP_005,c1ccncc1,c1ccncn1,literature,pyridine->pyrimidine,Common CNS bioisostere. RING category target.
+MMP_006,CCc1ccccc1,FC(F)(F)c1ccccc1,literature,Et->CF3,Et to CF3 metabolic-stability bioisostere.
+MMP_007,c1ccc(OC)cc1,c1ccc(OC(F)(F)F)cc1,literature,OMe->OCF3,Methoxy to trifluoromethoxy. (FIXED 2026-06-10: prior B was malformed 'OCF(F)F')
+MMP_008,O=C(O)c1ccccc1,c1ccc(C(=O)NS(=O)(=O)C)cc1,literature,COOH->acylsulfonamide,Benzoic-acid bioisostere.
+MMP_009,c1ccccn1,c1ccc[nH]c1=O,literature,pyridine->pyridone,Pyridone is a known H-bond enabler.
+MMP_010,OCc1ccccc1,O=Cc1ccccc1,literature,CH2OH->CHO,Benzyl-alcohol to benzaldehyde.
+MMP_011,CC(=O)Nc1ccccc1,CN(C)C(=O)Nc1ccccc1,literature,acetamide->urea,Acetanilide to N-Me urea.
+MMP_012,Cc1ccc(S(N)(=O)=O)cc1,Cc1ccc(C(=O)N)cc1,literature,SO2NH2->CONH2,Sulfonamide to amide. SLFA category.
+MMP_013,Cc1ccc(C(F)(F)F)cc1,Cc1ccc(C#N)cc1,literature,CF3->CN,CF3 to cyano (lipophilicity reduction).
+MMP_014,c1ccc(Br)cc1,c1ccc(Cl)cc1,literature,Br->Cl,Halogen swap (HALO category).
+MMP_015,c1ccc(I)cc1,c1ccc(F)cc1,literature,I->F,Heavy halogen to F (CYP improvement).
+MMP_016,Cc1nccc(C)n1,Cc1ncc(C)nc1,literature,pyrazine->pyrimidine_swap,Diazine isomer swap.
+MMP_017,OC(=O)CCC(=O)O,OC(=O)CCCC(=O)O,literature,succinate->glutarate,Chain length extension.
+MMP_018,NCCCC(N)=N,NCCC(N)=N,literature,guanidine_chain_-1,Arginine-like chain shortening.
+MMP_019,c1ccc(N=O)cc1,c1ccc([N+](=O)[O-])cc1,literature,N=O->NO2,Nitroso to nitro. NIT category target.
+MMP_020,c1ccc2[nH]ccc2c1,c1ccc2ncccc2c1,literature,indole->quinoline,Bicyclic heterocycle swap. (FIXED 2026-06-10: prior B was 5-membered N-ring not quinoline)
+MMP_021,NS(=O)(=O)c1ccccc1,N(C)S(=O)(=O)c1ccccc1,literature,SO2NH2->SO2NHMe,Sulfonamide N-methylation.
+MMP_022,Cc1ccc(C(=O)N)cc1,Cc1ccc(C#N)cc1,literature,amide->nitrile,Amide to nitrile (LogP shift).
+MMP_023,c1ccc(C(=O)C)cc1,c1ccc(C(C)O)cc1,literature,ketone->alcohol,Reduction-equivalent bioisostere.
+MMP_024,c1ccc(OCC)cc1,c1ccc(OCCC)cc1,literature,ethoxy->propoxy,Alkyl chain extension.
+MMP_025,Cn1cncn1,Cn1ccnn1,literature,triazole_isomer,1,2,4 to 1,2,3 triazole.
+MMP_026,c1ccc(N(C)C)cc1,c1ccc(N(C)CC)cc1,literature,NMe2->NMeEt,Amine N-substitution.
+MMP_027,O=C(O)c1cccc(N)c1,O=C(N)c1cccc(N)c1,literature,COOH->amide,Acid to primary amide.
+MMP_028,c1ccc(S)cc1,c1ccc(O)cc1,literature,SH->OH,Thiol to alcohol (oxidative-stress bioisostere).
+MMP_029,CC(=O)Nc1ccc(O)cc1,CC(=O)Nc1ccc(F)cc1,literature,phenol->fluorobenzene,Paracetamol → fluorinated analogue (CYP improvement).
+MMP_030,c1ccc(C(=O)OC)cc1,c1ccc(C(=O)OCC)cc1,literature,methyl_ester->ethyl_ester,Ester homologation.

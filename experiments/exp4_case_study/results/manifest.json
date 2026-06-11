@@ -1,0 +1,8 @@
+{
+  "git_sha": "unknown",
+  "python_version": "3.12.3",
+  "platform": "linux",
+  "cases_input": "/tmp/exp4_case_study/data/cases.csv",
+  "n_cases": 2,
+  "host": "vmi3191491"
+}

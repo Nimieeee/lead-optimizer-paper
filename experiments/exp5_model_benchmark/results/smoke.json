@@ -1,0 +1,71 @@
+{
+  "env": {
+    "OPENAI_API_KEY": true,
+    "GEMINI_API_KEY": true,
+    "OPENCODE_GO_API_KEY": true,
+    "MISTRAL_API_KEY": true,
+    "GROQ_API_KEY": true
+  },
+  "results": [
+    {
+      "provider": "openai",
+      "model": "gpt-4o",
+      "ok": true,
+      "runtime_s": 1.04,
+      "text": "{\"ok\": true}",
+      "error": null,
+      "usage_in": 32,
+      "usage_out": 5
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5",
+      "ok": true,
+      "runtime_s": 3.36,
+      "text": "{\"ok\": true}",
+      "error": null,
+      "usage_in": 31,
+      "usage_out": 206
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3-flash-preview",
+      "ok": false,
+      "runtime_s": 3.02,
+      "text": "",
+      "error": "ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+      "usage_in": 0,
+      "usage_out": 0
+    },
+    {
+      "provider": "opencode",
+      "model": "kimi-k2.6",
+      "ok": true,
+      "runtime_s": 1.63,
+      "text": "{\"ok\": true}",
+      "error": null,
+      "usage_in": 33,
+      "usage_out": 179
+    },
+    {
+      "provider": "mistral",
+      "model": "mistral-large-latest",
+      "ok": true,
+      "runtime_s": 0.47,
+      "text": "```json\n{\"ok\": true}\n```",
+      "error": null,
+      "usage_in": 26,
+      "usage_out": 10
+    },
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "ok": true,
+      "runtime_s": 0.57,
+      "text": "{\"ok\": true}",
+      "error": null,
+      "usage_in": 95,
+      "usage_out": 112
+    }
+  ]
+}

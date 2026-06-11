@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CTX_001",
+    "label": "CNS kinase, prioritize BBB",
+    "context": "Lead optimization for a brain-penetrant DYRK1A kinase inhibitor. Target tissue is CNS. We need to PRIORITIZE blood-brain-barrier permeability (BBB_Martins) and keep TPSA below 90. Tolerable risks are mild CYP2D6 inhibition. Hard stops: hERG > 0.5 (cardiotoxicity), Skin Reaction > 0.6, MW > 500, LogP > 5.",
+    "expected_priorities": {"high": ["BBB_Martins", "tpsa", "logP"], "low_acceptable": ["CYP2D6_Veith"], "hard_stops": ["hERG", "Skin_Reaction"]}
+  },
+  {
+    "id": "CTX_002",
+    "label": "Oral gram-positive antibacterial",
+    "context": "Oral systemic gram-positive antibacterial lead optimization. Target is bacterial cell wall. We need oral bioavailability and good metabolic stability. PRIORITIZE Bioavailability_Ma, HIA_Hou, Half_Life_Obach. BBB penetration is irrelevant (we want low-CNS). Hard stops: hERG > 0.5, DILI > 0.6, AMES > 0.5.",
+    "expected_priorities": {"high": ["Bioavailability_Ma", "HIA_Hou", "Half_Life_Obach"], "low_acceptable": [], "hard_stops": ["hERG", "DILI", "AMES"]}
+  },
+  {
+    "id": "CTX_003",
+    "label": "Topical anti-inflammatory",
+    "context": "Topical anti-inflammatory lead optimization. Application is dermal. We need LOW skin reactivity and acceptable lipophilicity for skin penetration. PRIORITIZE LogP in [2,4], minimize Skin_Reaction. Systemic ADMET (CYP, hERG) matters less because the drug is local. Hard stops: Skin_Reaction > 0.4, Carcinogens_Lagunin > 0.5.",
+    "expected_priorities": {"high": ["logP", "Skin_Reaction"], "low_acceptable": ["hERG", "CYP3A4_Veith"], "hard_stops": ["Skin_Reaction", "Carcinogens_Lagunin"]}
+  },
+  {
+    "id": "CTX_004",
+    "label": "Oncology kinase, accept moderate CYP",
+    "context": "Oncology lead optimization for a tumor-cell-targeted kinase inhibitor. Oral systemic delivery. We tolerate moderate CYP risk because oncology patients accept higher liabilities. PRIORITIZE QED, Bioavailability_Ma, and avoid AMES. BBB is neutral. Hard stops: hERG > 0.6 (still cardiotoxicity matters), AMES > 0.5.",
+    "expected_priorities": {"high": ["QED", "Bioavailability_Ma"], "low_acceptable": ["CYP3A4_Veith", "CYP2D6_Veith"], "hard_stops": ["hERG", "AMES"]}
+  }
+]

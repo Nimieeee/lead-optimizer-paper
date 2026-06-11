@@ -1,0 +1,10 @@
+{
+  "git_sha": "8b1b55429d09da2ab0dade41173ac33520b75d54",
+  "rdkit_version": "2026.03.3",
+  "python_version": "3.11.15",
+  "platform": "darwin",
+  "smirks_library_sha256": "b31dc5b225205e7428be73d2eaaa82c0795793efe2fef20161855e7b299db4f9",
+  "smirks_library_entry_count": 479,
+  "seed_input": "experiments/exp2_scaffold_alerts/data/seed_leads.csv",
+  "seed_input_sha256": "1951e77ab22bc5b8923e85efd026497db431c0afc286e26f85cb1de2c60f2ec6"
+}

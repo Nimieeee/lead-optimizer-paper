@@ -1,0 +1,306 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "n_contexts": 4,
+  "n_reps": 3,
+  "mean_rubric_score": 0.292,
+  "json_validity_rate": 0.833,
+  "mean_runtime_s": 8.83,
+  "total_usage_in": 8377,
+  "total_usage_out": 9289,
+  "per_context": [
+    {
+      "context_id": "CTX_001",
+      "context_label": "CNS kinase, prioritize BBB",
+      "n_reps": 3,
+      "rubric_mean": 0.5,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 2.14,
+          "usage_in": 847,
+          "usage_out": 856,
+          "rubric": {
+            "valid": true,
+            "score": 3.5,
+            "max_score": 4.0,
+            "normalized": 0.875,
+            "n_priorities_returned": 11,
+            "details": {
+              "BBB_Martins": "found in top-5",
+              "tpsa": "found in top-5",
+              "logP": "found in top-5",
+              "hardstop_hERG": "flagged",
+              "hardstop_Skin_Reaction": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 2.04,
+          "usage_in": 847,
+          "usage_out": 866,
+          "rubric": {
+            "valid": true,
+            "score": 2.5,
+            "max_score": 4.0,
+            "normalized": 0.625,
+            "n_priorities_returned": 11,
+            "details": {
+              "BBB_Martins": "found in top-5",
+              "tpsa": "found in top-5",
+              "logP": "MISSING",
+              "hardstop_hERG": "flagged",
+              "hardstop_Skin_Reaction": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 2.66,
+          "usage_in": 847,
+          "usage_out": 1052,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 4.0,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "BBB_Martins": "MISSING",
+              "tpsa": "MISSING",
+              "logP": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_Skin_Reaction": "missing"
+            }
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_002",
+      "context_label": "Oral gram-positive antibacterial",
+      "n_reps": 3,
+      "rubric_mean": 0.0,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 24.04,
+          "usage_in": 837,
+          "usage_out": 831,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 4.5,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "Bioavailability_Ma": "MISSING",
+              "HIA_Hou": "MISSING",
+              "Half_Life_Obach": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_DILI": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 13.26,
+          "usage_in": 837,
+          "usage_out": 1289,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 4.5,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "Bioavailability_Ma": "MISSING",
+              "HIA_Hou": "MISSING",
+              "Half_Life_Obach": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_DILI": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 8.86,
+          "usage_in": 837,
+          "usage_out": 620,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 4.5,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "Bioavailability_Ma": "MISSING",
+              "HIA_Hou": "MISSING",
+              "Half_Life_Obach": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_DILI": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_003",
+      "context_label": "Topical anti-inflammatory",
+      "n_reps": 3,
+      "rubric_mean": 0.667,
+      "json_valid_count": 1,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 9.14,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 5865, Requested 2889. Please try again in 5.655s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 8.9,
+          "usage_in": 841,
+          "usage_out": 1260,
+          "rubric": {
+            "valid": true,
+            "score": 2.0,
+            "max_score": 3.0,
+            "normalized": 0.667,
+            "n_priorities_returned": 11,
+            "details": {
+              "logP": "found in top-5",
+              "Skin_Reaction": "MISSING",
+              "hardstop_Skin_Reaction": "flagged",
+              "hardstop_Carcinogens_Lagunin": "flagged"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 7.15,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 5820, Requested 2889. Please try again in 5.3175s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_004",
+      "context_label": "Oncology kinase, accept moderate CYP",
+      "n_reps": 3,
+      "rubric_mean": 0.0,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 7.74,
+          "usage_in": 828,
+          "usage_out": 702,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 3.0,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "QED": "MISSING",
+              "Bioavailability_Ma": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 11.53,
+          "usage_in": 828,
+          "usage_out": 994,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 3.0,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "QED": "MISSING",
+              "Bioavailability_Ma": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 8.44,
+          "usage_in": 828,
+          "usage_out": 819,
+          "rubric": {
+            "valid": true,
+            "score": 0.0,
+            "max_score": 3.0,
+            "normalized": 0.0,
+            "n_priorities_returned": 0,
+            "details": {
+              "QED": "MISSING",
+              "Bioavailability_Ma": "MISSING",
+              "hardstop_hERG": "missing",
+              "hardstop_AMES": "missing"
+            }
+          },
+          "error": null
+        }
+      ]
+    }
+  ]
+}

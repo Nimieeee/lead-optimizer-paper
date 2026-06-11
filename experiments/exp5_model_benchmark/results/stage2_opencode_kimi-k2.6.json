@@ -1,0 +1,113 @@
+{
+  "provider": "opencode",
+  "model": "kimi-k2.6",
+  "n_reps": 8,
+  "n_ok": 8,
+  "n_json_valid": 0,
+  "json_validity_rate": 0.0,
+  "mean_jaccard_self": null,
+  "mean_restricted": 0.0,
+  "mean_target": 0.0,
+  "mean_runtime_s": 23.61,
+  "total_usage_in": 38048,
+  "total_usage_out": 32768,
+  "errors": [],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 25.42,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 1,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 24.39,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 2,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 23.97,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 3,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 21.89,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 4,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 21.81,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 5,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 21.8,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 6,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 22.02,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 7,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 27.6,
+      "usage_in": 4756,
+      "usage_out": 4096,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    }
+  ]
+}

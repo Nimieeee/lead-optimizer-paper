@@ -1,0 +1,271 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o",
+  "n_reps": 8,
+  "n_ok": 8,
+  "n_json_valid": 8,
+  "json_validity_rate": 1.0,
+  "mean_jaccard_self": 0.542,
+  "mean_restricted": 2.5,
+  "mean_target": 6.5,
+  "mean_runtime_s": 4.57,
+  "total_usage_in": 26088,
+  "total_usage_out": 3284,
+  "errors": [],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 4.01,
+      "usage_in": 3261,
+      "usage_out": 422,
+      "error": null,
+      "n_restricted": 3,
+      "n_target": 6,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "LEU 241"
+          ]
+        ],
+        [
+          "name",
+          "phenyl",
+          [
+            "PHE 238"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 1,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 3.96,
+      "usage_in": 3261,
+      "usage_out": 393,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "GLU 239"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 6.28,
+      "usage_in": 3261,
+      "usage_out": 500,
+      "error": null,
+      "n_restricted": 4,
+      "n_target": 5,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "GLU 239"
+          ]
+        ],
+        [
+          "name",
+          "benzyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 3.82,
+      "usage_in": 3261,
+      "usage_out": 384,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "LEU 241"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 3.74,
+      "usage_in": 3261,
+      "usage_out": 391,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "GLU 239"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 4.5,
+      "usage_in": 3261,
+      "usage_out": 393,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "GLU 239"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 6,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 4.27,
+      "usage_in": 3261,
+      "usage_out": 383,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "GLU 239"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 7,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 5.99,
+      "usage_in": 3261,
+      "usage_out": 418,
+      "error": null,
+      "n_restricted": 3,
+      "n_target": 6,
+      "key_set": [
+        [
+          "name",
+          "methoxy",
+          [
+            "GLU 239"
+          ]
+        ],
+        [
+          "name",
+          "phenyl",
+          [
+            "PHE 238"
+          ]
+        ],
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    }
+  ]
+}

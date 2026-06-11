@@ -1,0 +1,7 @@
+[filter] 11 models → 5 after filter (['gemini:gemini-3-flash-preview', 'gemini:gemini-3.1-pro-preview', 'mistral:mistral-large-latest', 'openai:gpt-5', 'openai:gpt-5-mini'])
+  [stage5] openai/gpt-5  4 contexts × 3 reps
+  [stage5] openai/gpt-5-mini  4 contexts × 3 reps
+  [stage5] gemini/gemini-3.1-pro-preview  4 contexts × 3 reps
+  [stage5] gemini/gemini-3-flash-preview  4 contexts × 3 reps
+  [stage5] mistral/mistral-large-latest  4 contexts × 3 reps
+[stage5] summary has 11 model rows → results/stage5_summary.json

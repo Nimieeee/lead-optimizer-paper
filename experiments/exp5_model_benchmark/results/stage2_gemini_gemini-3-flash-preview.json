@@ -1,0 +1,113 @@
+{
+  "provider": "gemini",
+  "model": "gemini-3-flash-preview",
+  "n_reps": 8,
+  "n_ok": 8,
+  "n_json_valid": 0,
+  "json_validity_rate": 0.0,
+  "mean_jaccard_self": null,
+  "mean_restricted": 0.0,
+  "mean_target": 0.0,
+  "mean_runtime_s": 19.93,
+  "total_usage_in": 28912,
+  "total_usage_out": 1175,
+  "errors": [],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 20.26,
+      "usage_in": 3614,
+      "usage_out": 149,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 1,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 20.64,
+      "usage_in": 3614,
+      "usage_out": 146,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 2,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 19.37,
+      "usage_in": 3614,
+      "usage_out": 149,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 3,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 20.05,
+      "usage_in": 3614,
+      "usage_out": 149,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 4,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 18.54,
+      "usage_in": 3614,
+      "usage_out": 145,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 5,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 19.6,
+      "usage_in": 3614,
+      "usage_out": 147,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 6,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 20.72,
+      "usage_in": 3614,
+      "usage_out": 139,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    },
+    {
+      "rep": 7,
+      "ok": true,
+      "json_valid": false,
+      "runtime_s": 20.22,
+      "usage_in": 3614,
+      "usage_out": 151,
+      "error": null,
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    }
+  ]
+}

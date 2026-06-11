@@ -1,0 +1,249 @@
+{
+  "provider": "groq",
+  "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "n_reps": 8,
+  "n_ok": 8,
+  "n_json_valid": 8,
+  "json_validity_rate": 1.0,
+  "mean_jaccard_self": 1.0,
+  "mean_restricted": 2.0,
+  "mean_target": 7.0,
+  "mean_runtime_s": 9.53,
+  "total_usage_in": 39088,
+  "total_usage_out": 3193,
+  "errors": [],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 1.4,
+      "usage_in": 4886,
+      "usage_out": 400,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 1,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 1.44,
+      "usage_in": 4886,
+      "usage_out": 400,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 4.57,
+      "usage_in": 4886,
+      "usage_out": 383,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 14.41,
+      "usage_in": 4886,
+      "usage_out": 400,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 15.66,
+      "usage_in": 4886,
+      "usage_out": 400,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 15.51,
+      "usage_in": 4886,
+      "usage_out": 400,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 6,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 15.64,
+      "usage_in": 4886,
+      "usage_out": 410,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 7,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 7.63,
+      "usage_in": 4886,
+      "usage_out": 400,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "ASN 292",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "SER 242"
+          ]
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "n_leads": 4,
+  "n_reps": 3,
+  "mean_total_score": 0.25,
+  "json_validity_rate": 0.5,
+  "mean_runtime_s": 26.36,
+  "total_usage_in": 3964,
+  "total_usage_out": 14177,
+  "per_lead": [
+    {
+      "lead_id": "LEAD_001",
+      "name": "Compound 25014 (DYRK1A)",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 1,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 12.45,
+          "usage_in": 667,
+          "usage_out": 2065,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 10,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 43.22,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7800, Requested 2732. Please try again in 18.99s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 28.16,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7485, Requested 2956. Please try again in 18.307499999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_002",
+      "name": "Linezolid",
+      "n_reps": 3,
+      "mean_total_score": 0.0,
+      "json_valid_count": 0,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 24.5,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7876, Requested 3218. Please try again in 23.205s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 45.19,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7942, Requested 3218. Please try again in 23.7s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 48.2,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6639, Requested 3383. Please try again in 15.165s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_003",
+      "name": "Ibuprofen",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 20.2,
+          "usage_in": 669,
+          "usage_out": 2272,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 11,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 23.68,
+          "usage_in": 669,
+          "usage_out": 2981,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 10,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 25.86,
+          "usage_in": 669,
+          "usage_out": 2609,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 10,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_004",
+      "name": "Aspirin",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 2,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 19.18,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01k4v5bmjcf88s8dw79s8d654m` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4640, Requested 3626. Please try again in 1.995s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 6.98,
+          "usage_in": 645,
+          "usage_out": 2204,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 10,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 18.65,
+          "usage_in": 645,
+          "usage_out": 2046,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 10,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    }
+  ]
+}

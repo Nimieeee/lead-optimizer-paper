@@ -1,0 +1,12 @@
+{
+  "git_sha": "8b1b55429d09da2ab0dade41173ac33520b75d54",
+  "git_dirty": true,
+  "rdkit_version": "2026.03.3",
+  "python_version": "3.11.15",
+  "platform": "darwin",
+  "smirks_library_file": "backend/app/services/lead_optimizer/smirks_library.py",
+  "smirks_library_sha256": "b31dc5b225205e7428be73d2eaaa82c0795793efe2fef20161855e7b299db4f9",
+  "smirks_library_entry_count": 479,
+  "pairs_input": "paper/experiments/exp1_mmp_recovery/data/chembl_pairs.csv",
+  "pairs_input_sha256": "68b776b4267c82e1c74882f2204b1d61571aaa9df2f3d826f585f83087e00b17"
+}

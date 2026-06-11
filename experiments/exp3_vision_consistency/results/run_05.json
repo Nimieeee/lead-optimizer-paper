@@ -1,0 +1,123 @@
+{
+  "run_idx": 5,
+  "ok": true,
+  "runtime_s": 5.53,
+  "drops_hallucinated": 0,
+  "drops_chem_invalid": 0,
+  "output": {
+    "restricted_groups": [
+      {
+        "group_name": "hydroxyl",
+        "residue": "ASN 244",
+        "residues": [
+          "ASN 244",
+          "GLU 291"
+        ],
+        "interaction_type": "h_bond_donor",
+        "interaction_types": [
+          "h_bond_donor",
+          "h_bond_acceptor"
+        ],
+        "atom_indices": []
+      },
+      {
+        "group_name": "benzylic_alcohol",
+        "residue": "ASN 244",
+        "residues": [
+          "ASN 244"
+        ],
+        "interaction_type": "h_bond_donor",
+        "interaction_types": [
+          "h_bond_donor"
+        ],
+        "atom_indices": []
+      },
+      {
+        "group_name": "methoxy",
+        "residue": "LEU 241",
+        "residues": [
+          "LEU 241"
+        ],
+        "interaction_type": "h_bond_acceptor",
+        "interaction_types": [
+          "h_bond_acceptor"
+        ],
+        "atom_indices": []
+      }
+    ],
+    "target_groups": [
+      {
+        "group_name": "phenyl_central",
+        "position_description": "central biaryl ring, no visible pi-stack line, available for ring swap to pyridine/pyrimidine",
+        "atom_indices": []
+      },
+      {
+        "group_name": "phenyl_right",
+        "position_description": "right phenyl ring, no visible pi-stack line, available for ring swap",
+        "atom_indices": []
+      },
+      {
+        "group_name": "methyl_left",
+        "position_description": "left methyl on methoxy, part of solvent-exposed methoxy group",
+        "atom_indices": []
+      },
+      {
+        "group_name": "methyl_right-top",
+        "position_description": "gem-dimethyl on right-top quaternary carbon, open for steric tuning",
+        "atom_indices": []
+      },
+      {
+        "group_name": "methyl_right-top_2",
+        "position_description": "gem-dimethyl on right-top quaternary carbon, open for steric tuning",
+        "atom_indices": []
+      },
+      {
+        "group_name": "gem_dimethyl",
+        "position_description": "quaternary center at right-top, open for steric tuning (ring expansion, contraction, or replacement)",
+        "atom_indices": []
+      },
+      {
+        "group_name": "alpha_methyl_right-top",
+        "position_description": "alpha-methyl off quaternary center, open for SAR modification",
+        "atom_indices": []
+      },
+      {
+        "group_name": "alpha_methyl_right-top_2",
+        "position_description": "alpha-methyl off quaternary center, open for SAR modification",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_left",
+        "position_description": "left aromatic C-H on central phenyl, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_left-top",
+        "position_description": "left-top aromatic C-H on central phenyl, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_central",
+        "position_description": "central aromatic C-H, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_right",
+        "position_description": "right aromatic C-H on right phenyl, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_right_2",
+        "position_description": "right aromatic C-H on right phenyl, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_right_3",
+        "position_description": "right aromatic C-H on right phenyl, open for halogenation or substitution",
+        "atom_indices": []
+      }
+    ],
+    "scaffold_atoms": [],
+    "provider": "unknown"
+  }
+}

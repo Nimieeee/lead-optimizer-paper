@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.venv/
+.env
+
+# Large raw data not meant for git (rebuilt from scripts)
+experiments/exp1_mmp_recovery/data/chembl/chembl_37_chemreps*
+experiments/exp1_mmp_recovery/data/chembl/subset_*
+experiments/exp1_mmp_recovery/data/chembl_pairs.csv
+
+# Experiment-specific results that ride into a separate Zenodo deposit
+# (kept in this repo for reproducibility; comment out to exclude from git)
+# experiments/*/results/
+
+# IDE / editor
+.vscode/
+.idea/

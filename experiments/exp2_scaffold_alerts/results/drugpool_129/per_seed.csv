@@ -1,0 +1,130 @@
+seed_id,name,therapeutic_class,n_analogs,error,runtime_s
+SEED_001,Aspirin,NSAID,158,,2.206
+SEED_002,Ibuprofen,NSAID,96,,1.979
+SEED_003,Naproxen,NSAID,164,,3.344
+SEED_004,Acetaminophen,Analgesic,95,,3.237
+SEED_005,Diclofenac,NSAID,214,,5.582
+SEED_006,Celecoxib,COX-2 Inhibitor,137,,4.866
+SEED_007,Morphine,Opioid,179,,6.126
+SEED_008,Oxycodone,Opioid,0,invalid_seed_smiles,0.001
+SEED_009,Tramadol,Opioid,203,,4.308
+SEED_010,Atorvastatin,Statin,197,,5.992
+SEED_011,Simvastatin,Statin,123,,2.704
+SEED_012,Rosuvastatin,Statin,109,,2.726
+SEED_013,Lisinopril,ACE Inhibitor,76,,0.853
+SEED_014,Enalapril,ACE Inhibitor,0,invalid_seed_smiles,0.0
+SEED_015,Losartan,ARB,206,,8.222
+SEED_016,Amlodipine,Calcium Channel Blocker,209,,4.472
+SEED_017,Metoprolol,Beta Blocker,100,,2.573
+SEED_018,Carvedilol,Beta Blocker,225,,7.436
+SEED_019,Warfarin,Anticoagulant,263,,8.863
+SEED_020,Apixaban,Anticoagulant,87,,1.809
+SEED_021,Rivaroxaban,Anticoagulant,113,,1.918
+SEED_022,Clopidogrel,Antiplatelet,0,invalid_seed_smiles,0.001
+SEED_023,Amiodarone,Antiarrhythmic,141,,4.803
+SEED_024,Digoxin,Cardiac Glycoside,90,,3.093
+SEED_025,Metformin,Biguanide,40,,0.752
+SEED_026,Glipizide,Sulfonylurea,0,invalid_seed_smiles,0.002
+SEED_027,Glyburide,Sulfonylurea,165,,4.675
+SEED_028,Sitagliptin,DPP-4 Inhibitor,46,,0.835
+SEED_029,Empagliflozin,SGLT2 Inhibitor,214,,8.453
+SEED_030,Canagliflozin,SGLT2 Inhibitor,255,,10.114
+SEED_031,Dapagliflozin,SGLT2 Inhibitor,213,,6.883
+SEED_032,Pioglitazone,Thiazolidinedione,175,,7.974
+SEED_033,Rosiglitazone,Thiazolidinedione,134,,3.774
+SEED_034,Imatinib,Tyrosine Kinase Inhibitor,113,,2.888
+SEED_035,Gefitinib,Tyrosine Kinase Inhibitor,0,invalid_seed_smiles,0.002
+SEED_036,Erlotinib,Tyrosine Kinase Inhibitor,204,,5.593
+SEED_037,Sorafenib,Tyrosine Kinase Inhibitor,181,,4.922
+SEED_038,Sunitinib,Tyrosine Kinase Inhibitor,48,,0.634
+SEED_039,Pazopanib,Tyrosine Kinase Inhibitor,184,,5.698
+SEED_040,Olaparib,PARP Inhibitor,63,,0.695
+SEED_041,Tamoxifen,SERM,170,,5.298
+SEED_042,Letrozole,Aromatase Inhibitor,142,,5.239
+SEED_043,Anastrozole,Aromatase Inhibitor,96,,1.202
+SEED_044,Methotrexate,Antimetabolite,180,,4.362
+SEED_045,Cyclophosphamide,Alkylating Agent,17,,0.185
+SEED_046,Doxorubicin,Anthracycline,333,,7.51
+SEED_047,Paclitaxel,Taxane,0,invalid_seed_smiles,0.0
+SEED_048,Sertraline,SSRI,159,,3.252
+SEED_049,Fluoxetine,SSRI,93,,1.751
+SEED_050,Escitalopram,SSRI,187,,4.185
+SEED_051,Paroxetine,SSRI,178,,5.131
+SEED_052,Venlafaxine,SNRI,101,,1.423
+SEED_053,Duloxetine,SNRI,181,,3.98
+SEED_054,Amitriptyline,TCA,146,,2.881
+SEED_055,Haloperidol,Antipsychotic,166,,9.128
+SEED_056,Risperidone,Antipsychotic,144,,4.415
+SEED_057,Quetiapine,Antipsychotic,128,,2.901
+SEED_058,Olanzapine,Antipsychotic,218,,5.116
+SEED_059,Aripiprazole,Antipsychotic,87,,2.53
+SEED_060,Diazepam,Benzodiazepine,195,,6.222
+SEED_061,Lorazepam,Benzodiazepine,277,,7.239
+SEED_062,Alprazolam,Benzodiazepine,172,,4.105
+SEED_063,Zolpidem,Sedative,0,invalid_seed_smiles,0.001
+SEED_064,Modafinil,Wake-promoting,32,,0.416
+SEED_065,Phenytoin,Anticonvulsant,108,,2.013
+SEED_066,Levetiracetam,Anticonvulsant,81,,0.601
+SEED_067,Lamotrigine,Anticonvulsant,80,,1.288
+SEED_068,Amoxicillin,Antibiotic,166,,3.639
+SEED_069,Azithromycin,Antibiotic,103,,0.982
+SEED_070,Ciprofloxacin,Fluoroquinolone,48,,0.811
+SEED_071,Levofloxacin,Fluoroquinolone,125,,2.725
+SEED_072,Rifampin,Antibiotic,81,,1.093
+SEED_073,Acyclovir,Antiviral,28,,0.379
+SEED_074,Oseltamivir,Antiviral,86,,0.759
+SEED_075,Remdesivir,Antiviral,98,,2.158
+SEED_076,Paxlovid,Antiviral,145,,2.277
+SEED_077,Ritonavir,Antiviral,40,,0.591
+SEED_078,Dolutegravir,Integrase Inhibitor,182,,4.805
+SEED_079,Tenofovir,Antiviral,32,,0.847
+SEED_080,Fluconazole,Antfining,117,,3.376
+SEED_081,Itraconazole,Antifungal,216,,9.182
+SEED_082,Albuterol,Beta-2 Agonist,158,,4.918
+SEED_083,Fluticasone,Corticosteroid,102,,4.115
+SEED_084,Montelukast,Leukotriene Antagonist,321,,8.162
+SEED_085,Tiotropium,Anticholinergic,70,,0.66
+SEED_086,Omeprazole,PPI,138,,3.536
+SEED_087,Pantoprazole,PPI,143,,5.761
+SEED_088,Esomeprazole,PPI,138,,7.082
+SEED_089,Ranitidine,H2 Blocker,52,,0.445
+SEED_090,Famotidine,H2 Blocker,50,,0.419
+SEED_091,Ondansetron,Antiemetic,62,,0.719
+SEED_092,Metoclopramide,Antiemetic,156,,2.846
+SEED_093,Loperamide,Antidiarrheal,183,,5.201
+SEED_094,Levothyroxine,Thyroid Hormone,187,,5.509
+SEED_095,Prednisone,Corticosteroid,119,,1.704
+SEED_096,Methylprednisolone,Corticosteroid,115,,2.597
+SEED_097,Dexamethasone,Corticosteroid,45,,0.34
+SEED_098,Hydrocortisone,Corticosteroid,123,,3.812
+SEED_099,Spironolactone,Mineralocorticoid Antagonist,49,,0.431
+SEED_100,Finasteride,5-alpha-Reductase Inhibitor,111,,2.151
+SEED_101,Methotrexate,DMARD,0,invalid_seed_smiles,0.0
+SEED_102,Sulfasalazine,DMARD,146,,4.523
+SEED_103,Hydroxychloroquine,DMARD,53,,1.002
+SEED_104,Sildenafil,PDE5 Inhibitor,151,,4.274
+SEED_105,Tadalafil,PDE5 Inhibitor,234,,5.207
+SEED_106,Allopurinol,Xanthine Oxidase Inhibitor,25,,0.727
+SEED_107,Colchicine,Gout,202,,7.646
+SEED_108,Isotretinoin,Retinoid,112,,1.327
+SEED_109,Mupirocin,Antibiotic,73,,0.603
+SEED_110,Hydroxyzine,Antihistamine,167,,4.396
+SEED_111,Cetirizine,Antihistamine,190,,7.582
+SEED_112,Loratadine,Antihistamine,177,,3.856
+SEED_113,Rivastigmine,Cholinesterase Inhibitor,167,,2.931
+SEED_114,Donepezil,Cholinesterase Inhibitor,236,,3.762
+SEED_115,Memantine,NMDA Antagonist,80,,0.893
+SEED_116,Gabapentin,Anticonvulsant,82,,1.666
+SEED_117,Pregabalin,Anticonvulsant,60,,0.449
+SEED_118,Baricitinib,JAK Inhibitor,0,invalid_seed_smiles,0.001
+SEED_119,Tofacitinib,JAK Inhibitor,88,,1.556
+SEED_120,Upadacitinib,JAK Inhibitor,0,invalid_seed_smiles,0.001
+SEED_121,Filgotinib,JAK Inhibitor,71,,1.296
+SEED_122,Deucravacitinib,TYK2 Inhibitor,142,,2.561
+SEED_123,Rimegepant,CGRP Antagonist,160,,4.654
+SEED_124,Zavegepant,CGRP Antagonist,157,,1.931
+SEED_125,Voxelotor,Hemoglobin S Polymerization Inhibitor,206,,2.428
+SEED_126,Lusutrombopag,TPO Receptor Agonist,161,,3.179
+SEED_127,Avatrombopag,TPO Receptor Agonist,161,,3.454
+SEED_128,Rolapitant,NK-1 Antagonist,170,,2.748
+SEED_129,Netarsudil,Rho Kinase Inhibitor,93,,1.188

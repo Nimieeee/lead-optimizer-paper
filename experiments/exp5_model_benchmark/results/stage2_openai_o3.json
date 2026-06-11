@@ -1,0 +1,294 @@
+{
+  "provider": "openai",
+  "model": "o3",
+  "n_reps": 8,
+  "n_ok": 7,
+  "n_json_valid": 7,
+  "json_validity_rate": 0.875,
+  "mean_jaccard_self": 0.653,
+  "mean_restricted": 3.14,
+  "mean_target": 5.86,
+  "mean_runtime_s": 38.7,
+  "total_usage_in": 22190,
+  "total_usage_out": 30071,
+  "errors": [
+    "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+  ],
+  "runs": [
+    {
+      "rep": 0,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 40.86,
+      "usage_in": 3170,
+      "usage_out": 4040,
+      "error": null,
+      "n_restricted": 3,
+      "n_target": 6,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 1,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 30.43,
+      "usage_in": 3170,
+      "usage_out": 3546,
+      "error": null,
+      "n_restricted": 4,
+      "n_target": 5,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "LEU 241"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 62.3,
+      "usage_in": 3170,
+      "usage_out": 7252,
+      "error": null,
+      "n_restricted": 4,
+      "n_target": 5,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "LEU 241"
+          ]
+        ],
+        [
+          "name",
+          "benzyl",
+          [
+            "PHE 170"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 36.32,
+      "usage_in": 3170,
+      "usage_out": 4301,
+      "error": null,
+      "n_restricted": 3,
+      "n_target": 6,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "methoxy",
+          [
+            "LEU 241"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 34.24,
+      "usage_in": 3170,
+      "usage_out": 3528,
+      "error": null,
+      "n_restricted": 2,
+      "n_target": 7,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 59.5,
+      "usage_in": 3170,
+      "usage_out": 3074,
+      "error": null,
+      "n_restricted": 3,
+      "n_target": 6,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 6,
+      "ok": true,
+      "json_valid": true,
+      "runtime_s": 42.14,
+      "usage_in": 3170,
+      "usage_out": 4330,
+      "error": null,
+      "n_restricted": 3,
+      "n_target": 6,
+      "key_set": [
+        [
+          "name",
+          "hydroxyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzyl",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ],
+        [
+          "name",
+          "benzylic_alcohol",
+          [
+            "ASN 244",
+            "GLU 291"
+          ]
+        ]
+      ]
+    },
+    {
+      "rep": 7,
+      "ok": false,
+      "json_valid": false,
+      "runtime_s": 3.81,
+      "usage_in": 0,
+      "usage_out": 0,
+      "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+      "n_restricted": 0,
+      "n_target": 0,
+      "key_set": []
+    }
+  ]
+}

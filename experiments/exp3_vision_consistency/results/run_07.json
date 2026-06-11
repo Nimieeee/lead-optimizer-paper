@@ -1,0 +1,123 @@
+{
+  "run_idx": 7,
+  "ok": true,
+  "runtime_s": 4.73,
+  "drops_hallucinated": 0,
+  "drops_chem_invalid": 0,
+  "output": {
+    "restricted_groups": [
+      {
+        "group_name": "hydroxyl",
+        "residue": "ASN 244",
+        "residues": [
+          "ASN 244",
+          "GLU 291"
+        ],
+        "interaction_type": "h_bond_donor",
+        "interaction_types": [
+          "h_bond_donor",
+          "h_bond_acceptor"
+        ],
+        "atom_indices": []
+      },
+      {
+        "group_name": "benzylic_alcohol",
+        "residue": "ASN 244",
+        "residues": [
+          "ASN 244"
+        ],
+        "interaction_type": "h_bond_donor",
+        "interaction_types": [
+          "h_bond_donor"
+        ],
+        "atom_indices": []
+      },
+      {
+        "group_name": "methoxy",
+        "residue": "LEU 241",
+        "residues": [
+          "LEU 241"
+        ],
+        "interaction_type": "h_bond_acceptor",
+        "interaction_types": [
+          "h_bond_acceptor"
+        ],
+        "atom_indices": []
+      }
+    ],
+    "target_groups": [
+      {
+        "group_name": "phenyl_central",
+        "position_description": "central biaryl ring, no visible pi-stack interaction, available for ring swap to pyridine/pyrimidine",
+        "atom_indices": []
+      },
+      {
+        "group_name": "phenyl_right",
+        "position_description": "right phenyl ring, no visible pi-stack interaction, available for ring swap",
+        "atom_indices": []
+      },
+      {
+        "group_name": "methyl_left",
+        "position_description": "left methyl on methoxy, solvent-exposed, available for modification",
+        "atom_indices": []
+      },
+      {
+        "group_name": "methyl_right-top",
+        "position_description": "gem-dimethyl component at right-top, solvent-exposed, open for steric tuning",
+        "atom_indices": []
+      },
+      {
+        "group_name": "methyl_right-top_2",
+        "position_description": "gem-dimethyl component at right-top, solvent-exposed, open for steric tuning",
+        "atom_indices": []
+      },
+      {
+        "group_name": "gem_dimethyl",
+        "position_description": "quaternary center at right-top, no visible hydrophobic contact lines, open for steric tuning or ring closure",
+        "atom_indices": []
+      },
+      {
+        "group_name": "alpha_methyl_right-top",
+        "position_description": "alpha-methyl off quaternary center, solvent-exposed, open for modification",
+        "atom_indices": []
+      },
+      {
+        "group_name": "alpha_methyl_right-top_2",
+        "position_description": "alpha-methyl off quaternary center, solvent-exposed, open for modification",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_left",
+        "position_description": "left phenyl ortho position, solvent-exposed, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_left-top",
+        "position_description": "left phenyl meta position, solvent-exposed, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_central",
+        "position_description": "central phenyl position, solvent-exposed, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_right",
+        "position_description": "right phenyl ortho position, solvent-exposed, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_right_2",
+        "position_description": "right phenyl meta position, solvent-exposed, open for halogenation or substitution",
+        "atom_indices": []
+      },
+      {
+        "group_name": "aromatic_h_right_3",
+        "position_description": "right phenyl para position, solvent-exposed, open for halogenation or substitution",
+        "atom_indices": []
+      }
+    ],
+    "scaffold_atoms": [],
+    "provider": "unknown"
+  }
+}

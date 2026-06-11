@@ -1,0 +1,130 @@
+seed_id,name,smiles,approval_year,therapeutic_class
+SEED_001,Aspirin,CC(=O)Oc1ccccc1C(=O)O,1899,NSAID
+SEED_002,Ibuprofen,CC(C)CC1=CC=C(C=C1)C(=O)O,1969,NSAID
+SEED_003,Naproxen,CC(C1=CC2=C(C=C1)C=C(C2)OC)CC(=O)O,1976,NSAID
+SEED_004,Acetaminophen,CC(=O)Nc1ccc(O)cc1,1951,Analgesic
+SEED_005,Diclofenac,O=C(O)Cc1ccccc1Nc2c(Cl)cccc2Cl,1974,NSAID
+SEED_006,Celecoxib,CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F,1998,COX-2 Inhibitor
+SEED_007,Morphine,CN1CC[C@]23c4c5ccc(O)c4O[C@H]2[C@@H](O)C=C[C@H]3[C@H]1C5,1827,Opioid
+SEED_008,Oxycodone,CN1CC[C@]23c4c5ccc(OC)c4O[C@H]2C(=O)CC[C@H]3(O)[C@H]1C5,1916,Opioid
+SEED_009,Tramadol,CN(C)C[C@@H]1CCCC[C@@]1(O)c1cccc(OC)c1,1977,Opioid
+SEED_010,Atorvastatin,CC(C)N(CC(O)C(=O)NCc1ccccc1)C(=O)C1=CC=CC=C1,1996,Statin
+SEED_011,Simvastatin,CCC(C)(C)C(=O)O[C@H]1C[C@@H](C)C=C2C=C[C@H](C)[C@H](CC[C@@H]3C[C@@H](O)CC(=O)O3)[C@H]12,1991,Statin
+SEED_012,Rosuvastatin,CC(C)(C)S(=O)(=O)NC1=NC=Nc2ccccc12,2002,Statin
+SEED_013,Lisinopril,NCCCC(C)C(=O)NCC(C)CO,1987,ACE Inhibitor
+SEED_014,Enalapril,CCOC(=O)NCH(C)C(=O)NCC(C)CO,1984,ACE Inhibitor
+SEED_015,Losartan,CCCC1=NC(Cl)=C(CO)N1Cc2ccc(cc2)-c3ccccc3-c4[nH]nnn4,1995,ARB
+SEED_016,Amlodipine,CCOC(=O)C1=C(COCCN)NC(C)=C(C1c2ccccc2Cl)C(=O)OC,1989,Calcium Channel Blocker
+SEED_017,Metoprolol,CC(C)NCC(O)COc1ccc(OCCOC)cc1,1975,Beta Blocker
+SEED_018,Carvedilol,OC(=O)C1=CC=CC=C1OCC(N)COc1ccccc1,1995,Beta Blocker
+SEED_019,Warfarin,CC(=O)CC(c1ccccc1)c1c(O)ccc2ccccc12,1954,Anticoagulant
+SEED_020,Apixaban,NCC(N1C(=O)CC1C(=O)N)c1nnc2nccnc2c1,2012,Anticoagulant
+SEED_021,Rivaroxaban,Clc1ccc2NCC(O)Cc2c1,2008,Anticoagulant
+SEED_022,Clopidogrel,COC(=O)[C@H](c1ccccc1Cl)n2ccc3c(c2)CCS3,1997,Antiplatelet
+SEED_023,Amiodarone,CCOc1ccc(cc1)C(=O)Nc1c(I)cccc1I,1985,Antiarrhythmic
+SEED_024,Digoxin,CC1OCC2C3CCC4=CC(=O)OC5C4C3C(O2)C5C1,1954,Cardiac Glycoside
+SEED_025,Metformin,CN(C)CC(=O)N(C)C,1994,Biguanide
+SEED_026,Glipizide,Cc1cc(nc1C(=O)NCCc2ccc(cc2)S(=O)(=O)NC(=O)NC3CCCCC3)C,1984,Sulfonylurea
+SEED_027,Glyburide,Clc1ccc(cc1)C(=O)NCC(=O)NCCc1ccccc1,1984,Sulfonylurea
+SEED_028,Sitagliptin,F[Si](F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(=O)NCCn1ccnc1,2006,DPP-4 Inhibitor
+SEED_029,Empagliflozin,CC1=CC=C(C=C1)S(=O)(=O)C1=CC(=NN1C)C1=CC=CC=C1C(=O)O,2014,SGLT2 Inhibitor
+SEED_030,Canagliflozin,Clc1ccc(cc1)C(=O)NCCn1ccnc1C1=NN(C1)Cc1ccc2ccccc2c1,2013,SGLT2 Inhibitor
+SEED_031,Dapagliflozin,CCOC1=CC=CC=C1C(=O)NCCn1ccnc1C1=NN(C1)Cc1ccc(F)cc1,2012,SGLT2 Inhibitor
+SEED_032,Pioglitazone,O=C1NC(=O)C(CC2=CC=C(OCC3=CC=C(CC4SC=CN4)C=C3)C=C2)N1,1999,Thiazolidinedione
+SEED_033,Rosiglitazone,CN(CCOC1=CC=C(CC2SC(=O)NC2=O)C=C1)C1=CC=CC=N1,1999,Thiazolidinedione
+SEED_034,Imatinib,Cc1ccc(Nc2ncc(C3=CC=NC=C3C(=O)N)cn2)cc1,2001,Tyrosine Kinase Inhibitor
+SEED_035,Gefitinib,COc1cc2c(cc1OCCCN3CCOCC3)Nc4cc(Cl)c(F)cc4n2,2003,Tyrosine Kinase Inhibitor
+SEED_036,Erlotinib,C#Cc1cccc(Nc2ncc3ccccc3n2)c1,2004,Tyrosine Kinase Inhibitor
+SEED_037,Sorafenib,C=C(C1=CC=CC=C1)C(=O)NC(=O)Nc1ccc(O)cc1,2005,Tyrosine Kinase Inhibitor
+SEED_038,Sunitinib,CC1=CN=C2C=C(NC2=C1)C1=CC=NC=C1,2006,Tyrosine Kinase Inhibitor
+SEED_039,Pazopanib,CC1=NC=CN1CCNC(=O)c1ccc(Nc2ncc3ccccc3n2)cc1,2009,Tyrosine Kinase Inhibitor
+SEED_040,Olaparib,CC(C)(C)C(=O)NCCn1ccnc1C(=O)N,2014,PARP Inhibitor
+SEED_041,Tamoxifen,CC/C(=C(/c1ccccc1)c1ccc(OCCN(C)C)cc1)C,1971,SERM
+SEED_042,Letrozole,N#CC1=CC2=C(C=C1)C(=NN2c1ccc(O)cc1)C#N,1997,Aromatase Inhibitor
+SEED_043,Anastrozole,CC(C)(C#N)N=C(N)Cc1ccc(O)cc1,1995,Aromatase Inhibitor
+SEED_044,Methotrexate,CN(Cc1cnc2nc(N)nc(N)c2n1)c3ccc(cc3)C(=O)N[C@@H](CCC(=O)O)C(=O)O,1953,Antimetabolite
+SEED_045,Cyclophosphamide,ClCC[N+](CCCl)P1(=O)NCCCO1,1959,Alkylating Agent
+SEED_046,Doxorubicin,CO[C@H]1C[C@@H](O[C@H]2C[C@@](O)(C(=O)CO)c3c(O)c4c(c(O)c3[C@H]2O)C(=O)c2cccc(OC)c2C4=O)O[C@@H](C)[C@@H]1N,1969,Anthracycline
+SEED_047,Paclitaxel,CC(=O)O[C@H]1C(=O)[C@@]2(C)[C@H]([C@H](OC(=O)c3ccccc3)[C@]3(O)[C@H](OC(=O)[C@H](O)[C@@H](NC(=O)c4ccccc4)c4ccccc4)C[C@@H]2[C@@]1(C)C)OC(=O)C,1992,Taxane
+SEED_048,Sertraline,Clc1ccc2c(c1)C(c1ccc(Cl)cc1)CNC2,1991,SSRI
+SEED_049,Fluoxetine,CCC(c1ccc(C(F)(F)F)cc1)NCCOC,1987,SSRI
+SEED_050,Escitalopram,CN(C)CC1C2=CC=CC=C2CC1c1ccc(F)cc1,2002,SSRI
+SEED_051,Paroxetine,Fc1ccc([C@@H]2CCNC[C@H]2COc2ccc3c(c2)OCO3)cc1,1992,SSRI
+SEED_052,Venlafaxine,CCN(CC)CC(c1ccccc1)O,1993,SNRI
+SEED_053,Duloxetine,CN(C)CCS(=O)c1ccc2ccccc2c1,2004,SNRI
+SEED_054,Amitriptyline,CN(C)CCC=C1c2ccccc2CCc3ccccc13,1961,TCA
+SEED_055,Haloperidol,O=C(CCCN1CCC(C(O)(c2ccc(Cl)cc2)c2ccc(Cl)cc2)CC1)c1ccc(F)cc1,1958,Antipsychotic
+SEED_056,Risperidone,Clc1ccc(N2CCN(CC2)C(=O)Oc2ccccc2)cc1,1993,Antipsychotic
+SEED_057,Quetiapine,O=C1N(CCOc2ccccc2)CCN1CC1=CC=NC=C1,1997,Antipsychotic
+SEED_058,Olanzapine,Cc1ccc2c(c1)ncnc2Nc1ccccc1N1CCNC1=O,1996,Antipsychotic
+SEED_059,Aripiprazole,Clc1ccc(N2CCN(CC2)C(=O)NC(C)(C)C)cc1,2002,Antipsychotic
+SEED_060,Diazepam,CN1C(=O)CN=C(C2=CC=CC=C2)C3=CC=CC=C31,1963,Benzodiazepine
+SEED_061,Lorazepam,OC1N=C(c2ccccc2)c2cc(Cl)ccc2N(CC(=O)O)C1c1ccccc1,1977,Benzodiazepine
+SEED_062,Alprazolam,Cc1nnc2n1-c1ccc(Cl)cc1C(c1ccccc1)=NC2,1981,Benzodiazepine
+SEED_063,Zolpidem,Cc1ccc(cc1)c2c(n3cc(C)cc3n2)CC(=O)N(C)C,1983,Sedative
+SEED_064,Modafinil,CS(=O)C(C)(C)N1C(=O)NC1=O,1998,Wake-promoting
+SEED_065,Phenytoin,O=C1NC(=O)NC1c1ccccc1,1938,Anticonvulsant
+SEED_066,Levetiracetam,CCC(C)(C(=O)N)N1CCCC1=O,1999,Anticonvulsant
+SEED_067,Lamotrigine,Nc1nnc(nc1Cl)c2c(Cl)cccc2Cl,1994,Anticonvulsant
+SEED_068,Amoxicillin,CC1(C)S[C@@H]2[C@H](NC(=O)[C@H](N)c3ccc(O)cc3)C(=O)N2[C@H]1C(=O)O,1972,Antibiotic
+SEED_069,Azithromycin,CN(CC)C1OC(C)CC(O)(C)OC1C=CC=CC=CC=O,1991,Antibiotic
+SEED_070,Ciprofloxacin,O=C1N2C=CC(=O)C=C2C1N1CCNCC1,1983,Fluoroquinolone
+SEED_071,Levofloxacin,C1CCn2c(nc3c(F)cccc3c2=O)C1C(=O)O,1996,Fluoroquinolone
+SEED_072,Rifampin,CC1=NC=CC=C1C(=O)NNC(=O)C(C)(C)C1=CC=NO1,1971,Antibiotic
+SEED_073,Acyclovir,NC1=NC=NC2=C1NCC2O,1982,Antiviral
+SEED_074,Oseltamivir,CCC(C)OC(=O)N1CCC(CC1)C(=O)O,1999,Antiviral
+SEED_075,Remdesivir,CCC(CC)COc1ccc(cc1)C(=O)NCC(N)=N,2020,Antiviral
+SEED_076,Paxlovid,CC(C)(C)C1=CC=CC=C1C(=O)NCC(N)=N,2021,Antiviral
+SEED_077,Ritonavir,CC(C)C1=NC=NC2=C1N=CC(=N2)C(=O)NC(C)(C)C,1996,Antiviral
+SEED_078,Dolutegravir,N#CC1=CC2=C(C=C1)C(=NN1CCOC1=O)C2c1ccccc1,2013,Integrase Inhibitor
+SEED_079,Tenofovir,C[C@H](Cn1cnc2c(N)ncnc21)OP(=O)(O)O,2001,Antiviral
+SEED_080,Fluconazole,OC(Cn1cncn1)(Cn2cncn2)c3ccc(F)cc3F,1981,Antfining
+SEED_081,Itraconazole,Clc1ccc2c(c1)C(Cn1nc3ccccc3n1)N2C(=O)C1=CC=CC=C1,1992,Antifungal
+SEED_082,Albuterol,CC(C)(C)NCC(O)COc1ccccc1O,1981,Beta-2 Agonist
+SEED_083,Fluticasone,S(=O)(=O)CC1SC2C(C1F)C1C(C2=O)C(F)(F)C1C2=CC=CC=C2,1994,Corticosteroid
+SEED_084,Montelukast,CC(C)(C)C1=CC=CC=C1C(=O)OCC(O)C1=CC=CC=C1S(=O)(=O)CC1=CC=CC=C1,1998,Leukotriene Antagonist
+SEED_085,Tiotropium,C1CC2CCC1N2C(=O)OCC(O)(C)OC,2004,Anticholinergic
+SEED_086,Omeprazole,COc1ccc2[nH]c(nc2c1)S(=O)Cc3ncc(C)c(OC)c3C,1989,PPI
+SEED_087,Pantoprazole,COc1ccc2[nH]c(nc2c1)S(=O)Cc3c(OC(F)F)cc(nc3OC)OC,2001,PPI
+SEED_088,Esomeprazole,COc1ccc2[nH]c(nc2c1)[S@@](=O)Cc3ncc(C)c(OC)c3C,2001,PPI
+SEED_089,Ranitidine,CC(C)NCC(=O)NCCNS(=O)(=O)C,1983,H2 Blocker
+SEED_090,Famotidine,NCC(=O)NCCS(=O)(=O)N,1983,H2 Blocker
+SEED_091,Ondansetron,Cn1cc(c2c1CCC(C2=O)n3ccnc3C)C,1991,Antiemetic
+SEED_092,Metoclopramide,CC(CO)NCC(N)CC1=CC=CC=C1Cl,1975,Antiemetic
+SEED_093,Loperamide,ClC1=CC=CC=C1C(C)(C)CCN1CCC(CC1)C(=O)N,1976,Antidiarrheal
+SEED_094,Levothyroxine,NC(Cc1ccc(O)c(I)c1)C(=O)NCC(O)=O,1952,Thyroid Hormone
+SEED_095,Prednisone,CC1=CC(=O)C2CCC3C(C2C1O)C(CC3)C(=O)CO,1954,Corticosteroid
+SEED_096,Methylprednisolone,CC1=CC(=O)C2CCC3C(C2C1O)C(CC3)C(=O)C,1955,Corticosteroid
+SEED_097,Dexamethasone,CC1=CC2=CC(=O)C=CC2=C1F,1958,Corticosteroid
+SEED_098,Hydrocortisone,CC1OCC2C3CCC4=CC(=O)CCC4C3C(O)CC12O,1951,Corticosteroid
+SEED_099,Spironolactone,CC(=O)SCC(OC)=O,1957,Mineralocorticoid Antagonist
+SEED_100,Finasteride,CC1CCC2C(C1CCC2)C(=O)N,1992,5-alpha-Reductase Inhibitor
+SEED_101,Methotrexate,CNc1ccc2c(c1)C(=O)NCC(=O)NCC(=O)O,1953,DMARD
+SEED_102,Sulfasalazine,O=C(Nc1ccc(N=Nc2ccc(S(=O)(=O)N)cc2)cc1)C,1950,DMARD
+SEED_103,Hydroxychloroquine,CCN(CC)CCCC(C)N,1955,DMARD
+SEED_104,Sildenafil,CCCC1=NN=C2N1N=C(C2)N1CCN(CC1)S(=O)(=O)c1ccc(OCC)c(c1)S(=O)(=O)C,1998,PDE5 Inhibitor
+SEED_105,Tadalafil,O=C1N(C)CC(=O)N2[C@H]1Cc1c([nH]c3ccccc13)[C@H]2c1ccc2OCOc2c1,2003,PDE5 Inhibitor
+SEED_106,Allopurinol,Oc1cc2cn[nH]c2nc1,1966,Xanthine Oxidase Inhibitor
+SEED_107,Colchicine,CC(=O)N[C@H]1CCc2cc(OC)c(OC)c(OC)c2-c2ccc(OC)c(=O)cc21,1961,Gout
+SEED_108,Isotretinoin,CC1=C(C=CC=C(C)C=CC=C(C)C(=O)O)C(C)(C)CCC1,1982,Retinoid
+SEED_109,Mupirocin,CC(C)[C@@H]1CC[C@@H](O)[C@H]1C(=O)O,1987,Antibiotic
+SEED_110,Hydroxyzine,OCCONCCN1CCN(C(c2ccccc2)c2ccc(Cl)cc2)CC1,1956,Antihistamine
+SEED_111,Cetirizine,OC(=O)COCCN1CCN(C(c2ccccc2)c2ccc(Cl)cc2)CC1,1987,Antihistamine
+SEED_112,Loratadine,CCOC(=O)N1CCC(=C2c3ccc(Cl)cc3CCc3cccnc32)CC1,1981,Antihistamine
+SEED_113,Rivastigmine,CCN(C)C(=O)Oc1cccc(c1)[C@@H](C)N(C)C,2000,Cholinesterase Inhibitor
+SEED_114,Donepezil,COc1cc2c(cc1OC)C(=O)C(CC1CCN(Cc3ccccc3)CC1)C2,1996,Cholinesterase Inhibitor
+SEED_115,Memantine,CC12CC3CC(C)(C1)CC(N)(C3)C2,2000,NMDA Antagonist
+SEED_116,Gabapentin,NCC1(CC(=O)O)CCCCC1,1993,Anticonvulsant
+SEED_117,Pregabalin,C[C@H](CC(=O)O)CN,2005,Anticonvulsant
+SEED_118,Baricitinib,CCS(=O)(=O)N1CC(CC1#N)n1cc(cn1)-c2ncnc3[nH]ccc23,2022,JAK Inhibitor
+SEED_119,Tofacitinib,C[C@@H]1CCN(C[C@H]1N(C)c2ncnc3[nH]ccc23)C(=O)CC#N,2012,JAK Inhibitor
+SEED_120,Upadacitinib,CC[C@@H]1CN(C1#N)c1cc(c2[nH]cnc2n1)C(=O)N,2019,JAK Inhibitor
+SEED_121,Filgotinib,CS(=O)(=O)N1CCN(CC1)c1ccc(nc1)C(=O)N[C@@H]2COCC2,2020,JAK Inhibitor
+SEED_122,Deucravacitinib,CN[C@H]1C(=O)N(C)c2cc(ccc21)n3cncc3,2022,TYK2 Inhibitor
+SEED_123,Rimegepant,C[C@H](O)[C@@H]1N(Cc2ccc(cc2)-c2n[nH]c(=O)n2C)C(=O)c2ccc(cc2)C1(C)C,2024,CGRP Antagonist
+SEED_124,Zavegepant,CC(C)(C)C(=O)N[C@@H]1C(=O)N(C)c2cc(ccc21)n3cncc3,2023,CGRP Antagonist
+SEED_125,Voxelotor,Cc1cc(C(=O)O)c(C)c(c1OC)c1ccccc1,2019,Hemoglobin S Polymerization Inhibitor
+SEED_126,Lusutrombopag,CCCCc1ccc(cc1)C(=O)Nc1ccc(N2CCCCC2)cc1,2019,TPO Receptor Agonist
+SEED_127,Avatrombopag,CCCCc1ccc(cc1)C(=O)Nc1ccc(N2CCCCC2)cc1,2018,TPO Receptor Agonist
+SEED_128,Rolapitant,C[C@H]1CN(C[C@@H]1c1cc(F)cc(F)c1)Cc1cc(Cl)cc(Cl)c1,2015,NK-1 Antagonist
+SEED_129,Netarsudil,CC(C)CC(C)N[C@@H]1Cc2ccccc2C1,2017,Rho Kinase Inhibitor

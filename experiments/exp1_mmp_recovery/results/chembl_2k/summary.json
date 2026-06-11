@@ -1,0 +1,40 @@
+{
+  "n_pairs": 2000,
+  "n_B_recovered_exact": 310,
+  "any_recovery_rate": 0.155,
+  "recall_at_k": {
+    "1": 0.155,
+    "5": 0.155,
+    "10": 0.155,
+    "50": 0.155,
+    "100": 0.155,
+    "500": 0.155
+  },
+  "mean_analogs_per_pair": 229.5015,
+  "mean_unique_per_pair": 150.796,
+  "mean_best_tanimoto": 0.7550282058913995,
+  "median_runtime_s": 1.2534809579374269,
+  "smirks_recovery_counts": {
+    "META025": 119,
+    "RING_117": 42,
+    "OSUB_002": 37,
+    "AROM016": 34,
+    "META023": 28,
+    "META024": 27,
+    "HALO009": 25,
+    "AMINE_010": 21,
+    "STER_009": 21,
+    "META033": 21,
+    "STER_011": 11,
+    "ETHER003": 11,
+    "EST002": 11,
+    "HALO_001": 10,
+    "HALO008": 10,
+    "STER_007": 10,
+    "POLA017": 10,
+    "OSUB_011": 9,
+    "OSUB050": 6,
+    "AMINE_001": 6
+  },
+  "total_runtime_s": 421.97
+}

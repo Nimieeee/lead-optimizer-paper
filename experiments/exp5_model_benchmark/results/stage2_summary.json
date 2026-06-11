@@ -1,0 +1,3005 @@
+[
+  {
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 8,
+    "json_validity_rate": 1.0,
+    "mean_jaccard_self": 0.804,
+    "mean_restricted": 3.5,
+    "mean_target": 5.5,
+    "mean_runtime_s": 9.01,
+    "total_usage_in": 35776,
+    "total_usage_out": 4183,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.53,
+        "usage_in": 4472,
+        "usage_out": 529,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 8.55,
+        "usage_in": 4472,
+        "usage_out": 562,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.62,
+        "usage_in": 4472,
+        "usage_out": 507,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.27,
+        "usage_in": 4472,
+        "usage_out": 527,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 12.46,
+        "usage_in": 4472,
+        "usage_out": 495,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 9.55,
+        "usage_in": 4472,
+        "usage_out": 500,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 9.52,
+        "usage_in": 4472,
+        "usage_out": 511,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 9.55,
+        "usage_in": 4472,
+        "usage_out": 552,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 8,
+    "json_validity_rate": 1.0,
+    "mean_jaccard_self": 0.542,
+    "mean_restricted": 2.5,
+    "mean_target": 6.5,
+    "mean_runtime_s": 4.57,
+    "total_usage_in": 26088,
+    "total_usage_out": 3284,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 4.01,
+        "usage_in": 3261,
+        "usage_out": 422,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 3.96,
+        "usage_in": 3261,
+        "usage_out": 393,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "GLU 239"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 6.28,
+        "usage_in": 3261,
+        "usage_out": 500,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "GLU 239"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 3.82,
+        "usage_in": 3261,
+        "usage_out": 384,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 3.74,
+        "usage_in": 3261,
+        "usage_out": 391,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "GLU 239"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 4.5,
+        "usage_in": 3261,
+        "usage_out": 393,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "GLU 239"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 4.27,
+        "usage_in": 3261,
+        "usage_out": 383,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "GLU 239"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 5.99,
+        "usage_in": 3261,
+        "usage_out": 418,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "methoxy",
+            [
+              "GLU 239"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "provider": "opencode",
+    "model": "glm-5.1",
+    "n_reps": 8,
+    "n_ok": 0,
+    "n_json_valid": 0,
+    "json_validity_rate": 0.0,
+    "mean_jaccard_self": null,
+    "mean_restricted": 0.0,
+    "mean_target": 0.0,
+    "mean_runtime_s": 0.89,
+    "total_usage_in": 0,
+    "total_usage_out": 0,
+    "errors": [
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+      "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}"
+    ],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.79,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 1,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.97,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.83,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.8,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 4,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.81,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 1.03,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.79,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 1.09,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 400: {\"error\":{\"message\":\"Error from provider: model frank/GLM-5.1 does not accept image or video input\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "opencode",
+    "model": "kimi-k2.6",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 0,
+    "json_validity_rate": 0.0,
+    "mean_jaccard_self": null,
+    "mean_restricted": 0.0,
+    "mean_target": 0.0,
+    "mean_runtime_s": 23.61,
+    "total_usage_in": 38048,
+    "total_usage_out": 32768,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 25.42,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 24.39,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 23.97,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 21.89,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 21.81,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 21.8,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 22.02,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 27.6,
+        "usage_in": 4756,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "opencode",
+    "model": "minimax-m3",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 2,
+    "json_validity_rate": 0.25,
+    "mean_jaccard_self": 0.75,
+    "mean_restricted": 3.5,
+    "mean_target": 5.5,
+    "mean_runtime_s": 70.11,
+    "total_usage_in": 38040,
+    "total_usage_out": 29173,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 39.14,
+        "usage_in": 4755,
+        "usage_out": 2197,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 77.31,
+        "usage_in": 4755,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 76.72,
+        "usage_in": 4755,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 39.65,
+        "usage_in": 4755,
+        "usage_out": 2400,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 76.97,
+        "usage_in": 4755,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 91.38,
+        "usage_in": 4755,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 79.24,
+        "usage_in": 4755,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 80.46,
+        "usage_in": 4755,
+        "usage_out": 4096,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "opencode",
+    "model": "qwen3.7-max",
+    "n_reps": 8,
+    "n_ok": 0,
+    "n_json_valid": 0,
+    "json_validity_rate": 0.0,
+    "mean_jaccard_self": null,
+    "mean_restricted": 0.0,
+    "mean_target": 0.0,
+    "mean_runtime_s": 0.82,
+    "total_usage_in": 0,
+    "total_usage_out": 0,
+    "errors": [
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+      "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}"
+    ],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 1.15,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 1,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.66,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.65,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.88,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 4,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.67,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.95,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.89,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.71,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "HTTP 401: {\"type\":\"error\",\"error\":{\"type\":\"ModelError\",\"message\":\"Model qwen3.7-max is not supported for format oa-compat\"}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 8,
+    "json_validity_rate": 1.0,
+    "mean_jaccard_self": 1.0,
+    "mean_restricted": 2.0,
+    "mean_target": 7.0,
+    "mean_runtime_s": 9.53,
+    "total_usage_in": 39088,
+    "total_usage_out": 3193,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 1.4,
+        "usage_in": 4886,
+        "usage_out": 400,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 1.44,
+        "usage_in": 4886,
+        "usage_out": 400,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 4.57,
+        "usage_in": 4886,
+        "usage_out": 383,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 14.41,
+        "usage_in": 4886,
+        "usage_out": 400,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 15.66,
+        "usage_in": 4886,
+        "usage_out": 400,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 15.51,
+        "usage_in": 4886,
+        "usage_out": 400,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 15.64,
+        "usage_in": 4886,
+        "usage_out": 410,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.63,
+        "usage_in": 4886,
+        "usage_out": 400,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "SER 242"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "provider": "groq",
+    "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
+    "n_reps": 8,
+    "n_ok": 0,
+    "n_json_valid": 0,
+    "json_validity_rate": 0.0,
+    "mean_jaccard_self": null,
+    "mean_restricted": 0.0,
+    "mean_target": 0.0,
+    "mean_runtime_s": 0.09,
+    "total_usage_in": 0,
+    "total_usage_out": 0,
+    "errors": [
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+      "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}"
+    ],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.08,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 1,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.1,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.08,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.11,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 4,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.07,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.09,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.08,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 0.1,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "NotFoundError: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5",
+    "n_reps": 8,
+    "n_ok": 2,
+    "n_json_valid": 2,
+    "json_validity_rate": 0.25,
+    "mean_jaccard_self": 1.0,
+    "mean_restricted": 3.0,
+    "mean_target": 6.0,
+    "mean_runtime_s": 292.22,
+    "total_usage_in": 6250,
+    "total_usage_out": 10146,
+    "errors": [
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+    ],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 364.07,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 1,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 361.89,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 361.9,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 96.76,
+        "usage_in": 3125,
+        "usage_out": 5617,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 362.21,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 361.93,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 362.81,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 66.18,
+        "usage_in": 3125,
+        "usage_out": 4529,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "provider": "openai",
+    "model": "o3",
+    "n_reps": 8,
+    "n_ok": 7,
+    "n_json_valid": 7,
+    "json_validity_rate": 0.875,
+    "mean_jaccard_self": 0.653,
+    "mean_restricted": 3.14,
+    "mean_target": 5.86,
+    "mean_runtime_s": 38.7,
+    "total_usage_in": 22190,
+    "total_usage_out": 30071,
+    "errors": [
+      "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+    ],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 40.86,
+        "usage_in": 3170,
+        "usage_out": 4040,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 30.43,
+        "usage_in": 3170,
+        "usage_out": 3546,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 62.3,
+        "usage_in": 3170,
+        "usage_out": 7252,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "PHE 170"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 36.32,
+        "usage_in": 3170,
+        "usage_out": 4301,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 34.24,
+        "usage_in": 3170,
+        "usage_out": 3528,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 59.5,
+        "usage_in": 3170,
+        "usage_out": 3074,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 42.14,
+        "usage_in": 3170,
+        "usage_out": 4330,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": false,
+        "json_valid": false,
+        "runtime_s": 3.81,
+        "usage_in": 0,
+        "usage_out": 0,
+        "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}",
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 6,
+    "json_validity_rate": 0.75,
+    "mean_jaccard_self": 0.867,
+    "mean_restricted": 3.67,
+    "mean_target": 5.33,
+    "mean_runtime_s": 39.54,
+    "total_usage_in": 28912,
+    "total_usage_out": 4571,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 58.79,
+        "usage_in": 3614,
+        "usage_out": 568,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 26.66,
+        "usage_in": 3614,
+        "usage_out": 184,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 47.61,
+        "usage_in": 3614,
+        "usage_out": 647,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 32.98,
+        "usage_in": 3614,
+        "usage_out": 646,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 23.12,
+        "usage_in": 3614,
+        "usage_out": 648,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 57.28,
+        "usage_in": 3614,
+        "usage_out": 644,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 32.32,
+        "usage_in": 3614,
+        "usage_out": 657,
+        "error": null,
+        "n_restricted": 4,
+        "n_target": 5,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 37.53,
+        "usage_in": 3614,
+        "usage_out": 577,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "methoxy",
+            [
+              "LEU 241"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "provider": "gemini",
+    "model": "gemini-3-flash-preview",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 0,
+    "json_validity_rate": 0.0,
+    "mean_jaccard_self": null,
+    "mean_restricted": 0.0,
+    "mean_target": 0.0,
+    "mean_runtime_s": 19.93,
+    "total_usage_in": 28912,
+    "total_usage_out": 1175,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 20.26,
+        "usage_in": 3614,
+        "usage_out": 149,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 20.64,
+        "usage_in": 3614,
+        "usage_out": 146,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 19.37,
+        "usage_in": 3614,
+        "usage_out": 149,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 20.05,
+        "usage_in": 3614,
+        "usage_out": 149,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 18.54,
+        "usage_in": 3614,
+        "usage_out": 145,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 19.6,
+        "usage_in": 3614,
+        "usage_out": 147,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 20.72,
+        "usage_in": 3614,
+        "usage_out": 139,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": false,
+        "runtime_s": 20.22,
+        "usage_in": 3614,
+        "usage_out": 151,
+        "error": null,
+        "n_restricted": 0,
+        "n_target": 0,
+        "key_set": []
+      }
+    ]
+  },
+  {
+    "provider": "mistral",
+    "model": "pixtral-large-latest",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 8,
+    "json_validity_rate": 1.0,
+    "mean_jaccard_self": 0.786,
+    "mean_restricted": 3.0,
+    "mean_target": 6.0,
+    "mean_runtime_s": 12.95,
+    "total_usage_in": 38472,
+    "total_usage_out": 4063,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 8.15,
+        "usage_in": 4809,
+        "usage_out": 505,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 6.88,
+        "usage_in": 4809,
+        "usage_out": 505,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.46,
+        "usage_in": 4809,
+        "usage_out": 511,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 170"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 8.1,
+        "usage_in": 4809,
+        "usage_out": 512,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 37.94,
+        "usage_in": 4809,
+        "usage_out": 510,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 170"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 6.71,
+        "usage_in": 4809,
+        "usage_out": 510,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 14.99,
+        "usage_in": 4809,
+        "usage_out": 510,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 13.4,
+        "usage_in": 4809,
+        "usage_out": 500,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "provider": "mistral",
+    "model": "mistral-large-latest",
+    "n_reps": 8,
+    "n_ok": 8,
+    "n_json_valid": 8,
+    "json_validity_rate": 1.0,
+    "mean_jaccard_self": 0.55,
+    "mean_restricted": 2.88,
+    "mean_target": 6.12,
+    "mean_runtime_s": 15.09,
+    "total_usage_in": 38472,
+    "total_usage_out": 4008,
+    "errors": [],
+    "runs": [
+      {
+        "rep": 0,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 17.07,
+        "usage_in": 4809,
+        "usage_out": 511,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 1,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 14.07,
+        "usage_in": 4809,
+        "usage_out": 481,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 170"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 2,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 15.06,
+        "usage_in": 4809,
+        "usage_out": 485,
+        "error": null,
+        "n_restricted": 2,
+        "n_target": 7,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 3,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 14.51,
+        "usage_in": 4809,
+        "usage_out": 512,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 170"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 4,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 13.58,
+        "usage_in": 4809,
+        "usage_out": 506,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 5,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 31.55,
+        "usage_in": 4809,
+        "usage_out": 501,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 170"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 6,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.01,
+        "usage_in": 4809,
+        "usage_out": 508,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      },
+      {
+        "rep": 7,
+        "ok": true,
+        "json_valid": true,
+        "runtime_s": 7.9,
+        "usage_in": 4809,
+        "usage_out": 504,
+        "error": null,
+        "n_restricted": 3,
+        "n_target": 6,
+        "key_set": [
+          [
+            "name",
+            "phenyl",
+            [
+              "PHE 238"
+            ]
+          ],
+          [
+            "name",
+            "hydroxyl",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ],
+          [
+            "name",
+            "benzylic_alcohol",
+            [
+              "ASN 244",
+              "ASN 292",
+              "GLU 291"
+            ]
+          ]
+        ]
+      }
+    ]
+  }
+]

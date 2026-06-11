@@ -1,0 +1,44 @@
+{
+  "n_runs_total": 8,
+  "n_runs_ok": 8,
+  "mean_jaccard_pairwise": 1.0,
+  "min_jaccard_pairwise": 1.0,
+  "max_jaccard_pairwise": 1.0,
+  "consensus_keys_present_in_all": 3,
+  "consensus_keys_present_in_80pct": 3,
+  "consensus_keys_present_in_60pct": 3,
+  "consensus_keys_present_in_majority": 3,
+  "drops_hallucinated_stat": {
+    "n": 8,
+    "mean": 0.0,
+    "min": 0,
+    "max": 0,
+    "std": 0.0
+  },
+  "drops_chem_invalid_stat": {
+    "n": 8,
+    "mean": 0.0,
+    "min": 0,
+    "max": 0,
+    "std": 0.0
+  },
+  "drops_any_per_run": {
+    "n": 8,
+    "mean": 0.0,
+    "min": 0,
+    "max": 0,
+    "std": 0.0
+  },
+  "provider_usage": {
+    "unknown": 8
+  },
+  "runtime_stat": {
+    "n": 8,
+    "mean": 5.064,
+    "min": 4.38,
+    "max": 6.28,
+    "std": 0.564
+  },
+  "lid_path": "/tmp/exp3_vision_consistency/data/dyrk1a_25014_LID.png",
+  "lead_smiles": "COc1ccc2c(c1)-c1cc(CO)ccc1C(C)(C)O2"
+}

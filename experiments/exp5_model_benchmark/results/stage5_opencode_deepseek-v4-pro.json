@@ -1,0 +1,217 @@
+{
+  "provider": "opencode",
+  "model": "deepseek-v4-pro",
+  "n_contexts": 4,
+  "n_reps": 3,
+  "mean_rubric_score": 0.0,
+  "json_validity_rate": 0.0,
+  "mean_runtime_s": 31.34,
+  "total_usage_in": 10299,
+  "total_usage_out": 24576,
+  "per_context": [
+    {
+      "context_id": "CTX_001",
+      "context_label": "CNS kinase, prioritize BBB",
+      "n_reps": 3,
+      "rubric_mean": 0.0,
+      "json_valid_count": 0,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 29.37,
+          "usage_in": 868,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 31.45,
+          "usage_in": 868,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 31.53,
+          "usage_in": 868,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_002",
+      "context_label": "Oral gram-positive antibacterial",
+      "n_reps": 3,
+      "rubric_mean": 0.0,
+      "json_valid_count": 0,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 33.67,
+          "usage_in": 855,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 32.11,
+          "usage_in": 855,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 35.44,
+          "usage_in": 855,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_003",
+      "context_label": "Topical anti-inflammatory",
+      "n_reps": 3,
+      "rubric_mean": 0.0,
+      "json_valid_count": 0,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 29.35,
+          "usage_in": 861,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 31.24,
+          "usage_in": 861,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 32.17,
+          "usage_in": 861,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "context_id": "CTX_004",
+      "context_label": "Oncology kinase, accept moderate CYP",
+      "n_reps": 3,
+      "rubric_mean": 0.0,
+      "json_valid_count": 0,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 30.45,
+          "usage_in": 849,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 29.81,
+          "usage_in": 849,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": false,
+          "runtime_s": 29.5,
+          "usage_in": 849,
+          "usage_out": 2048,
+          "rubric": {
+            "valid": false,
+            "score": 0.0,
+            "details": "parse-fail"
+          },
+          "error": null
+        }
+      ]
+    }
+  ]
+}

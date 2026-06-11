@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth"
+message: "If you use this work, please cite the preprint and the archived code release."
+type: software
+authors:
+  - family-names: Odunewu
+    given-names: Toluwanimi
+    email: odunewutolu2@gmail.com
+    affiliation: "Aisynth Labs (independent research)"
+license: MIT
+repository-code: "https://github.com/Nimieeee/lead-optimizer-paper"
+keywords:
+  - cheminformatics
+  - lead optimization
+  - SMIRKS
+  - matched molecular pairs
+  - vision-language models
+  - ADMET
+  - synthetic accessibility
+  - agentic pipeline
+  - drug discovery
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Odunewu
+      given-names: Toluwanimi
+      email: odunewutolu2@gmail.com
+      affiliation: "Aisynth Labs (independent research)"
+  title: "A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth"
+  year: 2026
+  publisher:
+    name: ChemRxiv

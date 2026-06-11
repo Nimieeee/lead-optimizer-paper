@@ -1,0 +1,12 @@
+  [stage6] openai/gpt-5  4 leads × 3 reps
+  [stage6] openai/gpt-5.4  4 leads × 3 reps
+  [stage6] openai/gpt-5-mini  4 leads × 3 reps
+  [stage6] openai/gpt-4.1  4 leads × 3 reps
+  [stage6] gemini/gemini-3.1-pro-preview  4 leads × 3 reps
+  [stage6] gemini/gemini-3-flash-preview  4 leads × 3 reps
+  [stage6] opencode/deepseek-v4-pro  4 leads × 3 reps
+  [stage6] opencode/mimo-v2.5-pro  4 leads × 3 reps
+  [stage6] opencode/glm-5.1  4 leads × 3 reps
+  [stage6] mistral/mistral-large-latest  4 leads × 3 reps
+  [stage6] groq/openai/gpt-oss-120b  4 leads × 3 reps
+[stage6] wrote 11 model rows → results/stage6_summary.json

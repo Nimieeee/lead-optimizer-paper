@@ -1,0 +1,43 @@
+{
+  "stage2_vision": [
+    {"provider": "openai",   "model": "gpt-5"},
+    {"provider": "openai",   "model": "gpt-5.4"},
+    {"provider": "openai",   "model": "gpt-4o"},
+    {"provider": "openai",   "model": "o3"},
+    {"provider": "gemini",   "model": "gemini-3.1-pro-preview"},
+    {"provider": "gemini",   "model": "gemini-3-flash-preview"},
+    {"provider": "opencode", "model": "glm-5.1"},
+    {"provider": "opencode", "model": "kimi-k2.6"},
+    {"provider": "opencode", "model": "minimax-m3"},
+    {"provider": "opencode", "model": "qwen3.7-max"},
+    {"provider": "mistral",  "model": "pixtral-large-latest"},
+    {"provider": "mistral",  "model": "mistral-large-latest"},
+    {"provider": "groq",     "model": "meta-llama/llama-4-scout-17b-16e-instruct"}
+  ],
+  "stage5_context": [
+    {"provider": "openai",   "model": "gpt-5"},
+    {"provider": "openai",   "model": "gpt-5.4"},
+    {"provider": "openai",   "model": "gpt-5-mini"},
+    {"provider": "openai",   "model": "gpt-4.1"},
+    {"provider": "gemini",   "model": "gemini-3.1-pro-preview"},
+    {"provider": "gemini",   "model": "gemini-3-flash-preview"},
+    {"provider": "opencode", "model": "deepseek-v4-pro"},
+    {"provider": "opencode", "model": "mimo-v2.5-pro"},
+    {"provider": "opencode", "model": "glm-5.1"},
+    {"provider": "mistral",  "model": "mistral-large-latest"},
+    {"provider": "groq",     "model": "openai/gpt-oss-120b"}
+  ],
+  "stage6_optimization": [
+    {"provider": "openai",   "model": "gpt-5"},
+    {"provider": "openai",   "model": "gpt-5.4"},
+    {"provider": "openai",   "model": "gpt-5-mini"},
+    {"provider": "openai",   "model": "gpt-4.1"},
+    {"provider": "gemini",   "model": "gemini-3.1-pro-preview"},
+    {"provider": "gemini",   "model": "gemini-3-flash-preview"},
+    {"provider": "opencode", "model": "deepseek-v4-pro"},
+    {"provider": "opencode", "model": "mimo-v2.5-pro"},
+    {"provider": "opencode", "model": "glm-5.1"},
+    {"provider": "mistral",  "model": "mistral-large-latest"},
+    {"provider": "groq",     "model": "openai/gpt-oss-120b"}
+  ]
+}

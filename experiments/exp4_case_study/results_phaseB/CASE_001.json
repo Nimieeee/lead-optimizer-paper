@@ -1,0 +1,278 @@
+{
+  "case_id": "CASE_001",
+  "name": "Compound 25014 (DYRK1A series)",
+  "lead_smiles": "COc1ccc2c(c1)-c1cc(CO)ccc1C(C)(C)O2",
+  "runtime_s": 186.08,
+  "lead_profile": {
+    "smiles": "COc1ccc2c(c1)-c1cc(CO)ccc1C(C)(C)O2",
+    "sa_score": null,
+    "syba_score": null
+  },
+  "pipeline_attrition": {
+    "total_strategies_proposed": 50,
+    "total_analogs_generated": 51,
+    "total_passed_prefilter": 25,
+    "total_passed_admet": 25,
+    "diversity_clusters_after_ranking": 25
+  },
+  "top_analogs_top10": [
+    {
+      "smiles": "COc1ccc2c(c1)-c1cc(CN)ccc1C(C)(C)O2",
+      "modifications": [
+        "[Secondary] Hydroxyl to amino (OH\u2192NH2): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 1,
+      "pareto_score": 0.6384,
+      "sa_score": 2.316,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 269.344,
+        "logP": 3.4484000000000012,
+        "hydrogen_bond_acceptors": 3,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9078193183068701
+      }
+    },
+    {
+      "smiles": "COc1ccc2c(n1)-c1cc(CO)ccc1C(C)(C)O2",
+      "modifications": [
+        "[Secondary] Phenyl\u2192Pyridyl (add polarity): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 2,
+      "pareto_score": 0.5656,
+      "sa_score": 2.689,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 271.316,
+        "logP": 2.8770000000000007,
+        "hydrogen_bond_acceptors": 4,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9121480127080323
+      }
+    },
+    {
+      "smiles": "COc1ccc2c(n1)-c1cc(CN)ccc1C(C)(C)O2",
+      "modifications": [
+        "Phenyl to pyridine (N at para): Auto-selected Phenyl to pyridine (N at para) for phenyl",
+        "[Secondary] Hydroxyl to amino (OH\u2192NH2): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 3,
+      "pareto_score": 0.5581,
+      "sa_score": 2.709,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 270.332,
+        "logP": 2.843400000000001,
+        "hydrogen_bond_acceptors": 4,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.911292423960428
+      }
+    },
+    {
+      "smiles": "COc1cc2c(nn1)OC(C)(C)c1ccc(CO)cc1-2",
+      "modifications": [
+        "Phenyl to pyridazine (1,2-diazine): Auto-selected Phenyl to pyridazine (1,2-diazine) for phenyl"
+      ],
+      "pareto_rank": 4,
+      "pareto_score": 0.5554,
+      "sa_score": 2.94,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 272.30400000000003,
+        "logP": 2.2720000000000002,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.90817024864191
+      }
+    },
+    {
+      "smiles": "COc1ncc2c(n1)-c1cc(CO)ccc1C(C)(C)O2",
+      "modifications": [
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl"
+      ],
+      "pareto_rank": 5,
+      "pareto_score": 0.5506,
+      "sa_score": 2.903,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 272.304,
+        "logP": 2.2720000000000002,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9081702486419099
+      }
+    },
+    {
+      "smiles": "COc1cc2c(nn1)OC(C)(C)c1ccc(CN)cc1-2",
+      "modifications": [
+        "Phenyl to pyridazine (1,2-diazine): Auto-selected Phenyl to pyridazine (1,2-diazine) for phenyl",
+        "[Secondary] Hydroxyl to amino (OH\u2192NH2): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 6,
+      "pareto_score": 0.546,
+      "sa_score": 2.96,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 271.32,
+        "logP": 2.2384000000000004,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9066612580195615
+      }
+    },
+    {
+      "smiles": "COc1ncc2c(n1)-c1cc(CN)ccc1C(C)(C)O2",
+      "modifications": [
+        "Phenyl to pyrimidine (1,3-diazine): Auto-selected Phenyl to pyrimidine (1,3-diazine) for phenyl",
+        "[Secondary] Hydroxyl to amino (OH\u2192NH2): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 7,
+      "pareto_score": 0.5428,
+      "sa_score": 2.923,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 271.32,
+        "logP": 2.2384000000000004,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9066612580195615
+      }
+    },
+    {
+      "smiles": "COc1ccc2c(n1)-c1cc(CO)ncc1C(C)(C)O2",
+      "modifications": [
+        "Phenyl to pyridine (N at para): Auto-selected Phenyl to pyridine (N at para) for phenyl",
+        "[Secondary] Phenyl\u2192Pyridyl (add polarity): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 8,
+      "pareto_score": 0.5266,
+      "sa_score": 2.998,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 272.304,
+        "logP": 2.2720000000000002,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9081702486419099
+      }
+    },
+    {
+      "smiles": "COc1ccc2c(n1)-c1cc(CN)ncc1C(C)(C)O2",
+      "modifications": [
+        "Phenyl to pyridine (N at para): Auto-selected Phenyl to pyridine (N at para) for phenyl_central",
+        "Phenyl to pyridine (N at para): Auto-selected Phenyl to pyridine (N at para) for phenyl",
+        "[Secondary] Hydroxyl to amino (OH\u2192NH2): Conservative modification of restricted hydroxyl"
+      ],
+      "pareto_rank": 9,
+      "pareto_score": 0.5232,
+      "sa_score": 3.012,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 271.32,
+        "logP": 2.2383999999999995,
+        "hydrogen_bond_acceptors": 5,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.9066612580195615
+      }
+    },
+    {
+      "smiles": "COc1ccc2c(n1)-c1cc(CO)nnc1C(C)(C)O2",
+      "modifications": [
+        "Phenyl to pyridine (N at para): Auto-selected Phenyl to pyridine (N at para) for phenyl_central",
+        "Phenyl to pyridazine (1,2-diazine): Auto-selected Phenyl to pyridazine (1,2-diazine) for phenyl"
+      ],
+      "pareto_rank": 10,
+      "pareto_score": 0.5205,
+      "sa_score": 3.202,
+      "rationale_excerpt": "Multi-objective optimization",
+      "admet_summary": {
+        "molecular_weight": 273.292,
+        "logP": 1.6669999999999996,
+        "hydrogen_bond_acceptors": 6,
+        "hydrogen_bond_donors": 1,
+        "Lipinski": 4.0,
+        "QED": 0.8964086984820395
+      }
+    }
+  ],
+  "used_lid": true,
+  "search_space_size": 51,
+  "iterations_used": 1,
+  "errors": [],
+  "methodology_notes_excerpt": "LID Analysis: 3 restricted groups, 14 target groups identified. Secondary Targets: 1 restricted groups unlocked for conservative modification. Search Space: 51 combinations from 10 primary strategies.",
+  "report_pdf_path": "/var/www/benchside-backend/backend/data/reports/report_-6078858.pdf",
+  "sdf_path": "/var/www/benchside-backend/backend/data/reports/report_-6078858.sdf",
+  "progress_events_count": 17,
+  "progress_events_excerpt": [
+    {
+      "stage": "vision",
+      "pct": 5,
+      "message": "Analyzing ligand interaction diagram",
+      "t": 5360734.74610643
+    },
+    {
+      "stage": "vision",
+      "pct": 6,
+      "message": "Querying Groq Scout (attempt 1/3)\u2026",
+      "t": 5360734.747470255
+    },
+    {
+      "stage": "vision",
+      "pct": 9,
+      "message": "Validating chemistry from groq-llama4-scout-17b\u2026",
+      "t": 5360737.241652449
+    },
+    {
+      "stage": "vision_review",
+      "pct": 10,
+      "message": "Awaiting user review",
+      "t": 5360737.24207987
+    },
+    {
+      "stage": "admet_profile",
+      "pct": 15,
+      "message": "Profiling lead compound",
+      "t": 5360737.243512369
+    },
+    "...",
+    {
+      "stage": "admet_screen",
+      "pct": 70,
+      "message": "ADMET screening 25 analogs",
+      "t": 5360883.955696539
+    },
+    {
+      "stage": "admet_screen",
+      "pct": 75,
+      "message": "Assessing synthetic accessibility for 25 analogs",
+      "t": 5360885.678046818
+    },
+    {
+      "stage": "ranking",
+      "pct": 85,
+      "message": "Context-aware diversity analysis and ranking",
+      "t": 5360885.700793475
+    },
+    {
+      "stage": "report",
+      "pct": 95,
+      "message": "Generating PhD-grade report and files",
+      "t": 5360885.790510498
+    },
+    {
+      "stage": "done",
+      "pct": 100,
+      "message": "Complete",
+      "t": 5360920.813277746
+    }
+  ]
+}

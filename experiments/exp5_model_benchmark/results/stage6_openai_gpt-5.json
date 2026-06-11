@@ -1,0 +1,247 @@
+{
+  "provider": "openai",
+  "model": "gpt-5",
+  "n_leads": 4,
+  "n_reps": 3,
+  "mean_total_score": 0.333,
+  "json_validity_rate": 0.583,
+  "mean_runtime_s": 186.42,
+  "total_usage_in": 4219,
+  "total_usage_out": 62649,
+  "per_lead": [
+    {
+      "lead_id": "LEAD_001",
+      "name": "Compound 25014 (DYRK1A)",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 2,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 114.03,
+          "usage_in": 603,
+          "usage_out": 8255,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 361.77,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 106.49,
+          "usage_in": 603,
+          "usage_out": 9076,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_002",
+      "name": "Linezolid",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 1,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 361.9,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 233.66,
+          "usage_in": 617,
+          "usage_out": 8840,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 362.06,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_003",
+      "name": "Ibuprofen",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 3,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 229.56,
+          "usage_in": 605,
+          "usage_out": 9395,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 117.44,
+          "usage_in": 605,
+          "usage_out": 8673,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 2,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 229.91,
+          "usage_in": 605,
+          "usage_out": 8294,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "lead_id": "LEAD_004",
+      "name": "Aspirin",
+      "n_reps": 3,
+      "mean_total_score": 0.333,
+      "json_valid_count": 1,
+      "reps": [
+        {
+          "rep": 0,
+          "ok": true,
+          "json_valid": true,
+          "runtime_s": 114.75,
+          "usage_in": 581,
+          "usage_out": 10116,
+          "rubric": {
+            "valid": true,
+            "n_strategies": 12,
+            "n_refs_detected": 0,
+            "n_cat_matches": 0,
+            "n_score": 1.0,
+            "ref_score": 0.0,
+            "cat_score": 0.0,
+            "total": 0.333
+          },
+          "error": null
+        },
+        {
+          "rep": 1,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 3.11,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+        },
+        {
+          "rep": 2,
+          "ok": false,
+          "json_valid": false,
+          "runtime_s": 2.42,
+          "usage_in": 0,
+          "usage_out": 0,
+          "rubric": {
+            "valid": false,
+            "score": 0.0
+          },
+          "error": "BadRequestError: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}"
+        }
+      ]
+    }
+  ]
+}

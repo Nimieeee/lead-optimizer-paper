@@ -1,0 +1,3 @@
+case_id,name,smiles,target_class,notes,lid_filename
+CASE_001,Compound 25014 (DYRK1A series),COc1ccc2c(c1)-c1cc(CO)ccc1C(C)(C)O2,kinase/CNS,User-precedent DYRK1A lead from CLAUDE.md historical context (methoxy + benzyl-alcohol benzodioxin scaffold),dyrk1a_25014_LID.png
+CASE_002,Linezolid (oxazolidinone),CC(=O)NC[C@H]1CN(c2ccc(N3CCOCC3)c(F)c2)C(=O)O1,gram-positive antibacterial,FDA-approved oxazolidinone targeting bacterial ribosome; representative gram-positive scaffold for the case study panel,

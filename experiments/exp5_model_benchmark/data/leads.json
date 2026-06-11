@@ -1,0 +1,6 @@
+[
+  {"id": "LEAD_001", "name": "Compound 25014 (DYRK1A)", "smiles": "COc1ccc2c(c1)-c1cc(CO)ccc1C(C)(C)O2", "target_class": "kinase/CNS"},
+  {"id": "LEAD_002", "name": "Linezolid",              "smiles": "CC(=O)NC[C@H]1CN(c2ccc(N3CCOCC3)c(F)c2)C(=O)O1", "target_class": "antibacterial"},
+  {"id": "LEAD_003", "name": "Ibuprofen",              "smiles": "CC(C)Cc1ccc(C(C)C(=O)O)cc1", "target_class": "NSAID"},
+  {"id": "LEAD_004", "name": "Aspirin",                "smiles": "CC(=O)Oc1ccccc1C(=O)O", "target_class": "NSAID"}
+]
