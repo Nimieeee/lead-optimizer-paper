@@ -1,0 +1,224 @@
+/* paper.css — ChemRxiv-style print layout matching the v10 sample.
+ * Targets weasyprint (the @page rule + paged-media features).
+ * Single-column, justified, Charter / Computer-Modern-ish serif body. */
+
+@page {
+  size: letter;
+  margin: 1in 1in 1in 1in;
+  @bottom-center {
+    content: counter(page);
+    font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
+    font-size: 10pt;
+    color: #333;
+  }
+}
+
+html, body {
+  font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
+  font-size: 11pt;
+  line-height: 1.35;
+  color: #111;
+  background: white;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Title (the manuscript's H1) — centered, big, slightly tight leading */
+h1 {
+  font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
+  font-weight: 600;
+  font-size: 18pt;
+  line-height: 1.25;
+  text-align: center;
+  margin: 0 0 18pt 0;
+  padding: 0;
+  hyphens: none;
+}
+
+/* The author block lines: paragraphs right after H1 that aren't headers.
+ * They appear as plain paragraphs because they're outside YAML metadata.
+ * Pandoc renders each as a <p>. Center them, drop justification, smaller.
+ *
+ * weasyprint doesn't support advanced :has() selectors reliably; we instead
+ * use a class manually added to the first few paragraphs. Without that,
+ * the default look is still acceptable — see fallback below.
+ */
+h1 + p,
+h1 + p + p,
+h1 + p + p + p,
+h1 + p + p + p + p,
+h1 + p + p + p + p + p,
+h1 + p + p + p + p + p + p {
+  text-align: center;
+  margin: 2pt 0;
+  font-size: 11pt;
+  text-indent: 0;
+  hyphens: none;
+}
+
+/* The horizontal rule pandoc produces from --- separates the title block
+ * from the abstract. After it, restore standard justified paragraphs. */
+hr {
+  border: none;
+  border-top: 0.5pt solid #888;
+  margin: 18pt 0;
+}
+
+/* Section heads (## in markdown -> h2 in HTML) — bold serif, the same size as body */
+h2 {
+  font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
+  font-weight: 700;
+  font-size: 13pt;
+  line-height: 1.2;
+  margin: 18pt 0 6pt 0;
+  text-align: left;
+  hyphens: none;
+  page-break-after: avoid;
+}
+
+/* Subsection heads (### -> h3) */
+h3 {
+  font-family: ui-serif, "Charter", "Iowan Old Style", "Georgia", "Computer Modern Roman", serif;
+  font-weight: 700;
+  font-size: 11.5pt;
+  line-height: 1.2;
+  margin: 12pt 0 4pt 0;
+  text-align: left;
+  hyphens: none;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 0 0 6pt 0;
+  text-indent: 0;       /* sample paper does NOT first-line-indent */
+}
+
+/* Paragraphs that introduce a labeled run (Background: / Methods: etc.)
+ * read better with a small space before the label. The bold-leading is
+ * already encoded in the markdown. */
+p strong:first-child {
+  font-weight: 700;
+}
+
+/* Links — soft blue, no underline */
+a, a:link, a:visited {
+  color: #1c4f8a;
+  text-decoration: none;
+}
+
+/* Inline code + monospace */
+code, kbd, samp {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  font-size: 9.5pt;
+  background: #f3f3f0;
+  padding: 0.5pt 2pt;
+  border-radius: 1.5pt;
+}
+
+pre {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  font-size: 9pt;
+  background: #f3f3f0;
+  padding: 6pt 8pt;
+  border-radius: 2pt;
+  border-left: 2pt solid #c8c8c8;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Lists */
+ul, ol {
+  margin: 4pt 0 8pt 0;
+  padding-left: 22pt;
+}
+li {
+  margin: 1.5pt 0;
+  text-align: justify;
+}
+
+/* Blockquotes (used sparingly in scientific papers) */
+blockquote {
+  margin: 6pt 18pt;
+  padding-left: 10pt;
+  border-left: 2pt solid #999;
+  font-style: italic;
+  color: #444;
+}
+
+/* Tables — clean, journal-style with horizontal rules only */
+table {
+  border-collapse: collapse;
+  margin: 8pt 0;
+  width: 100%;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+th, td {
+  border: none;
+  border-top: 0.5pt solid #444;
+  border-bottom: 0.5pt solid #444;
+  padding: 4pt 6pt;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  border-top: 0.7pt solid #111;
+  border-bottom: 0.7pt solid #111;
+  font-weight: 700;
+  background: #fafafa;
+}
+tbody tr:last-child td {
+  border-bottom: 0.7pt solid #111;
+}
+
+/* Figures — keep them on the same page as their caption */
+figure, p > img {
+  page-break-inside: avoid;
+  text-align: center;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 8pt auto 4pt auto;
+}
+
+/* Figure captions: in markdown the caption is the alt text on a paragraph
+ * whose only content is the image; pandoc wraps the bold-leading "Figure N:"
+ * pattern as <strong> inside the alt. We can't fully restyle a markdown image
+ * alt as a caption, so we ensure the surrounding paragraph reads as a caption. */
+p:has(> img) {
+  text-align: center;
+  font-size: 9.5pt;
+  margin-top: 0;
+  margin-bottom: 12pt;
+}
+
+/* References — slightly tighter so the bibliography fits nicely. */
+h2 + p,
+h2 + ol,
+h2 + ul {
+  margin-top: 4pt;
+}
+
+/* Tighten the reference list at the bottom of the paper. */
+h2#references ~ p,
+h2 + p[id^="ref"] {
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
+/* Strong / emphasis */
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* Soft hyphens / word breaks for long URLs */
+a[href] {
+  word-break: break-all;
+}
