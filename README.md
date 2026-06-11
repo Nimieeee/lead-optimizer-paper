@@ -1,4 +1,4 @@
-# A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth
+# A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation
 
 **Author:** Toluwanimi Odunewu (Aisynth Labs, independent research)
 **ORCID:** [0009-0000-7053-9325](https://orcid.org/0009-0000-7053-9325)

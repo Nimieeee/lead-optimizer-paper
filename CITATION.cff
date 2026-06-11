@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth"
+title: "A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation"
 message: "If you use this work, please cite the preprint and the archived code release."
 type: software
 authors:
@@ -29,7 +29,7 @@ preferred-citation:
       email: odunewutolu2@gmail.com
       affiliation: "Aisynth Labs (independent research)"
       orcid: "https://orcid.org/0009-0000-7053-9325"
-  title: "A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth"
+  title: "A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation"
   year: 2026
   publisher:
     name: ChemRxiv

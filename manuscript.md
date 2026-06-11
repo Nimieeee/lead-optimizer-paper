@@ -1,4 +1,4 @@
-# A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth
+# A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation
 
 Toluwanimi Odunewu
 
