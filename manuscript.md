@@ -2,6 +2,8 @@
 
 Toluwanimi Odunewu
 
+ORCID: [0009-0000-7053-9325](https://orcid.org/0009-0000-7053-9325)
+
 Independent Researcher
 
 Aisynth Labs

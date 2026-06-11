@@ -7,6 +7,7 @@ authors:
     given-names: Toluwanimi
     email: odunewutolu2@gmail.com
     affiliation: "Aisynth Labs (independent research)"
+    orcid: "https://orcid.org/0009-0000-7053-9325"
 license: MIT
 repository-code: "https://github.com/Nimieeee/lead-optimizer-paper"
 keywords:
@@ -26,6 +27,7 @@ preferred-citation:
       given-names: Toluwanimi
       email: odunewutolu2@gmail.com
       affiliation: "Aisynth Labs (independent research)"
+      orcid: "https://orcid.org/0009-0000-7053-9325"
   title: "A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth"
   year: 2026
   publisher:
