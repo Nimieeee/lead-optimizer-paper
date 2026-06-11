@@ -1,30 +1,44 @@
 # A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth
 
-**Authors:** Toluwanimi Odunewu¹
-**Affiliations:** ¹ Aisynth Labs (independent research)
-*Past affiliation: University of Lagos.*
-**Corresponding author email:** odunewutolu2@gmail.com
-**Preprint status:** Working paper (ChemRxiv submission planned). Code archive: *Zenodo DOI to be assigned at submission.*
+Toluwanimi Odunewu
+
+Independent Researcher
+
+Aisynth Labs
+
+odunewutolu2@gmail.com
+
+June 11, 2026
 
 ---
 
 ## Abstract
 
-Lead optimization in small-molecule drug discovery is a constrained search problem: from a chemical starting point and the structural cues of its binding pose, generate analogs that preserve the pharmacophore, satisfy ADMET liabilities, and remain synthetically accessible. We describe a twelve-stage agentic pipeline that combines a vision-language classifier of ligand-interaction diagrams (LIDs) with a per-instance SMARTS construction step, deterministic structural gates, a curated 479-entry SMIRKS transformation library, an upstream ADMET-prediction backbone, and a synthetic-accessibility-anchored ranking. The contribution is the *architecture*: each agent stage is wrapped by a deterministic gate so that perception errors cannot corrupt the analog set. We evaluate the pipeline on five experiments: (i) a hand-curated single-edit matched-molecular-pair pilot, on which the library exact-recovers 16/30 = 53.3 % of documented improving transformations; (ii) an unbiased ChEMBL-37–derived MMP scale-up (2,000 pairs) on which it exact-recovers 15.5 %, with mean best Tanimoto-to-target 0.755 in misses; (iii) a 129-marketed-drug scaffold-preservation and structural-alert audit showing the soft Murcko gate cuts the analog set roughly in half while raising scaffold preservation to 100 %; (iv) a vision-language classifier self-consistency study on a fixed LID (pairwise Jaccard 1.00, zero chemistry-validator drops); and (v) an end-to-end case study on two contrasting leads (DYRK1A kinase inhibitor and Linezolid antibacterial), in which a LID-aware run improves the rank-1 analog on both Pareto-style score (0.586 → 0.638) and synthetic-accessibility (2.51 → 2.32). We additionally benchmark eleven language models across the three agent stages and report which configurations achieve reliable strict-JSON adherence and self-consistency. The platform is implemented as production software; the code, data, manifest-stamped raw outputs, and reproduction scripts are released open source.
+**Background:** Lead optimization in small-molecule drug discovery is a constrained search problem: from a chemical starting point and the structural cues of its binding pose, propose analogs that preserve the pharmacophore, satisfy ADMET liabilities, and remain synthetically accessible. Individual components — pharmacophore alignment, SMIRKS transformation libraries, ADMET predictors, scaffold analysis, structural-alert filters — are mature, but the orchestration of these tools into a reproducible workflow that takes a lead and its ligand-interaction diagram (LID) as input and returns a ranked, filtered analog set is non-trivial.
+
+**Methods:** We describe a twelve-stage agentic pipeline that combines a vision-language classifier of LIDs with a per-instance SMARTS construction step, deterministic structural gates, a curated 479-entry SMIRKS transformation library, an upstream ADMET-prediction backbone, and a synthetic-accessibility-anchored ranking. The architectural contribution is **defence-in-depth**: each agent stage is wrapped by a deterministic gate (chemistry-validity allowlists, soft Murcko ring-topology check, PAINS / Brenk structural-alert filters, ADMET-screen thresholds) so that perception errors cannot corrupt the downstream analog set.
+
+**Results:** Across five evaluations — (i) a curated single-edit bioisosteric matched-molecular-pair pilot on which the library exact-recovers 16/30 = 53.3 % of documented improving transformations; (ii) an unbiased ChEMBL-37–derived MMP scale-up of 2,000 pairs on which it exact-recovers 15.5 % with mean best Tanimoto-to-target 0.755 in misses; (iii) a 129-marketed-drug scaffold-preservation and structural-alert audit showing the soft Murcko gate cuts the analog set roughly in half while raising scaffold preservation to 100 %; (iv) a vision-language classifier self-consistency study on a fixed LID (pairwise Jaccard 1.00 across all 28 pair-comparisons, zero chemistry-validator drops); and (v) an end-to-end case study on two contrasting leads (DYRK1A kinase inhibitor and Linezolid antibacterial), in which a LID-aware run improves the rank-1 analog on both Pareto-style score (0.586 → 0.638) and synthetic accessibility (2.51 → 2.32) — the defence-in-depth design preserves end-to-end output quality despite intermediate-stage variability. We additionally benchmark eleven language models across the three agent stages and report which configurations achieve reliable strict-JSON adherence and self-consistency, providing measured rather than asserted recommendations for the production default.
+
+**Conclusions:** The pipeline demonstrates that a small set of deterministic structural gates around language-model agent stages is sufficient to absorb vision-classifier errors and produce constrained, pharmacophore-preserving lead optimization output on multiple target classes. The platform is implemented as production software; the code, data, manifest-stamped raw outputs, and reproduction scripts are released open source under the MIT licence at https://github.com/Nimieeee/lead-optimizer-paper.
+
+## Keywords
+
+Lead optimization, Computer-aided drug design, Matched molecular pairs, SMIRKS, Vision-language models, Pharmacophore preservation, ADMET, Synthetic accessibility, SYBA, Bemis–Murcko scaffold, Open-source cheminformatics, Agentic pipelines, Defence-in-depth
 
 ---
 
 ## 1. Introduction
 
-Lead optimization is one of the most resource-intensive stages of small-molecule drug discovery. Given a lead compound with a known binding pose, medicinal chemists must propose analogs that retain key pharmacophore contacts, address known ADMET liabilities, remain within a synthetically tractable region of chemical space, and avoid structural alerts that predict toxicity or assay artefact. Each of these axes has decades of in-silico tooling — pharmacophore alignment, transformation libraries (SMIRKS), ADMET predictors, scaffold analysis, structural-alert filters — but the orchestration of these tools into a single, reproducible workflow that takes a lead and its ligand-interaction diagram as input and returns a ranked, filtered set of analogs is non-trivial.
+Lead optimization is one of the most resource-intensive stages of small-molecule drug discovery. Given a lead compound with a known binding pose, medicinal chemists must propose analogs that retain key pharmacophore contacts (18), address known ADMET liabilities, remain within a synthetically tractable region of chemical space, and avoid structural alerts that predict toxicity or assay artefact. Each of these axes has decades of in-silico tooling — pharmacophore alignment, transformation libraries (SMIRKS) (14), ADMET predictors, scaffold analysis, structural-alert filters — but the orchestration of these tools into a single, reproducible workflow that takes a lead and its ligand-interaction diagram as input and returns a ranked, filtered set of analogs is non-trivial.
 
-Two recent shifts make a re-examination of this orchestration timely. First, vision-capable language models can now extract structured information from ligand-interaction-diagram images at a useful (if imperfect) rate, opening the possibility of automatically inferring which atoms in a lead are involved in protein contact and which are editable. Second, the synthetic-accessibility prediction literature has converged on signed-score classifiers (notably SYBA<sup>1</sup>) that, unlike rule-based heuristics, produce a directionally interpretable score that can serve as a ranking penalty rather than a hard filter.
+Two recent shifts make a re-examination of this orchestration timely. First, vision-capable language models can now extract structured information from ligand-interaction-diagram images at a useful (if imperfect) rate, opening the possibility of automatically inferring which atoms in a lead are involved in protein contact and which are editable. Second, the synthetic-accessibility prediction literature has converged on signed-score classifiers (notably SYBA(1)) that, unlike rule-based heuristics, produce a directionally interpretable score that can serve as a ranking penalty rather than a hard filter.
 
 A naive integration of these two capabilities would simply pipe the vision-language output into a transformation enumerator and rank by SYBA. We argue and demonstrate that this integration is *insufficient* for practical use — vision-language classifications carry systematic failure modes (chemically impossible interactions, conflated similar substructures, scaffold-breaking edits proposed as innocuous), and the pipeline must protect downstream stages from these failures by stacking deterministic gates around each agent step. We refer to this design as **defence-in-depth**.
 
 This paper makes the following contributions:
 
-1. A twelve-stage lead-optimization pipeline that integrates vision-language LID parsing, per-instance SMARTS classification (with 2D-coordinate-derived disambiguation), a soft Murcko ring-topology scaffold gate, a chemistry-validity allowlist that drops physically-impossible vision outputs, a 479-entry SMIRKS library across 22 categories, ADMET prediction (via the upstream `admet_ai`<sup>2</sup> Chemprop-v2 backbone), and a SYBA-anchored penalty rank.
+1. A twelve-stage lead-optimization pipeline that integrates vision-language LID parsing, per-instance SMARTS classification (with 2D-coordinate-derived disambiguation), a soft Murcko ring-topology scaffold gate, a chemistry-validity allowlist that drops physically-impossible vision outputs, a 479-entry SMIRKS library across 22 categories, ADMET prediction (via the upstream `admet_ai`(2) Chemprop-v2 backbone), and a SYBA-anchored penalty rank.
 2. An empirical evaluation spanning (a) the SMIRKS engine's recovery rate on a curated bioisosteric pilot and on an unbiased ChEMBL-37–derived matched-molecular-pair scale-up of 2,000 pairs, (b) the soft Murcko gate's effect on scaffold preservation and structural-alert rates over a 129-marketed-drug seed panel, (c) the vision-language classifier's self-consistency on a fixed LID across independent runs, (d) the end-to-end pipeline on two contrasting target classes with LID-aware and LID-free configurations, and (e) a cross-provider model benchmark across the three agent stages to inform the production default.
 3. The full implementation, raw experiment outputs with provenance manifests, figure-generation scripts, and a claims-to-evidence map, all released for reproducibility.
 
@@ -40,9 +54,9 @@ The twelve stages of the pipeline are summarised in Figure 1. We group them into
 
 ### 2.1 Inputs and pre-scan (stage 1)
 
-The pipeline accepts five inputs: **(i)** the lead SMILES (required), **(ii)** the ligand-interaction diagram as a PNG (optional; when absent, every functional group is treated as TARGET and stages 2–2′ are skipped), **(iii)** free-text **project context** that describes the therapeutic indication, target class, and binding-axis priorities (e.g. *"CNS DYRK1A inhibitor, prioritize BBB"*) — this text is consumed at stage 5 to shape the per-endpoint ADMET weighting and hard-stop thresholds, **(iv)** optional visual hints, and **(v)** an analog-budget knob bounding the combinatorial explosion at stage 8.
+The pipeline accepts five inputs: **(i)** the lead SMILES (15) (required), **(ii)** the ligand-interaction diagram as a PNG (optional; when absent, every functional group is treated as TARGET and stages 2–2′ are skipped), **(iii)** free-text **project context** that describes the therapeutic indication, target class, and binding-axis priorities (e.g. *"CNS DYRK1A inhibitor (24), prioritize BBB"*) — this text is consumed at stage 5 to shape the per-endpoint ADMET weighting and hard-stop thresholds, **(iv)** optional visual hints, and **(v)** an analog-budget knob bounding the combinatorial explosion at stage 8.
 
-Given the lead SMILES, we use RDKit<sup>3</sup> to (a) detect functional-group occurrences via a curated 90+-entry SMARTS substructure library, (b) compute the Bemis–Murcko<sup>4</sup> scaffold atom set and SMARTS, and (c) assign 2D coordinates to enable per-instance position hints. The output is a labelled-instance list in which each detected group carries an atom-index set and a positional hint (`phenyl_left`, `aromatic_h_top-left`, etc.). This step is deterministic.
+Given the lead SMILES, we use RDKit(5) to (a) detect functional-group occurrences via a curated 90+-entry SMARTS substructure library, (b) compute the Bemis–Murcko(6) scaffold atom set and SMARTS, and (c) assign 2D coordinates to enable per-instance position hints. The output is a labelled-instance list in which each detected group carries an atom-index set and a positional hint (`phenyl_left`, `aromatic_h_top-left`, etc.). This step is deterministic.
 
 ### 2.2 Vision-language LID classifier (stage 2)
 
@@ -56,13 +70,13 @@ A deterministic allowlist table maps each interaction type to the set of functio
 
 ### 2.4 SMARTS builder, scaffold anchor (stage 3); soft Murcko gate fires at stages 7–8
 
-For each labelled instance, the SMARTS builder constructs an atom-anchored SMARTS via RDKit's `MolFragmentToSmarts`, so that two phenyl groups in the same molecule receive distinct atom-specific patterns rather than collapsing to a generic `c1ccccc1`. This is the per-instance disambiguation referenced in the introduction.
+For each labelled instance, the SMARTS builder (13) constructs an atom-anchored SMARTS via RDKit's `MolFragmentToSmarts`, so that two phenyl groups in the same molecule receive distinct atom-specific patterns rather than collapsing to a generic `c1ccccc1`. This is the per-instance disambiguation referenced in the introduction.
 
 In the same stage, the Bemis–Murcko scaffold SMARTS is appended to the restricted-SMARTS set. The actual *check* — the soft Murcko gate — is implemented inside `enforce_pharmacophore` (stages 7–8) and fires twice: once at strategy validation (does this SMIRKS, applied to one example, preserve the pharmacophore?) and once for every candidate analog the permutation engine produces. The gate's predicates are (a) restricted atoms unchanged, (b) ring-system topology preserved (same ring count), (c) aromaticity preserved. This replaces an earlier "hard SMARTS append" approach that rejected all edits at scaffold atoms — including the topologically equivalent methyl→ethyl substitution on a scaffold carbon — and was over-restrictive in practice.
 
 ### 2.5 ADMET profile, project-context analysis, and optimization agent (stages 4–6)
 
-**Stage 4 — Lead ADMET profile.** A single forward pass through the upstream `admet_ai`<sup>2</sup> Chemprop-v2 Graph Neural Network<sup>5</sup> on the lead molecule yields the 54-endpoint baseline. These values are consumed by stage 5 as the prior the optimization should improve on, and by stage 10 as the thresholds the screen will enforce.
+**Stage 4 — Lead ADMET profile.** A single forward pass through the upstream `admet_ai` (2), built on the Chemprop V2 Graph Neural Network framework (3; 4), on the lead molecule yields the 54-endpoint baseline. These values are consumed by stage 5 as the prior the optimization should improve on, and by stage 10 as the thresholds the screen will enforce.
 
 **Stage 5 — Project-context analysis.** A structured-output language model reads the user-supplied project-context text (§2.1, input iii) and emits a typed `ContextAnalysis` record containing (a) per-endpoint priority weights (e.g. for a CNS lead, BBB-permeability weight is elevated and CYP-substrate penalty is softened relative to a peripheral-target weighting), (b) hard-stop thresholds (e.g. hERG > 0.5 hard-rejects), and (c) a single-sentence primary-optimization goal. This is where the indication-specific shape of the rest of the pipeline is established; without a project-context input the system falls back to a generic balanced-weighting default.
 
@@ -70,11 +84,11 @@ In the same stage, the Bemis–Murcko scaffold SMARTS is appended to the restric
 
 ### 2.6 Validation, permutation, pre-filter, and ADMET screen (stages 7–10)
 
-The proposed strategies are validated against the SMIRKS library (each strategy is mapped to one or more SMIRKS entries by category), and the permutation engine enumerates analogs by applying each allowed SMIRKS to its target sites only. The product of (sites × strategies × SMIRKS-per-strategy) bounds combinatorial explosion. The pre-filter applies hard structural validity (RDKit sanitisation, valency check), Lipinski Rule-of-Five, the PAINS catalogs (A, B, C)<sup>6</sup>, and the Brenk filter<sup>7</sup>. The ADMET screen re-runs the Chemprop-v2 predictor on every surviving analog and rejects analogs whose hERG / Skin Reaction / CYP probability exceeds a configurable threshold; conversely, beneficial-direction endpoints (HIA, bioavailability, BBB) below threshold are penalised.
+The proposed strategies are validated against the SMIRKS library (each strategy is mapped to one or more SMIRKS entries by category), and the permutation engine enumerates analogs by applying each allowed SMIRKS to its target sites only. The product of (sites × strategies × SMIRKS-per-strategy) bounds combinatorial explosion. The pre-filter applies hard structural validity (RDKit sanitisation, valency check), Lipinski Rule-of-Five (7), the PAINS catalogs (A, B, C) (10), and the Brenk filter (11). The ADMET screen re-runs the Chemprop-v2 predictor on every surviving analog and rejects analogs whose hERG / Skin Reaction / CYP probability exceeds a configurable threshold; conversely, beneficial-direction endpoints (HIA, bioavailability, BBB) below threshold are penalised.
 
 ### 2.7 Synthetic-accessibility scoring (stage 11)
 
-We compute the SYBA score<sup>1</sup> for every surviving analog. SYBA is a naive-Bayes classifier over ECFP4 fragments, AUC > 0.81 on the Sci-Finder reactivity dataset; the signed score is positive for synthesisable molecules and negative for hard-to-make molecules, with a magnitude roughly in [–50, +50]. We use SYBA as the **primary** synthetic-accessibility signal across the platform (in ranking, reports, CSV exports); Ertl's SAScore<sup>8</sup> is computed in parallel and retained as a legacy field for audit but is not surfaced.
+We compute the SYBA score (1) for every surviving analog. As described by Voršilák et al. (1), SYBA is a Bernoulli naïve-Bayes classifier trained on databases of easy- and hard-to-synthesise molecules; we use the reported AUC > 0.81 and the signed-score convention (positive for synthesisable, negative for hard-to-make, magnitude roughly in [−50, +50]). We adopt SYBA as the **primary** synthetic-accessibility signal across the platform (in ranking, reports, CSV exports); Ertl's SAScore (12) is computed in parallel and retained as a legacy field for audit but is not surfaced.
 
 ### 2.8 Ranking and report (stage 12)
 
@@ -90,9 +104,9 @@ All experiments are reproducible from `paper/experiments/`. Each results directo
 
 ### 3.1 Experiment 1 — MMP recovery
 
-We curate 30 single-edit literature-documented bioisosteric matched pairs spanning the library's category prefixes (ACID, AMINE, RING, HALO, SLFA, NIT, OSUB, STER, ETHER, BENZ). For each pair `(A, B)` we apply the full 479-entry SMIRKS library to `A`, compute the canonical-SMILES of every product, rank products by Tanimoto similarity (Morgan/ECFP4, radius 2, 2048 bits) to `B`, and check whether `B` appears at any rank. Recall@K is reported for K ∈ {1, 5, 10, 50, 100, 500}.
+We curate 30 single-edit literature-documented bioisosteric (17) matched molecular pairs (MMPs) (16) spanning the library's category prefixes (ACID, AMINE, RING, HALO, SLFA, NIT, OSUB, STER, ETHER, BENZ). For each pair `(A, B)` we apply the full 479-entry SMIRKS library to `A`, compute the canonical-SMILES of every product, rank products by Tanimoto similarity using Morgan / ECFP4 fingerprints (radius 2, 2048 bits) (9) to `B`, and check whether `B` appears at any rank. Recall@K is reported for K ∈ {1, 5, 10, 50, 100, 500}.
 
-**Unbiased scale-up on ChEMBL-derived MMPs.** To complement the curated pilot, we built an unbiased matched-molecular-pair set from a 2000-compound drug-like subset of ChEMBL-37 (drug-like criteria: 12 ≤ HA ≤ 35, MW ≤ 500, HBD ≤ 5, HBA ≤ 10, −2 ≤ LogP ≤ 5, single-component, RDKit-stereo-stable). `mmpdb fragment` + `mmpdb index` yielded 41,310 raw pairs; filtering to small single-edit transformations (`length(from_SMILES) ≤ 10` and `length(to_SMILES) ≤ 10`) gave **2856 candidate single-edit pairs**, from which we sampled **2000 for evaluation**. On this set the library exact-recovers `B` in **310 / 2000 = 15.5 %** of cases — the unbiased headline number. Mean best Tanimoto-to-`B` rises to **0.755** (vs the pilot's 0.687), confirming that the library produces *structurally-close* alternatives even when it does not hit the specific empirical `B`. The 15.5 % gap between the upper-bound pilot (53.3 %) and the unbiased ChEMBL set (15.5 %) calibrates the library's *native-domain* coverage vs *long-tail-transformation* coverage. Runtime on 2000 pairs: **7 min** on seven-way multiprocessing.
+**Unbiased scale-up on ChEMBL-derived MMPs.** To complement the curated pilot, we built an unbiased matched-molecular-pair set from a 2000-compound drug-like subset of ChEMBL-37 (23) (drug-like criteria: 12 ≤ HA ≤ 35, MW ≤ 500, HBD ≤ 5, HBA ≤ 10, −2 ≤ LogP ≤ 5, single-component, RDKit-stereo-stable). `mmpdb` (19) fragmentation and indexing yielded 41,310 raw pairs; filtering to small single-edit transformations (`length(from_SMILES) ≤ 10` and `length(to_SMILES) ≤ 10`) gave **2856 candidate single-edit pairs**, from which we sampled **2000 for evaluation**. On this set the library exact-recovers `B` in **310 / 2000 = 15.5 %** of cases — the unbiased headline number. Mean best Tanimoto-to-`B` rises to **0.755** (vs the pilot's 0.687), confirming that the library produces *structurally-close* alternatives even when it does not hit the specific empirical `B`. The 15.5 % gap between the upper-bound pilot (53.3 %) and the unbiased ChEMBL set (15.5 %) calibrates the library's *native-domain* coverage vs *long-tail-transformation* coverage. Runtime on 2000 pairs: **7 min** on seven-way multiprocessing.
 
 ### 3.2 Experiment 2 — Scaffold preservation + structural alerts
 
@@ -104,7 +118,7 @@ We take a single LID image (the DYRK1A Compound 25014 binding pose used in our i
 
 ### 3.4 Experiment 4 — End-to-end case study
 
-We run the complete twelve-stage pipeline on two leads spanning contrasting target classes: (a) Compound 25014, a methoxy- and benzyl-alcohol-substituted benzodioxin from a kinase/CNS series; (b) Linezolid, an FDA-approved oxazolidinone gram-positive antibacterial. A first configuration treats both leads with the no-LID path (Vision Agent skipped; every functional group classified as TARGET) so the SMIRKS engine, soft Murcko gate, structural-alert filters, ADMET screen, and SYBA ranking are exercised end-to-end. A second configuration attaches the DYRK1A LID image to Compound 25014 (Linezolid is run without LID in both configurations because no LID is available for the chosen lead) so the production vision-language classification stage is also exercised. We report stage-by-stage attrition and the top-ten analogs by total-score for each case under each configuration.
+We run the complete twelve-stage pipeline on two leads spanning contrasting target classes: (a) Compound 25014, a methoxy- and benzyl-alcohol-substituted benzodioxin from a DYRK1A kinase / CNS series (24); (b) Linezolid, an FDA-approved oxazolidinone gram-positive antibacterial (25). A first configuration treats both leads with the no-LID path (Vision Agent skipped; every functional group classified as TARGET) so the SMIRKS engine, soft Murcko gate, structural-alert filters, ADMET screen, and SYBA ranking are exercised end-to-end. A second configuration attaches the DYRK1A LID image to Compound 25014 (Linezolid is run without LID in both configurations because no LID is available for the chosen lead) so the production vision-language classification stage is also exercised. We report stage-by-stage attrition and the top-ten analogs by total-score for each case under each configuration.
 
 ### 3.5 Experiment 5 — Cross-provider model benchmark
 
@@ -166,7 +180,7 @@ The pipeline was run end-to-end on two leads spanning contrasting target classes
 
 The pre-filter (Lipinski Ro5, PAINS, Brenk, RDKit sanitisation) attrits roughly **58 %** of generated analogs for DYRK1A (149 → 62) and **66 %** for Linezolid (71 → 24). The ADMET screen does not further attrit either set in this run because both seeds and analogs sit within liability-acceptable ranges for the default thresholds. The diversity-selection step then reduces 62 → 58 and 24 → 22, indicating that most surviving analogs occupy distinct structural clusters rather than redundant variations on a single edit.
 
-Top-10 ranked analogs for DYRK1A include a maximum-shielding *tert*-butyl substitution at the methoxy carbon (rank 1, total-score 0.586, SA 2.51, MW 312, LogP 4.65, Lipinski 4.0, QED 0.88) and a phenyl→pyrimidine swap combined with O-demethylation (rank 3, total-score 0.578, SA 3.15, MW 258, LogP 1.97, QED 0.82) — a markedly more polar candidate offering an alternative to the high-LogP rank-1. For Linezolid, rank 1 is a benzene-ring 2,6-difluoro substitution (total-score 0.594, SA 2.97), which preserves the oxazolidinone pharmacophore and shifts the aromatic-ring electronics without ring-system perturbation. These analogs are presented as worked illustrations of the pipeline's output, not as binding-validated leads; biochemical confirmation requires experimentation outside this paper's scope.
+Top-10 ranked analogs for DYRK1A include a maximum-shielding *tert*-butyl substitution at the methoxy carbon (rank 1, total-score 0.586, SA 2.51, MW 312, LogP 4.65, Lipinski 4.0, QED (8) 0.88) and a phenyl→pyrimidine swap combined with O-demethylation (rank 3, total-score 0.578, SA 3.15, MW 258, LogP 1.97, QED 0.82) — a markedly more polar candidate offering an alternative to the high-LogP rank-1. For Linezolid, rank 1 is a benzene-ring 2,6-difluoro substitution (total-score 0.594, SA 2.97), which preserves the oxazolidinone pharmacophore and shifts the aromatic-ring electronics without ring-system perturbation. These analogs are presented as worked illustrations of the pipeline's output, not as binding-validated leads; biochemical confirmation requires experimentation outside this paper's scope.
 
 **Vision-aware re-run on DYRK1A** (with the LID image attached, exercising the production vision-language classification stage). The vision stage identifies binding-contact atoms on the LEU 241 / ASN 244 / GLU 291 H-bond network and the soft Murcko gate + restricted-atom enforcement kicks in. The result: **the strategy count rises from 20 to 50** (more granular site-specific SAR is proposed because each binding contact is treated separately), **but the generated-analog count falls from 149 to 51** (the pharmacophore constraint rejects the rest), and the post-diversity set shrinks from 58 to 25. Crucially, **the rank-1 analog improves on both axes**: total-score rises from 0.586 to 0.638 and SA score falls from 2.51 to 2.32 (easier to synthesise). The chemistry of the new rank-1 — `-CH2OH → -CH2NH2` (benzyl alcohol to benzyl amine) — is a textbook metabolic-stability move that the LID-free run did not reach because it had no signal pointing to the benzyl-alcohol as a TARGET. Wall-clock rises by 33 % (139.7 s → 186.1 s) reflecting the added vision-stage latency. This is the expected behaviour of the architecture and demonstrates that the vision-language LID parsing + chemistry-validity gates + Murcko enforcement work end-to-end as designed.
 
@@ -205,7 +219,7 @@ The contribution is not any single component — RDKit, the SMIRKS library categ
 
 ### 5.2 Known limitations
 
-(a) **Vision-language classifier accuracy is not benchmarked against a gold standard.** Building a 50-LID gold set requires per-atom hand-annotation across diverse target classes. The self-consistency experiment (§3.3) measures variance but not accuracy. A follow-on benchmark using a PLIP-derived silver-standard interaction set is identified as priority follow-up work.
+(a) **Vision-language classifier accuracy is not benchmarked against a gold standard.** Building a 50-LID gold set requires per-atom hand-annotation across diverse target classes. The self-consistency experiment (§3.3) measures variance but not accuracy. A follow-on benchmark using a PLIP (26)-derived silver-standard interaction set is identified as priority follow-up work.
 
 (b) **The "Pareto-style penalty rank" is a weighted scalar sum, not a Pareto front.** A real Pareto-front implementation (returning a non-dominated set in ADMET × SYBA × structural-alert space) is conceptually compatible with the rest of the pipeline and is a clean future replacement.
 
@@ -217,7 +231,7 @@ The contribution is not any single component — RDKit, the SMIRKS library categ
 
 ### 5.3 Comparison to neighbouring tools
 
-Transformation-library approaches such as MMPDB<sup>9</sup> and Reinvent<sup>10</sup> share the SMIRKS-enumeration ancestry but lack the vision-language LID perception step and the chemistry-validity gating. Generative approaches based on character or graph RNNs (e.g. MOSES<sup>11</sup>, GuacaMol<sup>12</sup>) operate on different inputs (no pharmacophore-anchoring) and emphasise distributional novelty over preserving a known binding pose. The platform described here occupies an explicit niche: *given a lead and a binding pose, generate constrained edits and rank them.*
+Transformation-library approaches such as MMPDB(19) and Reinvent(20) share the SMIRKS-enumeration ancestry but lack the vision-language LID perception step and the chemistry-validity gating. Generative approaches based on character or graph RNNs (e.g. MOSES(21), GuacaMol(22)) operate on different inputs (no pharmacophore-anchoring) and emphasise distributional novelty over preserving a known binding pose. The platform described here occupies an explicit niche: *given a lead and a binding pose, generate constrained edits and rank them.*
 
 ---
 
@@ -243,38 +257,74 @@ This section reproduces the technical detail needed to re-implement the pipeline
 
 ---
 
-## 7. Availability
+## Methods Availability
 
-Code, raw experimental outputs, figure-generation scripts, and the claims-to-evidence map are released alongside this preprint under the MIT licence at:
+All scripts used in this study — including the five experiment drivers, the figure-rendering scripts, the cross-provider model-benchmark harness, and the mirrored pipeline source code (`code/lead_optimizer/`) — are available at https://github.com/Nimieeee/lead-optimizer-paper. The repository carries a `manifest.json` for every experiment recording the git SHA, RDKit version, Python version, platform, SMIRKS library SHA-256, and input-file SHA-256, so that any figure or table can be re-derived to the byte.
 
-- **Source code:** https://github.com/Nimieeee/lead-optimizer-paper
-- **Archived code release:** Zenodo DOI assigned at submission and added here in the version of record.
+## Use of Artificial Intelligence Tools
 
-The repository mirrors the production lead-optimizer source (`code/lead_optimizer/`), the five experiments with provenance manifests, the six figures with their generating scripts, and the full claims-to-evidence map. A frozen archive of the exact commit used to produce every figure and table in this manuscript is deposited on Zenodo and assigned a DOI; that DOI is the canonical citation for the artefact.
+Portions of this manuscript were prepared with the assistance of Anthropic's Claude (Opus 4.x and Sonnet 4.x). The AI assistant was used to support iterative drafting, clarity refinement, editorial polishing, figure-caption generation, the writing of experiment driver scripts (Python / RDKit / matplotlib) and figure-rendering scripts, and orchestration of the benchmark harness across providers. All scientific content — experimental design, claim verification against measured results, interpretation of findings, and final conclusions — was conceived, executed, and validated by the author. The AI assistant was employed as an editorial, computational-scripting, and orchestration aid and was not used to generate novel scientific claims or to perform data interpretation.
+
+## Data Availability
+
+The matched-molecular-pair pilot set (30 hand-curated single-edit pairs), the 129-marketed-drug seed list, the 50 LID image used for the vision self-consistency study, the four representative project-context strings, and the four leads used in the cross-provider model benchmark are all included in the repository under `experiments/exp*/data/`. The unbiased ChEMBL-derived MMP set was built from ChEMBL release 37 (chemreps file), a 2,000-compound drug-like subset filtered with the criteria reported in §3.1, then fragmented and indexed with `mmpdb` to produce 41,310 raw pairs of which 2,000 single-edit pairs were sampled for evaluation; the build script (`experiments/exp1_mmp_recovery/build_chembl_pairs.py`) is in the repository and the raw ChEMBL chemreps file is excluded only because of its size and is downloadable from EBI at https://ftp.ebi.ac.uk/pub/databases/chembl/. All experiment-result JSONs and per-run manifests are committed in `experiments/exp*/results/`. A frozen archive of the exact commit used to produce every figure and table in this manuscript is deposited on Zenodo and assigned a DOI; that DOI is the canonical citation for the data artefact.
+
+## Acknowledgments
+
+The author thanks the maintainers of RDKit, ADMET-AI, SYBA, mmpdb, and the ChEMBL project for the open-source primitives that this work builds on. The author also thanks the upstream PAINS and Brenk filter sets for the structural-alert vocabulary used in the audit experiment.
 
 ---
 
 ## References
 
-(1) Voršilák, M.; Kolář, M.; Čmelo, I.; Svozil, D. SYBA: Bayesian estimation of synthetic accessibility of organic compounds. *J. Cheminform.* **2020**, *12*, 35. https://doi.org/10.1186/s13321-020-00439-2.
+[1] Voršilák, M., Kolář, M., Čmelo, I., & Svozil, D. (2020). SYBA: Bayesian estimation of synthetic accessibility of organic compounds. *Journal of Cheminformatics*, *12*, 35. https://doi.org/10.1186/s13321-020-00439-2
 
-(2) Swanson, K.; Walther, P.; Leitz, J.; Mukherjee, S.; Wu, J. C.; Shivnaraine, R. V.; Zou, J. ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries. *Bioinformatics* **2024**, *40*, btae416. https://doi.org/10.1093/bioinformatics/btae416.
+[2] Swanson, K., Walther, P., Leitz, J., Mukherjee, S., Wu, J. C., Shivnaraine, R. V., & Zou, J. (2024). ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries. *Bioinformatics*, *40*(7), btae416. https://doi.org/10.1093/bioinformatics/btae416
 
-(3) Landrum, G.; *et al.* RDKit: Open-source cheminformatics, release 2024.03; 2024. https://www.rdkit.org (accessed 2026-06).
+[3] Heid, E., Greenman, K. P., Chung, Y., Li, S.-C., Graff, D. E., Vermeire, F. H., Wu, H., Green, W. H., & McGill, C. J. (2024). Chemprop: A machine learning package for chemical property prediction. *Journal of Chemical Information and Modeling*, *64*(1), 9–17. https://doi.org/10.1021/acs.jcim.3c01250
 
-(4) Bemis, G. W.; Murcko, M. A. The properties of known drugs. 1. Molecular frameworks. *J. Med. Chem.* **1996**, *39*, 2887−2893. https://doi.org/10.1021/jm9602928.
+[4] Yang, K., Swanson, K., Jin, W., Coley, C., Eiden, P., Gao, H., Guzman-Perez, A., Hopper, T., Kelley, B., Mathea, M., Palmer, A., Settels, V., Jaakkola, T., Jensen, K., & Barzilay, R. (2019). Analyzing learned molecular representations for property prediction. *Journal of Chemical Information and Modeling*, *59*(8), 3370–3388. https://doi.org/10.1021/acs.jcim.9b00237
 
-(5) Yang, K.; Swanson, K.; Jin, W.; Coley, C.; Eiden, P.; Gao, H.; Guzman-Perez, A.; Hopper, T.; Kelley, B.; Mathea, M.; Palmer, A.; Settels, V.; Jaakkola, T.; Jensen, K.; Barzilay, R. Analyzing learned molecular representations for property prediction. *J. Chem. Inf. Model.* **2019**, *59*, 3370−3388. https://doi.org/10.1021/acs.jcim.9b00237.
+[5] Landrum, G., et al. (2026). RDKit: Open-source cheminformatics. Release 2026.03.3. https://doi.org/10.5281/zenodo.20446949
 
-(6) Baell, J. B.; Holloway, G. A. New substructure filters for removal of pan-assay interference compounds (PAINS) from screening libraries and for their exclusion in bioassays. *J. Med. Chem.* **2010**, *53*, 2719−2740. https://doi.org/10.1021/jm901137j.
+[6] Bemis, G. W., & Murcko, M. A. (1996). The properties of known drugs. 1. Molecular frameworks. *Journal of Medicinal Chemistry*, *39*(15), 2887–2893. https://doi.org/10.1021/jm9602928
 
-(7) Brenk, R.; Schipani, A.; James, D.; Krasowski, A.; Gilbert, I. H.; Frearson, J.; Wyatt, P. G. Lessons learnt from assembling screening libraries for drug discovery for neglected diseases. *ChemMedChem* **2008**, *3*, 435−444. https://doi.org/10.1002/cmdc.200700139.
+[7] Lipinski, C. A., Lombardo, F., Dominy, B. W., & Feeney, P. J. (1997). Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings. *Advanced Drug Delivery Reviews*, *23*(1–3), 3–25. https://doi.org/10.1016/S0169-409X(96)00423-1
 
-(8) Ertl, P.; Schuffenhauer, A. Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions. *J. Cheminform.* **2009**, *1*, 8. https://doi.org/10.1186/1758-2946-1-8.
+[8] Bickerton, G. R., Paolini, G. V., Besnard, J., Muresan, S., & Hopkins, A. L. (2012). Quantifying the chemical beauty of drugs. *Nature Chemistry*, *4*(2), 90–98. https://doi.org/10.1038/nchem.1243
 
-(9) Dalke, A.; Hert, J.; Kramer, C. mmpdb: An open-source matched molecular pair platform for large multiproperty data sets. *J. Chem. Inf. Model.* **2018**, *58*, 902−910. https://doi.org/10.1021/acs.jcim.8b00173.
-(10) Olivecrona, M.; Blaschke, T.; Engkvist, O.; Chen, H. Molecular de-novo design through deep reinforcement learning. *J. Cheminform.* **2017**, *9*, 48. https://doi.org/10.1186/s13321-017-0235-x.
+[9] Rogers, D., & Hahn, M. (2010). Extended-connectivity fingerprints. *Journal of Chemical Information and Modeling*, *50*(5), 742–754. https://doi.org/10.1021/ci100050t
 
-(11) Polykovskiy, D.; Zhebrak, A.; Sanchez-Lengeling, B.; Golovanov, S.; Tatanov, O.; Belyaev, S.; Kurbanov, R.; Artamonov, A.; Aladinskiy, V.; Veselov, M.; Kadurin, A.; Johansson, S.; Chen, H.; Nikolenko, S.; Aspuru-Guzik, A.; Zhavoronkov, A. Molecular Sets (MOSES): A benchmarking platform for molecular generation models. *Front. Pharmacol.* **2020**, *11*, 565644. https://doi.org/10.3389/fphar.2020.565644.
+[10] Baell, J. B., & Holloway, G. A. (2010). New substructure filters for removal of pan-assay interference compounds (PAINS) from screening libraries and for their exclusion in bioassays. *Journal of Medicinal Chemistry*, *53*(7), 2719–2740. https://doi.org/10.1021/jm901137j
 
-(12) Brown, N.; Fiscato, M.; Segler, M. H. S.; Vaucher, A. C. GuacaMol: Benchmarking models for de novo molecular design. *J. Chem. Inf. Model.* **2019**, *59*, 1096−1108. https://doi.org/10.1021/acs.jcim.8b00839.
+[11] Brenk, R., Schipani, A., James, D., Krasowski, A., Gilbert, I. H., Frearson, J., & Wyatt, P. G. (2008). Lessons learnt from assembling screening libraries for drug discovery for neglected diseases. *ChemMedChem*, *3*(3), 435–444. https://doi.org/10.1002/cmdc.200700139
+
+[12] Ertl, P., & Schuffenhauer, A. (2009). Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions. *Journal of Cheminformatics*, *1*, 8. https://doi.org/10.1186/1758-2946-1-8
+
+[13] Daylight Chemical Information Systems, Inc. *Daylight Theory Manual — SMARTS: A Language for Describing Molecular Patterns*. https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html (accessed 2026-06)
+
+[14] Daylight Chemical Information Systems, Inc. *Daylight Theory Manual — SMIRKS: A Reaction Transform Language*. https://www.daylight.com/dayhtml/doc/theory/theory.smirks.html (accessed 2026-06)
+
+[15] Weininger, D. (1988). SMILES, a chemical language and information system. 1. Introduction to methodology and encoding rules. *Journal of Chemical Information and Computer Sciences*, *28*(1), 31–36. https://doi.org/10.1021/ci00057a005
+
+[16] Griffen, E., Leach, A. G., Robb, G. R., & Warner, D. J. (2011). Matched molecular pairs as a medicinal chemistry tool. *Journal of Medicinal Chemistry*, *54*(22), 7739–7750. https://doi.org/10.1021/jm200452d
+
+[17] Meanwell, N. A. (2011). Synopsis of some recent tactical application of bioisosteres in drug design. *Journal of Medicinal Chemistry*, *54*(8), 2529–2591. https://doi.org/10.1021/jm1013693
+
+[18] Wermuth, C. G., Ganellin, C. R., Lindberg, P., & Mitscher, L. A. (1998). Glossary of terms used in medicinal chemistry (IUPAC Recommendations 1998). *Pure and Applied Chemistry*, *70*(5), 1129–1143. https://doi.org/10.1351/pac199870051129
+
+[19] Dalke, A., Hert, J., & Kramer, C. (2018). mmpdb: An open-source matched molecular pair platform for large multiproperty data sets. *Journal of Chemical Information and Modeling*, *58*(5), 902–910. https://doi.org/10.1021/acs.jcim.8b00173
+
+[20] Olivecrona, M., Blaschke, T., Engkvist, O., & Chen, H. (2017). Molecular de-novo design through deep reinforcement learning. *Journal of Cheminformatics*, *9*, 48. https://doi.org/10.1186/s13321-017-0235-x
+
+[21] Polykovskiy, D., Zhebrak, A., Sanchez-Lengeling, B., Golovanov, S., Tatanov, O., Belyaev, S., Kurbanov, R., Artamonov, A., Aladinskiy, V., Veselov, M., Kadurin, A., Johansson, S., Chen, H., Nikolenko, S., Aspuru-Guzik, A., & Zhavoronkov, A. (2020). Molecular Sets (MOSES): A benchmarking platform for molecular generation models. *Frontiers in Pharmacology*, *11*, 565644. https://doi.org/10.3389/fphar.2020.565644
+
+[22] Brown, N., Fiscato, M., Segler, M. H. S., & Vaucher, A. C. (2019). GuacaMol: Benchmarking models for de novo molecular design. *Journal of Chemical Information and Modeling*, *59*(3), 1096–1108. https://doi.org/10.1021/acs.jcim.8b00839
+
+[23] Zdrazil, B., Felix, E., Hunter, F., Manners, E. J., Blackshaw, J., Corbett, S., de Veij, M., Ioannidis, H., Lopez, D. M., Mosquera, J. F., Magariños, M. P., Bosc, N., Arcila, R., Kizilören, T., Gaulton, A., Bento, A. P., Adasme, M. F., Monecke, P., Landrum, G. A., & Leach, A. R. (2024). The ChEMBL Database in 2023: a drug discovery platform spanning multiple bioactivity data types and time periods. *Nucleic Acids Research*, *52*(D1), D1180–D1192. https://doi.org/10.1093/nar/gkad1004
+
+[24] Becker, W., & Sippl, W. (2011). Activation, regulation, and inhibition of DYRK1A. *FEBS Journal*, *278*(2), 246–256. https://doi.org/10.1111/j.1742-4658.2010.07956.x
+
+[25] Brickner, S. J., Hutchinson, D. K., Barbachyn, M. R., Manninen, P. R., Ulanowicz, D. A., Garmon, S. A., Grega, K. C., Hendges, S. K., Toops, D. S., Ford, C. W., & Zurenko, G. E. (1996). Synthesis and antibacterial activity of U-100592 and U-100766, two oxazolidinone antibacterial agents for the potential treatment of multidrug-resistant Gram-positive bacterial infections. *Journal of Medicinal Chemistry*, *39*(3), 673–679. https://doi.org/10.1021/jm9509556
+
+[26] Salentin, S., Schreiber, S., Haupt, V. J., Adasme, M. F., & Schroeder, M. (2015). PLIP: fully automated protein–ligand interaction profiler. *Nucleic Acids Research*, *43*(W1), W443–W447. https://doi.org/10.1093/nar/gkv315
