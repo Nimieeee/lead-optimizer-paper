@@ -1,5 +1,13 @@
 # Benchside Lead-Optimization Workbench, Reproducibility
 
+[![Preprint DOI](https://img.shields.io/badge/Preprint-10.26434%2Fchemrxiv.15004729-blue)](https://doi.org/10.26434/chemrxiv.15004729/v1)
+[![Code DOI](https://img.shields.io/badge/Code-10.5281%2Fzenodo.20643485-orange)](https://doi.org/10.5281/zenodo.20643485)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+**Preprint:** Odunewu, T. (2026). *A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation.* ChemRxiv. https://doi.org/10.26434/chemrxiv.15004729/v1
+
+**Frozen code archive:** https://doi.org/10.5281/zenodo.20643485 (release `v1.0-chemrxiv`)
+
 This directory contains everything needed to reproduce the figures and tables
 in the paper:
 
@@ -150,4 +158,20 @@ authors should treat that document as the index of provenance.
 ## Citation
 
 When citing data products from this paper, please cite both the preprint and
-the archived code release (Zenodo DOI to be assigned at submission time).
+the archived code release.
+
+**Preprint (ChemRxiv):**
+```
+Odunewu, T. (2026). A Vision-Language Agentic Pipeline for Lead Optimization:
+Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation. ChemRxiv.
+https://doi.org/10.26434/chemrxiv.15004729/v1
+```
+
+**Frozen code archive (Zenodo):**
+```
+Odunewu, T. (2026). Nimieeee/lead-optimizer-paper: v1.0-chemrxiv [Software].
+Zenodo. https://doi.org/10.5281/zenodo.20643485
+```
+
+GitHub will auto-render the preferred citation from `CITATION.cff` via the
+"Cite this repository" button on the repo page.

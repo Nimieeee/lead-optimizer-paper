@@ -31,5 +31,15 @@ preferred-citation:
       orcid: "https://orcid.org/0009-0000-7053-9325"
   title: "A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation"
   year: 2026
+  doi: "10.26434/chemrxiv.15004729/v1"
+  url: "https://doi.org/10.26434/chemrxiv.15004729/v1"
   publisher:
     name: ChemRxiv
+  notes: "Preprint posted on ChemRxiv. The frozen code archive of the same work is at DOI 10.5281/zenodo.20643485."
+identifiers:
+  - type: doi
+    value: "10.26434/chemrxiv.15004729/v1"
+    description: "ChemRxiv preprint"
+  - type: doi
+    value: "10.5281/zenodo.20643485"
+    description: "Zenodo frozen code archive"
