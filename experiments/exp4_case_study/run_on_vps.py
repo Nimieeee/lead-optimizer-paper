@@ -37,11 +37,11 @@ try:
 except IndexError:
     REPO = HERE
 
-# On VPS: backend is at /var/www/benchside-backend/backend.
+# On VPS: backend is at /srv/platform/backend.
 # Locally for verification: backend lives in the repo at <repo>/backend.
 for candidate in (
     REPO / "backend",
-    Path("/var/www/benchside-backend/backend"),
+    Path("/srv/platform/backend"),
     HERE,  # fall-through; will fail loudly below if backend not found
 ):
     if (candidate / "app" / "services" / "lead_optimizer" / "orchestrator.py").exists():

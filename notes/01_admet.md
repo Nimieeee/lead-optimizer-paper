@@ -1,6 +1,6 @@
 # ADMET Engine, Factual Inventory
 
-Source-of-truth audit for the Benchside ADMET prediction subsystem, written
+Source-of-truth audit for the the platform ADMET prediction subsystem, written
 against the actual code at `/Users/mac/Desktop/phhh` (commit-time snapshot
 2026-06-10). Where a docstring / comment claims a capability that the code
 does not back, that mismatch is flagged explicitly. Underclaim chosen over
@@ -10,12 +10,12 @@ overclaim throughout.
 
 ## 1. What the engine actually does
 
-ADMET prediction is a **two-process** architecture inside the Benchside
+ADMET prediction is a **two-process** architecture inside the the platform
 monorepo:
 
 | Process | File | Role |
 |---|---|---|
-| Main API (`pharmgpt-api`, port 7860) | `backend/app/services/admet_service.py` | HTTP client + RDKit fallback + report assembly |
+| Main API (`platform-api`, port 7860) | `backend/app/services/admet_service.py` | HTTP client + RDKit fallback + report assembly |
 | ADMET microservice (`admet-engine`, port 7861) | `backend/admet_engine.py` | FastAPI wrapper around `admet_ai.ADMETModel()` |
 
 The microservice is a thin wrapper. At
@@ -198,7 +198,7 @@ It runs:
   missing it falls back further to a descriptor-based heuristic
   (`_descriptor_based_sa`, line 177) that returns a 1-10 score derived from
   ring count, spiro/bridgehead atoms, stereo centers, MW, and rotatable
-  bonds. This descriptor heuristic is **a Benchside-local approximation**,
+  bonds. This descriptor heuristic is **a the platform-local approximation**,
   not Ertl's published method.
 
 Output schema (line 249-258): `{prediction:0|1, easy_probability,
@@ -266,7 +266,7 @@ without a corresponding ranking-pipeline rewrite.
 Implementation: `admet_service.py:1033-1282`. Uses `xhtml2pdf.pisa` to
 render a hand-built HTML template (no Jinja). Layout:
 
-- Header table with `Benchside.png` logo (base64-embedded; falls through
+- Header table with `the platform.png` logo (base64-embedded; falls through
   three filesystem paths including the macOS dev path `/Users/mac/...` ,
   fine for dev but a red flag in production hardening).
 - Engine banner showing `_engine_version` + `_engine` + confidence-method
@@ -382,7 +382,7 @@ only matches are:
 
 - A docstring claim (`admet_service.py:7`) calling ADMET-AI "SOTA on TDC
   leaderboard average". This is a citation to the upstream ADMET-AI paper's
-  published claim; **not a Benchside-run benchmark**.
+  published claim; **not a the platform-run benchmark**.
 - One unrelated grep hit for "benchmark" in `multi_provider.py` re LLM TTFT
   benchmarks.
 - `download_benchmark_reports.py` under `scripts/`, unrelated, it's about
@@ -392,7 +392,7 @@ There is no `evaluate.py`, no held-out set, no comparison vs. ADMETlab 3.0
 or ADMETboost or Deep Purpose, no PR curve script, no test against TDC's
 `group.get('benchmark')` API. The platform inherits whatever benchmark
 performance ADMET-AI claims upstream (Swanson et al. 2024). For the paper,
-the honest framing is: **"Benchside surfaces upstream ADMET-AI predictions;
+the honest framing is: **"the platform surfaces upstream ADMET-AI predictions;
 upstream model accuracy is taken as published. No in-house TDC benchmark
 re-run was performed."**
 
@@ -402,25 +402,25 @@ re-run was performed."**
 
 **Tox21:** The 12 panel members are real predictions emitted by the
 ADMET-AI Chemprop v2 ensemble (the upstream package ships pre-trained
-heads for the Tox21 challenge dataset). Benchside does not retrain them;
+heads for the Tox21 challenge dataset). the platform does not retrain them;
 the per-endpoint predictions are passed through, and the directional
 scorer at `admet_processor.py:530-537` puts them in `RISK_ENDPOINTS`. No
 hardcoded values.
 
 **DrugBank percentile:** Computed inside the upstream `admet_ai` package,
-not in Benchside. The microservice passes `include_percentiles=True` and
+not in the platform. The microservice passes `include_percentiles=True` and
 extracts whatever `{endpoint}_drugbank_approved_percentile` columns
-ADMET-AI emits. **Benchside does not compute the percentile reference
+ADMET-AI emits. **the platform does not compute the percentile reference
 distribution itself**, it consumes the upstream's bundled DrugBank-
 approved-drugs reference set (which ADMET-AI ships internally; this is
 how the published ADMET-AI app surfaces "percentile vs. approved drugs"
-columns). The Benchside confidence-label mapping (`high` 20-80, `medium`
-5-20 or 80-95, `low` ≤5 or ≥95) IS Benchside code
+columns). The the platform confidence-label mapping (`high` 20-80, `medium`
+5-20 or 80-95, `low` ≤5 or ≥95) IS the platform code
 (`admet_service.py:54-64`) and is honest about being a heuristic, not a
 calibrated probability.
 
-So: percentiles are real but **inherited**, not Benchside-derived;
-percentile-to-confidence label is Benchside's heuristic; no calibration
+So: percentiles are real but **inherited**, not the platform-derived;
+percentile-to-confidence label is the platform's heuristic; no calibration
 against a held-out set has been done.
 
 ---

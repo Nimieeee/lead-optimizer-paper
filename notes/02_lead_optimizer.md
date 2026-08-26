@@ -509,7 +509,7 @@ collects 51 cases total (5 from `branch_label`, 5 from
 - The only "benchmark" mention in the entire `lead_optimizer/` tree is
   in `report_generator.py:1044, 1049`, which is the **report's own
   user-facing copy** describing SYBA's published AUC > 0.81, i.e. a
-  citation to Voršilák 2020, not a Benchside-run benchmark.
+  citation to Voršilák 2020, not a the platform-run benchmark.
 - The 38-test regression suite asserts pure-Python invariants
   (schema round-trips, SMARTS construction correctness, dead-SMIRKS
   cache isolation, prompt-text presence). It does not measure

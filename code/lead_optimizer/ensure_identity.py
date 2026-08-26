@@ -21,7 +21,7 @@ async def ensure_medchem_identity():
             logger.info("  ➕ Creating MedChem System User...")
             db.table("users").insert({
                 "id": str(MEDCHEM_USER_ID),
-                "email": "medchem.system@benchside.app",
+                "email": "medchem.system@the-platform.app",
                 "first_name": "MedChem",
                 "last_name": "Knowledge Base",
                 "password_hash": "system_account_no_password",

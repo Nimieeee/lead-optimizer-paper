@@ -18,7 +18,7 @@ All prompts reused verbatim from the production code (no drift).
 Usage on the VPS (after OPENAI_API_KEY + GEMINI_API_KEY are in /home/ubuntu/.env):
     set -a; source /home/ubuntu/.env; set +a
     cd /tmp/exp5_model_benchmark
-    PYTHONPATH=/var/www/benchside-backend/backend \
+    PYTHONPATH=/srv/platform/backend \
         python3 run_benchmark.py --stage stage2_vision  --output results/
     python3 run_benchmark.py --stage stage5_context     --output results/
     python3 run_benchmark.py --stage stage6_optimization --output results/
@@ -42,7 +42,7 @@ from typing import Optional
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 # VPS path injection for production prompts/schemas
-_candidates = [Path("/var/www/benchside-backend/backend")]
+_candidates = [Path("/srv/platform/backend")]
 try:
     _candidates.append(HERE.parents[2] / "backend")
 except IndexError:

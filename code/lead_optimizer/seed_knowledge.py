@@ -108,7 +108,7 @@ async def seed_medchem_knowledge():
                     "source_type": "medchem_seed",
                     "category": entry["category"],
                     "title": entry["title"],
-                    "source": "Benchside Seed Knowledge"
+                    "source": "the platform Seed Knowledge"
                 }
             })
     

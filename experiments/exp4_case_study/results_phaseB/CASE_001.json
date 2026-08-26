@@ -209,8 +209,8 @@
   "iterations_used": 1,
   "errors": [],
   "methodology_notes_excerpt": "LID Analysis: 3 restricted groups, 14 target groups identified. Secondary Targets: 1 restricted groups unlocked for conservative modification. Search Space: 51 combinations from 10 primary strategies.",
-  "report_pdf_path": "/var/www/benchside-backend/backend/data/reports/report_-6078858.pdf",
-  "sdf_path": "/var/www/benchside-backend/backend/data/reports/report_-6078858.sdf",
+  "report_pdf_path": "/srv/platform/backend/data/reports/report_-6078858.pdf",
+  "sdf_path": "/srv/platform/backend/data/reports/report_-6078858.sdf",
   "progress_events_count": 17,
   "progress_events_excerpt": [
     {

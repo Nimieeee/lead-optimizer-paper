@@ -10,7 +10,7 @@ from .schemas import ADMETLiability, LeadProfile
 logger = logging.getLogger(__name__)
 logger.debug("profiler.py module loading...")
 
-ADMET_ENGINE_URL = "http://localhost:8000/admet" # Adjusted to match the Benchside API path
+ADMET_ENGINE_URL = "http://localhost:8000/admet" # Adjusted to match the the platform API path
 
 from .admet_metadata import ADMET_METADATA as ADMET_THRESHOLDS
 

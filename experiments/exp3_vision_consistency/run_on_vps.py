@@ -42,7 +42,7 @@ except IndexError:
 
 for candidate in (
     REPO / "backend",
-    Path("/var/www/benchside-backend/backend"),
+    Path("/srv/platform/backend"),
     HERE,
 ):
     if (candidate / "app" / "services" / "lead_optimizer" / "agents" / "vision_agent.py").exists():

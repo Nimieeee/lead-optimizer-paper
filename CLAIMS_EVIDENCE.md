@@ -147,7 +147,7 @@ claim and is cross-referenced to the methods section.
 |---|---|
 | Vision-language accuracy not benchmarked against a gold standard | manuscript §5.2; consistent with `paper/experiments/exp3_vision_consistency/` measuring only self-consistency |
 | Ranking is weighted scalar sum, not Pareto front | manuscript §2.8, §5.2; `backend/app/services/lead_optimizer/ranking.py:276-291` |
-| No internal trained ML model | manuscript §5.2; verified by `paper/notes/01_admet.md` ("admet_ai is the upstream PyPI package; no Benchside-trained model") |
+| No internal trained ML model | manuscript §5.2; verified by `paper/notes/01_admet.md` ("admet_ai is the upstream PyPI package; no the platform-trained model") |
 | Library validation is curator-asserted | manuscript §5.2; `validate_entire_library()` exists at `smirks_library.py:6005` but is not invoked in CI (confirmed by `grep validate_entire_library backend/tests/`) |
 | Docking not in scope | manuscript §1, §5.2; verified by `paper/notes/05_remainder.md` ("no docking engine in repo") |
 

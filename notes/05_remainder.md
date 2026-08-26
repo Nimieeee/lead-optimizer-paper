@@ -1,4 +1,4 @@
-# Benchside Platform Inventory, Remainder
+# the platform Platform Inventory, Remainder
 
 Covers: DDI analyzer, docking/Schrödinger/MCP, image generation, frontend
 architecture, test totals, evaluation harnesses, bundled datasets, deploy
@@ -320,7 +320,7 @@ What does NOT exist:
   **zero hits.** No Therapeutics Data Commons integration. The
   ADMET-AI microservice in production may itself have been trained on
   TDC data, but this repo does not contain code that evaluates
-  Benchside outputs against TDC held-out splits.
+  the platform outputs against TDC held-out splits.
 - No `moleculenet`, no `chembl_webresource` imports.
 - No `evaluation/`, `eval/`, `benchmarks/`, `metrics/` directories
   (other than the writer-comparison scripts described below).
@@ -393,12 +393,12 @@ Schema only; no seed data beyond `002_create_admin_user.sql`.
 **Production topology** (verified against `CLAUDE.md`, `deploy.sh`,
 `backend/ecosystem.config.js`):
 
-- **Frontend:** Vercel auto-deploy from `master` branch on push.
+- **Frontend:** a managed host auto-deploy from `master` branch on push.
   `next.config.js` uses `output: 'export'`, static export.
-  Production domain: `benchside.app` (per `README.md`).
-- **Backend:** Contabo VPS `ubuntu@173.212.213.228` (4 vCPU / 8 GB
-  RAM per CLAUDE.md). Path `/var/www/benchside-backend/backend/`.
-  Runs under PM2 as `pharmgpt-api` on port 7860.
+  Production domain: `the-platform.app` (per `README.md`).
+- **Backend:** a VPS `ubuntu@173.212.213.228` (4 vCPU / 8 GB
+  RAM per CLAUDE.md). Path `/srv/platform/backend/`.
+  Runs under PM2 as `platform-api` on port 7860.
 - **ADMET microservice:** same VPS, separate PM2 process
   `admet-engine` on port 7861, separate venv at
   `/home/ubuntu/admet_research/venv_admet/`. Health check
@@ -410,7 +410,7 @@ Schema only; no seed data beyond `002_create_admin_user.sql`.
    --exclude '.env'` to the VPS path.
 3. SSHs in, preserves existing `.env` (otherwise copies from
    `.env.production.template`).
-4. `pm2 restart pharmgpt-api --update-env`.
+4. `pm2 restart platform-api --update-env`.
 5. Health check loop hitting `http://localhost:7860/health` 5 times
    with `sleep 10` between retries, then a final hit to
    `https://173-212-213-228.sslip.io/health`.
@@ -442,7 +442,7 @@ prompt_processor, router_service, local_queue, etc.).
 ## 9. Documentation in repo
 
 **`README.md`** (repo root), frontend-focused. Production URL,
-Vercel deploy, dev setup, env vars, repo structure. Public-facing
+a managed host deploy, dev setup, env vars, repo structure. Public-facing
 project README.
 
 **`CLAUDE.md`**, the canonical agent-memory artifact (described in

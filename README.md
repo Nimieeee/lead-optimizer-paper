@@ -1,4 +1,4 @@
-# Benchside Lead-Optimization Workbench, Reproducibility
+# Lead-Optimization Workbench, Reproducibility
 
 [![Preprint DOI](https://img.shields.io/badge/Preprint-[DOI withheld]-blue)]([preprint DOI withheld for anonymous review]
 [![Code DOI](https://img.shields.io/badge/Code-[DOI withheld]-orange)](https://doi.org/[DOI withheld])
@@ -46,9 +46,9 @@ uv pip install --python .venv/bin/python rdkit pandas numpy matplotlib seaborn t
 RDKit version pinned by the lockfile; recommended `rdkit>=2024.03`.
 
 ### VPS (Experiments 3, 4)
-Production deploy under `/var/www/benchside-backend/backend/` with its own venv at
+Production deploy under `/srv/platform/backend/` with its own venv at
 `backend/.venv/`. The drivers import directly from the production code path
-(`PYTHONPATH=/var/www/benchside-backend/backend`) and reuse the production
+(`PYTHONPATH=/srv/platform/backend`) and reuse the production
 `ServiceContainer` initialised against the production Supabase. No HTTP layer.
 
 ## Reproducing each result
@@ -102,19 +102,19 @@ Requires production credentials (Supabase + provider API keys via the VPS
 
 ```bash
 # Sync driver and inputs to VPS
-rsync -avz -e "ssh -i ~/.ssh/id_deploy_contabo" \
+rsync -avz -e "ssh -i ~/.ssh/id_deploy" \
     paper/experiments/exp4_case_study/ ubuntu@<vps>:/tmp/exp4_case_study/
 
 # Run end-to-end (≈10-30 minutes total for 2 cases)
-ssh -i ~/.ssh/id_deploy_contabo ubuntu@<vps> '
-    cd /var/www/benchside-backend/backend && source .venv/bin/activate &&
-    PYTHONPATH=/var/www/benchside-backend/backend python3 \
+ssh -i ~/.ssh/id_deploy ubuntu@<vps> '
+    cd /srv/platform/backend && source .venv/bin/activate &&
+    PYTHONPATH=/srv/platform/backend python3 \
         /tmp/exp4_case_study/run_on_vps.py \
         --cases /tmp/exp4_case_study/data/cases.csv \
         --output /tmp/exp4_case_study/results'
 
 # Pull results
-rsync -avz -e "ssh -i ~/.ssh/id_deploy_contabo" \
+rsync -avz -e "ssh -i ~/.ssh/id_deploy" \
     ubuntu@<vps>:/tmp/exp4_case_study/results/ \
     paper/experiments/exp4_case_study/results/
 paper/.venv/bin/python paper/figures/fig5_case_study.py
@@ -126,17 +126,17 @@ Eight independent Vision Agent runs on the same DYRK1A LID. Reports pairwise
 Jaccard similarity of restricted-atom sets, consensus, and validator-drop rates.
 
 ```bash
-rsync -avz -e "ssh -i ~/.ssh/id_deploy_contabo" \
+rsync -avz -e "ssh -i ~/.ssh/id_deploy" \
     paper/experiments/exp3_vision_consistency/ ubuntu@<vps>:/tmp/exp3_vision_consistency/
-ssh -i ~/.ssh/id_deploy_contabo ubuntu@<vps> '
-    cd /var/www/benchside-backend/backend && source .venv/bin/activate &&
-    PYTHONPATH=/var/www/benchside-backend/backend python3 \
+ssh -i ~/.ssh/id_deploy ubuntu@<vps> '
+    cd /srv/platform/backend && source .venv/bin/activate &&
+    PYTHONPATH=/srv/platform/backend python3 \
         /tmp/exp3_vision_consistency/run_on_vps.py \
         --lid /tmp/exp3_vision_consistency/data/dyrk1a_25014_LID.png \
         --smiles "COc1ccc2c(c1)-c1cc(CO)ccc1C(C)(C)O2" \
         --n-runs 8 \
         --output /tmp/exp3_vision_consistency/results'
-rsync -avz -e "ssh -i ~/.ssh/id_deploy_contabo" \
+rsync -avz -e "ssh -i ~/.ssh/id_deploy" \
     ubuntu@<vps>:/tmp/exp3_vision_consistency/results/ \
     paper/experiments/exp3_vision_consistency/results/
 paper/.venv/bin/python paper/figures/fig4_vision_consistency.py

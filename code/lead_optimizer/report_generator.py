@@ -739,7 +739,7 @@ async def generate_report(
         <div class="cover">
             <div class="cover-band"></div>
 
-            <div class="cover-brand">Benchside · Autonomous Lead Optimizer</div>
+            <div class="cover-brand">the platform · Autonomous Lead Optimizer</div>
 
             <div class="cover-title">
                 <h1>Lead Optimization<br/>Report</h1>

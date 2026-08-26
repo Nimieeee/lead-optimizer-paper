@@ -213,8 +213,8 @@
   "iterations_used": 1,
   "errors": [],
   "methodology_notes_excerpt": "No LID provided. All detected functional groups treated as modifiable targets. Expanded Search Space: 71 combinations tested (cap: 15,000).",
-  "report_pdf_path": "/var/www/benchside-backend/backend/data/reports/report_75582830.pdf",
-  "sdf_path": "/var/www/benchside-backend/backend/data/reports/report_75582830.sdf",
+  "report_pdf_path": "/srv/platform/backend/data/reports/report_75582830.pdf",
+  "sdf_path": "/srv/platform/backend/data/reports/report_75582830.sdf",
   "progress_events_count": 15,
   "progress_events_excerpt": [
     {
