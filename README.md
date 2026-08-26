@@ -1,12 +1,12 @@
 # Benchside Lead-Optimization Workbench, Reproducibility
 
-[![Preprint DOI](https://img.shields.io/badge/Preprint-10.26434%2Fchemrxiv.15004729-blue)]([preprint DOI withheld for anonymous review]
-[![Code DOI](https://img.shields.io/badge/Code-10.5281%2Fzenodo.20643485-orange)](https://doi.org/10.5281/zenodo.20643485)
+[![Preprint DOI](https://img.shields.io/badge/Preprint-[DOI withheld]-blue)]([preprint DOI withheld for anonymous review]
+[![Code DOI](https://img.shields.io/badge/Code-[DOI withheld]-orange)](https://doi.org/[DOI withheld])
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**Preprint:** Anonymous (2026). *A Vision-Language Agentic Pipeline for Lead Optimization: Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation.* ChemRxiv. [preprint DOI withheld for anonymous review]
+**Preprint:** Anonymous (2026). *[title withheld for anonymous review]
 
-**Frozen code archive:** https://doi.org/10.5281/zenodo.20643485 (release `v1.0-chemrxiv`)
+**Frozen code archive:** https://doi.org/[DOI withheld] (release `v1.0`)
 
 This directory contains everything needed to reproduce the figures and tables
 in the paper:
@@ -162,15 +162,15 @@ the archived code release.
 
 **Preprint (ChemRxiv):**
 ```
-Anonymous (2026). A Vision-Language Agentic Pipeline for Lead Optimization:
+Anonymous (2026). [title withheld for anonymous review]
 Defence-in-Depth Chemistry Gates and Cross-Provider Model Evaluation. ChemRxiv.
 [preprint DOI withheld for anonymous review]
 ```
 
 **Frozen code archive (Zenodo):**
 ```
-Anonymous (2026). [repository withheld]: v1.0-chemrxiv [Software].
-Zenodo. https://doi.org/10.5281/zenodo.20643485
+Anonymous (2026). [repository withheld]: v1.0 [Software].
+Zenodo. https://doi.org/[DOI withheld]
 ```
 
 GitHub will auto-render the preferred citation from `CITATION.cff` via the

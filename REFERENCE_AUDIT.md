@@ -1,4 +1,4 @@
-# Reference Audit, *A vision-language agentic pipeline for lead optimization with chemistry-validity defence-in-depth*
+# Reference Audit, *[title withheld for anonymous review]*
 
 Audit date: 2026-06-11
 Auditor: independent citation review
@@ -35,9 +35,9 @@ Every cited DOI resolves and points to the claimed paper. Authors, year, volume,
 
 **Reference 3 (RDKit)**, the RDKit project explicitly asks authors to cite the version-specific Zenodo DOI. Methods §6 names RDKit 2026.03.3. Recommended:
 
-> Landrum, G.; et al. RDKit: Open-source cheminformatics. Release 2026.03.3 (Q1 2026), 2026. https://doi.org/10.5281/zenodo.20446949 (accessed 2026-06).
+> Landrum, G.; et al. RDKit: Open-source cheminformatics. Release 2026.03.3 (Q1 2026), 2026. https://doi.org/[DOI withheld] (accessed 2026-06).
 
-(The concept-DOI fallback https://doi.org/10.5281/zenodo.591637 is acceptable if version pinning is undesirable, but version-pinning is the cheminformatics-community convention and is what reviewers will expect from a methods paper.)
+(The concept-DOI fallback https://doi.org/[DOI withheld] is acceptable if version pinning is undesirable, but version-pinning is the cheminformatics-community convention and is what reviewers will expect from a methods paper.)
 
 **Reference 4 (Bemis–Murcko)**, strictly optional, but adding the issue number is the ACS-style standard: `*J. Med. Chem.* **1996**, *39* (15), 2887−2893.`
 
@@ -308,7 +308,7 @@ A clean, ACS-style reference list incorporating the fixes above and the 13 new r
      https://doi.org/10.1021/acs.jcim.9b00237.
 
 (5)  Landrum, G.; et al. RDKit: Open-source cheminformatics. Release 2026.03.3, 2026.
-     https://doi.org/10.5281/zenodo.20446949 (accessed 2026-06).
+     https://doi.org/[DOI withheld] (accessed 2026-06).
 
 (6)  Bemis, G. W.; Murcko, M. A. The properties of known drugs. 1. Molecular frameworks.
      *J. Med. Chem.* **1996**, *39* (15), 2887–2893. https://doi.org/10.1021/jm9602928.
