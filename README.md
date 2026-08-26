@@ -1,12 +1,9 @@
 # Lead-Optimization Workbench, Reproducibility
 
-[![Preprint DOI](https://img.shields.io/badge/Preprint-[DOI withheld]-blue)]([preprint DOI withheld for anonymous review]
-[![Code DOI](https://img.shields.io/badge/Code-[DOI withheld]-orange)](https://doi.org/[DOI withheld])
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**Preprint:** Anonymous (2026). *[title withheld for anonymous review]
-
-**Frozen code archive:** https://doi.org/[DOI withheld] (release `v1.0`)
+**Paper:** anonymised for double-blind review. Author, DOI and the
+canonical repository will be linked at camera-ready.
 
 This directory contains everything needed to reproduce the figures and tables
 in the paper:
